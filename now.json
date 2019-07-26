@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "name": "oasis",
+  "name": "ui",
   "builds": [
       { "src": "package.json", "use": "@now/static-build", "config": { "distDir": "build" } }
   ],
