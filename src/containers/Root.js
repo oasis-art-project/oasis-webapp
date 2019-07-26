@@ -14,13 +14,14 @@ const MainLayout = styled.div`
   .bp3-control input:focus ~ .bp3-control-indicator {
     outline: none !important;
   }
+  color: ${props => props.theme.text_color};
 `;
 
 const Root = () => (
   <Router history={history}>
     <MainLayout>
-      <Route path="/" exact component={Home} />
-      <Route path="/login" component={Login} />
+      <Route path="/" component={Home} />
+      <Route path="/login" exact component={Login} />
     </MainLayout>
   </Router>
 );

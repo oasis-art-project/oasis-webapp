@@ -1,8 +1,12 @@
 {
   "es": {
+    "login.signIn" : "ingresar",
+    "login.signUp" : "regístrate",
     "loading": "Cargando..."
   },
   "en": {
+    "login.signIn" : "sign in",
+    "login.signUp" : "sign up",
     "loading": "Loading..."
   }
 }

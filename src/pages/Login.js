@@ -2,6 +2,7 @@ import React, { Component, Fragment } from "react";
 import styled from "styled-components";
 import { FormGroup } from "@blueprintjs/core";
 import { Link } from "react-router-dom";
+import { FormattedMessage } from "react-intl";
 
 import { TextInput, Checkbox, Button } from "../components";
 
@@ -67,7 +68,7 @@ const LinkContainer = styled.div`
 `;
 
 const StyledLink = styled(Link)`
-  color: #000;
+  color: ${props => props.theme.colors.grey};
   text-decoration: underline;
 `;
 
@@ -105,16 +106,16 @@ class Login extends Component {
   }
 
   onLogIn(e) {
-    console.log('hi');
+    console.log("hi");
   }
 
   render() {
     const isSignUp = this.isSignUp();
-    const caText = isSignUp ? "sign up" : "sign in";
+    const caText = isSignUp ? <FormattedMessage id="login.signUp" /> : <FormattedMessage id="login.signIn" />;
     return (
       <Layout>
         <Background />
-        <StyledLogo src={LogoPNG} />
+        <Link to="/"><StyledLogo src={LogoPNG} /></Link>
         <Header>{caText}</Header>
         <Container>
           <FormGroup>
@@ -122,7 +123,9 @@ class Login extends Component {
             <StyledButton large>{caText}</StyledButton>
           </FormGroup>
           <LinkContainer>
-            {!isSignUp && <StyledLink to="/login#sign_up">Create an account</StyledLink>}
+            {!isSignUp && (
+              <StyledLink to="/login#sign_up">Create an account</StyledLink>
+            )}
             {isSignUp && <StyledLink to="/login">Sign in</StyledLink>}
           </LinkContainer>
         </Container>

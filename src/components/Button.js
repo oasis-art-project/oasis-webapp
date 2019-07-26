@@ -19,6 +19,8 @@ const StyledButton = styled(Button)`
   color: ${props => props.theme.colors.white} !important;
   box-shadow: none !important;
   background-image: none !important;
+  border-radius: ${props => props.round ? '20px' : ''} !important;
+  padding: 0 ${props => props.round ? '30px' : ''} !important;
 `;
 
 export default StyledButton;

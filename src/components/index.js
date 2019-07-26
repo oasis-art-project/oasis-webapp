@@ -1,5 +1,6 @@
 import TextInput from "./TextInput";
 import Checkbox from "./Checkbox";
-import Button from './Button'
+import Button from "./Button";
+import NavBar from "./NavBar";
 
-export { TextInput, Checkbox, Button };
+export { TextInput, Checkbox, Button, NavBar };
