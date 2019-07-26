@@ -20,8 +20,8 @@ const MainLayout = styled.div`
 const Root = () => (
   <Router history={history}>
     <MainLayout>
+      <Route path="/login" component={Login} />
       <Route path="/" component={Home} />
-      <Route path="/login" exact component={Login} />
     </MainLayout>
   </Router>
 );
