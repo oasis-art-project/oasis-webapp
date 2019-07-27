@@ -2,9 +2,10 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import { Switch, Route } from "react-router-dom";
 import { NavBar } from "../components";
+import HomeContainer from '../containers/Home'
 
 const HomeSection = styled.section`
-  max-width: 1920px;
+  max-width: 1440px;
   margin: 0 auto;
 `;
 
@@ -24,7 +25,7 @@ class Home extends Component {
             <Route
               exact
               path={this.props.match.path}
-              render={props => <h1>home view</h1>}
+              component={HomeContainer}
             />
             <Route
               path={`${this.props.match.url}artists`}
