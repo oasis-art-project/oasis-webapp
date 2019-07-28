@@ -12,10 +12,10 @@ export const StyledTabs = styled(Tabs)`
     justify-content: center;
   }
   .bp3-tab[aria-selected="true"], .bp3-tab:not([aria-disabled="true"]):hover{
-    color: ${props => props.theme.colors.grey}
+    color: ${props => props.theme.colors.green}
   }
   .bp3-tab{
-    color: ${props => props.theme.colors.green}
+    color: ${props => props.theme.colors.gtrey}
   }
 `;
 
