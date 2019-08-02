@@ -1,10 +1,21 @@
-import { createStore } from 'redux';
-import reducer from './reducers';
-/* eslint-disable no-underscore-dangle */
-const store = createStore(
-  reducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
-);
-/* eslint-enable */
+import { createStore, applyMiddleware, compose } from "redux";
+import { createEpicMiddleware } from "redux-observable";
+import reducer from "./reducers";
+import { rootEpic } from "./epics";
 
-export default store;
+const epicMiddleware = createEpicMiddleware();
+
+export default function configureStore() {
+  const middleware = [epicMiddleware];
+
+  /* eslint-disable no-underscore-dangle */
+  const store = createStore(
+    reducer,
+    compose(applyMiddleware(...middleware))
+  );
+  /* eslint-enable */
+
+  epicMiddleware.run(rootEpic);
+
+  return store;
+}
