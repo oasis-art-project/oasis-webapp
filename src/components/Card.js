@@ -1,6 +1,33 @@
 import React from "react";
 import styled from "styled-components";
+import NoImage from "../assets/no-image.svg";
 
-const Card = ({ intent }) => <div>Hola</div>;
+const ImageContainer = styled.div`
+  width: 300px;
+  height: 200px;
+  background: url(${props => (props.src ? props.src : NoImage)});
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 15px;
+`;
+
+const Title = styled.div`
+  font-size: 16px;
+  margin-bottom: 10px;
+`;
+
+const Header = styled.div`
+  display: flex;
+`;
+
+const Card = ({ intent, title, img, description }) => (
+  <div>
+    <ImageContainer src={img} />
+    <Header>
+      <Title>{title}</Title>
+    </Header>
+    <p>{description}</p>
+  </div>
+);
 
 export default Card;
