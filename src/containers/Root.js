@@ -3,7 +3,7 @@ import { Router, Route } from "react-router-dom";
 import history from "../helpers/history";
 import styled from "styled-components";
 // pages
-import Home from "../pages/Home";
+import IndexView from "../pages/IndexView";
 import Login from "../pages/Login";
 
 const MainLayout = styled.div`
@@ -21,7 +21,7 @@ const Root = () => (
   <Router history={history}>
     <MainLayout>
       <Route path="/login" component={Login} />
-      <Route path="/" component={Home} />
+      <Route path="/" component={IndexView} />
     </MainLayout>
   </Router>
 );

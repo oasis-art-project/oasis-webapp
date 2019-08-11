@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import { Switch, Route } from "react-router-dom";
-import { NavBar } from "../components";
+import { NavBar } from "../components/shared";
 import HomeContainer from '../containers/Home'
 
 const HomeSection = styled.section`
@@ -14,7 +14,7 @@ const ViewContainer = styled.div`
   margin-top: 50px;
 `;
 
-class Home extends Component {
+class IndexView extends Component {
   render() {
     if (this.props.location.pathname === "/login") return null;
     return (
@@ -50,4 +50,4 @@ class Home extends Component {
   }
 }
 
-export default Home;
+export default IndexView;

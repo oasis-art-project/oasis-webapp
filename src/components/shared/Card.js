@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import NoImage from "../assets/no-image.svg";
+import NoImage from "../../assets/no-image.svg";
 
 const ImageContainer = styled.div`
   width: 300px;

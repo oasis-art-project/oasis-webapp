@@ -1,7 +1,7 @@
 import { Button } from "@blueprintjs/core";
 import styled from "styled-components";
 
-import theme from "../layout/theme";
+import theme from "../../layout/theme";
 
 const intentBackground = intent => {
   switch (intent) {

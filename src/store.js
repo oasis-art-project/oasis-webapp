@@ -5,13 +5,15 @@ import { rootEpic } from "./epics";
 
 const epicMiddleware = createEpicMiddleware();
 
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
 export default function configureStore() {
   const middleware = [epicMiddleware];
 
   /* eslint-disable no-underscore-dangle */
   const store = createStore(
     reducer,
-    compose(applyMiddleware(...middleware))
+    composeEnhancers(applyMiddleware(...middleware))
   );
   /* eslint-enable */
 

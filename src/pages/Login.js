@@ -4,7 +4,7 @@ import { FormGroup } from "@blueprintjs/core";
 import { Link } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
 
-import { TextInput, Checkbox, Button } from "../components";
+import { TextInput, Checkbox, Button } from "../components/shared";
 
 import BackgroundPNG from "../assets/login-background.png";
 import LogoPNG from "../assets/logo.png";
