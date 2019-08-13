@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Tab, Tabs, Card, Loader } from "../shared";
+import { Tab, Tabs, Card, Loader, Seo } from "../shared";
 import styled from "styled-components";
 
 const TabsContainer = styled.div`
@@ -34,6 +34,7 @@ class HomeContainer extends Component {
     const { events } = this.props;
     return (
       <div>
+        <Seo title="Home" />
         <TabsContainer>
           <Tabs id="TabsExample" renderActiveTabPanelOnly>
             <Tab

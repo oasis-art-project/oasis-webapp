@@ -5,5 +5,6 @@ import NavBar from "./NavBar";
 import { StyledTab as Tab, StyledTabs as Tabs } from "./Tab";
 import Card from "./Card";
 import Loader from "./Loader";
+import Seo from './seo';
 
-export { TextInput, Checkbox, Button, NavBar, Tab, Tabs, Card, Loader };
+export { TextInput, Checkbox, Button, NavBar, Tab, Tabs, Card, Loader, Seo };
