@@ -20,7 +20,7 @@ const store = createStore();
 const App = () => (
   <ReduxProvider store={store}>
     <ThemeProvider theme={theme}>
-      <IntlProvider locale={locale} messages={texts[locale]}>
+      <IntlProvider locale={locale} messages={texts['en']}>
         <Root />
       </IntlProvider>
     </ThemeProvider>
