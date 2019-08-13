@@ -4,7 +4,7 @@ import history from "../helpers/history";
 import styled from "styled-components";
 // pages
 import IndexView from "../pages/IndexView";
-import Login from "../pages/Login";
+import Login from "../containers/Login";
 
 const MainLayout = styled.div`
   font-family: "Source Sans Pro", sans-serif;
