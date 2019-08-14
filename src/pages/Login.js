@@ -4,7 +4,7 @@ import { FormGroup } from "@blueprintjs/core";
 import { Link } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
 
-import { TextInput, Checkbox, Button } from "../components/shared";
+import { TextInput, Checkbox, Button, Seo } from "../components/shared";
 
 import BackgroundPNG from "../assets/login-background.png";
 import LogoPNG from "../assets/logo.png";
@@ -21,7 +21,7 @@ const Layout = styled.section`
 const Background = styled.div`
   background: url(${BackgroundPNG});
   background-size: cover;
-  filter: blur(8px);
+  filter: blur(4px);
   position: absolute;
   left: 0;
   top: 0;
@@ -106,7 +106,7 @@ class Login extends Component {
   }
 
   onLogIn(e) {
-    console.log("hi");
+    this.props.createUser()
   }
 
   render() {
@@ -114,13 +114,14 @@ class Login extends Component {
     const caText = isSignUp ? <FormattedMessage id="login.signUp" /> : <FormattedMessage id="login.signIn" />;
     return (
       <Layout>
+        <Seo title={isSignUp ? 'Sign Up' : 'Log in'} />
         <Background />
         <Link to="/"><StyledLogo src={LogoPNG} /></Link>
         <Header>{caText}</Header>
         <Container>
           <FormGroup>
             {this.formInputs()}
-            <StyledButton large>{caText}</StyledButton>
+            <StyledButton onClick={this.onLogIn} large>{caText}</StyledButton>
           </FormGroup>
           <LinkContainer>
             {!isSignUp && (
