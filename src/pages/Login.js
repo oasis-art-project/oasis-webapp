@@ -1,13 +1,13 @@
-import React, { Component, Fragment } from "react";
-import styled from "styled-components";
-import { FormGroup } from "@blueprintjs/core";
-import { Link } from "react-router-dom";
-import { FormattedMessage } from "react-intl";
+import React, { Component, Fragment } from 'react';
+import styled, { css } from 'styled-components';
+import { FormGroup } from '@blueprintjs/core';
+import { Link } from 'react-router-dom';
+import { FormattedMessage } from 'react-intl';
 
-import { TextInput, Checkbox, Button, Seo } from "../components/shared";
+import { TextInput, Checkbox, Button, Seo } from '../components/shared';
 
-import BackgroundPNG from "../assets/login-background.png";
-import LogoPNG from "../assets/logo.png";
+import BackgroundPNG from '../assets/login-background.png';
+import LogoPNG from '../assets/logo.png';
 
 const Layout = styled.section`
   display: flex;
@@ -27,19 +27,27 @@ const Background = styled.div`
   top: 0;
   width: 100vw;
   height: 100vh;
+  z-index: -10;
 `;
 
 const Container = styled.div`
-  z-index: 10;
   background: #fff;
-  border-radius: 22px;
+  border-top-left-radius: 22px;
+  border-top-right-radius: ${props => (props.isSignUp ? '0px' : '22px')};
+  border-bottom-left-radius: 22px;
+  border-bottom-right-radius: 22px;
   padding: 65px 45px 25px;
+  position: relative;
+  z-index: initial;
 `;
 
-const StyledLogo = styled.img`
+const LogoContainer = styled(Link)`
   position: absolute;
   left: 20px;
   top: 20px;
+`;
+
+const StyledLogo = styled.img`
   width: 100px;
 `;
 
@@ -72,6 +80,32 @@ const StyledLink = styled(Link)`
   text-decoration: underline;
 `;
 
+const RoleInputs = styled.ul`
+  transform: rotate(90deg);
+  position: absolute;
+  right: -188px;
+  top: 129px;
+  padding: 0;
+  z-index: 0;
+`;
+
+const shadow = css`
+  box-shadow: inset 0px -8px 16px -15px rgba(28, 28, 28, 1);
+`;
+
+const RoleItem = styled.li`
+  border-top-left-radius: 22px;
+  border-top-right-radius: 22px;
+  background: ${props => (props.active ? '#fff' : props.theme.colors.orange)};
+  color: ${props => (props.active ? props.theme.colors.grey : '#fff')};
+  font-size: 20px;
+  display: inline-block;
+  padding: 10px 30px;
+  margin-right: 5px;
+  cursor: pointer;
+  ${props => !props.active && shadow}
+`;
+
 const SingInForm = ({ onChange }) => (
   <Fragment>
     <StyledTextinput placeholder="Enter your username" />
@@ -82,7 +116,8 @@ const SingInForm = ({ onChange }) => (
 
 const SingUpForm = ({ onChange }) => (
   <Fragment>
-    <StyledTextinput placeholder="Enter your username" />
+    <StyledTextinput placeholder="Enter your name" />
+    <StyledTextinput placeholder="Enter your last name" />
     <StyledTextinput placeholder="Enter your email" />
     <StyledTextinput placeholder="Enter your password" />
     <StyledTextinput placeholder="Confirm your password" />
@@ -93,11 +128,12 @@ class Login extends Component {
   constructor(props) {
     super(props);
     this.onLogIn = this.onLogIn.bind(this);
+    this.state = { role: 0 };
   }
 
   isSignUp() {
     const { hash } = this.props.location;
-    return hash === "#sign_up";
+    return hash === '#sign_up';
   }
 
   formInputs() {
@@ -106,22 +142,43 @@ class Login extends Component {
   }
 
   onLogIn(e) {
-    this.props.createUser()
+    this.props.createUser({
+      email: 'test@te.scom',
+      password: 'osngor',
+      firstName: 'Fred',
+      lastName: 'Flintstone',
+      role: 4,
+    });
   }
 
   render() {
     const isSignUp = this.isSignUp();
-    const caText = isSignUp ? <FormattedMessage id="login.signUp" /> : <FormattedMessage id="login.signIn" />;
+    const caText = isSignUp ? (
+      <FormattedMessage id="login.signUp" />
+    ) : (
+      <FormattedMessage id="login.signIn" />
+    );
     return (
       <Layout>
         <Seo title={isSignUp ? 'Sign Up' : 'Log in'} />
         <Background />
-        <Link to="/"><StyledLogo src={LogoPNG} /></Link>
+        <LogoContainer to="/">
+          <StyledLogo src={LogoPNG} />
+        </LogoContainer>
         <Header>{caText}</Header>
-        <Container>
+        <Container isSignUp={this.isSignUp()}>
+          {this.isSignUp() && (
+            <RoleInputs>
+              <RoleItem active>Artist</RoleItem>
+              <RoleItem>Host</RoleItem>
+              <RoleItem>Visitor</RoleItem>
+            </RoleInputs>
+          )}
           <FormGroup>
             {this.formInputs()}
-            <StyledButton onClick={this.onLogIn} large>{caText}</StyledButton>
+            <StyledButton onClick={this.onLogIn} large>
+              {caText}
+            </StyledButton>
           </FormGroup>
           <LinkContainer>
             {!isSignUp && (
