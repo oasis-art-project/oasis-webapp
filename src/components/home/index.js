@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import { Tab, Tabs, Card, Loader, Seo } from "../shared";
-import styled from "styled-components";
+import React, { Component } from 'react';
+import { Tab, Tabs, Card, Loader, Seo } from '../shared';
+import styled from 'styled-components';
 
 const TabsContainer = styled.div`
   display: flex;
@@ -10,6 +10,13 @@ const TabsContainer = styled.div`
 const LoaderContainer = styled.div`
   margin-top: 180px;
 `;
+
+const CardsContainer = styled.section`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+`;
+
 const LoadingState = () => (
   <LoaderContainer>
     <Loader />
@@ -18,9 +25,17 @@ const LoadingState = () => (
 
 const CurrentEvents = ({ nodes }) => {
   if (!nodes) return <LoadingState />;
-  return nodes.map(event => (
-    <Card key={event.id} title={event.name} description={event.description} />
-  ));
+  return (
+    <CardsContainer>
+      {nodes.map(event => (
+        <Card
+          key={event.id}
+          title={event.name}
+          description={event.description}
+        />
+      ))}
+    </CardsContainer>
+  );
 };
 
 const UpcomingEvents = () => <div>Upcoming events</div>;

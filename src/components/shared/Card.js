@@ -20,14 +20,18 @@ const Header = styled.div`
   display: flex;
 `;
 
+const Container = styled.div`
+  margin: 0 5px;
+`;
+
 const Card = ({ intent, title, img, description }) => (
-  <div>
+  <Container>
     <ImageContainer src={img} />
     <Header>
       <Title>{title}</Title>
     </Header>
     <p>{description}</p>
-  </div>
+  </Container>
 );
 
 export default Card;
