@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import styled from "styled-components";
-import { Switch, Route } from "react-router-dom";
-import { NavBar } from "../components/shared";
-import HomeContainer from '../containers/Home'
+import React, { Component } from 'react';
+import styled from 'styled-components';
+import { Switch, Route } from 'react-router-dom';
+import Navbar from '../containers/Navbar';
+import HomeContainer from '../containers/Home';
 
 const HomeSection = styled.section`
   max-width: 1440px;
@@ -16,10 +16,10 @@ const ViewContainer = styled.div`
 
 class IndexView extends Component {
   render() {
-    if (this.props.location.pathname === "/login") return null;
+    if (this.props.location.pathname === '/login') return null;
     return (
       <HomeSection>
-        <NavBar />
+        <Navbar />
         <ViewContainer>
           <Switch>
             <Route
