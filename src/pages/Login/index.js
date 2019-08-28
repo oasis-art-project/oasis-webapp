@@ -1,13 +1,13 @@
 import React, { Component, Fragment } from 'react';
 import styled, { css } from 'styled-components';
-import { FormGroup } from '@blueprintjs/core';
 import { Link } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
+import { Toast, Position } from '@blueprintjs/core';
+import { TextInput, Seo } from '../../components/shared';
+import SignInForm from './SignInForm';
 
-import { TextInput, Checkbox, Button, Seo } from '../components/shared';
-
-import BackgroundPNG from '../assets/login-background.png';
-import LogoPNG from '../assets/logo.png';
+import BackgroundPNG from '../../assets/login-background.png';
+import LogoPNG from '../../assets/logo.png';
 
 const Layout = styled.section`
   display: flex;
@@ -64,12 +64,6 @@ const Header = styled.div`
   font-weight: 600;
 `;
 
-const StyledButton = styled(Button)`
-  width: 100%;
-  margin-top: 15px;
-  text-transform: uppercase;
-`;
-
 const LinkContainer = styled.div`
   width: 100%;
   text-align: right;
@@ -106,14 +100,6 @@ const RoleItem = styled.li`
   ${props => !props.active && shadow}
 `;
 
-const SingInForm = ({ onChange }) => (
-  <Fragment>
-    <StyledTextinput placeholder="Enter your username" />
-    <StyledTextinput placeholder="Enter your password" />
-    <Checkbox label="Remember me" />
-  </Fragment>
-);
-
 const SingUpForm = ({ onChange }) => (
   <Fragment>
     <StyledTextinput placeholder="Enter your name" />
@@ -138,7 +124,9 @@ class Login extends Component {
 
   formInputs() {
     if (this.isSignUp()) return <SingUpForm />;
-    return <SingInForm />;
+    return (
+      <SignInForm onLogin={this.props.login} error={this.props.loginError} />
+    );
   }
 
   onLogIn(e) {
@@ -174,12 +162,7 @@ class Login extends Component {
               <RoleItem>Visitor</RoleItem>
             </RoleInputs>
           )}
-          <FormGroup>
-            {this.formInputs()}
-            <StyledButton onClick={this.onLogIn} large>
-              {caText}
-            </StyledButton>
-          </FormGroup>
+          {this.formInputs()}
           <LinkContainer>
             {!isSignUp && (
               <StyledLink to="/login#sign_up">Create an account</StyledLink>
@@ -187,6 +170,14 @@ class Login extends Component {
             {isSignUp && <StyledLink to="/login">Sign in</StyledLink>}
           </LinkContainer>
         </Container>
+        {false && (
+          <Toast
+            position={Position.TOP}
+            icon="warning-sign"
+            intent="danger"
+            message={this.props.loginError}
+          />
+        )}
       </Layout>
     );
   }

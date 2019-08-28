@@ -15,3 +15,7 @@ export function createUser(params) {
 export function fetchAll() {
   return get(USER_BASE_URL);
 }
+
+export function getUser(id) {
+  return get(`${USER_BASE_URL}/${id}`);
+}

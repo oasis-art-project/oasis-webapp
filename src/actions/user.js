@@ -1,5 +1,6 @@
-import * as types from "./types";
-import api from "../api";
+import * as types from './types';
+import api from '../api';
+import history from '../helpers/history';
 
 export const createUser = ({ dispatch, data }) => {
   dispatch({ type: types.CREATE_USER });
@@ -22,5 +23,19 @@ export const fetchUsers = ({ dispatch }) => {
     })
     .catch(err => {
       dispatch({ type: types.FETCH_USERS_ERROR });
+    });
+};
+
+export const setActiveUser = ({ dispatch, id }) => {
+  dispatch({ type: types.FETCH_USER });
+  api.user
+    .getUser(id)
+    .then(result => {
+      dispatch({ type: types.FETCH_USER_SUCCESS });
+      dispatch({ type: types.SET_ACTIVE_USER, payload: result.data.user });
+      history.push('/');
+    })
+    .catch(error => {
+      dispatch({ type: types.CREATE_USER_ERROR });
     });
 };
