@@ -1,7 +1,10 @@
-import { createStore, applyMiddleware, compose } from "redux";
-import { createEpicMiddleware } from "redux-observable";
-import reducer from "./reducers";
-import { rootEpic } from "./epics";
+import { createStore, applyMiddleware, compose } from 'redux';
+import { createEpicMiddleware } from 'redux-observable';
+import reducer from './reducers';
+import { rootEpic } from './epics';
+import { loadState } from './localStorage';
+
+const persistedState = loadState();
 
 const epicMiddleware = createEpicMiddleware();
 
@@ -13,6 +16,7 @@ export default function configureStore() {
   /* eslint-disable no-underscore-dangle */
   const store = createStore(
     reducer,
+    persistedState,
     composeEnhancers(applyMiddleware(...middleware))
   );
   /* eslint-enable */
