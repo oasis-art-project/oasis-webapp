@@ -1,6 +1,5 @@
-// import React from "react";
-import { InputGroup } from "@blueprintjs/core";
-import styled from "styled-components";
+import { InputGroup } from '@blueprintjs/core';
+import styled from 'styled-components';
 
 const StyledInput = styled(InputGroup)`
   input {
@@ -10,7 +9,7 @@ const StyledInput = styled(InputGroup)`
     padding-bottom: 25px !important;
     padding-left: 20px !important;
     box-shadow: none;
-    &::placeholder{
+    &::placeholder {
       color: ${props => props.theme.colors.white};
     }
   }
