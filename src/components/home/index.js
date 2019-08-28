@@ -14,7 +14,7 @@ const LoaderContainer = styled.div`
 const CardsContainer = styled.section`
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: space-evenly;
 `;
 
 const LoadingState = () => (
@@ -30,6 +30,7 @@ const CurrentEvents = ({ nodes }) => {
       {nodes.map(event => (
         <Card
           key={event.id}
+          id={event.id}
           title={event.name}
           description={event.description}
         />

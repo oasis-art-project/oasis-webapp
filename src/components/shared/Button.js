@@ -20,7 +20,6 @@ const StyledButton = styled(Button)`
   box-shadow: none !important;
   background-image: none !important;
   border-radius: ${props => props.round ? '20px' : ''} !important;
-  padding: 0 ${props => props.round ? '30px' : ''} !important;
 `;
 
 export default StyledButton;

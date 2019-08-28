@@ -1,9 +1,15 @@
-import React from "react";
-import styled from "styled-components";
-import NoImage from "../../assets/no-image.svg";
+import React from 'react';
+import styled from 'styled-components';
+import NoImage from '../../assets/no-image.svg';
+import { Link } from 'react-router-dom';
+import Button from './Button';
+
+const Container = styled.div`
+  margin: 0 5px 20px;
+  width: 300px;
+`;
 
 const ImageContainer = styled.div`
-  width: 300px;
   height: 200px;
   background: url(${props => (props.src ? props.src : NoImage)});
   background-size: cover;
@@ -20,17 +26,16 @@ const Header = styled.div`
   display: flex;
 `;
 
-const Container = styled.div`
-  margin: 0 5px;
-`;
-
-const Card = ({ intent, title, img, description }) => (
+const Card = ({ intent, title, img, description, id }) => (
   <Container>
     <ImageContainer src={img} />
     <Header>
       <Title>{title}</Title>
     </Header>
     <p>{description}</p>
+    <Link to={`/event/${id}`}>
+      <Button intent="secundary">Event Detail</Button>
+    </Link>
   </Container>
 );
 

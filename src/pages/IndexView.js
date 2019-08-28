@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Switch, Route } from 'react-router-dom';
 import Navbar from '../containers/Navbar';
 import HomeContainer from '../containers/Home';
+import EventContainer from '../containers/Event';
 
 const HomeSection = styled.section`
   max-width: 1440px;
@@ -10,7 +11,7 @@ const HomeSection = styled.section`
 `;
 
 const ViewContainer = styled.div`
-  padding: 0 120px;
+  padding: 0 100px;
   margin-top: 50px;
 `;
 
@@ -42,6 +43,10 @@ class IndexView extends Component {
             <Route
               path={`${this.props.match.url}how-to`}
               render={props => <h1>how-to view</h1>}
+            />
+            <Route
+              path={`${this.props.match.url}event/:id`}
+              component={EventContainer}
             />
           </Switch>
         </ViewContainer>
