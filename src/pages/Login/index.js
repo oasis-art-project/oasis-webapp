@@ -125,7 +125,11 @@ class Login extends Component {
   formInputs() {
     if (this.isSignUp()) return <SingUpForm />;
     return (
-      <SignInForm onLogin={this.props.login} error={this.props.loginError} />
+      <SignInForm
+        onLogin={this.props.login}
+        error={this.props.loginError}
+        clearError={this.props.clearError}
+      />
     );
   }
 

@@ -22,7 +22,7 @@ const store = createStore();
 store.subscribe(throttle(() => {
   saveState({
     user: store.getState().user,
-    auth: store.getState().auth,
+    auth: {token: store.getState().auth.token},
   });
 }), 1000);
 

@@ -5,6 +5,7 @@ export const AUTH_LOGIN_FAIL = 'AUTH_LOGIN_FAIL';
 export const AUTH_LOGOUT = 'AUTH_LOGOUT';
 export const AUTH_LOGOUT_SUCCESS = 'AUTH_LOGOUT_SUCCESS';
 export const AUTH_LOGOUT_FAIL = 'AUTH_LOGOUT_FAIL';
+export const AUTH_CLEAR_ERROR = 'AUTH_CLEAR_ERROR';
 
 // users
 export const CREATE_USER = 'CREATE_USER';

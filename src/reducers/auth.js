@@ -7,13 +7,18 @@ function authReducer(state = initialState, action) {
     case types.AUTH_LOGIN_FAIL:
       return {
         ...state,
-        loginError: action.error
+        loginError: action.error,
       };
-      case types.AUTH_LOGIN_SUCCESS:
-        return {
-          ...state,
-          token: action.token
-        };
+    case types.AUTH_LOGIN_SUCCESS:
+      return {
+        ...state,
+        token: action.token,
+      };
+    case types.AUTH_CLEAR_ERROR:
+      return {
+        ...state,
+        loginError: null,
+      };
     default:
       return state;
   }

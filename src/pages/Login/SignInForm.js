@@ -37,6 +37,7 @@ class SingInForm extends PureComponent {
     this.setState({ currentError: this.props.error });
     setTimeout(() => {
       this.hideError();
+      this.props.clearError();
     }, 8000);
   }
 

@@ -22,3 +22,7 @@ export const login = ({ dispatch, data }) => {
       });
     });
 };
+
+export const clearError = ({ dispatch }) => {
+  dispatch({ type: types.AUTH_CLEAR_ERROR });
+};
