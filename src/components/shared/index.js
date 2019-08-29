@@ -7,7 +7,8 @@ import Card from './Card';
 import Loader from './Loader';
 import Seo from './seo';
 import FormInput from './FormInput';
-import ErrorMessage from './ErrorMessage'
+import ErrorMessage from './ErrorMessage';
+import Map from './Map';
 
 export {
   ErrorMessage,
@@ -16,6 +17,7 @@ export {
   Checkbox,
   Button,
   NavBar,
+  Map,
   Tab,
   Tabs,
   Card,

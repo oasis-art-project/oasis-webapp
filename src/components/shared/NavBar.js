@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Link, NavLink } from 'react-router-dom';
+import { slide as Menu } from 'react-burger-menu';
+import Measure from 'react-measure';
 import LogoPNG from '../../assets/logo.png';
+import MobileStyles from '../../helpers/navStyles';
 import Button from './Button';
 
 const Logo = styled.img`
@@ -37,33 +40,106 @@ const StyledLink = styled(NavLink)`
   }
 `;
 
+const MobileLink = styled(Link)`
+  display: block;
+  color: #fff;
+  margin: 10px 0;
+  font-size: 20px;
+  :hover {
+    text-decoration: none;
+  }
+`;
+
+const MobileNav = ({ close, open, stateChange }) => {
+  return (
+    <Menu
+      styles={MobileStyles}
+      isOpen={open}
+      onStateChange={state => stateChange(state)}
+    >
+      <MobileLink onClick={close} to="/">
+        Events
+      </MobileLink>
+      <MobileLink onClick={close} to="/about">
+        About
+      </MobileLink>
+      <MobileLink onClick={close} to="/how-to">
+        How to use OASIS
+      </MobileLink>
+      <MobileLink onClick={close} to="/artists">
+        Our Artists
+      </MobileLink>
+      <MobileLink onClick={close} to="/places">
+        Our Places
+      </MobileLink>
+    </Menu>
+  );
+};
+
+const DesktopNav = () => (
+  <StyledNav>
+    <Link to="/">
+      <Logo src={LogoPNG} />
+    </Link>
+
+    <StyledLink to="/about" activeClassName="active">
+      About OASIS
+    </StyledLink>
+    <StyledLink to="/how-to" activeClassName="active">
+      How to use OASIS
+    </StyledLink>
+    <StyledLink to="/artists" activeClassName="active">
+      Our Artists
+    </StyledLink>
+    <StyledLink to="/places" activeClassName="active">
+      Our Places
+    </StyledLink>
+
+    <Link to="/login">
+      <LoginButton intent="primary" round>
+        LogIn
+      </LoginButton>
+    </Link>
+  </StyledNav>
+);
+
 class NavBar extends Component {
+  state = {
+    width: document.body.scrollWidth,
+    sideOpen: false,
+  };
+
+  closeMenu() {
+    this.setState({ sideOpen: false });
+  }
+
+  handleStateChange(state) {
+    this.setState({ sideOpen: state.isOpen });
+  }
+
   render() {
+    const { width, sideOpen } = this.state;
     return (
-      <StyledNav>
-        <Link to="/">
-          <Logo src={LogoPNG} />
-        </Link>
-
-        <StyledLink to="/about" activeClassName="active">
-          About OASIS
-        </StyledLink>
-        <StyledLink to="/how-to" activeClassName="active">
-          How to use OASIS
-        </StyledLink>
-        <StyledLink to="/artists" activeClassName="active">
-          Our Artists
-        </StyledLink>
-        <StyledLink to="/places" activeClassName="active">
-          Our Places
-        </StyledLink>
-
-        <Link to="/login">
-          <LoginButton intent="primary" round>
-            LogIn
-          </LoginButton>
-        </Link>
-      </StyledNav>
+      <Measure
+        bounds
+        onResize={contentRect => {
+          this.setState({ width: contentRect.bounds.width });
+        }}
+      >
+        {({ measureRef }) => (
+          <div ref={measureRef}>
+            {width <= 660 ? (
+              <MobileNav
+                stateChange={this.handleStateChange.bind(this)}
+                open={sideOpen}
+                close={this.closeMenu.bind(this)}
+              />
+            ) : (
+              <DesktopNav />
+            )}
+          </div>
+        )}
+      </Measure>
     );
   }
 }

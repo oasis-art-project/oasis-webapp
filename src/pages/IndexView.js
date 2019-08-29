@@ -11,8 +11,9 @@ const HomeSection = styled.section`
 `;
 
 const ViewContainer = styled.div`
-  padding: 0 100px;
+  margin: 0px auto;
   margin-top: 50px;
+  max-width: 1260px;
 `;
 
 class IndexView extends Component {

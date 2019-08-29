@@ -5,8 +5,11 @@ import { Link } from 'react-router-dom';
 import Button from './Button';
 
 const Container = styled.div`
-  margin: 0 5px 20px;
-  width: 300px;
+  flex: 0 1 300px;
+    margin: 10px;
+    @media only screen and (max-width: 660px) {
+      flex: 0 1 80%;
+  }
 `;
 
 const ImageContainer = styled.div`

@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
-import { Tab, Tabs, Card, Loader, Seo } from '../shared';
+import { Tab, Tabs, Card, Loader, Seo, Map } from '../shared';
 import styled from 'styled-components';
 
 const TabsContainer = styled.div`
   display: flex;
   justify-content: center;
+  @media only screen and (max-width: 1300px) {
+    padding: 0 20px;
+  }
 `;
 
 const LoaderContainer = styled.div`
@@ -14,7 +17,10 @@ const LoaderContainer = styled.div`
 const CardsContainer = styled.section`
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  margin: -10px;
+  @media only screen and (max-width: 1300px) {
+    justify-content: space-around;
+  }
 `;
 
 const LoadingState = () => (
@@ -26,16 +32,19 @@ const LoadingState = () => (
 const CurrentEvents = ({ nodes }) => {
   if (!nodes) return <LoadingState />;
   return (
-    <CardsContainer>
-      {nodes.map(event => (
-        <Card
-          key={event.id}
-          id={event.id}
-          title={event.name}
-          description={event.description}
-        />
-      ))}
-    </CardsContainer>
+    <>
+      <Map />
+      <CardsContainer>
+        {nodes.map(event => (
+          <Card
+            key={event.id}
+            id={event.id}
+            title={event.name}
+            description={event.description}
+          />
+        ))}
+      </CardsContainer>
+    </>
   );
 };
 
