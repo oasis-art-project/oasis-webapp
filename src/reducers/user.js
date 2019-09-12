@@ -1,7 +1,7 @@
 import * as types from '../actions/types';
 
 const initialState = {
-  active: null
+  active: null,
 };
 
 function userReducer(state = initialState, action) {
@@ -9,7 +9,12 @@ function userReducer(state = initialState, action) {
     case types.SET_ACTIVE_USER:
       return {
         ...state,
-        active: action.payload
+        active: action.payload,
+      };
+    case types.REMOVE_ACTIVE_USER:
+      return {
+        ...state,
+        active: null,
       };
     default:
       return state;

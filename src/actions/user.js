@@ -2,6 +2,10 @@ import * as types from './types';
 import api from '../api';
 import history from '../helpers/history';
 
+export const removeActiveUser = ({ dispatch }) => {
+  dispatch({ type: types.REMOVE_ACTIVE_USER });
+};
+
 export const createUser = ({ dispatch, data }) => {
   dispatch({ type: types.CREATE_USER });
   api.user

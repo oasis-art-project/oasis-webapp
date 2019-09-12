@@ -143,6 +143,10 @@ class Login extends Component {
     });
   }
 
+  componentDidMount() {
+    this.props.logOut();
+  }
+
   render() {
     const isSignUp = this.isSignUp();
     const caText = isSignUp ? (

@@ -13,11 +13,18 @@ function authReducer(state = initialState, action) {
       return {
         ...state,
         token: action.token,
+        expires: action.expires,
       };
     case types.AUTH_CLEAR_ERROR:
       return {
         ...state,
         loginError: null,
+      };
+    case types.AUTH_LOGOUT:
+      return {
+        ...state,
+        token: null,
+        expires: null,
       };
     default:
       return state;
