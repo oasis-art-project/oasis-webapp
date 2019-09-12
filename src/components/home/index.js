@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Tab, Tabs, Card, Loader, Seo, Map } from '../shared';
 import styled from 'styled-components';
+import { Marker } from 'react-leaflet';
 
 const TabsContainer = styled.div`
   display: flex;
@@ -33,7 +34,18 @@ const CurrentEvents = ({ nodes }) => {
   if (!nodes) return <LoadingState />;
   return (
     <>
-      <Map />
+      <Map>
+        {nodes.map(
+          event =>
+            event.place.latitude &&
+            event.place.longitude && (
+              <Marker
+                key={event.id}
+                position={[event.place.latitude, event.place.longitude]}
+              />
+            )
+        )}
+      </Map>
       <CardsContainer>
         {nodes.map(event => (
           <Card

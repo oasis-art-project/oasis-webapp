@@ -11,13 +11,14 @@ const Container = styled.div`
   }
 `;
 
-const Map = () => (
+const Map = ({ children }) => (
   <Container>
     <LMap center={[42.360297, -71.0641121]} zoom={14}>
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
         url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
       />
+      {children}
     </LMap>
   </Container>
 );
