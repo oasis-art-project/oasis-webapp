@@ -6,6 +6,7 @@ import Measure from 'react-measure';
 import LogoPNG from '../../assets/logo.png';
 import MobileStyles from '../../helpers/navStyles';
 import Button from './Button';
+import { Popover, Icon } from '@blueprintjs/core';
 
 const Logo = styled.img`
   width: 100px;
@@ -76,7 +77,7 @@ const MobileNav = ({ close, open, stateChange }) => {
   );
 };
 
-const DesktopNav = () => (
+const DesktopNav = ({ user }) => (
   <StyledNav>
     <Link to="/">
       <Logo src={LogoPNG} />
@@ -95,12 +96,25 @@ const DesktopNav = () => (
       Our Places
     </StyledLink>
 
-    <Link to="/login">
-      <LoginButton intent="primary" round>
-        LogIn
-      </LoginButton>
-    </Link>
+    {user && <UserMenu user={user} />}
+
+    {!user && (
+      <Link to="/login">
+        <LoginButton intent="primary" round>
+          LogIn
+        </LoginButton>
+      </Link>
+    )}
+
   </StyledNav>
+);
+
+const UserMenu = ({ user }) => (
+  <Popover>
+    <LoginButton intent="primary" round>
+      <Icon icon="user" />
+    </LoginButton>
+  </Popover>
 );
 
 class NavBar extends Component {
@@ -135,7 +149,7 @@ class NavBar extends Component {
                 close={this.closeMenu.bind(this)}
               />
             ) : (
-              <DesktopNav />
+              <DesktopNav user={this.props.user} />
             )}
           </div>
         )}

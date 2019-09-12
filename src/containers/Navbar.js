@@ -1,7 +1,5 @@
 import { connect } from 'react-redux';
 import Nabvar from '../components/shared/NavBar';
-// import { createUser } from '../actions/user';
-// import { login } from '../actions/auth';
 
 const mapStateToProps = state => ({
   user: state.user.active,
