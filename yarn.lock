@@ -8484,6 +8484,11 @@ react-popper@^1.0.0:
     typed-styles "^0.0.7"
     warning "^4.0.2"
 
+react-rasta@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/react-rasta/-/react-rasta-1.0.4.tgz#1d6a2834575e5895699f3c39f3c8a01dd294c428"
+  integrity sha512-pEn8fUqdCR21zu3+F4DrJX/aS+Ad7jm5H7S76QHcNXUYL4Cf5KIV0DGkkVtIaHBhh4/+z1pBBpz1/tHjqabOVQ==
+
 react-redux@^7.1.0:
   version "7.1.0"
   resolved "https://registry.yarnpkg.com/react-redux/-/react-redux-7.1.0.tgz#72af7cf490a74acdc516ea9c1dd80e25af9ea0b2"
