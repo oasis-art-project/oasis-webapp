@@ -3,7 +3,7 @@ import { Router, Route } from "react-router-dom";
 import history from "../helpers/history";
 import styled from "styled-components";
 // pages
-import IndexView from "../pages/IndexView";
+import IndexView from "../containers/IndexView";
 import Login from "../containers/Login";
 
 const MainLayout = styled.div`

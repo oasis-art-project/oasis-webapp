@@ -66,10 +66,6 @@ const CurrentEvents = ({ nodes }) => {
 const UpcomingEvents = () => <div>Upcoming events</div>;
 
 class HomeContainer extends Component {
-  componentDidMount() {
-    this.props.getAllEvents();
-  }
-
   render() {
     const { events } = this.props;
     return (

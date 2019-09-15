@@ -18,6 +18,11 @@ const ViewContainer = styled.div`
 `;
 
 class IndexView extends Component {
+
+  componentDidMount() {
+    this.props.getAllEvents();
+  }
+
   render() {
     if (this.props.location.pathname === '/login') return null;
     return (
