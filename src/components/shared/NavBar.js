@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Link, NavLink } from 'react-router-dom';
-import { slide as Menu } from 'react-burger-menu';
+import { slide as MenuBurger } from 'react-burger-menu';
 import Measure from 'react-measure';
 import LogoPNG from '../../assets/logo.png';
 import MobileStyles from '../../helpers/navStyles';
 import Button from './Button';
-import { Popover, Icon } from '@blueprintjs/core';
+import { Popover, Icon, Menu, MenuItem } from '@blueprintjs/core';
 
 const Logo = styled.img`
   width: 100px;
@@ -51,9 +51,18 @@ const MobileLink = styled(Link)`
   }
 `;
 
+const UserBtn = styled.div`
+  cursor: pointer;
+  position: absolute;
+  margin-top: 10px;
+  margin-right: 20px;
+  right: 0;
+  padding: 0 30px !important;
+`;
+
 const MobileNav = ({ close, open, stateChange }) => {
   return (
-    <Menu
+    <MenuBurger
       styles={MobileStyles}
       isOpen={open}
       onStateChange={state => stateChange(state)}
@@ -73,7 +82,7 @@ const MobileNav = ({ close, open, stateChange }) => {
       <MobileLink onClick={close} to="/places">
         Our Places
       </MobileLink>
-    </Menu>
+    </MenuBurger>
   );
 };
 
@@ -105,16 +114,28 @@ const DesktopNav = ({ user }) => (
         </LoginButton>
       </Link>
     )}
-
   </StyledNav>
 );
 
+const UserOptions = (
+  <Menu>
+    <Link to="/login">
+      <MenuItem icon="log-out" text="Log out" />
+    </Link>
+  </Menu>
+);
+
+// --- TODO --- 
+// consider user img
+// warning of <a> children of <a>
 const UserMenu = ({ user }) => (
-  <Popover>
-    <LoginButton intent="primary" round>
-      <Icon icon="user" />
-    </LoginButton>
-  </Popover>
+  <UserBtn>
+    <Popover content={UserOptions}>
+      <div>
+        <Icon iconSize={30} icon="user" />
+      </div>
+    </Popover>
+  </UserBtn>
 );
 
 class NavBar extends Component {
