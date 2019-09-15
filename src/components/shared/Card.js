@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import capitalize from 'lodash/capitalize';
 import Link from './Link';
 import Button from './Button';
+import Like from './Like';
 import NoImage from '../../assets/no-image.svg';
 
 const Container = styled.div`
@@ -28,6 +29,12 @@ const Title = styled.div`
 
 const Header = styled.div`
   display: flex;
+  position: relative;
+`;
+
+const StarContainer = styled.div`
+  position: absolute;
+  right: 0;
 `;
 
 const TagsContainer = styled.ul`
@@ -50,11 +57,14 @@ const Tag = styled.li`
   font-size: 12px;
 `;
 
-const Card = ({ intent, title, image, description, id, tags }) => (
+const Card = ({ intent, title, image, description, id, tags, theme }) => (
   <Container>
     <ImageContainer src={image} />
     <Header>
       <Title>{title}</Title>
+      <StarContainer>
+        <Like />
+      </StarContainer>
     </Header>
     <p>{description}</p>
     {tags && (

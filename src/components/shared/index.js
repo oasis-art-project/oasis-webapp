@@ -10,8 +10,10 @@ import FormInput from './FormInput';
 import ErrorMessage from './ErrorMessage';
 import Map from './Map';
 import Link from './Link';
+import Like from './Like';
 
 export {
+  Like,
   ErrorMessage,
   TextInput,
   FormInput,
