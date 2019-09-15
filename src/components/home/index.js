@@ -55,6 +55,7 @@ const CurrentEvents = ({ nodes }) => {
             title={event.name}
             description={event.description}
             image={`${IMGS_URL}/event/${event.id}/event.jpg`}
+            tags={event.tags.split(';')}
           />
         ))}
       </CardsContainer>
