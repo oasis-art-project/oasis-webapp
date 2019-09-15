@@ -29,9 +29,9 @@ const Header = styled.div`
   display: flex;
 `;
 
-const Card = ({ intent, title, img, description, id }) => (
+const Card = ({ intent, title, image, description, id }) => (
   <Container>
-    <ImageContainer src={img} />
+    <ImageContainer src={image} />
     <Header>
       <Title>{title}</Title>
     </Header>

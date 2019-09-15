@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Tab, Tabs, Card, Loader, Seo, Map } from '../shared';
 import styled from 'styled-components';
 import { Marker } from 'react-leaflet';
+import { IMGS_URL } from '../../helpers/index';
 
 const TabsContainer = styled.div`
   display: flex;
@@ -53,6 +54,7 @@ const CurrentEvents = ({ nodes }) => {
             id={event.id}
             title={event.name}
             description={event.description}
+            image={`${IMGS_URL}/event/${event.id}/event.jpg`}
           />
         ))}
       </CardsContainer>
