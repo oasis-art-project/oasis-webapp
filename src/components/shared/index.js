@@ -9,6 +9,7 @@ import Seo from './seo';
 import FormInput from './FormInput';
 import ErrorMessage from './ErrorMessage';
 import Map from './Map';
+import Link from './Link';
 
 export {
   ErrorMessage,
@@ -23,4 +24,5 @@ export {
   Card,
   Loader,
   Seo,
+  Link,
 };
