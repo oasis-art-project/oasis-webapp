@@ -8370,6 +8370,11 @@ react-burger-menu@^2.6.11:
     prop-types "^15.7.2"
     snapsvg-cjs "0.0.6"
 
+react-create-component-from-tag-prop@^1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/react-create-component-from-tag-prop/-/react-create-component-from-tag-prop-1.4.0.tgz#a1b3ad06cecb185cd1ba4215f937bd03c69979a9"
+  integrity sha512-4H4T7FI9Z+kqPlFQ7npE2AkD4d4kzlaElBvYd8Ckuh+HJt8QSuhz48SGf+Dgn4EjZRGtuJBbv+3seESz+HPLLg==
+
 react-dev-utils@^9.0.1:
   version "9.0.1"
   resolved "https://registry.yarnpkg.com/react-dev-utils/-/react-dev-utils-9.0.1.tgz#5c03d85a0b2537d0c46af7165c24a7dfb274bef2"
@@ -8483,11 +8488,6 @@ react-popper@^1.0.0:
     prop-types "^15.6.1"
     typed-styles "^0.0.7"
     warning "^4.0.2"
-
-react-rasta@^1.0.4:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/react-rasta/-/react-rasta-1.0.4.tgz#1d6a2834575e5895699f3c39f3c8a01dd294c428"
-  integrity sha512-pEn8fUqdCR21zu3+F4DrJX/aS+Ad7jm5H7S76QHcNXUYL4Cf5KIV0DGkkVtIaHBhh4/+z1pBBpz1/tHjqabOVQ==
 
 react-redux@^7.1.0:
   version "7.1.0"
@@ -9689,6 +9689,19 @@ style-loader@0.23.1:
   dependencies:
     loader-utils "^1.1.0"
     schema-utils "^1.0.0"
+
+styled-components-breakpoint@^2.0.2:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/styled-components-breakpoint/-/styled-components-breakpoint-2.1.1.tgz#37c1b92b0e96c1bbc5d293724d7a114daaa15fca"
+  integrity sha512-PkS7p3MkPJx/v930Q3MPJU8llfFJTxk8o009jl0p+OUFmVb2AlHmVclX1MBHSXk8sZYGoVTTVIPDuZCELi7QIg==
+
+styled-components-grid@^2.2.2:
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/styled-components-grid/-/styled-components-grid-2.2.2.tgz#bc723318da1288d8771a4bee324b5f97ff3c2df4"
+  integrity sha512-9JwyDIHrM+57LfShnkxTtVyDqtakvUDcDEp3RkTndWqKXfiAblOrQnh66CvS6vq7RV9b6d7pCtrcm8y/of/IbA==
+  dependencies:
+    react-create-component-from-tag-prop "^1.4.0"
+    styled-components-breakpoint "^2.0.2"
 
 styled-components@^4.3.2:
   version "4.3.2"
