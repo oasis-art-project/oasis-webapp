@@ -1,16 +1,16 @@
-import { Button } from "@blueprintjs/core";
-import styled from "styled-components";
+import { Button } from '@blueprintjs/core';
+import styled from 'styled-components';
 
-import theme from "../../layout/theme";
+import theme from '../../layout/theme';
 
 const intentBackground = intent => {
   switch (intent) {
-    case "primary":
+    case 'primary':
       return theme.colors.orange;
-    case "secundary":
+    case 'secundary':
       return theme.colors.green;
     default:
-      return theme.colors.grey
+      return theme.colors.grey;
   }
 };
 
@@ -19,7 +19,7 @@ const StyledButton = styled(Button)`
   color: ${props => props.theme.colors.white} !important;
   box-shadow: none !important;
   background-image: none !important;
-  border-radius: ${props => props.round ? '20px' : ''} !important;
+  border-radius: ${props => (props.round ? '20px' : '')} !important;
 `;
 
 export default StyledButton;
