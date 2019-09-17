@@ -11,8 +11,11 @@ import ErrorMessage from './ErrorMessage';
 import Map from './Map';
 import Link from './Link';
 import Like from './Like';
+import { Tag, TagsContainer } from './Tags';
 
 export {
+  Tag,
+  TagsContainer,
   Like,
   ErrorMessage,
   TextInput,

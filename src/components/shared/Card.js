@@ -5,6 +5,7 @@ import Link from './Link';
 import Button from './Button';
 import Like from './Like';
 import NoImage from '../../assets/no-image.svg';
+import { Tag, TagsContainer } from './Tags';
 
 const Container = styled.div`
   flex: 0 1 300px;
@@ -35,26 +36,6 @@ const Header = styled.div`
 const StarContainer = styled.div`
   position: absolute;
   right: 0;
-`;
-
-const TagsContainer = styled.ul`
-  list-style: none;
-  padding: 0;
-  display: flex;
-  & > li {
-    margin-right: 5px;
-    &:not(:first-child) {
-      margin-right: 0px;
-    }
-  }
-`;
-
-const Tag = styled.li`
-  background: ${props => props.theme.colors.orange};
-  color: ${props => props.theme.colors.white};
-  border-radius: 20px;
-  padding: 3px 15px;
-  font-size: 12px;
 `;
 
 const Card = ({ intent, title, image, description, id, tags, theme }) => (
