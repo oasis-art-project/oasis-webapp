@@ -57,7 +57,6 @@ const Event = ({ match, events }) => {
       currentEvent.artists[0].firstName,
       currentEvent.artists[0].lastName
     )}`;
-    console.log(currentEvent);
     return (
       <div>
         <Seo title={currentEvent.name} />
@@ -65,7 +64,7 @@ const Event = ({ match, events }) => {
           <Grid.Unit size={0.5}>
             <Container>
               <EventImage
-                src={`${IMGS_URL}/event/${currentEvent.id}/event.jpg`}
+                src={`${IMGS_URL}/events/${currentEvent.id}/event.jpg`}
               />
               <Header>
                 <EventName>{currentEvent.name}</EventName>
