@@ -54,7 +54,7 @@ const CurrentEvents = ({ nodes }) => {
             id={event.id}
             title={event.name}
             description={event.description}
-            image={`${IMGS_URL}/event/${event.id}/event.jpg`}
+            image={`${IMGS_URL}/events/${event.id}/event.jpg`}
             tags={event.tags.split(';')}
           />
         ))}
