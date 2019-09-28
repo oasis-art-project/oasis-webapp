@@ -60,6 +60,13 @@ const UserBtn = styled.div`
   padding: 0 30px !important;
 `;
 
+const MenuMobileContainer = styled.header`
+  background: red;
+  position: fixed;
+  height: 60px;
+  width: 100%;
+`;
+
 const MobileNav = ({ close, open, stateChange }) => {
   return (
     <MenuBurger
@@ -125,7 +132,7 @@ const UserOptions = (
   </Menu>
 );
 
-// --- TODO --- 
+// --- TODO ---
 // consider user img
 // warning of <a> children of <a>
 const UserMenu = ({ user }) => (

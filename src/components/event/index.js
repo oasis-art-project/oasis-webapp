@@ -61,7 +61,7 @@ const Event = ({ match, events }) => {
       <div>
         <Seo title={currentEvent.name} />
         <Grid halign="center">
-          <Grid.Unit size={0.5}>
+          <Grid.Unit size={{ mobile: 1, desktop: 0.5 }}>
             <Container>
               <EventImage
                 src={`${IMGS_URL}/events/${currentEvent.id}/event.jpg`}
@@ -89,7 +89,7 @@ const Event = ({ match, events }) => {
               )}
             </Container>
           </Grid.Unit>
-          <Grid.Unit size={0.4}>
+          <Grid.Unit size={{ mobile: 1, desktop: 0.4 }}>
             <Container>
               <ArtistSection
                 artist={currentEvent.artists[0]}
