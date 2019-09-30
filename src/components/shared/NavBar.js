@@ -61,35 +61,48 @@ const UserBtn = styled.div`
 `;
 
 const MenuMobileContainer = styled.header`
-  background: red;
   position: fixed;
-  height: 60px;
+  height: 50px;
   width: 100%;
+  top: 0;
+  z-index: 9999;
+  background-color: #373a47;
+`;
+
+const MenuMobile = styled.div`
+  height: 36px;
+  width: 30px;
+  /* margin: 5px; */
+  cursor: pointer;
 `;
 
 const MobileNav = ({ close, open, stateChange }) => {
   return (
-    <MenuBurger
-      styles={MobileStyles}
-      isOpen={open}
-      onStateChange={state => stateChange(state)}
-    >
-      <MobileLink onClick={close} to="/">
-        Events
-      </MobileLink>
-      <MobileLink onClick={close} to="/about">
-        About
-      </MobileLink>
-      <MobileLink onClick={close} to="/how-to">
-        How to use OASIS
-      </MobileLink>
-      <MobileLink onClick={close} to="/artists">
-        Our Artists
-      </MobileLink>
-      <MobileLink onClick={close} to="/places">
-        Our Places
-      </MobileLink>
-    </MenuBurger>
+    <MenuMobileContainer>
+      <MenuMobile>
+      <MenuBurger
+        styles={MobileStyles}
+        isOpen={open}
+        onStateChange={state => stateChange(state)}
+      >
+        <MobileLink onClick={close} to="/">
+          Events
+        </MobileLink>
+        <MobileLink onClick={close} to="/about">
+          About
+        </MobileLink>
+        <MobileLink onClick={close} to="/how-to">
+          How to use OASIS
+        </MobileLink>
+        <MobileLink onClick={close} to="/artists">
+          Our Artists
+        </MobileLink>
+        <MobileLink onClick={close} to="/places">
+          Our Places
+        </MobileLink>
+      </MenuBurger>
+      </MenuMobile>
+    </MenuMobileContainer>
   );
 };
 
