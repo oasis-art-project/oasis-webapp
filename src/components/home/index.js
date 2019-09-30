@@ -74,7 +74,7 @@ class Home extends Component {
       <div>
         <Seo title="Home" />
         <TabsContainer>
-          <Tabs id="home_events">
+          <Tabs id="home_events" renderActiveTabPanelOnly>
             <Tab
               id="current_events"
               title="Current Events"
