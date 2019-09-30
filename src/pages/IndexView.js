@@ -15,10 +15,12 @@ const ViewContainer = styled.div`
   margin: 0px auto;
   margin-top: 50px;
   max-width: 1260px;
+  @media only screen and (max-width: 660px) {
+    margin-top: 75px;
+  }
 `;
 
 class IndexView extends Component {
-
   componentDidMount() {
     this.props.getAllEvents();
   }

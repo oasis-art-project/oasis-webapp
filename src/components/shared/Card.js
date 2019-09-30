@@ -11,7 +11,8 @@ const Container = styled.div`
   flex: 0 1 300px;
   margin: 10px;
   @media only screen and (max-width: 660px) {
-    flex: 0 1 80%;
+    flex: 0 1 100%;
+    margin-bottom: 60px;
   }
 `;
 
