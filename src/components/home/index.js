@@ -63,25 +63,27 @@ const CurrentEvents = ({ nodes }) => {
   );
 };
 
-const UpcomingEvents = () => <div>Upcoming events</div>;
+class Home extends Component {
+  componentDidMount() {
+    this.props.getAllEvents();
+  }
 
-class HomeContainer extends Component {
   render() {
     const { events } = this.props;
     return (
       <div>
         <Seo title="Home" />
         <TabsContainer>
-          <Tabs id="TabsExample" renderActiveTabPanelOnly>
+          <Tabs id="home_events">
             <Tab
               id="current_events"
               title="Current Events"
-              panel={<CurrentEvents nodes={events.all} />}
+              panel={<CurrentEvents nodes={events.current} />}
             />
             <Tab
               id="upcoming_events"
               title="Upcoming Events"
-              panel={<UpcomingEvents />}
+              panel={<CurrentEvents nodes={events.upcoming} />}
             />
           </Tabs>
         </TabsContainer>
@@ -90,4 +92,4 @@ class HomeContainer extends Component {
   }
 }
 
-export default HomeContainer;
+export default Home;
