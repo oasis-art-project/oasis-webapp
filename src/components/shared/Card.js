@@ -1,11 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
 import capitalize from 'lodash/capitalize';
+import { Card } from '@blueprintjs/core';
 import Link from './Link';
 import Button from './Button';
 import Like from './Like';
 import NoImage from '../../assets/no-image.svg';
 import { Tag, TagsContainer } from './Tags';
+
+const StyledLink = styled(Link)`
+  color: inherit;
+`;
 
 const Container = styled.div`
   flex: 0 1 300px;
@@ -13,6 +18,11 @@ const Container = styled.div`
   @media only screen and (max-width: 660px) {
     flex: 0 1 100%;
     margin-bottom: 60px;
+  }
+  &:hover {
+    cursor: pointer;
+    /* box-shadow: 0 0 0 1px rgba(16, 22, 26, 0.1), 0 2px 4px rgba(16, 22, 26, 0.2), */
+      /* 0 8px 24px rgba(16, 22, 26, 0.2); */
   }
 `;
 
@@ -39,8 +49,10 @@ const StarContainer = styled.div`
   right: 0;
 `;
 
-const Card = ({ intent, title, image, description, id, tags, theme }) => (
+const CardR = ({ intent, title, image, description, id, tags, theme }) => (
   <Container>
+    <StyledLink to={`/event/${id}`}>
+    {/* <Card interactive={true} elevation={2}> */}
     <ImageContainer src={image} />
     <Header>
       <Title>{title}</Title>
@@ -56,10 +68,9 @@ const Card = ({ intent, title, image, description, id, tags, theme }) => (
         ))}
       </TagsContainer>
     )}
-    <Link to={`/event/${id}`}>
-      <Button intent="secundary">Event Detail</Button>
-    </Link>
+    {/* </Card> */}
+    </StyledLink>
   </Container>
 );
 
-export default Card;
+export default CardR;

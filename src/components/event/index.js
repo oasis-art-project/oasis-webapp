@@ -3,7 +3,7 @@ import Grid from 'styled-components-grid';
 import styled from 'styled-components';
 import capitalize from 'lodash/capitalize';
 import moment from 'moment';
-import { Loader, Seo, Like, Tag, TagsContainer } from '../shared';
+import { Loader, Seo, Like, Tag, TagsContainer, Carousel } from '../shared';
 import { IMGS_URL } from '../../helpers/index';
 
 import ArtistSection from './ArtistSection';
@@ -27,7 +27,6 @@ const Container = styled.div`
 
 const EventImage = styled.img`
   width: 100%;
-  height: 450px;
 `;
 
 const Header = styled.div`
@@ -87,9 +86,13 @@ class Event extends Component {
           <Grid halign="center">
             <Grid.Unit size={{ mobile: 1, desktop: 0.5 }}>
               <Container>
-                <EventImage
-                  src={`${IMGS_URL}/events/${currentEvent.id}/event.jpg`}
-                />
+                <Carousel>
+                  <div>
+                    <EventImage
+                      src={`${IMGS_URL}/events/${currentEvent.id}/event.jpg`}
+                    />
+                  </div>
+                </Carousel>
                 <Header>
                   <EventName>{currentEvent.name}</EventName>
                   <Like />
