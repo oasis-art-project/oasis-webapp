@@ -12,8 +12,10 @@ import Map from './Map';
 import Link from './Link';
 import Like from './Like';
 import { Tag, TagsContainer } from './Tags';
+import Carousel from './Carousel';
 
 export {
+  Carousel,
   Tag,
   TagsContainer,
   Like,

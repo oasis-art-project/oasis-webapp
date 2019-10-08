@@ -4,9 +4,10 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 // global style imports
-import 'normalize.css/normalize.css'
+import 'normalize.css/normalize.css';
 import '@blueprintjs/core/lib/css/blueprint.css';
 import '@blueprintjs/icons/lib/css/blueprint-icons.css';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import 'leaflet/dist/leaflet.css';
 
 import L from 'leaflet';
