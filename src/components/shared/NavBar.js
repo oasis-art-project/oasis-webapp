@@ -6,7 +6,7 @@ import Measure from 'react-measure';
 import LogoPNG from '../../assets/logo.png';
 import MobileStyles from '../../helpers/navStyles';
 import Button from './Button';
-import { Popover, Icon, Menu, MenuItem } from '@blueprintjs/core';
+import { Popover, Icon, Menu, MenuItem, MenuDivider } from '@blueprintjs/core';
 
 const Logo = styled.img`
   width: 100px;
@@ -51,6 +51,13 @@ const MobileLink = styled(Link)`
   }
 `;
 
+const Divider = styled.div`
+  width: 80%;
+  height: 1px;
+  margin: 60px 0;
+  background: #fff;
+`;
+
 const UserBtn = styled.div`
   cursor: pointer;
   position: absolute;
@@ -76,31 +83,40 @@ const MenuMobile = styled.div`
   cursor: pointer;
 `;
 
-const MobileNav = ({ close, open, stateChange }) => {
+const MobileNav = ({ close, open, stateChange, user }) => {
   return (
     <MenuMobileContainer>
       <MenuMobile>
-      <MenuBurger
-        styles={MobileStyles}
-        isOpen={open}
-        onStateChange={state => stateChange(state)}
-      >
-        <MobileLink onClick={close} to="/">
-          Events
-        </MobileLink>
-        <MobileLink onClick={close} to="/about">
-          About
-        </MobileLink>
-        <MobileLink onClick={close} to="/how-to">
-          How to use OASIS
-        </MobileLink>
-        <MobileLink onClick={close} to="/artists">
-          Our Artists
-        </MobileLink>
-        <MobileLink onClick={close} to="/places">
-          Our Places
-        </MobileLink>
-      </MenuBurger>
+        <MenuBurger
+          styles={MobileStyles}
+          isOpen={open}
+          onStateChange={state => stateChange(state)}
+        >
+          <MobileLink onClick={close} to="/">
+            Events
+          </MobileLink>
+          <MobileLink onClick={close} to="/about">
+            About
+          </MobileLink>
+          <MobileLink onClick={close} to="/how-to">
+            How to use OASIS
+          </MobileLink>
+          <MobileLink onClick={close} to="/artists">
+            Our Artists
+          </MobileLink>
+          <MobileLink onClick={close} to="/places">
+            Our Places
+          </MobileLink>
+          <Divider />
+          {user && (
+            <MobileLink onClick={close} to="/profile">
+              Profile
+            </MobileLink>
+          )}
+          <MobileLink onClick={close} to="/login">
+            {user ? 'Log Out' : 'Sign In'}
+          </MobileLink>
+        </MenuBurger>
       </MenuMobile>
     </MenuMobileContainer>
   );
@@ -139,6 +155,10 @@ const DesktopNav = ({ user }) => (
 
 const UserOptions = (
   <Menu>
+    <Link to="/profile">
+      <MenuItem icon="user" text="My profile" />
+    </Link>
+    <MenuDivider />
     <Link to="/login">
       <MenuItem icon="log-out" text="Log out" />
     </Link>
@@ -188,6 +208,7 @@ class NavBar extends Component {
                 stateChange={this.handleStateChange.bind(this)}
                 open={sideOpen}
                 close={this.closeMenu.bind(this)}
+                user={this.props.user}
               />
             ) : (
               <DesktopNav user={this.props.user} />
