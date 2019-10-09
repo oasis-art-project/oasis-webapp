@@ -1,15 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 import capitalize from 'lodash/capitalize';
-import { Card } from '@blueprintjs/core';
 import Link from './Link';
-import Button from './Button';
 import Like from './Like';
 import NoImage from '../../assets/no-image.svg';
 import { Tag, TagsContainer } from './Tags';
 
 const StyledLink = styled(Link)`
   color: inherit;
+  display: block;
 `;
 
 const Container = styled.div`
@@ -21,13 +20,12 @@ const Container = styled.div`
   }
   &:hover {
     cursor: pointer;
-    /* box-shadow: 0 0 0 1px rgba(16, 22, 26, 0.1), 0 2px 4px rgba(16, 22, 26, 0.2), */
-      /* 0 8px 24px rgba(16, 22, 26, 0.2); */
   }
 `;
 
 const ImageContainer = styled.div`
-  height: 200px;
+  height: ${props => props.small ? '100px' : '200px'};
+  ${props => props.small && 'width: 100%'};
   background: url(${props => (props.src ? props.src : NoImage)});
   background-size: cover;
   background-position: center;
@@ -37,6 +35,7 @@ const ImageContainer = styled.div`
 const Title = styled.div`
   font-size: 16px;
   margin-bottom: 10px;
+  ${props => props.small && 'margin-bottom: 5px !important'}
 `;
 
 const Header = styled.div`
@@ -49,18 +48,22 @@ const StarContainer = styled.div`
   right: 0;
 `;
 
-const CardR = ({ intent, title, image, description, id, tags, theme }) => (
+const Description = styled.p`
+  ${props => props.small && 'margin: 5px 0 !important'}
+`;
+
+const Card = ({ small, intent, title, image, description, id, tags, theme, noStar, noLink }) => (
   <Container>
-    <StyledLink to={`/event/${id}`}>
+    <StyledLink noLink={noLink} to={`/event/${id}`} intent={intent}>
     {/* <Card interactive={true} elevation={2}> */}
-    <ImageContainer src={image} />
+    <ImageContainer small={small} src={image} />
     <Header>
-      <Title>{title}</Title>
-      <StarContainer>
+      <Title small={small}>{title}</Title>
+      {!noStar && <StarContainer>
         <Like />
-      </StarContainer>
+      </StarContainer>}
     </Header>
-    <p>{description}</p>
+    <Description small={small}>{description}</Description>
     {tags && (
       <TagsContainer>
         {tags.map(tag => (
@@ -73,4 +76,4 @@ const CardR = ({ intent, title, image, description, id, tags, theme }) => (
   </Container>
 );
 
-export default CardR;
+export default Card;

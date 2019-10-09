@@ -100,13 +100,14 @@ class Event extends Component {
                 <EventInfoCont>
                   <EventInfoItem>{artisName}</EventInfoItem>
                   <EventInfoItem>
-                    {capitalize(currentEvent.place.description)}
+                    {capitalize(currentEvent.place.name)}
                   </EventInfoItem>
                   <EventInfoItem>
                     {formatDates(currentEvent.startTime, currentEvent.endTime)}
                   </EventInfoItem>
                 </EventInfoCont>
                 <EventDesc>{currentEvent.description}</EventDesc>
+                <EventDesc>{capitalize(currentEvent.place.description)}</EventDesc>
                 {tags && (
                   <TagsContainer>
                     {tags.map(tag => (
