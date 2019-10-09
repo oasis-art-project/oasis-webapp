@@ -3,7 +3,7 @@ import { Map as LMap, TileLayer } from 'react-leaflet';
 import styled from 'styled-components';
 
 const Container = styled.div`
-  height: 300px;
+  height: 350px;
   width: 100%;
   padding-bottom: 30px;
   .leaflet-container {

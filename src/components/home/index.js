@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Tab, Tabs, Card, Loader, Seo, Map } from '../shared';
+import { Tab, Tabs, Card, Loader, Seo, Map, Marker } from '../shared';
 import styled from 'styled-components';
-import { Marker } from 'react-leaflet';
+import { Popup } from 'react-leaflet';
 import { IMGS_URL } from '../../helpers/index';
+
 
 const TabsContainer = styled.div`
   display: flex;
@@ -25,6 +26,14 @@ const CardsContainer = styled.section`
   }
 `;
 
+const EventPopup = styled(Popup)`
+  width: 200px !important;
+  .leaflet-popup-content {
+    margin: 5px;
+    padding: 2.5px 0;
+  }
+`;
+
 const LoadingState = () => (
   <LoaderContainer>
     <Loader />
@@ -43,13 +52,29 @@ const CurrentEvents = ({ nodes }) => {
               <Marker
                 key={event.id}
                 position={[event.place.latitude, event.place.longitude]}
-              />
+              >
+                <EventPopup closeButton={false}>
+                  <Card
+                    noStar
+                    noLink
+                    intent="list"
+                    small
+                    key={event.id}
+                    id={event.id}
+                    title={event.name}
+                    description={event.description}
+                    image={`${IMGS_URL}/events/${event.id}/event.jpg`}
+                    tags={event.tags.split(';')}
+                  />
+                </EventPopup>
+              </Marker>
             )
         )}
       </Map>
       <CardsContainer>
         {nodes.map(event => (
           <Card
+            intent="list"
             key={event.id}
             id={event.id}
             title={event.name}
