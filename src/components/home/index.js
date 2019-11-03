@@ -56,7 +56,6 @@ const CurrentEvents = ({ nodes }) => {
                 <EventPopup closeButton={false}>
                   <Card
                     noStar
-                    noLink
                     intent="list"
                     small
                     key={event.id}

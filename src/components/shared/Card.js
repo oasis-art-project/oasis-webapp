@@ -24,7 +24,7 @@ const Container = styled.div`
 `;
 
 const ImageContainer = styled.div`
-  height: ${props => props.small ? '100px' : '200px'};
+  height: ${props => (props.small ? '100px' : '200px')};
   ${props => props.small && 'width: 100%'};
   background: url(${props => (props.src ? props.src : NoImage)});
   background-size: cover;
@@ -52,26 +52,37 @@ const Description = styled.p`
   ${props => props.small && 'margin: 5px 0 !important'}
 `;
 
-const Card = ({ small, intent, title, image, description, id, tags, theme, noStar, noLink }) => (
+const Card = ({
+  small,
+  intent,
+  title,
+  image,
+  description,
+  id,
+  tags,
+  theme,
+  noStar,
+  noLink,
+}) => (
   <Container>
-    <StyledLink noLink={noLink} to={`/event/${id}`} intent={intent}>
-    {/* <Card interactive={true} elevation={2}> */}
-    <ImageContainer small={small} src={image} />
-    <Header>
-      <Title small={small}>{title}</Title>
-      {!noStar && <StarContainer>
-        <Like />
-      </StarContainer>}
-    </Header>
-    <Description small={small}>{description}</Description>
-    {tags && (
-      <TagsContainer>
-        {tags.map(tag => (
-          <Tag key={tag}>{capitalize(tag)}</Tag>
-        ))}
-      </TagsContainer>
-    )}
-    {/* </Card> */}
+    <StyledLink to={`/event/${id}`} intent={intent}>
+      <ImageContainer small={small} src={image} />
+      <Header>
+        <Title small={small}>{title}</Title>
+        {!noStar && (
+          <StarContainer>
+            <Like />
+          </StarContainer>
+        )}
+      </Header>
+      <Description small={small}>{description}</Description>
+      {tags && (
+        <TagsContainer>
+          {tags.map(tag => (
+            <Tag key={tag}>{capitalize(tag)}</Tag>
+          ))}
+        </TagsContainer>
+      )}
     </StyledLink>
   </Container>
 );
