@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Event from '../components/event/index';
+import Event from '../pages/event/index';
 import { fetchEvent } from '../actions/event';
 
 const mapStateToProps = state => ({

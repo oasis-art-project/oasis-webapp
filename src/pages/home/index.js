@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Tab, Tabs, Card, Loader, Seo, Map, Marker } from '../shared';
+import { Tab, Tabs, Card, Loader, Seo, Map, Marker } from '../../components';
 import styled from 'styled-components';
 import { Popup } from 'react-leaflet';
 import { IMGS_URL } from '../../helpers/index';

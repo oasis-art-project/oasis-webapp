@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Nabvar from '../components/shared/NavBar';
+import Nabvar from '../components/NavBar';
 
 const mapStateToProps = state => ({
   user: state.user.active,

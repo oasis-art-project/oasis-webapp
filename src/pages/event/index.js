@@ -3,7 +3,7 @@ import Grid from 'styled-components-grid';
 import styled from 'styled-components';
 import capitalize from 'lodash/capitalize';
 import moment from 'moment';
-import { Loader, Seo, Like, Tag, TagsContainer, Carousel } from '../shared';
+import { Loader, Seo, Like, Tag, TagsContainer, Carousel } from '../../components';
 import { IMGS_URL } from '../../helpers/index';
 
 import ArtistSection from './ArtistSection';

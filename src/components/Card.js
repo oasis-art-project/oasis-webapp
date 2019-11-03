@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import capitalize from 'lodash/capitalize';
 import Link from './Link';
 import Like from './Like';
-import NoImage from '../../assets/no-image.svg';
+import NoImage from '../assets/no-image.svg';
 import { Tag, TagsContainer } from './Tags';
 
 const StyledLink = styled(Link)`

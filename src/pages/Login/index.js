@@ -3,11 +3,12 @@ import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 import { Toast, Position } from '@blueprintjs/core';
-import { TextInput, Seo } from '../../components/shared';
+import { TextInput, Seo } from '../../components';
 import SignInForm from './SignInForm';
 
 import BackgroundPNG from '../../assets/login-background.png';
 import LogoPNG from '../../assets/logo.png';
+import LogoPNG2 from '../../assets/logo_2.png';
 
 const Layout = styled.section`
   display: flex;
@@ -48,7 +49,7 @@ const LogoContainer = styled(Link)`
 `;
 
 const StyledLogo = styled.img`
-  width: 100px;
+  width: 60px;
 `;
 
 const StyledTextinput = styled(TextInput)`
@@ -159,7 +160,7 @@ class Login extends Component {
         <Seo title={isSignUp ? 'Sign Up' : 'Log in'} />
         <Background />
         <LogoContainer to="/">
-          <StyledLogo src={LogoPNG} />
+          <StyledLogo src={LogoPNG2} />
         </LogoContainer>
         <Header>{caText}</Header>
         <Container isSignUp={this.isSignUp()}>

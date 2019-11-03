@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 
-import { Button, FormInput, ErrorMessage } from '../../components/shared';
+import { Button, FormInput, ErrorMessage } from '../../components';
 
 const StyledButton = styled(Button)`
   width: 100%;

@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import Home from "../components/home/index";
+import Home from "../pages/home/index";
 import { fetchEvents } from "../actions/event";
 
 const mapStateToProps = state => ({
