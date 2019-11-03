@@ -4,12 +4,14 @@ import { Link, NavLink } from 'react-router-dom';
 import { slide as MenuBurger } from 'react-burger-menu';
 import Measure from 'react-measure';
 import LogoPNG from '../../assets/logo.png';
+import LogoSVGDark from '../../assets/logo_dark.svg';
+import LogoPNG2 from '../../assets/logo_2.png';
 import MobileStyles from '../../helpers/navStyles';
 import Button from './Button';
 import { Popover, Icon, Menu, MenuItem, MenuDivider } from '@blueprintjs/core';
 
 const Logo = styled.img`
-  width: 100px;
+  width: 60px;
   margin-left: 20px;
   margin-top: 20px;
   position: absolute;
@@ -125,7 +127,7 @@ const MobileNav = ({ close, open, stateChange, user }) => {
 const DesktopNav = ({ user }) => (
   <StyledNav>
     <Link to="/">
-      <Logo src={LogoPNG} />
+      <Logo src={LogoPNG2} />
     </Link>
 
     <StyledLink to="/about" activeClassName="active">
