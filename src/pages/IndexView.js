@@ -5,6 +5,9 @@ import Navbar from '../containers/Navbar';
 import Footer from '../components/Footer';
 import HomeContainer from '../containers/Home';
 import EventContainer from '../containers/Event';
+// Static Pages
+import About from './About';
+import HowTo from './HowTo';
 
 const HomeSection = styled.section`
   max-width: 1440px;
@@ -28,6 +31,8 @@ const IndexView = ({ location, match }) => {
         <Navbar />
         <ViewContainer>
           <Switch>
+            <Route path={`${match.url}about`} component={About} />
+            <Route path={`${match.url}how-to`} component={HowTo} />
             <Route exact path={match.path} component={HomeContainer} />
             <Route
               path={`${match.url}artists`}
@@ -36,14 +41,6 @@ const IndexView = ({ location, match }) => {
             <Route
               path={`${match.url}places`}
               render={props => <h1>places view</h1>}
-            />
-            <Route
-              path={`${match.url}about`}
-              render={props => <h1>about view</h1>}
-            />
-            <Route
-              path={`${match.url}how-to`}
-              render={props => <h1>how-to view</h1>}
             />
             <Route path={`${match.url}event/:id`} component={EventContainer} />
           </Switch>
