@@ -1,6 +1,6 @@
 import { post, get } from 'axios';
 import { stringify } from 'qs';
-import { API_URL } from './contants';
+import { API_URL } from './constants';
 
 const USER_BASE_URL = `${API_URL}/user`;
 
