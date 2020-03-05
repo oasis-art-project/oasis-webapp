@@ -17,6 +17,10 @@ Open [http://localhost:9000](http://localhost:9000) to view it in the browser.
 The page will reload if you make edits.<br>
 You will also see any lint errors in the console.
 
+On Mac, you might need to run ```unset HOST``` if getting the following error: 
+
+> "events.js:183 error" after "npm start" · Issue #5863 · facebook/create-react-app
+
 ### `nps test`
 
 Launches the test runner in the interactive watch mode.<br>
