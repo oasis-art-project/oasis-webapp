@@ -2,6 +2,7 @@ import * as types from '../actions/types';
 
 const initialState = {
   active: null,
+  location: null,
 };
 
 function userReducer(state = initialState, action) {
@@ -15,6 +16,11 @@ function userReducer(state = initialState, action) {
       return {
         ...state,
         active: null,
+      };
+    case types.SET_USER_GEOLOCATION:
+      return {
+        ...state,
+        location: action.payload,
       };
     default:
       return state;

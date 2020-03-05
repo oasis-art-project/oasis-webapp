@@ -2,6 +2,10 @@ import * as types from './types';
 import api from '../api';
 import history from '../helpers/history';
 
+export const setUserGeoLocation = (dispatch, location) => {
+  dispatch({ type: types.SET_USER_GEOLOCATION, payload: location });
+};
+
 export const removeActiveUser = ({ dispatch }) => {
   dispatch({ type: types.REMOVE_ACTIVE_USER });
 };
