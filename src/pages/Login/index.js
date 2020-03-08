@@ -1,13 +1,13 @@
-import React, { Component, Fragment } from 'react';
-import styled, { css } from 'styled-components';
+import React, { Component } from 'react';
+import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 import { Toast, Position } from '@blueprintjs/core';
-import { TextInput, Seo } from '../../components';
+import { Seo } from '../../components';
 import SignInForm from './SignInForm';
+import SignUpForm from './SignUpForm';
 
 import BackgroundPNG from '../../assets/login-background.png';
-import LogoPNG from '../../assets/logo.png';
 import LogoPNG2 from '../../assets/logo_2.png';
 
 const Layout = styled.section`
@@ -52,11 +52,6 @@ const StyledLogo = styled.img`
   width: 60px;
 `;
 
-const StyledTextinput = styled(TextInput)`
-  width: 280px;
-  margin-bottom: 25px;
-`;
-
 const Header = styled.div`
   z-index: 12;
   color: ${props => props.theme.colors.orange};
@@ -75,46 +70,9 @@ const StyledLink = styled(Link)`
   text-decoration: underline;
 `;
 
-const RoleInputs = styled.ul`
-  transform: rotate(90deg);
-  position: absolute;
-  right: -188px;
-  top: 129px;
-  padding: 0;
-  z-index: 0;
-`;
-
-const shadow = css`
-  box-shadow: inset 0px -8px 16px -15px rgba(28, 28, 28, 1);
-`;
-
-const RoleItem = styled.li`
-  border-top-left-radius: 22px;
-  border-top-right-radius: 22px;
-  background: ${props => (props.active ? '#fff' : props.theme.colors.orange)};
-  color: ${props => (props.active ? props.theme.colors.grey : '#fff')};
-  font-size: 20px;
-  display: inline-block;
-  padding: 10px 30px;
-  margin-right: 5px;
-  cursor: pointer;
-  ${props => !props.active && shadow}
-`;
-
-const SingUpForm = ({ onChange }) => (
-  <Fragment>
-    <StyledTextinput placeholder="Enter your name" />
-    <StyledTextinput placeholder="Enter your last name" />
-    <StyledTextinput placeholder="Enter your email" />
-    <StyledTextinput placeholder="Enter your password" />
-    <StyledTextinput placeholder="Confirm your password" />
-  </Fragment>
-);
-
 class Login extends Component {
   constructor(props) {
     super(props);
-    this.onLogIn = this.onLogIn.bind(this);
     this.state = { role: 0 };
   }
 
@@ -124,7 +82,13 @@ class Login extends Component {
   }
 
   formInputs() {
-    if (this.isSignUp()) return <SingUpForm />;
+    if (this.isSignUp())
+      return (
+        <SignUpForm
+          onSignUp={this.props.signup}
+          clearError={this.props.clearError}
+        />
+      );
     return (
       <SignInForm
         onLogin={this.props.login}
@@ -132,16 +96,6 @@ class Login extends Component {
         clearError={this.props.clearError}
       />
     );
-  }
-
-  onLogIn(e) {
-    this.props.createUser({
-      email: 'test@te.scom',
-      password: 'osngor',
-      firstName: 'Fred',
-      lastName: 'Flintstone',
-      role: 4,
-    });
   }
 
   componentDidMount() {
@@ -164,13 +118,6 @@ class Login extends Component {
         </LogoContainer>
         <Header>{caText}</Header>
         <Container isSignUp={this.isSignUp()}>
-          {this.isSignUp() && (
-            <RoleInputs>
-              <RoleItem active>Artist</RoleItem>
-              <RoleItem>Host</RoleItem>
-              <RoleItem>Visitor</RoleItem>
-            </RoleInputs>
-          )}
           {this.formInputs()}
           <LinkContainer>
             {!isSignUp && (

@@ -10,18 +10,6 @@ export const removeActiveUser = ({ dispatch }) => {
   dispatch({ type: types.REMOVE_ACTIVE_USER });
 };
 
-export const createUser = ({ dispatch, data }) => {
-  dispatch({ type: types.CREATE_USER });
-  api.user
-    .createUser(data)
-    .then(result => {
-      console.log(result);
-    })
-    .catch(error => {
-      dispatch({ type: types.CREATE_USER_ERROR });
-    });
-};
-
 export const fetchUsers = ({ dispatch }) => {
   dispatch({ type: types.FETCH_USERS });
   api.user
@@ -44,6 +32,6 @@ export const setActiveUser = ({ dispatch, id }) => {
       history.push('/');
     })
     .catch(error => {
-      dispatch({ type: types.CREATE_USER_ERROR });
+      dispatch({ type: types.AUTH_LOGIN_FAIL });
     });
 };

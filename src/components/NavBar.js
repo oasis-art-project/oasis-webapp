@@ -3,8 +3,6 @@ import styled from 'styled-components';
 import { Link, NavLink } from 'react-router-dom';
 import { slide as MenuBurger } from 'react-burger-menu';
 import Measure from 'react-measure';
-import LogoPNG from '../assets/logo.png';
-import LogoSVGDark from '../assets/logo_dark.svg';
 import LogoPNG2 from '../assets/logo_2.png';
 import MobileStyles from '../helpers/navStyles';
 import Button from './Button';

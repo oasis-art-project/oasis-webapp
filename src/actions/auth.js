@@ -27,6 +27,29 @@ export const login = ({ dispatch, data }) => {
     });
 };
 
+export const signUp = ({ dispatch, data }) => {
+  dispatch({ type: types.AUTH_SIGNUP_USER });
+  api.auth
+    .signUp(data)
+    .then(result => {
+      const decodedToken = jwt_decode(result.data.token);
+
+      dispatch({
+        type: types.AUTH_SIGNUP_USER_SUCCESS,
+        token: result.data.token,
+        expires: decodedToken.exp,
+      });
+
+      setActiveUser({ dispatch, id: decodedToken.identity });
+    })
+    .catch(error => {
+      dispatch({
+        type: types.AUTH_SIGNUP_USER_ERROR,
+        error: error.response.data.message,
+      });
+    });
+};
+
 export const logOut = ({ dispatch }) => {
   dispatch({ type: types.AUTH_LOGOUT });
   removeActiveUser({ dispatch });
