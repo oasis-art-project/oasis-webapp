@@ -62,7 +62,7 @@ Components (in addition to regular Place Profile page, 1.4)
 * Delete event button
 
 Events
-* Click on edit profile => Open Profile page - Edit Mode (4.7)
+* Click on edit profile => Open Place Profile page - Edit Mode (4.7)
 * Click on delete event => Deletes event (after confirmation pop-up)
 * Click on event image => Open Editable Event Information page (4.8)
 * Click on create new event button => Open New Event page (4.5)
