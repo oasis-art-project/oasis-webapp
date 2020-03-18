@@ -1,19 +1,23 @@
 import * as types from './types';
 import api from '../api';
 
-// fake logic of separate current and upcomind events
-const selectSomeFirst = arr => [...arr.slice(0, 10)];
-const selectSomeLast = arr => [...arr.slice(10, 22)];
+function yyyymmdd() {
+  var now = new Date();
+  var y = now.getFullYear();
+  var m = now.getMonth() + 1;
+  var d = now.getDate();
+  return '' + y + '-' + (m < 10 ? '0' : '') + m + '-' + (d < 10 ? '0' : '') + d;
+}
 
 // Api to get multiple events
 export const fetchEvents = dispatch => {
   dispatch({ type: types.FETCH_EVENTS });
   api.event
-    .fetchAll()
+    .fetchCurrent(yyyymmdd())
     .then(res => {
-      const allEvents = res.data.events;
-      const current = selectSomeFirst(allEvents);
-      const upcoming = selectSomeLast(allEvents);
+      const current = res.data.current_events;
+      const upcoming = res.data.upcoming_events;
+      const allEvents = current + upcoming;
       dispatch({
         type: types.FETCH_EVENTS_SUCCESS,
         all: allEvents,
