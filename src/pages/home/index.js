@@ -62,7 +62,7 @@ const CurrentEvents = ({ nodes }) => {
                     id={event.id}
                     title={event.name}
                     description={event.description}
-                    image={`${IMGS_URL}/events/${event.id}/event.jpg`}
+                    image={`${IMGS_URL}/${event.images[0]}`}
                     tags={event.tags.split(';')}
                   />
                 </EventPopup>
@@ -78,7 +78,7 @@ const CurrentEvents = ({ nodes }) => {
             id={event.id}
             title={event.name}
             description={event.description}
-            image={`${IMGS_URL}/events/${event.id}/event.jpg`}
+            image={`${IMGS_URL}/${event.images[0]}`}
             tags={event.tags.split(';')}
           />
         ))}
