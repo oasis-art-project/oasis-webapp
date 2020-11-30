@@ -1,0 +1,79 @@
+Flow for Existing Host - To-Do
+
+4.0 Sign-in page
+----------------
+
+Components
+* Username and password fields
+* Sign-in button
+
+Events
+* Click on sign-in button => User authentication
+
+5.1 Editable Artist Profile Page
+--------------------------------
+
+Components (in addition to regular Artist Profile page, 1.2)
+* Edit profile button
+* Add new artwork button
+* Delete artwork button
+
+Events
+* Click on edit profile button => Open Artist Profile Page - Edit Mode (5.2)
+* Click on add new artwork button => Open Artwork Creation Page (5.3)
+* Click on delete artwork button => Delete artwork (after confirmation pop-up)
+* Click on artwork image => Open Editable Artwork Information page (5.4)
+
+5.2 Artisti Profile Page - Edit Mode
+------------------------------------
+
+Components
+* Same as in Artist Profile page (1.2) - add new artwork and delete artwork buttons are disabled
+* Editable hosartist name and bio fields
+* Save changes button
+* Replace host image button
+
+Events
+* Click on artist name or bio => Text can be edited
+* Click on replace host image button => Open image selection dialog, add new image if selection succesful 
+* Click on save changes button => Post changes and return to 5.1
+
+5.3 Artwork Creation Page
+------------------------- 
+
+Components
+* Fields for artwork name and description
+* Dropdown menus category, medium, etc -- SLATED FOR A LATER VERSION OF THE CLIENT
+* Add image button
+* Create button
+
+Events
+* Click on text fields => Free-form text entry
+* Click on dropdown menu => Value selection
+* Click on add image button => Open image selection dialog, add new image if selection succesful 
+* Click on create button => Upload data to server, return to 5.1 
+
+5.4 Editable Artwork Information page
+-------------------------------------
+
+Components (in addition to regular Artwork Information page, 1.3)
+* Edit artwork button
+* Contact artist button is disabled
+
+Events
+* Click on edit artwork button => Open Artwork Information page - Edit Mode (5.5)
+
+5.5 Artwork Information page - Edit Mode
+----------------------------------------
+
+Components
+* Editable name and description fields
+* Add image button
+* Delete image button
+* Save changes
+
+Events
+* Click on name, description field => Free-form text entry
+* Click on add image button => Open image selection dialog, insert new image into carrousel if selection succesful 
+* Click delete image button => Remove current image from carrousel
+* Click save changes => Upload data to server, return to 5.4 

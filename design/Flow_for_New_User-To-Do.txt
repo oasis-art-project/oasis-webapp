@@ -1,0 +1,28 @@
+Flow for New User - To-Do
+
+4.0 Sign-in page
+----------------
+
+Components
+* Username and password fields
+* Sign-in button
+* Create an account button
+
+Events
+* Click on sign-in button => User authentication
+* Click on Create an account button => Open Sign up page (6.0)
+
+6.0 Sign up page
+----------------
+
+Components
+* First, last name, bio, email fields
+* Password, repeat password fields
+* Role selector
+* Sign up button
+
+Events
+* Click on first, last name, bio, email fields => free text input
+* Click password, repeat password fields => password input (basic passoword complexity check and matching between password and repeat password)
+* Click on role selector => Select between artist and host
+* Click on sign up button => Post data to server, go to corresponding profile page (4.1 for host, 5.1 for artist)

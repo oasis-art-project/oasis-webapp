@@ -1,0 +1,123 @@
+Flow for Visitor - To-Do
+
+1.0 Events page
+---------------
+
+Components
+* Top menu (Events, Artists, Places)
+* Map of places with current or upcoming events
+* Selector of current/upcoming events
+* Scrollable list of current/upcoming events
+
+Events
+* Click on location pin on map => opens location popup showing event info
+* Click on location popup => open Event Information page (1.1)
+* Click on Current/Upcoming Events links => shows current or upcoming events in scrollable list
+* Click on event image => Open Event Information page (1.1)
+* Click on Artists/Places menu option => navigate to artists/places page (2.0 and 3.0)
+
+2.0 Artists page
+----------------
+
+Components
+* Top menu (Events, Artists, Places)
+* Scrollable list of artists
+
+Events
+* Click on Events/Places menu option => navigate to events/places page (1.0 and 3.0)
+* Click on artist image => Open Artists Profile page (1.2)
+
+3.0 Places page
+----------------
+
+Components
+* Top menu (Events, Artists, Places)
+* Map showing all places
+* Scrollable list of places
+
+Events
+* Click on Events/Artists menu option => navigate to events/artists page (1.0 and 2.0)
+* Click on location pin on map => opens location popup showing place info
+* Click on location popup => open Place Profile page (1.4)
+* Click on place image => Open Place Profile page (1.4)
+
+1.1 Event Information page
+--------------------------
+
+Components
+* Event's descriptive image and text (name, dates), artist's (or artists') image(s) and names, place's image and name
+* Scrollable list of artworks included in this event -- SLATED FOR A LATER VERSION OF THE CLIENT
+
+Events
+* Click on artist's image => Open Artist Profile page (1.2)
+* Click on place's image => Open Place Profile page (1.4)
+* Click on artwork's image => Open Artwork Information page (1.3) -- SLATED FOR A LATER VERSION OF THE CLIENT
+
+1.2 Artist Profile page
+-----------------------
+
+Components
+* Artist's image, name, and bio
+* Scrollable list of events and artworks
+
+Events
+* Click on event image => Open Event Information page (1.1)
+* Click on artwork image => Open Artwork Information page (1.3)
+
+
+1.3 Artwork Information page
+----------------------------
+
+Components
+* Artwork image(s), shown in a carrousel
+* Artist image, name, and bio
+* Contact artist button
+* Scrollable list of other artworks by the artist
+
+Events
+* Click on artist image => Open Artist Profile page (1.2)
+* Click on artwork image in scrollable list => Open Artwork Information page (1.3) 
+* Click on contact artsit button => Open Artist Contact Form 
+
+1.4 Place Profile page
+----------------------
+
+Components
+* Place image(s) shown in carrousel, location on map, description, and host info (image, name)
+* Selector of past/current/upcoming events
+* Scrollable list of past/current/upcoming events
+
+Events
+* Click on carrousel => moves to next place image (if any)
+* Click on host's image => Open Host Profile page (1.5)
+* Click on Past/Current/Upcoming Events link => shows past, current or upcoming events in scrollable list
+* Click on event image => Open Event Information page (1.1)
+
+1.5 Host Profile page
+---------------------
+
+Components
+* Host image, name, bio
+* Scrollable list of places associated to this host
+
+Events
+* Click on place image => Open Place Profile page (1.4)
+
+
+1.6 Artist Contact Form
+-----------------------
+
+Components
+* Image of artwork where contact button was clicked, and image and name of artist who made this artwork
+* Message input forms: from and message
+* Send button
+
+Events
+* Click Send button => Sends message to email address associated to artist, return to artwork page
+
+
+
+
+
+
+

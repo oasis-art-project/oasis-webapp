@@ -89,7 +89,7 @@ class Event extends Component {
                 <Carousel>
                   <div>
                     <EventImage
-                      src={`${IMGS_URL}/events/${currentEvent.id}/event.jpg`}
+                      src={`${IMGS_URL}/${currentEvent.images[0]}`}
                     />
                   </div>
                 </Carousel>
