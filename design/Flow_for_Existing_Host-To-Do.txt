@@ -1,0 +1,143 @@
+Flow for Existing Host - To-Do
+
+4.0 Sign-in page
+----------------
+
+Components
+* Username and password fields
+* Sign-in button
+
+Events
+* Click on sign-in button => User authentication
+
+4.1 Editable Host Profile Page
+------------------------------
+
+Components (in addition to regular Host Profile page, 1.5)
+* Edit profile button
+* Add new place button
+* Delete place button
+
+Events
+* Click on edit profile button => Open Host Profile Page - Edit Mode (4.2)
+* Click on add new place button => Open Place Creation Page (4.3)
+* Click on delete place button => Deletes place (after confirmation pop-up)
+* Click on place image => Open Editable Place profile page (4.4)
+
+4.2 Host Profile Page - Edit Mode
+---------------------------------
+
+Components
+* Same as in Host Profile page (1.5) - add new place and delete place buttons are disabled
+* Editable host name bio fields
+* Save changes button
+* Replace host image button
+
+Events
+* Click on host name or bio => Text can be edited
+* Click on replace host image button => Open image selection dialog, add new image if selection succesful 
+* Click on save changes button => Post changes and return to 4.1
+
+4.3 Place Creation Page
+-----------------------
+
+Components
+* Fields for place name, description, address, zip code
+* Dropdown menu for province/state, country
+* Add image button
+* Create button
+
+Events
+* Click on text fields => Free-form text entry
+* Click on dropdown menu => Value selection
+* Click on add image button => Open image selection dialog, add new image if selection succesful 
+* Click on create button => Upload data to server, return to 4.1
+
+4.4 Editable Place Profile page
+-------------------------------
+
+Components (in addition to regular Place Profile page, 1.4)
+* Edit profile button
+* Create new event button
+* Delete event button
+
+Events
+* Click on edit profile => Open Place Profile page - Edit Mode (4.7)
+* Click on delete event => Deletes event (after confirmation pop-up)
+* Click on event image => Open Editable Event Information page (4.8)
+* Click on create new event button => Open New Event page (4.5)
+
+4.5 New Event page
+------------------
+
+Components
+* Name and description fields
+* Add image button
+* Add artist button
+* Calendar for start/end date selection
+* Create button
+
+Events
+* Click on name, description field => Free-form text entry
+* Click on add image button => Open image selection dialog 
+* Click on add artist button => Open artist selection page (4.6)
+* Click on calendar => date range selection
+* Click on create button => Upload data to server, return to 4.4 
+
+4.6 Artist Selection page
+-------------------------
+
+Components
+* Scrollable list of artists (as in 2.0)
+* Add artist button
+* Invite selected artists button
+
+Events
+* Click on add artist button => Set artist as selected
+* Click on invite selected artists => Return to 4.5 with list of selected artists to add to event
+
+4.7 Place Profile page - Edit Mode
+----------------------------------
+
+Components
+* Same as in Place Profile page (1.4) - create new event and delete event buttons are disabled
+* Editable place name and description fields
+* Save changes button
+* Delete place image button
+* Add place image button
+
+Events
+* Click on text field => Enable editing
+* Click on delete place image button => Delete current image in carrousel
+* Click on add place image button => Open image selection dialog, add new image to carrousel if selection succesful 
+* Click on save changes button => Post changes to server, return to 4.4
+
+4.8 Editable Event Information page
+-----------------------------------
+
+Components (in addition to regular Event Information page, 1.1)
+* Edit event button
+
+Events
+* Click on edit event button => Open Event Information page - Edit Mode (4.9)
+
+4.9 Information page - Edit Mode
+--------------------------------
+
+Components (in addition to regular Event Information page, 1.1)
+* Save changes button
+* Add artist button
+* Delete artist button
+* Add event image button
+* Editable event name and description fields
+
+Events
+* Click on name, descrition fields => Free text editing
+* Click on add event image button => Open image selection dialog, add new image if selection succesful 
+* Click on delete artist button => removes artist from event after confirmation popup
+* Click on add artist button => Open artist selection page (4.6)
+* Click on start/end dates => Open date selector
+
+
+
+
