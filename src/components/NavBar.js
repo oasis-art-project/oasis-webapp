@@ -95,18 +95,16 @@ const MobileNav = ({ close, open, stateChange, user }) => {
           <MobileLink onClick={close} to="/">
             Events
           </MobileLink>
+          <MobileLink onClick={close} to="/artists">
+            Artists
+          </MobileLink>
+          <MobileLink onClick={close} to="/places">
+            Places
+          </MobileLink>
           <MobileLink onClick={close} to="/about">
             About
           </MobileLink>
-          <MobileLink onClick={close} to="/how-to">
-            How to use OASIS
-          </MobileLink>
-          <MobileLink onClick={close} to="/artists">
-            Our Artists
-          </MobileLink>
-          <MobileLink onClick={close} to="/places">
-            Our Places
-          </MobileLink>
+
           <Divider />
           {user && (
             <MobileLink onClick={close} to="/profile">
@@ -128,17 +126,17 @@ const DesktopNav = ({ user }) => (
       <Logo src={LogoPNG2} />
     </Link>
 
-    <StyledLink to="/about" activeClassName="active">
-      About OASIS
-    </StyledLink>
-    <StyledLink to="/how-to" activeClassName="active">
-      How to use OASIS
+    <StyledLink to="/" activeClassName="active">
+      Events
     </StyledLink>
     <StyledLink to="/artists" activeClassName="active">
-      Our Artists
+      Artists
     </StyledLink>
     <StyledLink to="/places" activeClassName="active">
-      Our Places
+      Places
+    </StyledLink>
+    <StyledLink to="/about" activeClassName="active">
+      About
     </StyledLink>
 
     {user && <UserMenu user={user} />}

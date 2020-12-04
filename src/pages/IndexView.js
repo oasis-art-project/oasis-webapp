@@ -7,7 +7,6 @@ import HomeContainer from '../containers/Home';
 import EventContainer from '../containers/Event';
 // Static Pages
 import About from './About';
-import HowTo from './HowTo';
 
 const HomeSection = styled.section`
   max-width: 1440px;
@@ -51,7 +50,6 @@ class IndexView extends Component {
           <ViewContainer>
             <Switch>
               <Route path={`${match.url}about`} component={About} />
-              <Route path={`${match.url}how-to`} component={HowTo} />
               <Route exact path={match.path} component={HomeContainer} />
               <Route
                 path={`${match.url}artists`}
