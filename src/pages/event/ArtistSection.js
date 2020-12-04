@@ -39,7 +39,9 @@ const PropsContainer = styled.div``;
 const ArtistSection = ({ artist, fullName }) => (
   <Container>
     <ImageContainer>
-      <Image src={`${IMGS_URL}/users/${artist.id}/profile.jpg`} />
+      <Image 
+      src={`${IMGS_URL}/${artist.images[0]}`}
+      />
     </ImageContainer>
     <PropsContainer>
       <Name>{fullName}</Name>
