@@ -9,7 +9,7 @@ import { IMGS_URL } from '../../helpers/index';
 import ArtistSection from './ArtistSection';
 
 const filterArray = (array, id) => {
-  if (!array) return null;
+  if (!array || !array.filter)  return null;
   return array.filter(el => el.id === parseInt(id))[0];
 };
 
