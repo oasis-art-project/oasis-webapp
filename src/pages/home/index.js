@@ -90,13 +90,14 @@ const CurrentEvents = ({ nodes }) => {
 class Home extends Component {
   componentDidMount() {
     this.props.getAllEvents();
+    console.log("Home.componentDidMount", this.props)
   }
 
   render() {
     const { events } = this.props;
     return (
       <div>
-        <Seo title="Home" />
+        <Seo title="Events" />
         <TabsContainer>
           <Tabs id="home_events" renderActiveTabPanelOnly>
             <Tab

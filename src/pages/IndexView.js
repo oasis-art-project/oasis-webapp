@@ -4,9 +4,10 @@ import { Switch, Route } from 'react-router-dom';
 import Navbar from '../containers/Navbar';
 import Footer from '../components/Footer';
 import HomeContainer from '../containers/Home';
+import ArtistsContainer from '../containers/Artists';
 import EventContainer from '../containers/Event';
 // Static Pages
-import About from './About';
+import About from './about';
 
 const HomeSection = styled.section`
   max-width: 1440px;
@@ -53,7 +54,7 @@ class IndexView extends Component {
               <Route exact path={match.path} component={HomeContainer} />
               <Route
                 path={`${match.url}artists`}
-                render={props => <h1>artists view</h1>}
+                component={ArtistsContainer}
               />
               <Route
                 path={`${match.url}places`}

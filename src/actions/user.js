@@ -10,25 +10,50 @@ export const removeActiveUser = ({ dispatch }) => {
   dispatch({ type: types.REMOVE_ACTIVE_USER });
 };
 
-export const fetchUsers = ({ dispatch }) => {
+// Api to get all users
+export const fetchUsers = dispatch => {
   dispatch({ type: types.FETCH_USERS });
   api.user
-    .fetchAll()
+    .fetchAllUsers()
     .then(res => {
-      dispatch({ type: types.FETCH_USERS_SUCCESS, payload: res.data.users });
+      dispatch({ 
+        type: types.FETCH_USERS_SUCCESS, 
+        users: res.data.users
+      });
     })
     .catch(err => {
       dispatch({ type: types.FETCH_USERS_ERROR });
     });
 };
 
-export const setActiveUser = ({ dispatch, id }) => {
+// Api to get all users who are artists
+export const fetchArtists = dispatch => {
+  dispatch({ type: types.FETCH_ARTISTS });
+  api.user
+    .fetchAllArtists()
+    .then(res => {
+      console.log("fetchArtists", res.data.users)
+      dispatch({ 
+        type: types.FETCH_ARTISTS_SUCCESS, 
+        users: res.data.users 
+      });
+    })
+    .catch(err => {
+      dispatch({ type: types.FETCH_ARTISTS_ERROR });
+    });
+};
+
+// Api to get one user - require :id
+export const setActiveUser = (dispatch, id) => {
   dispatch({ type: types.FETCH_USER });
   api.user
     .getUser(id)
     .then(result => {
       dispatch({ type: types.FETCH_USER_SUCCESS });
-      dispatch({ type: types.SET_ACTIVE_USER, payload: result.data.user });
+      dispatch({ type: 
+        types.SET_ACTIVE_USER, 
+        payload: result.data.user 
+      });
       history.push('/');
     })
     .catch(error => {
