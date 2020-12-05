@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import Grid from 'styled-components-grid';
-import styled from 'styled-components';
+// import Grid from 'styled-components-grid';
+// import styled from 'styled-components';
 import capitalize from 'lodash/capitalize';
-import moment from 'moment';
-import { Loader, Seo, Like, Tag, TagsContainer, Carousel } from '../../components';
-import { IMGS_URL } from '../../helpers/index';
+// import moment from 'moment';
+import { Loader, Seo} from '../../components';
+// import { IMGS_URL } from '../../helpers/index';
 
 const formatName = (first, last) =>
   `${capitalize(first)} ${capitalize(last)}`;
@@ -27,34 +27,34 @@ const filterArray = (array, id) => {
 // const formatDates = (start, end) =>
 //   `${DateFormater(start)} - ${DateFormater(end)}`;
 
-const Container = styled.div`
-  padding: 10px;
-`;
+// const Container = styled.div`
+//   padding: 10px;
+// `;
 
-const EventImage = styled.img`
-  width: 100%;
-`;
+// const EventImage = styled.img`
+//   width: 100%;
+// `;
 
-const Header = styled.div`
-  display: flex;
-  align-items: center;
-`;
+// const Header = styled.div`
+//   display: flex;
+//   align-items: center;
+// `;
 
-const EventName = styled.h3`
-  font-weight: 400;
-  margin-right: 20px;
-`;
+// const EventName = styled.h3`
+//   font-weight: 400;
+//   margin-right: 20px;
+// `;
 
-const EventInfoCont = styled.div`
-  margin-bottom: 20px;
-`;
+// const EventInfoCont = styled.div`
+//   margin-bottom: 20px;
+// `;
 
-const EventInfoItem = styled.h3`
-  font-weight: 400;
-  margin: 3px 0;
-`;
+// const EventInfoItem = styled.h3`
+//   font-weight: 400;
+//   margin: 3px 0;
+// `;
 
-const EventDesc = styled.p``;
+// const EventDesc = styled.p``;
 
 class Artist extends Component {
   state = {
