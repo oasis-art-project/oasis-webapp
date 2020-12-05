@@ -45,6 +45,7 @@ const AllPlaces = ({ nodes }) => {
             // description={place.description}
             image={`${IMGS_URL}/${place.images[0]}`}
             tags={place.tags.split(';')}
+            kind='place'
           />
         ))}
       </CardsContainer>

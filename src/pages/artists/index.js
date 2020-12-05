@@ -48,6 +48,8 @@ const AllArtists = ({ nodes }) => {
             // description={"Illustrator"}
             image={`${IMGS_URL}/${artist.images[0]}`}
             tags={artist.tags.split(';')}
+            noStar={true}
+            kind='artist'
           />
         ))}
       </CardsContainer>

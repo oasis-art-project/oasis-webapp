@@ -63,9 +63,10 @@ const Card = ({
   theme,
   noStar,
   noLink,
+  kind,
 }) => (
   <Container>
-    <StyledLink to={`/event/${id}`} intent={intent}>
+    <StyledLink to={`/${kind}/${id}`} intent={intent}>
       <ImageContainer small={small} src={image} />
       <Header>
         <Title small={small}>{title}</Title>

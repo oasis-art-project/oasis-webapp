@@ -64,6 +64,7 @@ const CurrentEvents = ({ nodes }) => {
                     description={event.description}
                     image={`${IMGS_URL}/${event.images[0]}`}
                     tags={event.tags.split(';')}
+                    kind='event'
                   />
                 </EventPopup>
               </Marker>
@@ -80,6 +81,7 @@ const CurrentEvents = ({ nodes }) => {
             description={event.description}
             image={`${IMGS_URL}/${event.images[0]}`}
             tags={event.tags.split(';')}
+            kind='event'
           />
         ))}
       </CardsContainer>
