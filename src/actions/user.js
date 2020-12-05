@@ -43,6 +43,23 @@ export const fetchArtists = dispatch => {
 };
 
 // Api to get one user - require :id
+export const fetchUser = (dispatch, id) => {
+  dispatch({ type: types.FETCH_USER });
+  api.user
+    .getUser(id)
+    .then(result => {
+      console.log(result.data.user)
+      dispatch({ type: 
+        types.FETCH_USER_SUCCESS, 
+        user: result.data.user
+      });
+    })
+    .catch(error => {
+      dispatch({ type: types.FETCH_USER_ERROR });
+    });
+};
+
+// Api to set one user active - require :id
 export const setActiveUser = (dispatch, id) => {
   dispatch({ type: types.FETCH_USER });
   api.user

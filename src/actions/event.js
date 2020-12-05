@@ -18,7 +18,6 @@ export const fetchEvents = dispatch => {
       const current = res.data.current_events;
       const upcoming = res.data.upcoming_events;
       const allEvents = current + upcoming;
-      console.log(current);
       dispatch({
         type: types.FETCH_EVENTS_SUCCESS,
         all: allEvents,

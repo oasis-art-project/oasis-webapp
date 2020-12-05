@@ -76,10 +76,6 @@ class Event extends Component {
     const { currentEvent } = this.state;
     if (currentEvent) {
       const tags = currentEvent.tags.split(';');
-      // const artistName = `${formatName(
-      //   currentEvent.artists[0].firstName,
-      //   currentEvent.artists[0].lastName
-      // )}`;
       return (
         <div>
           <Seo title={currentEvent.name} />
