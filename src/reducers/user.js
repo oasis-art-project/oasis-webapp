@@ -10,7 +10,6 @@ const initialState = {
 function userReducer(state = initialState, action) {
   switch (action.type) {
     case types.FETCH_ARTISTS_SUCCESS:
-      console.log("userReducer", action.users);
       return {
         ...state,
         artists: action.users,

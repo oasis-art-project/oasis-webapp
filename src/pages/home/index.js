@@ -90,7 +90,6 @@ const CurrentEvents = ({ nodes }) => {
 class Home extends Component {
   componentDidMount() {
     this.props.getAllEvents();
-    console.log("Home.componentDidMount", this.props)
   }
 
   render() {

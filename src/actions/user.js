@@ -32,7 +32,6 @@ export const fetchArtists = dispatch => {
   api.user
     .fetchAllArtists()
     .then(res => {
-      console.log("fetchArtists", res.data.users)
       dispatch({ 
         type: types.FETCH_ARTISTS_SUCCESS, 
         users: res.data.users 

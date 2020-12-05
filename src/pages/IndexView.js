@@ -4,8 +4,10 @@ import { Switch, Route } from 'react-router-dom';
 import Navbar from '../containers/Navbar';
 import Footer from '../components/Footer';
 import HomeContainer from '../containers/Home';
-import ArtistsContainer from '../containers/Artists';
 import EventContainer from '../containers/Event';
+import ArtistsContainer from '../containers/Artists';
+import PlacesContainer from '../containers/Places';
+
 // Static Pages
 import About from './about';
 
@@ -58,7 +60,7 @@ class IndexView extends Component {
               />
               <Route
                 path={`${match.url}places`}
-                render={props => <h1>places view</h1>}
+                component={PlacesContainer}
               />
               <Route
                 path={`${match.url}event/:id`}

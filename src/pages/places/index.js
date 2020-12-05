@@ -31,20 +31,20 @@ const LoadingState = () => (
   </LoaderContainer>
 );
 
-const AllArtists = ({ nodes }) => {
+const AllPlaces = ({ nodes }) => {
   if (!nodes) return <LoadingState />;
   return (    
     <>
       <CardsContainer>
-      {nodes.map(artist => (
+      {nodes.map(place => (
           <Card
             intent="list"
-            key={artist.id}
-            id={artist.id}
-            title={artist.firstName}
-            description={"Illustrator"}
-            image={`${IMGS_URL}/${artist.images[0]}`}
-            tags={artist.tags.split(';')}
+            key={place.id}
+            id={place.id}
+            title={place.name}
+            description={place.description}
+            image={`${IMGS_URL}/${place.images[0]}`}
+            tags={place.tags.split(';')}
           />
         ))}
       </CardsContainer>
@@ -52,22 +52,22 @@ const AllArtists = ({ nodes }) => {
   );
 };
 
-class Artists extends Component {
+class Places extends Component {
   componentDidMount() {
-    this.props.getAllArtists();
+    this.props.getAllPlaces();
   }
 
   render() {
-    const { users } = this.props;
+    const { places } = this.props;
     return (
       <div>
-        <Seo title="Artists" />
+        <Seo title="Places" />
         <TabsContainer>
-          <Tabs id="home_artists" renderActiveTabPanelOnly>
+          <Tabs id="home_places" renderActiveTabPanelOnly>
             <Tab
-              id="all_artists"
-              title="All Artists"
-              panel={<AllArtists nodes={users.artists} />}
+              id="all_places"
+              title="All Places"
+              panel={<AllPlaces nodes={places.all} />}
             />
           </Tabs>
         </TabsContainer>
@@ -76,4 +76,4 @@ class Artists extends Component {
   }
 }
 
-export default Artists;
+export default Places;
