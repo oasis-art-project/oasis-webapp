@@ -64,6 +64,7 @@ const CurrentEvents = ({ nodes }) => {
                     description={event.description}
                     image={`${IMGS_URL}/${event.images[0]}`}
                     tags={event.tags.split(';')}
+                    kind='event'
                   />
                 </EventPopup>
               </Marker>
@@ -80,6 +81,7 @@ const CurrentEvents = ({ nodes }) => {
             description={event.description}
             image={`${IMGS_URL}/${event.images[0]}`}
             tags={event.tags.split(';')}
+            kind='event'
           />
         ))}
       </CardsContainer>
@@ -96,7 +98,7 @@ class Home extends Component {
     const { events } = this.props;
     return (
       <div>
-        <Seo title="Home" />
+        <Seo title="Events" />
         <TabsContainer>
           <Tabs id="home_events" renderActiveTabPanelOnly>
             <Tab

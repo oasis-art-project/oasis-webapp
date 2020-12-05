@@ -5,9 +5,13 @@ import Navbar from '../containers/Navbar';
 import Footer from '../components/Footer';
 import HomeContainer from '../containers/Home';
 import EventContainer from '../containers/Event';
+import ArtistsContainer from '../containers/Artists';
+import PlacesContainer from '../containers/Places';
+// import ArtistContainer from '../containers/Artist';
+// import PlaceContainer from '../containers/Place';
+
 // Static Pages
-import About from './About';
-import HowTo from './HowTo';
+import About from './about';
 
 const HomeSection = styled.section`
   max-width: 1440px;
@@ -51,20 +55,27 @@ class IndexView extends Component {
           <ViewContainer>
             <Switch>
               <Route path={`${match.url}about`} component={About} />
-              <Route path={`${match.url}how-to`} component={HowTo} />
               <Route exact path={match.path} component={HomeContainer} />
               <Route
                 path={`${match.url}artists`}
-                render={props => <h1>artists view</h1>}
+                component={ArtistsContainer}
               />
               <Route
                 path={`${match.url}places`}
-                render={props => <h1>places view</h1>}
+                component={PlacesContainer}
               />
               <Route
                 path={`${match.url}event/:id`}
                 component={EventContainer}
               />
+              {/* <Route
+                path={`${match.url}artist/:id`}
+                component={ArtistContainer}
+              /> */}
+              {/* <Route
+                path={`${match.url}place/:id`}
+                component={PlaceContainer}
+              />               */}
             </Switch>
           </ViewContainer>
         </HomeSection>
