@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import { Tab, Tabs, Card, Loader, Seo } from '../../components';
 import styled from 'styled-components';
+import capitalize from 'lodash/capitalize';
 import { IMGS_URL } from '../../helpers/index';
 
+const formatName = (name, lastName) =>
+  `${capitalize(name)} ${capitalize(lastName)}`;
 
 const TabsContainer = styled.div`
   display: flex;
@@ -41,8 +44,8 @@ const AllArtists = ({ nodes }) => {
             intent="list"
             key={artist.id}
             id={artist.id}
-            title={artist.firstName}
-            description={"Illustrator"}
+            title={`${formatName(artist.firstName, artist.lastName )}`}
+            // description={"Illustrator"}
             image={`${IMGS_URL}/${artist.images[0]}`}
             tags={artist.tags.split(';')}
           />

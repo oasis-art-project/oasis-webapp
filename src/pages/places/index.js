@@ -42,7 +42,7 @@ const AllPlaces = ({ nodes }) => {
             key={place.id}
             id={place.id}
             title={place.name}
-            description={place.description}
+            // description={place.description}
             image={`${IMGS_URL}/${place.images[0]}`}
             tags={place.tags.split(';')}
           />

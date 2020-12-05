@@ -76,10 +76,10 @@ class Event extends Component {
     const { currentEvent } = this.state;
     if (currentEvent) {
       const tags = currentEvent.tags.split(';');
-      const artisName = `${formatName(
-        currentEvent.artists[0].firstName,
-        currentEvent.artists[0].lastName
-      )}`;
+      // const artistName = `${formatName(
+      //   currentEvent.artists[0].firstName,
+      //   currentEvent.artists[0].lastName
+      // )}`;
       return (
         <div>
           <Seo title={currentEvent.name} />
@@ -98,7 +98,7 @@ class Event extends Component {
                   <Like />
                 </Header>
                 <EventInfoCont>
-                  <EventInfoItem>{artisName}</EventInfoItem>
+                  {/* <EventInfoItem>{artistName}</EventInfoItem> */}
                   <EventInfoItem>
                     {capitalize(currentEvent.place.name)}
                   </EventInfoItem>
@@ -119,10 +119,11 @@ class Event extends Component {
             </Grid.Unit>
             <Grid.Unit size={{ mobile: 1, desktop: 0.4 }}>
               <Container>
-                <ArtistSection
-                  artist={currentEvent.artists[0]}
-                  fullName={artisName}
-                />
+                {currentEvent.artists.map(a => 
+                  <ArtistSection 
+                    artist={a}
+                    fullName={`${formatName(a.firstName, a.lastName )}`}
+                  /> )}
               </Container>
             </Grid.Unit>
           </Grid>
