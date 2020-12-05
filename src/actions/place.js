@@ -1,6 +1,6 @@
 import * as types from './types';
 import api from '../api';
-import history from '../helpers/history';
+// import history from '../helpers/history';
 
 // Api to get all places
 export const fetchPlaces = dispatch => {

@@ -6,9 +6,9 @@ import Footer from '../components/Footer';
 import HomeContainer from '../containers/Home';
 import EventContainer from '../containers/Event';
 import ArtistsContainer from '../containers/Artists';
-import ArtistContainer from '../containers/Artist';
 import PlacesContainer from '../containers/Places';
-import PlaceContainer from '../containers/Place';
+// import ArtistContainer from '../containers/Artist';
+// import PlaceContainer from '../containers/Place';
 
 // Static Pages
 import About from './about';
