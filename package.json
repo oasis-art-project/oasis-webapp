@@ -60,7 +60,10 @@
     "prettier": "^2.2.1"
   },
   "lint-staged": {
-    "*.js": ["eslint", "prettier --write"]
+    "*.js": [
+      "eslint",
+      "prettier --write"
+    ]
   },
   "proxy": "http://127.0.0.1:5000/"
 }
