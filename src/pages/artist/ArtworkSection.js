@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Card } from '../../components';
 import { IMGS_URL } from '../../helpers/index';
 
 const Container = styled.div`
@@ -15,7 +16,6 @@ const Image = styled.img`
 const ImageContainer = styled.div`
   width: 100px;
   height: 100px;
-  border-radius: 50px;
   margin-right: 20px;
   display: table-cell;
   text-align: center;
@@ -36,15 +36,16 @@ const PropArtwork = styled.p`
 const PropsContainer = styled.div``;
 
 const ArtworkSection = ({ artwork }) => (
-    <Container>
-      <ImageContainer>
-        <Image src={`${IMGS_URL}/${artwork.images[0]}`} />
-      </ImageContainer>
-      <PropsContainer>
-        <Name>${artwork.name}</Name>
-        <PropArtwork>${artwork.description}</PropArtwork>
-      </PropsContainer>
-    </Container>
-  );
+    <Card
+      intent="list"
+      key={artwork.id}
+      id={artwork.id}
+      title={artwork.name}
+      description={artwork.description}
+      image={`${IMGS_URL}/${artwork.images[0]}`}
+      tags={artwork.tags.split(';')}
+      kind="artwork"
+    />
+);
   
-  export default ArtworkSection;
+export default ArtworkSection;

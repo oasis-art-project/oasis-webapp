@@ -14,6 +14,13 @@ const Container = styled.div`
   padding: 10px;
 `;
 
+const ArtworkContainer = styled.div`
+  display: flex;
+  @media only screen and (max-width: 660px) {
+    flex-direction: column;
+  }  
+`;
+
 const ArtistImage = styled.img`
   width: 256px;
   margin-left: 0px;
@@ -78,7 +85,7 @@ const Artist = ({
       <div>
         <Seo title={`${formatName(current.firstName, current.lastName)}`} />        
         <Grid halign="center">
-          <Grid.Unit size={{ mobile: 1, desktop: 0.5 }}>
+          <Grid.Unit size={{ mobile: 1, desktop: 1 }}>
             <Container>
                 <div>
                   <ArtistImage src={`${IMGS_URL}/${current.images[0]}`} />
@@ -99,12 +106,12 @@ const Artist = ({
             </Container>          
           </Grid.Unit> 
 
-          <Grid.Unit size={{ mobile: 1, desktop: 0.4 }}>
-              <Container>           
+          <Grid.Unit size={{ mobile: 1, desktop: 1 }}>
+              <ArtworkContainer>           
                 {artworks && artworks.map(a => (
                   <ArtworkSection artwork={a} />
                 ))}
-              </Container>
+              </ArtworkContainer>
           </Grid.Unit>
 
         </Grid>
