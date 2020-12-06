@@ -1,9 +1,34 @@
 import React, { useEffect } from 'react';
 import capitalize from 'lodash/capitalize';
 import { find, propEq } from 'ramda';
-import { Loader, Seo } from '../../components';
+import Grid from 'styled-components-grid';
+import styled from 'styled-components';
+import { Loader, Seo, Tag, TagsContainer, Carousel } from '../../components';
+import { IMGS_URL } from '../../helpers/index';
 
 const formatName = (first, last) => `${capitalize(first)} ${capitalize(last)}`;
+
+const Container = styled.div`
+  padding: 10px;
+`;
+
+const ArtistImage = styled.img`
+  width: 256px;
+  margin-left: 0px;
+  margin-top: 20px;
+`;
+
+const ArtistName = styled.h3`
+  font-weight: 400;
+  margin-right: 20px;
+`;
+
+const Header = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+const ArtistBio = styled.p``;
 
 const Artist = ({
   current,
@@ -38,10 +63,32 @@ const Artist = ({
   };
 
   if (current) {
+    const tags = current.tags.split(';');
     return (
       <div>
-        <Seo title={`${formatName(current.firstName, current.lastName)}`} />
-        <h3>{`${formatName(current.firstName, current.lastName)}`}</h3>
+        <Seo title={`${formatName(current.firstName, current.lastName)}`} />        
+        <Grid halign="center">
+          <Grid.Unit size={{ mobile: 1, desktop: 0.5 }}>
+            <Container>
+                <div>
+                  <ArtistImage src={`${IMGS_URL}/${current.images[0]}`} />
+                </div>
+              <Header>
+                <ArtistName>{`${formatName(current.firstName, current.lastName)}`}</ArtistName>
+              </Header>
+
+              <ArtistBio>{current.bio}</ArtistBio>
+              {tags && (
+                <TagsContainer>
+                  {tags.map(tag => (
+                    <Tag key={tag}>{capitalize(tag)}</Tag>
+                  ))}
+                </TagsContainer>
+              )}
+
+            </Container>          
+          </Grid.Unit>        
+        </Grid>
       </div>
     );
   }
