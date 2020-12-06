@@ -53,10 +53,10 @@ const Artist = ({
 }) => {
   // This is the same as componentDidMount
   useEffect(() => {
-    inintArtist();
+    initArtist();
   });
 
-  const inintArtist = () => {
+  const initArtist = () => {
     if (!users && !current && loading === false) {
       getArtist(id);
       getArtworks(id);
@@ -83,7 +83,7 @@ const Artist = ({
   if (current) {
     const tags = current.tags.split(';');
     // const artworks = state.artworks;
-    console.log('ARTWORKS', artworks);
+    // console.log('ARTWORKS', artworks);
 
     return (
       <div>
