@@ -1,4 +1,4 @@
-export default {
+const styles = {
   bmBurgerButton: {
     position: 'relative',
     width: '36px',
@@ -41,3 +41,5 @@ export default {
     right: 0,
   },
 };
+
+export default styles;
