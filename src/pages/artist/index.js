@@ -18,7 +18,7 @@ const ArtworkContainer = styled.div`
   display: flex;
   @media only screen and (max-width: 660px) {
     flex-direction: column;
-  }  
+  }
 `;
 
 const ArtistImage = styled.img`
@@ -42,7 +42,7 @@ const ArtistBio = styled.p``;
 const Artist = ({
   current,
   artworks,
-  users,  
+  users,
   loading,
   getArtist,
   getArtworks,
@@ -53,6 +53,10 @@ const Artist = ({
 }) => {
   // This is the same as componentDidMount
   useEffect(() => {
+    inintArtist();
+  });
+
+  const inintArtist = () => {
     if (!users && !current && loading === false) {
       getArtist(id);
       getArtworks(id);
@@ -63,7 +67,7 @@ const Artist = ({
     if (current && current.id !== id) {
       setArtist();
     }
-  }, []);
+  };
 
   const setArtist = () => {
     const fromUsers = users ? find(propEq('id', id))(users) : false;
@@ -79,17 +83,17 @@ const Artist = ({
   if (current) {
     const tags = current.tags.split(';');
     // const artworks = state.artworks;
-    console.log("ARTWORKS", artworks);
+    console.log('ARTWORKS', artworks);
 
     return (
       <div>
-        <Seo title={`${formatName(current.firstName, current.lastName)}`} />        
+        <Seo title={`${formatName(current.firstName, current.lastName)}`} />
         <Grid halign="center">
           <Grid.Unit size={{ mobile: 1, desktop: 1 }}>
             <Container>
-                <div>
-                  <ArtistImage src={`${IMGS_URL}/${current.images[0]}`} />
-                </div>
+              <div>
+                <ArtistImage src={`${IMGS_URL}/${current.images[0]}`} />
+              </div>
               <Header>
                 <ArtistName>{`${formatName(current.firstName, current.lastName)}`}</ArtistName>
               </Header>
@@ -102,18 +106,14 @@ const Artist = ({
                   ))}
                 </TagsContainer>
               )}
-
-            </Container>          
-          </Grid.Unit> 
-
-          <Grid.Unit size={{ mobile: 1, desktop: 1 }}>
-              <ArtworkContainer>           
-                {artworks && artworks.map(a => (
-                  <ArtworkSection artwork={a} />
-                ))}
-              </ArtworkContainer>
+            </Container>
           </Grid.Unit>
 
+          <Grid.Unit size={{ mobile: 1, desktop: 1 }}>
+            <ArtworkContainer>
+              {artworks && artworks.map(a => <ArtworkSection artwork={a} />)}
+            </ArtworkContainer>
+          </Grid.Unit>
         </Grid>
       </div>
     );
