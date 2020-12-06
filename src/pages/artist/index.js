@@ -100,8 +100,8 @@ const Artist = ({
           </Grid.Unit> 
 
           <Grid.Unit size={{ mobile: 1, desktop: 0.4 }}>
-              <Container>
-                {artworks.map(a => (
+              <Container>           
+                {artworks && artworks.map(a => (
                   <ArtworkSection artwork={a} />
                 ))}
               </Container>

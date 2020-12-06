@@ -28,7 +28,7 @@ export const fetchAll = dispatch => {
         console.log(res.data.artworks);
         dispatch({ 
             type: types.FETCH_ARTWORKS_SUCCESS, 
-            all: res.data.artworks
+            artworks: res.data.artworks
         });
       })
       .catch(err => {
