@@ -4,16 +4,16 @@ import api from '../api';
 
 // Api to get all places
 export const fetchPlaces = dispatch => {
-    dispatch({ type: types.FETCH_PLACES });
-    api.place
-      .fetchAllPlaces()
-      .then(res => {
-        dispatch({ 
-          type: types.FETCH_PLACES_SUCCESS, 
-          places: res.data.places
-        });
-      })
-      .catch(err => {
-        dispatch({ type: types.FETCH_PLACES_ERROR });
+  dispatch({ type: types.FETCH_PLACES });
+  api.place
+    .fetchAllPlaces()
+    .then(res => {
+      dispatch({
+        type: types.FETCH_PLACES_SUCCESS,
+        places: res.data.places,
       });
-  };
+    })
+    .catch(err => {
+      dispatch({ type: types.FETCH_PLACES_ERROR });
+    });
+};

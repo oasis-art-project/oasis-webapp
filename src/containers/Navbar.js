@@ -10,7 +10,4 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   // login: data => login({ dispatch, data }),
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Nabvar);
+export default connect(mapStateToProps, mapDispatchToProps)(Nabvar);

@@ -1,11 +1,15 @@
 import * as event from './event';
 import * as user from './user';
 import * as place from './place';
+import * as artwork from './artwork';
 import * as auth from './auth';
 
-export default {
+const endpoints = {
   event,
   user,
   place,
-  auth
-}
+  artwork,
+  auth,
+};
+
+export default endpoints;

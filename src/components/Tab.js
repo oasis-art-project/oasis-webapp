@@ -1,5 +1,5 @@
-import { Tab, Tabs } from "@blueprintjs/core";
-import styled from "styled-components";
+import { Tab, Tabs } from '@blueprintjs/core';
+import styled from 'styled-components';
 
 export const StyledTab = Tab;
 
@@ -11,8 +11,8 @@ export const StyledTabs = styled(Tabs)`
   .bp3-tab-list {
     justify-content: center;
   }
-  .bp3-tab[aria-selected="true"],
-  .bp3-tab:not([aria-disabled="true"]):hover {
+  .bp3-tab[aria-selected='true'],
+  .bp3-tab:not([aria-disabled='true']):hover {
     color: ${props => props.theme.colors.green};
   }
   .bp3-tab {

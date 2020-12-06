@@ -13,12 +13,8 @@ const StyledButton = styled(Button)`
 `;
 
 const SigninSchema = Yup.object().shape({
-  password: Yup.string()
-    .max(50, 'Too Long!')
-    .required('Required'),
-  email: Yup.string()
-    .email('Invalid email')
-    .required('Required'),
+  password: Yup.string().max(50, 'Too Long!').required('Required'),
+  email: Yup.string().email('Invalid email').required('Required'),
 });
 
 class SingInForm extends PureComponent {
@@ -78,9 +74,7 @@ class SingInForm extends PureComponent {
             }}
             component={FormInput}
           />
-          {this.state.currentError && (
-            <ErrorMessage>{this.state.currentError}</ErrorMessage>
-          )}
+          {this.state.currentError && <ErrorMessage>{this.state.currentError}</ErrorMessage>}
           <StyledButton type="submit" large>
             Sign in
           </StyledButton>

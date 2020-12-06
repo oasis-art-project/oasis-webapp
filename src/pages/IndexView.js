@@ -7,7 +7,7 @@ import HomeContainer from '../containers/Home';
 import EventContainer from '../containers/Event';
 import ArtistsContainer from '../containers/Artists';
 import PlacesContainer from '../containers/Places';
-// import ArtistContainer from '../containers/Artist';
+import ArtistContainer from '../containers/Artist';
 // import PlaceContainer from '../containers/Place';
 
 // Static Pages
@@ -39,9 +39,9 @@ class IndexView extends Component {
   }
 
   componentDidMount() {
-    navigator.geolocation.getCurrentPosition(({coords}) => {
+    navigator.geolocation.getCurrentPosition(({ coords }) => {
       const { latitude, longitude } = coords;
-      this.setUserLocation({latitude, longitude})
+      this.setUserLocation({ latitude, longitude });
     });
   }
 
@@ -56,22 +56,10 @@ class IndexView extends Component {
             <Switch>
               <Route path={`${match.url}about`} component={About} />
               <Route exact path={match.path} component={HomeContainer} />
-              <Route
-                path={`${match.url}artists`}
-                component={ArtistsContainer}
-              />
-              <Route
-                path={`${match.url}places`}
-                component={PlacesContainer}
-              />
-              <Route
-                path={`${match.url}event/:id`}
-                component={EventContainer}
-              />
-              {/* <Route
-                path={`${match.url}artist/:id`}
-                component={ArtistContainer}
-              /> */}
+              <Route path={`${match.url}artists`} component={ArtistsContainer} />
+              <Route path={`${match.url}places`} component={PlacesContainer} />
+              <Route path={`${match.url}event/:id`} component={EventContainer} />
+              <Route path={`${match.url}artist/:id`} component={ArtistContainer} />
               {/* <Route
                 path={`${match.url}place/:id`}
                 component={PlaceContainer}

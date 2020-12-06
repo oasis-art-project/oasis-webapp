@@ -1,99 +1,124 @@
-import React, { Component } from 'react';
-// import Grid from 'styled-components-grid';
-// import styled from 'styled-components';
+import React, { useEffect } from 'react';
 import capitalize from 'lodash/capitalize';
-// import moment from 'moment';
-import { Loader, Seo} from '../../components';
-// import { IMGS_URL } from '../../helpers/index';
+import { find, propEq } from 'ramda';
+import Grid from 'styled-components-grid';
+import styled from 'styled-components';
+import { Loader, Seo, Tag, TagsContainer } from '../../components';
+import { IMGS_URL } from '../../helpers/index';
 
-const formatName = (first, last) =>
-  `${capitalize(first)} ${capitalize(last)}`;
+import ArtworkSection from './ArtworkSection';
 
-const filterArray = (array, id) => {
-    if (!array || !array.filter)  return null;
-    
-    const res = array.filter(el => el.id === parseInt(id))[0]
-    console.log("filterArray -------")
-    console.log("  ARRAY", array)
-    console.log("  ID", id)
-    console.log("  RES", res)
-    return res;
+const formatName = (first, last) => `${capitalize(first)} ${capitalize(last)}`;
+
+const Container = styled.div`
+  padding: 10px;
+`;
+
+const ArtworkContainer = styled.div`
+  display: flex;
+  @media only screen and (max-width: 660px) {
+    flex-direction: column;
+  }
+`;
+
+const ArtistImage = styled.img`
+  width: 256px;
+  margin-left: 0px;
+  margin-top: 20px;
+`;
+
+const ArtistName = styled.h3`
+  font-weight: 400;
+  margin-right: 20px;
+`;
+
+const Header = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+const ArtistBio = styled.p``;
+
+const Artist = ({
+  current,
+  artworks,
+  users,
+  loading,
+  getArtist,
+  getArtworks,
+  setCurrentArtist,
+  match: {
+    params: { id },
+  },
+}) => {
+  // This is the same as componentDidMount
+  useEffect(() => {
+    inintArtist();
+  });
+
+  const inintArtist = () => {
+    if (!users && !current && loading === false) {
+      getArtist(id);
+      getArtworks(id);
+    }
+    if (current == null && users) {
+      setArtist();
+    }
+    if (current && current.id !== id) {
+      setArtist();
+    }
   };
-  
 
-// const formatName = (name, lastName) =>
-//   `${capitalize(name)} ${capitalize(lastName)}`;
-
-// const formatDates = (start, end) =>
-//   `${DateFormater(start)} - ${DateFormater(end)}`;
-
-// const Container = styled.div`
-//   padding: 10px;
-// `;
-
-// const EventImage = styled.img`
-//   width: 100%;
-// `;
-
-// const Header = styled.div`
-//   display: flex;
-//   align-items: center;
-// `;
-
-// const EventName = styled.h3`
-//   font-weight: 400;
-//   margin-right: 20px;
-// `;
-
-// const EventInfoCont = styled.div`
-//   margin-bottom: 20px;
-// `;
-
-// const EventInfoItem = styled.h3`
-//   font-weight: 400;
-//   margin: 3px 0;
-// `;
-
-// const EventDesc = styled.p``;
-
-class Artist extends Component {
-  state = {
-    currentArtist: filterArray(this.props.users, this.props.match.params.id),
+  const setArtist = () => {
+    const fromUsers = users ? find(propEq('id', id))(users) : false;
+    if (fromUsers) {
+      setCurrentArtist(fromUsers);
+      getArtworks(current.id);
+    } else {
+      getArtist(id);
+      getArtworks(id);
+    }
   };
 
-  componentDidMount() {
-    if (this.state.currentArtist === null) {
-      console.log("componentDidMount", this.props.match.params.id)
-      this.props.getArtist(this.props.match.params.id);
-    }
-  }
+  if (current) {
+    const tags = current.tags.split(';');
+    // const artworks = state.artworks;
+    console.log('ARTWORKS', artworks);
 
-  componentDidUpdate(prevProps) {
-    if (this.props.users !== prevProps.users) {
-      console.log("componentDidUpdate", this.props.match.params.id)
-      this.setState({
-        currentArtist: filterArray(
-          this.props.users,
-          this.props.match.params.id
-        ),
-      });
-    }
-  }
+    return (
+      <div>
+        <Seo title={`${formatName(current.firstName, current.lastName)}`} />
+        <Grid halign="center">
+          <Grid.Unit size={{ mobile: 1, desktop: 1 }}>
+            <Container>
+              <div>
+                <ArtistImage src={`${IMGS_URL}/${current.images[0]}`} />
+              </div>
+              <Header>
+                <ArtistName>{`${formatName(current.firstName, current.lastName)}`}</ArtistName>
+              </Header>
 
-  render() {
-    const { currentArtist } = this.state;
-    console.log("users", this.props.users)
-    console.log("currentArtist", currentArtist)
-    if (currentArtist) {
-    //   const tags = currentArtist.tags.split(';');
-      return (
-        <div>
-          <Seo title={`${formatName(currentArtist.firstName, currentArtist.lastName)}`} />
-         </div>
-       );
-    }
-    return <Loader />;
+              <ArtistBio>{current.bio}</ArtistBio>
+              {tags && (
+                <TagsContainer>
+                  {tags.map(tag => (
+                    <Tag key={tag}>{capitalize(tag)}</Tag>
+                  ))}
+                </TagsContainer>
+              )}
+            </Container>
+          </Grid.Unit>
+
+          <Grid.Unit size={{ mobile: 1, desktop: 1 }}>
+            <ArtworkContainer>
+              {artworks && artworks.map(a => <ArtworkSection artwork={a} />)}
+            </ArtworkContainer>
+          </Grid.Unit>
+        </Grid>
+      </div>
+    );
   }
-}
+  return <Loader />;
+};
 
 export default Artist;

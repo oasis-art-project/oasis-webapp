@@ -1,9 +1,8 @@
 // import React from "react";
-import { Checkbox } from "@blueprintjs/core";
-import styled from "styled-components";
+import { Checkbox } from '@blueprintjs/core';
+import styled from 'styled-components';
 
 const StyledCheckbox = styled(Checkbox)`
-
   .bp3-control-indicator {
     border: 2px solid ${props => props.theme.colors.orange} !important;
     width: 20px !important;

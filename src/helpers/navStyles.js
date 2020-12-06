@@ -1,9 +1,9 @@
-export default {
+const styles = {
   bmBurgerButton: {
     position: 'relative',
     width: '36px',
     height: '30px',
-    margin: '10px'
+    margin: '10px',
   },
   bmBurgerBars: {
     background: '#ddd',
@@ -38,6 +38,8 @@ export default {
   bmOverlay: {
     background: 'rgba(0, 0, 0, 0.3)',
     top: 0,
-    right: 0
+    right: 0,
   },
 };
+
+export default styles;

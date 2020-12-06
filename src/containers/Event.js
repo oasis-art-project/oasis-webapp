@@ -10,7 +10,4 @@ const mapDispatchToProps = dispatch => ({
   getEvent: id => fetchEvent(dispatch, id),
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Event);
+export default connect(mapStateToProps, mapDispatchToProps)(Event);

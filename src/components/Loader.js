@@ -1,3 +1,3 @@
-import { Spinner } from "@blueprintjs/core";
+import { Spinner } from '@blueprintjs/core';
 
 export default Spinner;

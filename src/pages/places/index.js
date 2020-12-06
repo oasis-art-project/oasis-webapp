@@ -3,7 +3,6 @@ import { Tab, Tabs, Card, Loader, Seo } from '../../components';
 import styled from 'styled-components';
 import { IMGS_URL } from '../../helpers/index';
 
-
 const TabsContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -33,10 +32,10 @@ const LoadingState = () => (
 
 const AllPlaces = ({ nodes }) => {
   if (!nodes) return <LoadingState />;
-  return (    
+  return (
     <>
       <CardsContainer>
-      {nodes.map(place => (
+        {nodes.map(place => (
           <Card
             intent="list"
             key={place.id}
@@ -45,7 +44,7 @@ const AllPlaces = ({ nodes }) => {
             // description={place.description}
             image={`${IMGS_URL}/${place.images[0]}`}
             tags={place.tags.split(';')}
-            kind='place'
+            kind="place"
           />
         ))}
       </CardsContainer>
@@ -65,11 +64,7 @@ class Places extends Component {
         <Seo title="Places" />
         <TabsContainer>
           <Tabs id="home_places" renderActiveTabPanelOnly>
-            <Tab
-              id="all_places"
-              title="All Places"
-              panel={<AllPlaces nodes={places.all} />}
-            />
+            <Tab id="all_places" title="All Places" panel={<AllPlaces nodes={places.all} />} />
           </Tabs>
         </TabsContainer>
       </div>
