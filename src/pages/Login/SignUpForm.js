@@ -42,22 +42,13 @@ const RoleItem = styled.li`
 `;
 
 const SignUpSchema = Yup.object().shape({
-  firstName: Yup.string()
-    .max(50, 'Too Long!')
-    .required('Required'),
-  lastName: Yup.string()
-    .max(50, 'Too Long!')
-    .required('Required'),
-  email: Yup.string()
-    .email('Invalid email')
-    .required('Required'),
-  password: Yup.string()
-    .min(6, 'Too short')
-    .max(50, 'Too Long!')
-    .required('Required'),
+  firstName: Yup.string().max(50, 'Too Long!').required('Required'),
+  lastName: Yup.string().max(50, 'Too Long!').required('Required'),
+  email: Yup.string().email('Invalid email').required('Required'),
+  password: Yup.string().min(6, 'Too short').max(50, 'Too Long!').required('Required'),
   confirmPassword: Yup.string()
     .required('Required')
-    .test('passwords-match', 'Passwords must match', function(value) {
+    .test('passwords-match', 'Passwords must match', function (value) {
       return this.parent.password === value;
     }),
 });
@@ -98,22 +89,13 @@ class SingUpForm extends PureComponent {
     return (
       <Fragment>
         <RoleInputs>
-          <RoleItem
-            onClick={() => this.setUserRole(3)}
-            active={activeUserRole === 3}
-          >
+          <RoleItem onClick={() => this.setUserRole(3)} active={activeUserRole === 3}>
             Artist
           </RoleItem>
-          <RoleItem
-            onClick={() => this.setUserRole(2)}
-            active={activeUserRole === 2}
-          >
+          <RoleItem onClick={() => this.setUserRole(2)} active={activeUserRole === 2}>
             Host
           </RoleItem>
-          <RoleItem
-            onClick={() => this.setUserRole(4)}
-            active={activeUserRole === 4}
-          >
+          <RoleItem onClick={() => this.setUserRole(4)} active={activeUserRole === 4}>
             Visitor
           </RoleItem>
         </RoleInputs>
@@ -185,9 +167,7 @@ class SingUpForm extends PureComponent {
               }}
               component={FormInput}
             />
-            {this.state.currentError && (
-              <ErrorMessage>{this.state.currentError}</ErrorMessage>
-            )}
+            {this.state.currentError && <ErrorMessage>{this.state.currentError}</ErrorMessage>}
             <StyledButton type="submit" large>
               Sign Up
             </StyledButton>

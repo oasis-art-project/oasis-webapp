@@ -83,12 +83,7 @@ class Login extends Component {
 
   formInputs() {
     if (this.isSignUp())
-      return (
-        <SignUpForm
-          onSignUp={this.props.signup}
-          clearError={this.props.clearError}
-        />
-      );
+      return <SignUpForm onSignUp={this.props.signup} clearError={this.props.clearError} />;
     return (
       <SignInForm
         onLogin={this.props.login}
@@ -120,9 +115,7 @@ class Login extends Component {
         <Container isSignUp={this.isSignUp()}>
           {this.formInputs()}
           <LinkContainer>
-            {!isSignUp && (
-              <StyledLink to="/login#sign_up">Create an account</StyledLink>
-            )}
+            {!isSignUp && <StyledLink to="/login#sign_up">Create an account</StyledLink>}
             {isSignUp && <StyledLink to="/login">Sign in</StyledLink>}
           </LinkContainer>
         </Container>

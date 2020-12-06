@@ -4,8 +4,7 @@ import styled from 'styled-components';
 import capitalize from 'lodash/capitalize';
 import { IMGS_URL } from '../../helpers/index';
 
-const formatName = (name, lastName) =>
-  `${capitalize(name)} ${capitalize(lastName)}`;
+const formatName = (name, lastName) => `${capitalize(name)} ${capitalize(lastName)}`;
 
 const TabsContainer = styled.div`
   display: flex;
@@ -36,20 +35,20 @@ const LoadingState = () => (
 
 const AllArtists = ({ nodes }) => {
   if (!nodes) return <LoadingState />;
-  return (    
+  return (
     <>
       <CardsContainer>
-      {nodes.map(artist => (
+        {nodes.map(artist => (
           <Card
             intent="list"
             key={artist.id}
             id={artist.id}
-            title={`${formatName(artist.firstName, artist.lastName )}`}
+            title={`${formatName(artist.firstName, artist.lastName)}`}
             // description={"Illustrator"}
             image={`${IMGS_URL}/${artist.images[0]}`}
             tags={artist.tags.split(';')}
             noStar={true}
-            kind='artist'
+            kind="artist"
           />
         ))}
       </CardsContainer>

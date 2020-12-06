@@ -1,16 +1,16 @@
-import { connect } from "react-redux";
-import Artist from "../pages/artist/index";
-import { fetchUser } from "../actions/user";
+import { connect } from 'react-redux';
+import Artist from '../pages/artist/index';
+import { setCurrentArtist, fetchArtist } from '../actions/artist';
 
 const mapStateToProps = state => ({
-  users: state.user.all,
+  users: state.user.artists,
+  current: state.artist.current,
+  loading: state.artist.loading,
 });
 
 const mapDispatchToProps = dispatch => ({
-  getArtist: id => fetchUser(dispatch, id),
+  getArtist: id => fetchArtist(dispatch, id),
+  setCurrentArtist: artist => setCurrentArtist(dispatch, artist),
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Artist);
+export default connect(mapStateToProps, mapDispatchToProps)(Artist);

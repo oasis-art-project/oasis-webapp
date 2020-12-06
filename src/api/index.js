@@ -7,5 +7,5 @@ export default {
   event,
   user,
   place,
-  auth
-}
+  auth,
+};

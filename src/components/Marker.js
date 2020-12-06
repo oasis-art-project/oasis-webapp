@@ -6,9 +6,13 @@ import IconSVG from '../assets/oasis-marker.svg';
 const OasisMarker = L.icon({
   iconUrl: IconSVG,
   iconSize: [25, 41],
-  popupAnchor:  [0, -17]
+  popupAnchor: [0, -17],
 });
 
-const Marker = props => <MarkerL icon={OasisMarker} {...props}>{props.children}</MarkerL>;
+const Marker = props => (
+  <MarkerL icon={OasisMarker} {...props}>
+    {props.children}
+  </MarkerL>
+);
 
 export default Marker;

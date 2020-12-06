@@ -7,9 +7,6 @@ const Container = styled.footer`
   margin-top: 40px;
 `;
 
-const Footer = () => <Container>
-
-
-</Container>;
+const Footer = () => <Container></Container>;
 
 export default Footer;

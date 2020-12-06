@@ -87,11 +87,7 @@ const MobileNav = ({ close, open, stateChange, user }) => {
   return (
     <MenuMobileContainer>
       <MenuMobile>
-        <MenuBurger
-          styles={MobileStyles}
-          isOpen={open}
-          onStateChange={state => stateChange(state)}
-        >
+        <MenuBurger styles={MobileStyles} isOpen={open} onStateChange={state => stateChange(state)}>
           <MobileLink onClick={close} to="/">
             Events
           </MobileLink>
@@ -126,7 +122,7 @@ const DesktopNav = ({ user }) => (
       <Logo src={LogoPNG2} />
     </Link>
 
-    <StyledLink to="/" activeClassName="active">
+    <StyledLink to="/" exact activeClassName="active">
       Events
     </StyledLink>
     <StyledLink to="/artists" activeClassName="active">

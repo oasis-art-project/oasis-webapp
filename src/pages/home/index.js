@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import { Popup } from 'react-leaflet';
 import { IMGS_URL } from '../../helpers/index';
 
-
 const TabsContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -49,10 +48,7 @@ const CurrentEvents = ({ nodes }) => {
           event =>
             event.place.latitude &&
             event.place.longitude && (
-              <Marker
-                key={event.id}
-                position={[event.place.latitude, event.place.longitude]}
-              >
+              <Marker key={event.id} position={[event.place.latitude, event.place.longitude]}>
                 <EventPopup closeButton={false}>
                   <Card
                     noStar
@@ -64,7 +60,7 @@ const CurrentEvents = ({ nodes }) => {
                     description={event.description}
                     image={`${IMGS_URL}/${event.images[0]}`}
                     tags={event.tags.split(';')}
-                    kind='event'
+                    kind="event"
                   />
                 </EventPopup>
               </Marker>
@@ -81,7 +77,7 @@ const CurrentEvents = ({ nodes }) => {
             description={event.description}
             image={`${IMGS_URL}/${event.images[0]}`}
             tags={event.tags.split(';')}
-            kind='event'
+            kind="event"
           />
         ))}
       </CardsContainer>

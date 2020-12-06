@@ -1,5 +1,5 @@
 const initialState = {
-  all: []
+  all: [],
 };
 
 function reducer(state = initialState, action) {
@@ -7,7 +7,7 @@ function reducer(state = initialState, action) {
     case 'SET_All':
       return {
         ...state,
-        all: action.reducer
+        all: action.reducer,
       };
     default:
       return state;

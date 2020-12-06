@@ -21,7 +21,7 @@ const locale = navigator.languages.indexOf('es') >= 0 ? 'es' : 'en';
 const store = createStore();
 
 // Save user and auth when store change
-// may be too much so used throttle from lodash 
+// may be too much so used throttle from lodash
 store.subscribe(
   throttle(() => {
     saveState({

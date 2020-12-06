@@ -9,17 +9,15 @@ import { IMGS_URL } from '../../helpers/index';
 import ArtistSection from './ArtistSection';
 
 const filterArray = (array, id) => {
-  if (!array || !array.filter)  return null;
+  if (!array || !array.filter) return null;
   return array.filter(el => el.id === parseInt(id))[0];
 };
 
 const DateFormater = date => moment(date).format('MMM Do YY');
 
-const formatName = (name, lastName) =>
-  `${capitalize(name)} ${capitalize(lastName)}`;
+const formatName = (name, lastName) => `${capitalize(name)} ${capitalize(lastName)}`;
 
-const formatDates = (start, end) =>
-  `${DateFormater(start)} - ${DateFormater(end)}`;
+const formatDates = (start, end) => `${DateFormater(start)} - ${DateFormater(end)}`;
 
 const Container = styled.div`
   padding: 10px;
@@ -64,10 +62,7 @@ class Event extends Component {
   componentDidUpdate(prevProps) {
     if (this.props.events !== prevProps.events) {
       this.setState({
-        currentEvent: filterArray(
-          this.props.events,
-          this.props.match.params.id
-        ),
+        currentEvent: filterArray(this.props.events, this.props.match.params.id),
       });
     }
   }
@@ -84,9 +79,7 @@ class Event extends Component {
               <Container>
                 <Carousel>
                   <div>
-                    <EventImage
-                      src={`${IMGS_URL}/${currentEvent.images[0]}`}
-                    />
+                    <EventImage src={`${IMGS_URL}/${currentEvent.images[0]}`} />
                   </div>
                 </Carousel>
                 <Header>
@@ -95,9 +88,7 @@ class Event extends Component {
                 </Header>
                 <EventInfoCont>
                   {/* <EventInfoItem>{artistName}</EventInfoItem> */}
-                  <EventInfoItem>
-                    {capitalize(currentEvent.place.name)}
-                  </EventInfoItem>
+                  <EventInfoItem>{capitalize(currentEvent.place.name)}</EventInfoItem>
                   <EventInfoItem>
                     {formatDates(currentEvent.startTime, currentEvent.endTime)}
                   </EventInfoItem>
@@ -115,11 +106,9 @@ class Event extends Component {
             </Grid.Unit>
             <Grid.Unit size={{ mobile: 1, desktop: 0.4 }}>
               <Container>
-                {currentEvent.artists.map(a => 
-                  <ArtistSection 
-                    artist={a}
-                    fullName={`${formatName(a.firstName, a.lastName )}`}
-                  /> )}
+                {currentEvent.artists.map(a => (
+                  <ArtistSection artist={a} fullName={`${formatName(a.firstName, a.lastName)}`} />
+                ))}
               </Container>
             </Grid.Unit>
           </Grid>

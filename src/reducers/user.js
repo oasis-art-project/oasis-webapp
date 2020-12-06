@@ -10,23 +10,23 @@ const initialState = {
 function userReducer(state = initialState, action) {
   switch (action.type) {
     case types.FETCH_ARTISTS_SUCCESS:
-      console.log("FETCH_ARTISTS_SUCCESS")
-      console.log(action.users)
+      console.log('FETCH_ARTISTS_SUCCESS');
+      console.log(action.users);
       return {
         ...state,
         artists: action.users,
       };
     case types.FETCH_USERS_SUCCESS:
-      console.log("FETCH_USERS_SUCCESS")
-      console.log(action.users)
+      console.log('FETCH_USERS_SUCCESS');
+      console.log(action.users);
       return {
         ...state,
         all: action.users,
-      };  
+      };
     case types.FETCH_USER_SUCCESS:
-       console.log("FETCH_USER_SUCCESS")
-       console.log(action.user)
-       return {
+      console.log('FETCH_USER_SUCCESS');
+      console.log(action.user);
+      return {
         ...state,
         all: [action.user],
       };

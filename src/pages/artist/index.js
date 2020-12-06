@@ -1,99 +1,51 @@
-import React, { Component } from 'react';
-// import Grid from 'styled-components-grid';
-// import styled from 'styled-components';
+import React, { useEffect } from 'react';
 import capitalize from 'lodash/capitalize';
-// import moment from 'moment';
-import { Loader, Seo} from '../../components';
-// import { IMGS_URL } from '../../helpers/index';
+import { find, propEq } from 'ramda';
+import { Loader, Seo } from '../../components';
 
-const formatName = (first, last) =>
-  `${capitalize(first)} ${capitalize(last)}`;
+const formatName = (first, last) => `${capitalize(first)} ${capitalize(last)}`;
 
-const filterArray = (array, id) => {
-    if (!array || !array.filter)  return null;
-    
-    const res = array.filter(el => el.id === parseInt(id))[0]
-    console.log("filterArray -------")
-    console.log("  ARRAY", array)
-    console.log("  ID", id)
-    console.log("  RES", res)
-    return res;
-  };
-  
+const Artist = ({
+  current,
+  users,
+  loading,
+  getArtist,
+  setCurrentArtist,
+  match: {
+    params: { id },
+  },
+}) => {
+  // This is the same as componentDidMount
+  useEffect(() => {
+    if (!users && !current && loading === false) {
+      getArtist(id);
+    }
+    if (current == null && users) {
+      setArtist();
+    }
+    if (current && current.id !== id) {
+      setArtist();
+    }
+  }, []);
 
-// const formatName = (name, lastName) =>
-//   `${capitalize(name)} ${capitalize(lastName)}`;
-
-// const formatDates = (start, end) =>
-//   `${DateFormater(start)} - ${DateFormater(end)}`;
-
-// const Container = styled.div`
-//   padding: 10px;
-// `;
-
-// const EventImage = styled.img`
-//   width: 100%;
-// `;
-
-// const Header = styled.div`
-//   display: flex;
-//   align-items: center;
-// `;
-
-// const EventName = styled.h3`
-//   font-weight: 400;
-//   margin-right: 20px;
-// `;
-
-// const EventInfoCont = styled.div`
-//   margin-bottom: 20px;
-// `;
-
-// const EventInfoItem = styled.h3`
-//   font-weight: 400;
-//   margin: 3px 0;
-// `;
-
-// const EventDesc = styled.p``;
-
-class Artist extends Component {
-  state = {
-    currentArtist: filterArray(this.props.users, this.props.match.params.id),
+  const setArtist = () => {
+    const fromUsers = users ? find(propEq('id', id))(users) : false;
+    if (fromUsers) {
+      setCurrentArtist(fromUsers);
+    } else {
+      getArtist(id);
+    }
   };
 
-  componentDidMount() {
-    if (this.state.currentArtist === null) {
-      console.log("componentDidMount", this.props.match.params.id)
-      this.props.getArtist(this.props.match.params.id);
-    }
+  if (current) {
+    return (
+      <div>
+        <Seo title={`${formatName(current.firstName, current.lastName)}`} />
+        <h3>{`${formatName(current.firstName, current.lastName)}`}</h3>
+      </div>
+    );
   }
-
-  componentDidUpdate(prevProps) {
-    if (this.props.users !== prevProps.users) {
-      console.log("componentDidUpdate", this.props.match.params.id)
-      this.setState({
-        currentArtist: filterArray(
-          this.props.users,
-          this.props.match.params.id
-        ),
-      });
-    }
-  }
-
-  render() {
-    const { currentArtist } = this.state;
-    console.log("users", this.props.users)
-    console.log("currentArtist", currentArtist)
-    if (currentArtist) {
-    //   const tags = currentArtist.tags.split(';');
-      return (
-        <div>
-          <Seo title={`${formatName(currentArtist.firstName, currentArtist.lastName)}`} />
-         </div>
-       );
-    }
-    return <Loader />;
-  }
-}
+  return <Loader />;
+};
 
 export default Artist;
