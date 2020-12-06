@@ -3,7 +3,7 @@ import capitalize from 'lodash/capitalize';
 import { find, propEq } from 'ramda';
 import Grid from 'styled-components-grid';
 import styled from 'styled-components';
-import { Loader, Seo, Tag, TagsContainer, Carousel } from '../../components';
+import { Loader, Seo, Tag, TagsContainer } from '../../components';
 import { IMGS_URL } from '../../helpers/index';
 
 import ArtworkSection from './ArtworkSection';
@@ -33,7 +33,8 @@ const Header = styled.div`
 const ArtistBio = styled.p``;
 
 const Artist = ({
-  current, 
+  current,
+  artworks,
   users,  
   loading,
   getArtist,
@@ -70,6 +71,9 @@ const Artist = ({
 
   if (current) {
     const tags = current.tags.split(';');
+    // const artworks = state.artworks;
+    console.log("ARTWORKS", artworks);
+
     return (
       <div>
         <Seo title={`${formatName(current.firstName, current.lastName)}`} />        
@@ -93,7 +97,16 @@ const Artist = ({
               )}
 
             </Container>          
-          </Grid.Unit>        
+          </Grid.Unit> 
+
+          <Grid.Unit size={{ mobile: 1, desktop: 0.4 }}>
+              <Container>
+                {artworks.map(a => (
+                  <ArtworkSection artwork={a} />
+                ))}
+              </Container>
+          </Grid.Unit>
+
         </Grid>
       </div>
     );

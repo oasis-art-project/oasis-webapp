@@ -16,4 +16,6 @@ const mapDispatchToProps = dispatch => ({
   setCurrentArtist: artist => setCurrentArtist(dispatch, artist),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Artist);
+export default connect(
+  mapStateToProps, 
+  mapDispatchToProps)(Artist);

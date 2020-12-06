@@ -24,7 +24,8 @@ export const fetchAll = dispatch => {
     api.artwork
       .fetchArtistArtworks(aid)
       .then(res => {
-        console.log("=======GOT THE ARTWORKS========", res.data.artworks);
+        console.log("=======GOT THE ARTWORKS========");
+        console.log(res.data.artworks);
         dispatch({ 
             type: types.FETCH_ARTWORKS_SUCCESS, 
             all: res.data.artworks
