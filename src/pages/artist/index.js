@@ -6,6 +6,8 @@ import styled from 'styled-components';
 import { Loader, Seo, Tag, TagsContainer, Carousel } from '../../components';
 import { IMGS_URL } from '../../helpers/index';
 
+import ArtworkSection from './ArtworkSection';
+
 const formatName = (first, last) => `${capitalize(first)} ${capitalize(last)}`;
 
 const Container = styled.div`
@@ -31,10 +33,11 @@ const Header = styled.div`
 const ArtistBio = styled.p``;
 
 const Artist = ({
-  current,
-  users,
+  current, 
+  users,  
   loading,
   getArtist,
+  getArtworks,
   setCurrentArtist,
   match: {
     params: { id },
@@ -44,6 +47,7 @@ const Artist = ({
   useEffect(() => {
     if (!users && !current && loading === false) {
       getArtist(id);
+      getArtworks(id);
     }
     if (current == null && users) {
       setArtist();
@@ -57,8 +61,10 @@ const Artist = ({
     const fromUsers = users ? find(propEq('id', id))(users) : false;
     if (fromUsers) {
       setCurrentArtist(fromUsers);
+      getArtworks(current.id);
     } else {
       getArtist(id);
+      getArtworks(id);
     }
   };
 

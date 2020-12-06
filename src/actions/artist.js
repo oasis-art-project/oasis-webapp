@@ -30,6 +30,7 @@ export const fetchArtist = (dispatch, id) => {
       dispatch({ type: types.FETCH_ARTIST_ERROR });
     });
 };
+
 export const setCurrentArtist = (dispatch, artist) => {
   dispatch({ type: types.SET_CURRENT_ARTIST, artist });
 };
