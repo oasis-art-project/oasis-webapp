@@ -110,6 +110,7 @@ const Artist = ({
           </Grid.Unit>
 
           <Grid.Unit size={{ mobile: 1, desktop: 1 }}>
+            <h3>Artworks</h3>
             <ArtworkContainer>
               {artworks && artworks.map(a => <ArtworkSection artwork={a} />)}
             </ArtworkContainer>
