@@ -1,7 +1,9 @@
 import * as types from '../actions/types';
 
 const initialState = {
-  all: null,
+  all: null,  
+  current: null,
+  loading: false,
 };
 
 function placeReducer(state = initialState, action) {
@@ -10,6 +12,22 @@ function placeReducer(state = initialState, action) {
       return {
         ...state,
         all: action.places,
+      };
+      case types.SET_CURRENT_PLACE:
+        return {
+          ...state,
+          current: action.place,
+        };
+      case types.FETCH_PLACE:
+        return {
+          ...state,
+          loading: true,
+        };
+      case types.FETCH_PLACE_SUCCESS:
+        return {
+          ...state,
+          loading: false,
+          current: action.place,
       };
     default:
       return state;

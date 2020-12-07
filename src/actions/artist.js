@@ -17,7 +17,7 @@ export const fetchArtists = dispatch => {
     });
 };
 
-// Api to get all users who are artists
+// Api to get a specific user and set as current
 
 export const fetchArtist = (dispatch, id) => {
   dispatch({ type: types.FETCH_ARTIST });

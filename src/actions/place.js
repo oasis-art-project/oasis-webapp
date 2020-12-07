@@ -1,6 +1,5 @@
 import * as types from './types';
 import api from '../api';
-// import history from '../helpers/history';
 
 // Api to get all places
 export const fetchPlaces = dispatch => {
@@ -16,4 +15,22 @@ export const fetchPlaces = dispatch => {
     .catch(err => {
       dispatch({ type: types.FETCH_PLACES_ERROR });
     });
+};
+
+// Api to get a specific place and set as current
+
+export const fetchPlace = (dispatch, id) => {
+  dispatch({ type: types.FETCH_PLACE });
+  api.place
+    .getPlace(id)
+    .then(result => {
+      dispatch({ type: types.FETCH_PLACE_SUCCESS, place: result.data.place });
+    })
+    .catch(error => {
+      dispatch({ type: types.FETCH_PLACE_ERROR });
+    });
+};
+
+export const setCurrentPlace = (dispatch, place) => {
+  dispatch({ type: types.SET_CURRENT_PLACE, place });
 };
