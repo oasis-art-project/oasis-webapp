@@ -46,7 +46,7 @@ const AllArtists = ({ nodes }) => {
             title={`${formatName(artist.firstName, artist.lastName)}`}
             // description={"Illustrator"}
             image={`${IMGS_URL}/${artist.images[0]}`}
-            tags={artist.tags.split(';')}
+            tags={artist.tags ? artist.tags.split(';') : []}
             noStar={true}
             kind="artist"
           />

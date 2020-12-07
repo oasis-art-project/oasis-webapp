@@ -14,6 +14,14 @@ import ArtworkContainer from '../containers/Artwork';
 // Static Pages
 import About from './about';
 
+const PageContainer = styled.main`
+  position: relative;
+  min-height: 100vh;
+  @media only screen and (max-width: 1520px) {
+    margin: 0 30px;
+  }
+`;
+
 const HomeSection = styled.section`
   max-width: 1440px;
   margin: 0 auto;
@@ -50,7 +58,7 @@ class IndexView extends Component {
     const { location, match } = this.props;
     if (location.pathname === '/login') return null;
     return (
-      <>
+      <PageContainer>
         <HomeSection>
           <Navbar />
           <ViewContainer>
@@ -67,9 +75,10 @@ class IndexView extends Component {
           </ViewContainer>
         </HomeSection>
         <Footer />
-      </>
+      </PageContainer>
     );
   }
 }
+
 
 export default IndexView;

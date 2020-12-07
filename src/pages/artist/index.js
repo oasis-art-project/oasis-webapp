@@ -54,7 +54,8 @@ const Artist = ({
   // This is the same as componentDidMount
   useEffect(() => {
     initArtist();
-  });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const initArtist = () => {
     if (!users && !current && loading === false) {

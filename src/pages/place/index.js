@@ -63,7 +63,8 @@ const Place = ({
     // This is the same as componentDidMount
     useEffect(() => {
       initPlace();
-    });
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
   
     const initPlace = () => {
       if (!places && !current && loading === false) {
