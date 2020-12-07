@@ -95,7 +95,6 @@ class Event extends Component {
                   <Like />
                 </Header>
                 <EventInfoCont>
-                  {/* <EventInfoItem>{artistName}</EventInfoItem> */}
                   <EventInfoItem>{capitalize(currentEvent.place.name)}</EventInfoItem>
                   <EventInfoItem>
                     {formatDates(currentEvent.startTime, currentEvent.endTime)}

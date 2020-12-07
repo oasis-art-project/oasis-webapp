@@ -34,3 +34,19 @@ export const fetchAll = dispatch => {
         dispatch({ type: types.FETCH_ARTWORKS_ERROR });
       });
   };
+
+  // Api to get one artwork based on its id
+export const fetchArtwork = (dispatch, id) => {
+  dispatch({ type: types.FETCH_ARTWORK });
+  api.artwork
+    .fetchArtwork(id)
+    .then(res => {
+      dispatch({
+        type: types.FETCH_ARTWORK_SUCCESS,
+        artwork: res.data.artwork,
+      });
+    })
+    .catch(err => {
+      dispatch({ type: types.FETCH_ARTWORK_ERROR });
+    });
+};

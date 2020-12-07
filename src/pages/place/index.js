@@ -124,6 +124,7 @@ const Place = ({
             </Grid.Unit>
 
             <CardsContainer>
+              <h3>Events</h3>
               {events && events.map && events.map(event => (
                 <Card
                   intent="list"
