@@ -35,10 +35,10 @@ const Name = styled.h3`
 
 const PropsContainer = styled.div``;
 
-const ArtistSection = ({ artist, fullName }) => (
+const HostSection = ({ host, fullName }) => (
   <Container>
     <ImageContainer>
-      <Image src={`${IMGS_URL}/${artist.images[0]}`} />
+      <Image src={`${IMGS_URL}/${host.images[0]}`} />
     </ImageContainer>
     <PropsContainer>
       <Name>{fullName}</Name>
@@ -46,4 +46,4 @@ const ArtistSection = ({ artist, fullName }) => (
   </Container>
 );
 
-export default ArtistSection;
+export default HostSection;

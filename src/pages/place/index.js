@@ -3,8 +3,12 @@ import capitalize from 'lodash/capitalize';
 import { find, propEq } from 'ramda';
 import Grid from 'styled-components-grid';
 import styled from 'styled-components';
-import { Loader, Seo, Tag, TagsContainer } from '../../components';
+import { Loader, Seo, Card, Tag, TagsContainer } from '../../components';
 import { IMGS_URL } from '../../helpers/index';
+
+import HostSection from './HostSection';
+
+const formatName = (name, lastName) => `${capitalize(name)} ${capitalize(lastName)}`;
 
 const Container = styled.div`
   padding: 10px;
@@ -33,13 +37,24 @@ const Header = styled.div`
   align-items: center;
 `;
 
+const CardsContainer = styled.section`
+  display: flex;
+  flex-wrap: wrap;
+  margin: -10px;
+  @media only screen and (max-width: 1300px) {
+    justify-content: space-around;
+  }
+`;
+
 const PlaceDesc = styled.p``;
 
 const Place = ({
     places,
     current,
     loading,
+    events,
     getPlace,
+    getEvents,
     setCurrentPlace,
     match: {
       params: { id },
@@ -53,6 +68,7 @@ const Place = ({
     const initPlace = () => {
       if (!places && !current && loading === false) {
         getPlace(id);
+        getEvents(id);
       }
       if (current == null && places) {
         setPlace();
@@ -66,21 +82,22 @@ const Place = ({
       const fromPlaces = places ? find(propEq('id', id))(places) : false;
       if (fromPlaces) {
         setCurrentPlace(fromPlaces);
+        getEvents(current.id);
       } else {
         getPlace(id);
+        getEvents(id);
       }
     };
   
     if (current) {
       const tags = current.tags.split(';');
-      // const artworks = state.artworks;
-    //  console.log('ARTWORKS', artworks);
+      const host = current.host;
   
       return (
         <div>
           <Seo title={current.name} />
           <Grid halign="center">
-            <Grid.Unit size={{ mobile: 1, desktop: 1 }}>
+            <Grid.Unit size={{ mobile: 1, desktop: 0.5 }}>
               <Container>
                 <div>
                   <PlaceImage src={`${IMGS_URL}/${current.images[0]}`} />
@@ -99,12 +116,27 @@ const Place = ({
                 )}
               </Container>
             </Grid.Unit>
-  
-            {/* <Grid.Unit size={{ mobile: 1, desktop: 1 }}>
-              <ArtworkContainer>
-                {artworks && artworks.map(a => <ArtworkSection artwork={a} />)}
-              </ArtworkContainer>
-            </Grid.Unit> */}
+
+            <Grid.Unit size={{ mobile: 1, desktop: 0.4 }}>
+              <Container>                
+                  <HostSection host={host} fullName={`${formatName(host.firstName, host.lastName)}`} />
+              </Container>
+            </Grid.Unit>
+
+            <CardsContainer>
+              {events && events.map && events.map(event => (
+                <Card
+                  intent="list"
+                  key={event.id}
+                  id={event.id}
+                  title={event.name}
+                  description={event.description}
+                  image={`${IMGS_URL}/${event.images[0]}`}
+                  tags={event.tags.split(';')}
+                  kind="event"
+                />
+              ))}
+            </CardsContainer>
 
           </Grid>
         </div>
