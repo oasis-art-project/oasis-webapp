@@ -54,7 +54,8 @@ const Artist = ({
   // This is the same as componentDidMount
   useEffect(() => {
     initArtist();
-  });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const initArtist = () => {
     if (!users && !current && loading === false) {
@@ -110,6 +111,7 @@ const Artist = ({
           </Grid.Unit>
 
           <Grid.Unit size={{ mobile: 1, desktop: 1 }}>
+            <h3>Artworks</h3>
             <ArtworkContainer>
               {artworks && artworks.map(a => <ArtworkSection artwork={a} />)}
             </ArtworkContainer>

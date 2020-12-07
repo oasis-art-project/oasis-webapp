@@ -7,6 +7,7 @@ import { Loader, Seo, Like, Tag, TagsContainer, Carousel } from '../../component
 import { IMGS_URL } from '../../helpers/index';
 
 import ArtistSection from './ArtistSection';
+import ArtworkSection from './ArtworkSection';
 
 const filterArray = (array, id) => {
   if (!array || !array.filter) return null;
@@ -44,6 +45,13 @@ const EventInfoCont = styled.div`
 const EventInfoItem = styled.h3`
   font-weight: 400;
   margin: 3px 0;
+`;
+
+const ArtworkContainer = styled.div`
+  display: flex;
+  @media only screen and (max-width: 660px) {
+    flex-direction: column;
+  }
 `;
 
 const EventDesc = styled.p``;
@@ -87,7 +95,6 @@ class Event extends Component {
                   <Like />
                 </Header>
                 <EventInfoCont>
-                  {/* <EventInfoItem>{artistName}</EventInfoItem> */}
                   <EventInfoItem>{capitalize(currentEvent.place.name)}</EventInfoItem>
                   <EventInfoItem>
                     {formatDates(currentEvent.startTime, currentEvent.endTime)}
@@ -105,12 +112,21 @@ class Event extends Component {
               </Container>
             </Grid.Unit>
             <Grid.Unit size={{ mobile: 1, desktop: 0.4 }}>
+             <h3>Artists</h3>
               <Container>
                 {currentEvent.artists.map(a => (
                   <ArtistSection artist={a} fullName={`${formatName(a.firstName, a.lastName)}`} />
                 ))}
               </Container>
             </Grid.Unit>
+                        
+            <Grid.Unit size={{ mobile: 1, desktop: 1 }}>
+              <h3>Artworks</h3>
+              <ArtworkContainer>
+                {currentEvent.artworks && currentEvent.artworks.map(a => <ArtworkSection artwork={a} />)}
+              </ArtworkContainer>
+            </Grid.Unit>
+
           </Grid>
         </div>
       );

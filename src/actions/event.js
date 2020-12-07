@@ -30,13 +30,34 @@ export const fetchEvents = dispatch => {
     });
 };
 
+// Api to get all events at a specific place - require :pid
+export const fetchPlaceEvents = (dispatch, pid) => {
+  dispatch({ type: types.FETCH_EVENTS });
+  api.event
+    .fetchPlaceEvents(pid)
+    .then(res => {
+      dispatch({
+        type: types.FETCH_EVENTS_SUCCESS,
+        all: res.data.events,
+        current: null,
+        upcoming: null,
+      });
+    })
+    .catch(error => {
+      dispatch({ type: types.FETCH_EVENTS_ERROR });
+    });  
+}
+
 // Api to get one event - require :id
 export const fetchEvent = (dispatch, id) => {
   dispatch({ type: types.FETCH_EVENT });
   api.event
     .fetchEvent(id)
     .then(res => {
-      dispatch({ type: types.FETCH_EVENT_SUCCESS, event: res.data.event });
+      dispatch({ 
+        type: types.FETCH_EVENT_SUCCESS, 
+        event: res.data.event 
+      });
     })
     .catch(error => {
       dispatch({ type: types.FETCH_EVENT_ERROR });
