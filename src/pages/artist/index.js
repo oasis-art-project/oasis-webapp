@@ -7,6 +7,7 @@ import { Loader, Seo, Tag, TagsContainer, Tabs, Tab } from '../../components';
 import { IMGS_URL } from '../../helpers/index';
 
 import ArtworkSection from './ArtworkSection';
+import EventSection from './EventSection';
 
 const formatName = (first, last) => `${capitalize(first)} ${capitalize(last)}`;
 
@@ -14,7 +15,7 @@ const Container = styled.div`
   padding: 10px;
 `;
 
-const ArtworkContainer = styled.div`
+const ElementContainer = styled.div`
   display: flex;
   @media only screen and (max-width: 660px) {
     flex-direction: column;
@@ -123,8 +124,8 @@ const Artist = ({
 
           <TabsContainer>
             <Tabs left id="home_events">
-              <Tab id="artist_artworks" title="Artworks" panel={<CardsList elements={artworks} />} />
-              <Tab id="artist_events" title="Events" panel={<CardsList elements={events} />} />
+              <Tab id="artist_artworks" title="Artworks" panel={<ArtworkCardsList elements={artworks} />} />
+              <Tab id="artist_events" title="Events" panel={<EventCardsList elements={events} />} />
             </Tabs>
           </TabsContainer>
         </Grid>
@@ -134,11 +135,19 @@ const Artist = ({
   return <Loader />;
 };
 
-const CardsList = ({ elements }) => (
+const ArtworkCardsList = ({ elements }) => (
   <>
-    <ArtworkContainer>
+    <ElementContainer>
       {elements && elements.map && elements.map(a => <ArtworkSection artwork={a} />)}
-    </ArtworkContainer>
+    </ElementContainer>
+  </>
+);
+
+const EventCardsList = ({ elements }) => (
+  <>
+    <ElementContainer>
+      {elements && elements.map && elements.map(e => <EventSection event={e} />)}
+    </ElementContainer>
   </>
 );
 
