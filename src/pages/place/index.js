@@ -118,6 +118,7 @@ const Place = ({
           </Grid.Unit>
 
           <Grid.Unit size={{ mobile: 1, desktop: 0.4 }}>
+            <h3>Hosts</h3>
             <Container>
               <HostSection host={host} fullName={`${formatName(host.firstName, host.lastName)}`} />
             </Container>

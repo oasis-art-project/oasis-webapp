@@ -111,6 +111,7 @@ class Event extends Component {
                 )}
               </Container>
             </Grid.Unit>
+            
             <Grid.Unit size={{ mobile: 1, desktop: 0.4 }}>
              <h3>Artists</h3>
               <Container>
