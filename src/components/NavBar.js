@@ -97,9 +97,12 @@ const MobileNav = ({ close, open, stateChange, user }) => {
           <MobileLink onClick={close} to="/places">
             Places
           </MobileLink>
-          <MobileLink onClick={close} to="/about">
+          <MobileLink onClick={close} to="/hosts">
+            Hosts
+          </MobileLink>          
+          {/* <MobileLink onClick={close} to="/about">
             About
-          </MobileLink>
+          </MobileLink> */}
 
           <Divider />
           {user && (
@@ -131,6 +134,9 @@ const DesktopNav = ({ user }) => (
     <StyledLink to="/places" activeClassName="active">
       Places
     </StyledLink>
+    <StyledLink to="/hosts" activeClassName="active">
+      Hosts
+    </StyledLink>    
     {/* <StyledLink to="/about" activeClassName="active">
       About
     </StyledLink> */}

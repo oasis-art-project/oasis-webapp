@@ -12,6 +12,10 @@ export function fetchAllArtists() {
   return get(`${USER_BASE_URL}/role/3`);
 }
 
+export function fetchAllHosts() {
+  return get(`${USER_BASE_URL}/role/2`);
+}
+
 export function getUser(id) {
   return get(`${USER_BASE_URL}/${id}`);
 }
