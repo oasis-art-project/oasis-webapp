@@ -25,6 +25,7 @@ const PageContainer = styled.main`
 const HomeSection = styled.section`
   max-width: 1440px;
   margin: 0 auto;
+  padding-bottom: 90px; 
 `;
 
 const ViewContainer = styled.div`

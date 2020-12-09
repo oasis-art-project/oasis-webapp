@@ -9,7 +9,7 @@ export const StyledTabs = styled(Tabs)`
     display: none;
   }
   .bp3-tab-list {
-    justify-content: center;
+    justify-content: ${props => (props.left ? 'left;' : ' center;')};
   }
   .bp3-tab[aria-selected='true'],
   .bp3-tab:not([aria-disabled='true']):hover {

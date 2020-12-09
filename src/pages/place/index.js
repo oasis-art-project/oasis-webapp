@@ -40,112 +40,113 @@ const Header = styled.div`
 const CardsContainer = styled.section`
   display: flex;
   flex-wrap: wrap;
-  margin: -10px;
-  @media only screen and (max-width: 1300px) {
+  /* @media only screen and (max-width: 1300px) {
     justify-content: space-around;
-  }
+  } */
 `;
 
 const PlaceDesc = styled.p``;
 
 const Place = ({
-    places,
-    current,
-    loading,
-    events,
-    getPlace,
-    getEvents,
-    setCurrentPlace,
-    match: {
-      params: { id },
-    },
-  }) => {
-    // This is the same as componentDidMount
-    useEffect(() => {
-      initPlace();
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
-  
-    const initPlace = () => {
-      if (!places && !current && loading === false) {
-        getPlace(id);
-        getEvents(id);
-      }
-      if (current == null && places) {
-        setPlace();
-      }
-      if (current && current.id !== id) {
-        setPlace();
-      }
-    };
-  
-    const setPlace = () => {
-      const fromPlaces = places ? find(propEq('id', id))(places) : false;
-      if (fromPlaces) {
-        setCurrentPlace(fromPlaces);
-        getEvents(current.id);
-      } else {
-        getPlace(id);
-        getEvents(id);
-      }
-    };
-  
-    if (current) {
-      const tags = current.tags.split(';');
-      const host = current.host;
-  
-      return (
-        <div>
-          <Seo title={current.name} />
-          <Grid halign="center">
-            <Grid.Unit size={{ mobile: 1, desktop: 0.5 }}>
-              <Container>
-                <div>
-                  <PlaceImage src={`${IMGS_URL}/${current.images[0]}`} />
-                </div>
-                <Header>
-                  <PlaceName>{current.name}</PlaceName>
-                </Header>
-  
-                <PlaceDesc>{current.description}</PlaceDesc>
-                {tags && (
-                  <TagsContainer>
-                    {tags.map(tag => (
-                      <Tag key={tag}>{capitalize(tag)}</Tag>
-                    ))}
-                  </TagsContainer>
-                )}
-              </Container>
-            </Grid.Unit>
+  places,
+  current,
+  loading,
+  events,
+  getPlace,
+  getEvents,
+  setCurrentPlace,
+  match: {
+    params: { id },
+  },
+}) => {
+  // This is the same as componentDidMount
+  useEffect(() => {
+    initPlace();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-            <Grid.Unit size={{ mobile: 1, desktop: 0.4 }}>
-              <Container>                
-                  <HostSection host={host} fullName={`${formatName(host.firstName, host.lastName)}`} />
-              </Container>
-            </Grid.Unit>
-
-            <CardsContainer>
-              <h3>Events</h3>
-              {events && events.map && events.map(event => (
-                <Card
-                  intent="list"
-                  key={event.id}
-                  id={event.id}
-                  title={event.name}
-                  description={event.description}
-                  image={`${IMGS_URL}/${event.images[0]}`}
-                  tags={event.tags.split(';')}
-                  kind="event"
-                />
-              ))}
-            </CardsContainer>
-
-          </Grid>
-        </div>
-      );
+  const initPlace = () => {
+    if (!places && !current && loading === false) {
+      getPlace(id);
+      getEvents(id);
     }
-    return <Loader />;
+    if (current == null && places) {
+      setPlace();
+    }
+    if (current && current.id !== id) {
+      setPlace();
+    }
   };
-  
-  export default Place;
-  
+
+  const setPlace = () => {
+    const fromPlaces = places ? find(propEq('id', id))(places) : false;
+    if (fromPlaces) {
+      setCurrentPlace(fromPlaces);
+      getEvents(current.id);
+    } else {
+      getPlace(id);
+      getEvents(id);
+    }
+  };
+
+  if (current) {
+    const tags = current.tags.split(';');
+    const host = current.host;
+
+    return (
+      <div>
+        <Seo title={current.name} />
+        <Grid halign="center">
+          <Grid.Unit size={{ mobile: 1, desktop: 0.5 }}>
+            <Container>
+              <div>
+                <PlaceImage src={`${IMGS_URL}/${current.images[0]}`} />
+              </div>
+              <Header>
+                <PlaceName>{current.name}</PlaceName>
+              </Header>
+
+              <PlaceDesc>{current.description}</PlaceDesc>
+              {tags && (
+                <TagsContainer>
+                  {tags.map(tag => (
+                    <Tag key={tag}>{capitalize(tag)}</Tag>
+                  ))}
+                </TagsContainer>
+              )}
+            </Container>
+          </Grid.Unit>
+
+          <Grid.Unit size={{ mobile: 1, desktop: 0.4 }}>
+            <Container>
+              <HostSection host={host} fullName={`${formatName(host.firstName, host.lastName)}`} />
+            </Container>
+          </Grid.Unit>
+
+          <Grid.Unit size={{ mobile: 1, desktop: 1 }}>
+            <h3>Events</h3>
+            <CardsContainer>
+              {events &&
+                events.map &&
+                events.map(event => (
+                  <Card
+                    intent="list"
+                    key={event.id}
+                    id={event.id}
+                    title={event.name}
+                    description={event.description}
+                    image={`${IMGS_URL}/${event.images[0]}`}
+                    tags={event.tags.split(';')}
+                    kind="event"
+                  />
+                ))}
+            </CardsContainer>
+          </Grid.Unit>
+        </Grid>
+      </div>
+    );
+  }
+  return <Loader />;
+};
+
+export default Place;

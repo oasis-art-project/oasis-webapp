@@ -131,9 +131,9 @@ const DesktopNav = ({ user }) => (
     <StyledLink to="/places" activeClassName="active">
       Places
     </StyledLink>
-    <StyledLink to="/about" activeClassName="active">
+    {/* <StyledLink to="/about" activeClassName="active">
       About
-    </StyledLink>
+    </StyledLink> */}
 
     {user && <UserMenu user={user} />}
 

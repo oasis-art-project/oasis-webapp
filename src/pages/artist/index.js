@@ -3,7 +3,7 @@ import capitalize from 'lodash/capitalize';
 import { find, propEq } from 'ramda';
 import Grid from 'styled-components-grid';
 import styled from 'styled-components';
-import { Loader, Seo, Tag, TagsContainer } from '../../components';
+import { Loader, Seo, Tag, TagsContainer, Tabs, Tab } from '../../components';
 import { IMGS_URL } from '../../helpers/index';
 
 import ArtworkSection from './ArtworkSection';
@@ -39,14 +39,21 @@ const Header = styled.div`
 
 const ArtistBio = styled.p``;
 
+const TabsContainer = styled.section`
+  display: flex;
+  width: 100%;
+`;
+
 const Artist = ({
   current,
   artworks,
   users,
   loading,
+  events,
   getArtist,
   getArtworks,
   setCurrentArtist,
+  getEventsByArtist,
   match: {
     params: { id },
   },
@@ -61,6 +68,7 @@ const Artist = ({
     if (!users && !current && loading === false) {
       getArtist(id);
       getArtworks(id);
+      getEventsByArtist(id);
     }
     if (current == null && users) {
       setArtist();
@@ -75,9 +83,11 @@ const Artist = ({
     if (fromUsers) {
       setCurrentArtist(fromUsers);
       getArtworks(current.id);
+      getEventsByArtist(id);
     } else {
       getArtist(id);
       getArtworks(id);
+      getEventsByArtist(id);
     }
   };
 
@@ -85,6 +95,7 @@ const Artist = ({
     const tags = current.tags.split(';');
     // const artworks = state.artworks;
     // console.log('ARTWORKS', artworks);
+    // console.log({ events, artworks });
 
     return (
       <div>
@@ -110,17 +121,25 @@ const Artist = ({
             </Container>
           </Grid.Unit>
 
-          <Grid.Unit size={{ mobile: 1, desktop: 1 }}>
-            <h3>Artworks</h3>
-            <ArtworkContainer>
-              {artworks && artworks.map(a => <ArtworkSection artwork={a} />)}
-            </ArtworkContainer>
-          </Grid.Unit>
+          <TabsContainer>
+            <Tabs left id="home_events">
+              <Tab id="artist_artworks" title="Artworks" panel={<CardsList elements={artworks} />} />
+              <Tab id="artist_events" title="Events" panel={<CardsList elements={events} />} />
+            </Tabs>
+          </TabsContainer>
         </Grid>
       </div>
     );
   }
   return <Loader />;
 };
+
+const CardsList = ({ elements }) => (
+  <>
+    <ArtworkContainer>
+      {elements && elements.map && elements.map(a => <ArtworkSection artwork={a} />)}
+    </ArtworkContainer>
+  </>
+);
 
 export default Artist;

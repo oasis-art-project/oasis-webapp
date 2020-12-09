@@ -3,6 +3,7 @@ import * as types from '../actions/types';
 const initialState = {
   current: null,
   loading: false,
+  events: null,
 };
 
 function artistReducer(state = initialState, action) {
@@ -24,6 +25,12 @@ function artistReducer(state = initialState, action) {
         loading: false,
         current: action.artist,
       };
+
+      case types.FETCH_ARTIST_EVENTS_SUCCESS:
+        return {
+          ...state,
+          events: action.events,
+        };
     default:
       return state;
   }
