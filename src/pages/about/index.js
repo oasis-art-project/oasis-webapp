@@ -12,6 +12,7 @@ const About = () => (
   <>
     <Seo title="About" />
     <Container>
+      <h3>What is it?</h3>
       <p>
         OASIS is a decentralized art platform designed to connect artists with space providers and
         audiences in the local community. The main goals of this platform are (i) to make more
@@ -20,6 +21,7 @@ const About = () => (
         for, and (iii) to provide audiences and patrons the means to find and experience the
         artworks currently on display near them and to connect with local creators.
       </p>
+      <h3>The goals of OASIS</h3>
       <p>
         OASIS’ most immediate goal is to facilitate the interactions between creators, hosts, and
         audiences at the juncture of online and local communities. It does so by opening up existing
@@ -30,6 +32,7 @@ const About = () => (
         on the potential of mobile technologies to enable new possibilities of dialog, interaction,
         and creation within our communities.
       </p>
+      <h3>Interested in participating?</h3>
       <p>
         OASIS is currently in beta testing stage. If you are a local artist or space provider and
         are interested in participating in the beta testing, please create an OASIS account:
@@ -46,22 +49,13 @@ const About = () => (
         </li>
       </ol>
       <p>
-        OASIS’ most immediate goal is to facilitate the interactions between creators, hosts, and
-        audiences at the juncture of online and local communities. It does so by opening up existing
-        interstitial spaces suitable for art exhibition throughout the urban fabric and facilitating
-        the movements of “micro-publics” towards these spaces. This aspect of OASIS is fundamental;
-        even though the web app is an important component of OASIS, the platform should not be seen
-        simply as a “Social Network for the Arts”, but rather as a physical-digital nexus that taps
-        on the potential of mobile technologies to enable new possibilities of dialog, interaction,
-        and creation within our communities.
-      </p>
-      <p>
         OASIS enables communication between artists and hosts to organize new exhibition events.
         These events will populate OASIS' public homepage so visitors can find the current and
         upcoming exhibitions.
-      </p>
+      </p>      
+      <h3>Support</h3>
       <p>
-        OASIS has received support from Cambridge Arts Council through its Artists Grant program
+        OASIS has received support from Cambridge Arts Council through its Artists Grant program <a href="https://www.cambridgema.gov/arts/programs/grants">Artists Grant program</a>, Boston University's <a href="http://www.bu.edu/spark/"> Spark! program</a>, and Signal Culture's <a href="http://signalculture.org/residency.html">residence program</a>.
       </p>
     </Container>
   </>
