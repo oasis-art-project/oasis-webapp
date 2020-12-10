@@ -22,6 +22,5 @@ export function fetchEventsByArtist(id) {
 }
 
 export function fetchEventswithArtwork(aid) {
-  console.log("fetchEventswithArtwork");
   return get(`${API_URL}/event/artwork/${aid}`);
 }

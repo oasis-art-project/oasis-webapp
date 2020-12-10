@@ -36,7 +36,6 @@ function artworkReducer(state = initialState, action) {
       };
 
     case types.FETCH_ARTWORK_EVENTS_SUCCESS:
-      console.log("COPYING TO EVENTS", action.events);
       return {
         ...state,
         events: action.events,

@@ -66,7 +66,6 @@ const Artwork = ({
 
   if (current) {
     const tags = current.tags.split(';');
-    console.log("EVENTS", events);
     
     return (
       
