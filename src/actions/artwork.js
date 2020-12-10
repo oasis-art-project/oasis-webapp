@@ -50,3 +50,16 @@ export const fetchArtwork = (dispatch, id) => {
       dispatch({ type: types.FETCH_ARTWORK_ERROR });
     });
 };
+
+export const fetchEventsWithArtwork = (dispatch, id) => {
+  dispatch({ type: types.FETCH_ARTWORK_EVENTS });
+  api.event
+    .fetchEventswithArtwork(id)
+    .then(result => {
+      console.log('FETCH_ARTWORK_EVENTS_SUCCESS', result.data.events);
+      dispatch({ type: types.FETCH_ARTWORK_EVENTS_SUCCESS, events: result.data.events });
+    })
+    .catch(error => {
+      dispatch({ type: types.FETCH_ARTWORK_EVENTS_ERROR });
+    });
+};

@@ -3,7 +3,7 @@ import capitalize from 'lodash/capitalize';
 import { find, propEq } from 'ramda';
 import Grid from 'styled-components-grid';
 import styled from 'styled-components';
-import { Loader, Seo, Tag, TagsContainer, Tabs, Tab } from '../../components';
+import { Loader, Seo, Tag, TagsContainer } from '../../components';
 import { IMGS_URL } from '../../helpers/index';
 
 import PlaceSection from './PlaceSection';
@@ -114,7 +114,6 @@ const Host = ({
               {places && places.map(p => <PlaceSection place={p} />)}
             </PlaceContainer>
           </Grid.Unit>
-
 
         </Grid>
       </div>

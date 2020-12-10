@@ -20,3 +20,8 @@ export function fetchEvent(id) {
 export function fetchEventsByArtist(id) {
   return get(`${API_URL}/event/artist/${id}`);
 }
+
+export function fetchEventswithArtwork(aid) {
+  console.log("fetchEventswithArtwork");
+  return get(`${API_URL}/event/artwork/${aid}`);
+}
