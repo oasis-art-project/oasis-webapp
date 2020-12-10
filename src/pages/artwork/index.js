@@ -6,7 +6,7 @@ import { Loader, Seo, Like, Tag, TagsContainer, Carousel } from '../../component
 import { IMGS_URL } from '../../helpers/index';
 
 import ArtistSection from './ArtistSection';
-// import EventSection from './EventSection';
+import EventSection from './EventSection';
 
 const Container = styled.div`
   padding: 10px;
@@ -26,12 +26,12 @@ const ArtworkName = styled.h3`
   margin-right: 20px;
 `;
 
-// const EventContainer = styled.div`
-//   display: flex;
-//   @media only screen and (max-width: 660px) {
-//     flex-direction: column;
-//   }
-// `;
+const EventContainer = styled.div`
+  display: flex;
+  @media only screen and (max-width: 660px) {
+    flex-direction: column;
+  }
+`;
 
 const formatName = (name, lastName) => `${capitalize(name)} ${capitalize(lastName)}`;
 
@@ -103,11 +103,11 @@ const Artwork = ({
             </Grid.Unit>
 
             <Grid.Unit size={{ mobile: 1, desktop: 1 }}>
-            <h3>Events</h3>
-             {/* <EventContainer>
-              {events && events.map && events.map(e => <EventSection place={e} />)}
-            </EventContainer> */}
-          </Grid.Unit> 
+              <h3>Events</h3>
+              <EventContainer>
+                {events && events.map && events.map(e => <EventSection event={e} />)}
+              </EventContainer>
+            </Grid.Unit> 
 
           </Grid>
         </div>
