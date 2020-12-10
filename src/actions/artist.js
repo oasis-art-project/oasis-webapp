@@ -31,6 +31,18 @@ export const fetchArtist = (dispatch, id) => {
     });
 };
 
+export const fetchEventByArtist = (dispatch, id) => {
+  dispatch({ type: types.FETCH_ARTIST_EVENTS });
+  api.event
+    .fetchEventsByArtist(id)
+    .then(result => {
+      dispatch({ type: types.FETCH_ARTIST_EVENTS_SUCCESS, events: result.data.events });
+    })
+    .catch(error => {
+      dispatch({ type: types.FETCH_ARTIST_EVENTS_ERROR });
+    });
+};
+
 export const setCurrentArtist = (dispatch, artist) => {
   dispatch({ type: types.SET_CURRENT_ARTIST, artist });
 };

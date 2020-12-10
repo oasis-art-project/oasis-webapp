@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import { IMGS_URL } from '../../helpers/index';
 
 const Container = styled.div`
@@ -28,22 +29,27 @@ const Name = styled.h3`
   margin: 0;
 `;
 
-// const PropArtist = styled.p`
-//   font-weight: 400;
-//   margin: 0;
-// `;
+const StyledLink = styled(Link)`
+  color: inherit;
+  &:hover {
+    color: inherit;
+    text-decoration: none;
+  }
+`;
 
 const PropsContainer = styled.div``;
 
 const ArtistSection = ({ artist, fullName }) => (
-  <Container>
-    <ImageContainer>
-      <Image src={`${IMGS_URL}/${artist.images[0]}`} />
-    </ImageContainer>
-    <PropsContainer>
-      <Name>{fullName}</Name>
-    </PropsContainer>
-  </Container>
+  <StyledLink to={`/artist/${artist.id}`}>
+    <Container>
+      <ImageContainer>
+        <Image src={`${IMGS_URL}/${artist.images[0]}`} />
+      </ImageContainer>
+      <PropsContainer>
+        <Name>{fullName}</Name>
+      </PropsContainer>    
+    </Container>
+  </StyledLink>  
 );
 
 export default ArtistSection;

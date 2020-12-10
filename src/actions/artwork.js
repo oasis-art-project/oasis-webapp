@@ -24,7 +24,6 @@ export const fetchAll = dispatch => {
     api.artwork
       .fetchArtistArtworks(aid)
       .then(res => {
-        console.log(res.data.artworks);
         dispatch({ 
             type: types.FETCH_ARTWORKS_SUCCESS, 
             artworks: res.data.artworks
@@ -48,5 +47,17 @@ export const fetchArtwork = (dispatch, id) => {
     })
     .catch(err => {
       dispatch({ type: types.FETCH_ARTWORK_ERROR });
+    });
+};
+
+export const fetchEventsWithArtwork = (dispatch, id) => {
+  dispatch({ type: types.FETCH_ARTWORK_EVENTS });
+  api.event
+    .fetchEventswithArtwork(id)
+    .then(result => {
+      dispatch({ type: types.FETCH_ARTWORK_EVENTS_SUCCESS, events: result.data.events });
+    })
+    .catch(error => {
+      dispatch({ type: types.FETCH_ARTWORK_EVENTS_ERROR });
     });
 };

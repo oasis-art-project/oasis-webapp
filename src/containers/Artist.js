@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Artist from '../pages/artist/index';
-import { setCurrentArtist, fetchArtist } from '../actions/artist';
+import { setCurrentArtist, fetchArtist, fetchEventByArtist } from '../actions/artist';
 import { fetchArtistArtworks } from '../actions/artwork';
 
 const mapStateToProps = state => ({
@@ -8,11 +8,13 @@ const mapStateToProps = state => ({
   artworks: state.artwork.all,
   current: state.artist.current,
   loading: state.artist.loading,
+  events: state.artist.events,
 });
 
 const mapDispatchToProps = dispatch => ({
   getArtist: id => fetchArtist(dispatch, id),
   getArtworks: id => fetchArtistArtworks(dispatch, id),
+  getEventsByArtist: id => fetchEventByArtist(dispatch, id),
   setCurrentArtist: artist => setCurrentArtist(dispatch, artist),
 });
 

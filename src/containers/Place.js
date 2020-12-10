@@ -7,7 +7,7 @@ const mapStateToProps = state => ({
   places: state.place.all,
   events: state.event.all,
   current: state.place.current,
-  loading: state.place.loading,    
+  loading: state.place.loading,
 });
 
 const mapDispatchToProps = dispatch => ({

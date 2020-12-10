@@ -16,6 +16,13 @@ function userReducer(state = initialState, action) {
         ...state,
         artists: action.users,
       };
+    case types.FETCH_HOSTS_SUCCESS:
+        console.log('FETCH_HOSTS_SUCCESS');
+        console.log(action.users);
+        return {
+          ...state,
+          hosts: action.users,
+        };      
     case types.FETCH_USERS_SUCCESS:
       console.log('FETCH_USERS_SUCCESS');
       console.log(action.users);

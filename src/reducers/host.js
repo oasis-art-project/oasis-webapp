@@ -3,37 +3,37 @@ import * as types from '../actions/types';
 const initialState = {
   current: null,
   loading: false,
-  events: null,
+  places: null,
 };
 
-function artistReducer(state = initialState, action) {
+function hostReducer(state = initialState, action) {
   switch (action.type) {
-    case types.SET_CURRENT_ARTIST:
+    case types.SET_CURRENT_HOST:
       return {
         ...state,
-        current: action.artist,
+        current: action.host,
       };
-    case types.FETCH_ARTIST:
+    case types.FETCH_HOST:
       return {
         ...state,
         loading: true,
       };
 
-    case types.FETCH_ARTIST_SUCCESS:
+    case types.FETCH_HOST_SUCCESS:
       return {
         ...state,
         loading: false,
-        current: action.artist,
+        current: action.host,
       };
 
-      case types.FETCH_ARTIST_EVENTS_SUCCESS:
+      case types.FETCH_HOST_PLACES_SUCCESS:
         return {
           ...state,
-          events: action.events,
+          places: action.places,
         };
     default:
       return state;
   }
 }
 
-export default artistReducer;
+export default hostReducer;

@@ -2,8 +2,9 @@ import * as types from '../actions/types';
 
 const initialState = {
   all: null,
-  artwork: null,
+  current: null,
   loading: false,
+  events: false,
 };
 
 function artworkReducer(state = initialState, action) {
@@ -31,7 +32,13 @@ function artworkReducer(state = initialState, action) {
       return {
         ...state,
         loading: false,
-        artwork: action.artwork,
+        current: action.artwork,
+      };
+
+    case types.FETCH_ARTWORK_EVENTS_SUCCESS:
+      return {
+        ...state,
+        events: action.events,
       };
 
     default:
