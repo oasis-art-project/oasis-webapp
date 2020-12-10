@@ -35,19 +35,21 @@ store.subscribe(
   1000
 );
 
-const App = () => (
-  <ReduxProvider store={store}>
-    <ThemeProvider theme={theme}>
-      <IntlProvider locale={locale} messages={texts['en']}>
-        <Router history={history}>
-          <Layout>
-            <Route path="/login" component={Login} />
-            <Route path="/" component={IndexView} />
-          </Layout>
-        </Router>
-      </IntlProvider>
-    </ThemeProvider>
-  </ReduxProvider>
-);
+const App = () => {
+  return (
+    <ReduxProvider store={store}>
+      <ThemeProvider theme={theme}>
+        <IntlProvider locale={locale} messages={texts['en']}>
+          <Router history={history}>
+            <Layout>
+              <Route path="/login" component={Login} />
+              <Route path="/" component={IndexView} />
+            </Layout>
+          </Router>
+        </IntlProvider>
+      </ThemeProvider>
+    </ReduxProvider>
+  );
+}
 
 export default App;
