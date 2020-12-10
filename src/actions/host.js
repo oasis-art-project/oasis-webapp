@@ -6,8 +6,7 @@ export const fetchHosts = dispatch => {
   dispatch({ type: types.FETCH_HOSTS });
   api.user
     .fetchAllHosts()
-    .then(res => {
-      console.log("FETCH HOSTS", res.data.users)      
+    .then(res => {   
       dispatch({
         type: types.FETCH_HOSTS_SUCCESS,
         users: res.data.users,
@@ -34,8 +33,8 @@ export const fetchHost = (dispatch, id) => {
 
 export const fetchPlacesFromHost = (dispatch, id) => {
   dispatch({ type: types.FETCH_HOST_PLACES });
-  api.event
-    .fetchPlacesFromHost(id)
+  api.place
+    .getHostPlaces(id)
     .then(result => {
       dispatch({ type: types.FETCH_HOST_PLACES_SUCCESS, places: result.data.places });
     })

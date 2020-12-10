@@ -6,8 +6,7 @@ import styled from 'styled-components';
 import { Loader, Seo, Tag, TagsContainer, Tabs, Tab } from '../../components';
 import { IMGS_URL } from '../../helpers/index';
 
-import ArtworkSection from './ArtworkSection';
-import EventSection from './EventSection';
+import PlaceSection from './PlaceSection';
 
 const formatName = (first, last) => `${capitalize(first)} ${capitalize(last)}`;
 
@@ -15,20 +14,13 @@ const Container = styled.div`
   padding: 10px;
 `;
 
-const ElementContainer = styled.div`
-  display: flex;
-  @media only screen and (max-width: 660px) {
-    flex-direction: column;
-  }
-`;
-
-const ArtistImage = styled.img`
+const HostImage = styled.img`
   width: 256px;
   margin-left: 0px;
   margin-top: 20px;
 `;
 
-const ArtistName = styled.h3`
+const HostName = styled.h3`
   font-weight: 400;
   margin-right: 20px;
 `;
@@ -38,57 +30,54 @@ const Header = styled.div`
   align-items: center;
 `;
 
-const ArtistBio = styled.p``;
+const HostBio = styled.p``;
 
-const TabsContainer = styled.section`
+const PlaceContainer = styled.div`
   display: flex;
-  width: 100%;
+  @media only screen and (max-width: 660px) {
+    flex-direction: column;
+  }
 `;
 
-const Artist = ({
+const Host = ({
   current,
-  artworks,
   users,
   loading,
-  events,
-  getArtist,
-  getArtworks,
-  setCurrentArtist,
-  getEventsByArtist,
+  places,
+  getHost,
+  setCurrentHost,
+  getPlacesFromHost,
   match: {
     params: { id },
   },
 }) => {
   // This is the same as componentDidMount
   useEffect(() => {
-    initArtist();
+    initHosts();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const initArtist = () => {
+  const initHosts = () => {
     if (!users && !current && loading === false) {
-      getArtist(id);
-      getArtworks(id);
-      getEventsByArtist(id);
+      getHost(id);
+      getPlacesFromHost(id);
     }
     if (current == null && users) {
-      setArtist();
+      setHost();
     }
     if (current && current.id !== id) {
-      setArtist();
+      setHost();
     }
   };
 
-  const setArtist = () => {
+  const setHost = () => {
     const fromUsers = users ? find(propEq('id', id))(users) : false;
     if (fromUsers) {
-      setCurrentArtist(fromUsers);
-      getArtworks(current.id);
-      getEventsByArtist(id);
+      setCurrentHost(fromUsers);
+      getPlacesFromHost(id);
     } else {
-      getArtist(id);
-      getArtworks(id);
-      getEventsByArtist(id);
+      getHost(id);
+      getPlacesFromHost(id);
     }
   };
 
@@ -102,13 +91,13 @@ const Artist = ({
           <Grid.Unit size={{ mobile: 1, desktop: 1 }}>
             <Container>
               <div>
-                <ArtistImage src={`${IMGS_URL}/${current.images[0]}`} />
+                <HostImage src={`${IMGS_URL}/${current.images[0]}`} />
               </div>
               <Header>
-                <ArtistName>{`${formatName(current.firstName, current.lastName)}`}</ArtistName>
+                <HostName>{`${formatName(current.firstName, current.lastName)}`}</HostName>
               </Header>
 
-              <ArtistBio>{current.bio}</ArtistBio>
+              <HostBio>{current.bio}</HostBio>
               {tags && (
                 <TagsContainer>
                   {tags.map(tag => (
@@ -119,12 +108,14 @@ const Artist = ({
             </Container>
           </Grid.Unit>
 
-          <TabsContainer>
-            <Tabs left id="home_events">
-              <Tab id="artist_artworks" title="Artworks" panel={<ArtworkCardsList elements={artworks} />} />
-              <Tab id="artist_events" title="Events" panel={<EventCardsList elements={events} />} />
-            </Tabs>
-          </TabsContainer>
+          <Grid.Unit size={{ mobile: 1, desktop: 1 }}>
+            <h3>Places</h3>
+            <PlaceContainer>
+              {places && places.map(p => <PlaceSection place={p} />)}
+            </PlaceContainer>
+          </Grid.Unit>
+
+
         </Grid>
       </div>
     );
@@ -132,20 +123,4 @@ const Artist = ({
   return <Loader />;
 };
 
-const ArtworkCardsList = ({ elements }) => (
-  <>
-    <ElementContainer>
-      {elements && elements.map && elements.map(a => <ArtworkSection artwork={a} />)}
-    </ElementContainer>
-  </>
-);
-
-const EventCardsList = ({ elements }) => (
-  <>
-    <ElementContainer>
-      {elements && elements.map && elements.map(e => <EventSection event={e} />)}
-    </ElementContainer>
-  </>
-);
-
-export default Artist;
+export default Host;

@@ -9,6 +9,7 @@ import ArtistsContainer from '../containers/Artists';
 import HostsContainer from '../containers/Hosts';
 import PlacesContainer from '../containers/Places';
 import ArtistContainer from '../containers/Artist';
+import HostContainer from '../containers/Host';
 import PlaceContainer from '../containers/Place';
 import ArtworkContainer from '../containers/Artwork';
 
@@ -72,7 +73,7 @@ class IndexView extends Component {
               <Route path={`${match.url}about`} component={About} />
               <Route path={`${match.url}event/:id`} component={EventContainer} />
               <Route path={`${match.url}artist/:id`} component={ArtistContainer} />
-              {/* <Route path={`${match.url}host/:id`} component={HostContainer} /> */}
+              <Route path={`${match.url}host/:id`} component={HostContainer} />
               <Route path={`${match.url}place/:id`} component={PlaceContainer} />           
               <Route path={`${match.url}artwork/:id`} component={ArtworkContainer} />
             </Switch>
