@@ -14,6 +14,12 @@ const useChat = (roomId) => {
     });
 
     socketRef.current.on(NEW_CHAT_MESSAGE_EVENT, (message) => {
+
+      console.log("<<<<<<<<<<<<<<<")
+      console.log("RECEIVING MESSAGE")
+      console.log(message.senderId)
+      console.log(message)
+  
       const incomingMessage = {
         ...message,
         ownedByCurrentUser: message.senderId === socketRef.current.id,
@@ -27,8 +33,8 @@ const useChat = (roomId) => {
   }, [roomId]);
 
   const sendMessage = (messageBody) => {
-    console.log("********************")
-    console.log(NEW_CHAT_MESSAGE_EVENT)
+    console.log(">>>>>>>>>>>>>>>>>>>")
+    console.log("SENDING MESSAGE")
     console.log(messageBody)
     console.log(socketRef.current)
     console.log(socketRef.current.id)
