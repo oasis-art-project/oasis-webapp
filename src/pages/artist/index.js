@@ -3,6 +3,7 @@ import capitalize from 'lodash/capitalize';
 import { find, propEq } from 'ramda';
 import Grid from 'styled-components-grid';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import { Loader, Seo, Tag, TagsContainer, Tabs, Tab } from '../../components';
 import { IMGS_URL } from '../../helpers/index';
 
@@ -43,6 +44,17 @@ const ArtistBio = styled.p``;
 const TabsContainer = styled.section`
   display: flex;
   width: 100%;
+`;
+
+const LinkContainer = styled.div`
+  width: 100%;
+  text-align: left;
+  margin-bottom: 20px;
+`;
+
+const StyledLink = styled(Link)`
+  color: red;
+  text-decoration: underline;
 `;
 
 const Artist = ({
@@ -108,6 +120,10 @@ const Artist = ({
                 <ArtistName>{`${formatName(current.firstName, current.lastName)}`}</ArtistName>
               </Header>
 
+              <LinkContainer>
+              <StyledLink to={`/room/1-${current.id}`}>Message user</StyledLink>
+              </LinkContainer>
+
               <ArtistBio>{current.bio}</ArtistBio>
               {tags && (
                 <TagsContainer>
@@ -117,6 +133,7 @@ const Artist = ({
                 </TagsContainer>
               )}
             </Container>
+
           </Grid.Unit>
 
           <TabsContainer>

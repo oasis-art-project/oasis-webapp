@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import socketIOClient from "socket.io-client";
 
-const NEW_CHAT_MESSAGE_EVENT = "send_message";
 const SOCKET_SERVER_URL = "http://localhost:5000/";
 
 const useChat = (roomId) => {
@@ -13,7 +12,7 @@ const useChat = (roomId) => {
       query: { roomId },
     });
 
-    socketRef.current.on(NEW_CHAT_MESSAGE_EVENT, (message) => {
+    socketRef.current.on("send_message", (message) => {
 
       console.log("<<<<<<<<<<<<<<<")
       console.log("RECEIVING MESSAGE")
@@ -27,18 +26,28 @@ const useChat = (roomId) => {
       setMessages((messages) => [...messages, incomingMessage]);
     });
 
+    socketRef.current.on("send_notification", (message) => {
+
+      console.log("<<<<<<<<<<<<<<<")
+      console.log("RECEIVING NOTIFICATION")
+      console.log(message)
+      alert("Waiting messages on chat room " + message.roomId);
+    });
+
     return () => {
       socketRef.current.disconnect();
     };
   }, [roomId]);
 
-  const sendMessage = (messageBody) => {
+  const sendMessage = (messageBody, roomId, userId) => {
     console.log(">>>>>>>>>>>>>>>>>>>")
     console.log("SENDING MESSAGE")
     console.log(messageBody)
     console.log(socketRef.current)
     console.log(socketRef.current.id)
-    socketRef.current.emit(NEW_CHAT_MESSAGE_EVENT, {
+    socketRef.current.emit("send_message", {
+      roomId: roomId,
+      userId: userId,
       body: messageBody,
       senderId: socketRef.current.id,
     });

@@ -13,7 +13,8 @@ const ChatRoom = (props) => {
   };
 
   const handleSendMessage = () => {
-    sendMessage(newMessage);
+    const userId = '1'
+    sendMessage(newMessage, roomId, userId);
     setNewMessage("");
   };
 
