@@ -10,19 +10,17 @@ export const login = ({ dispatch, data }) => {
     .then(result => {
       // decoded token to read identity
       const decodedToken = jwt_decode(result.data.token);
-
       dispatch({
         type: types.AUTH_LOGIN_SUCCESS,
         token: result.data.token,
         expires: decodedToken.exp,
       });
-
-      setActiveUser({ dispatch, id: decodedToken.identity });
+      setActiveUser(dispatch, decodedToken.identity);
     })
     .catch(error => {
       dispatch({
         type: types.AUTH_LOGIN_FAIL,
-        error: error.response.data.message,
+        error,
       });
     });
 };
