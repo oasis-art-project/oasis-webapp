@@ -89,7 +89,7 @@ const Artist = ({
       getArtworks(id);
       getEventsByArtist(id);
     }
-    if (current == null && users) {
+    if (current === null && users) {
       setArtist();
     }
     if (current && current.id !== id) {

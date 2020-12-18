@@ -70,7 +70,7 @@ const Place = ({
       getPlace(id);
       getEvents(id);
     }
-    if (current == null && places) {
+    if (current === null && places) {
       setPlace();
     }
     if (current && current.id !== id) {

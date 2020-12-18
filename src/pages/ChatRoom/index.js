@@ -5,7 +5,7 @@ import "./index.css";
 
 const ChatRoom = (props) => {
   const { roomId } = props.match.params;
-  const { messages, sendMessage } = useChat(roomId);
+  const { messages, sendMessage } = useChat(roomId, props.user.id);
   const [newMessage, setNewMessage] = React.useState("");
 
   const handleNewMessageChange = (event) => {

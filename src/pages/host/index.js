@@ -80,7 +80,7 @@ const Host = ({
       getHost(id);
       getPlacesFromHost(id);
     }
-    if (current == null && users) {
+    if (current === null && users) {
       setHost();
     }
     if (current && current.id !== id) {
