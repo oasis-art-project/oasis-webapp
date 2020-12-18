@@ -3,7 +3,7 @@ import socketIOClient from "socket.io-client";
 
 const SOCKET_SERVER_URL = "http://localhost:5000/";
 
-const useChat = (roomId) => {
+const useChat = (roomId, userId) => {
   const [messages, setMessages] = useState([]);
   const socketRef = useRef();
 
@@ -30,13 +30,15 @@ const useChat = (roomId) => {
       console.log("<<<<<<<<<<<<<<<")
       console.log("RECEIVING NOTIFICATION")
       console.log(message)
-      alert("Waiting messages on chat room " + message.roomId);
+      if (message.to === userId) {
+        alert("Waiting messages on chat room " + message.roomId);
+      }
     });
 
     return () => {
       socketRef.current.disconnect();
     };
-  }, [roomId]);
+  }, [roomId, userId]);
 
   const sendMessage = (messageBody, roomId, userId) => {
     console.log(">>>>>>>>>>>>>>>>>>>")
