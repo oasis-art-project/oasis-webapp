@@ -3,12 +3,18 @@ import capitalize from 'lodash/capitalize';
 import { find, propEq } from 'ramda';
 import Grid from 'styled-components-grid';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import { Loader, Seo, Tag, TagsContainer } from '../../components';
 import { IMGS_URL } from '../../helpers/index';
 
 import PlaceSection from './PlaceSection';
 
 const formatName = (first, last) => `${capitalize(first)} ${capitalize(last)}`;
+
+const formatChatRoom = (id1, id2) => {
+  if (id1 < id2) return id1 + '-' + id2;
+  else return id2 + '-' + id1;
+};
 
 const Container = styled.div`
   padding: 10px;
@@ -39,11 +45,23 @@ const PlaceContainer = styled.div`
   }
 `;
 
+const LinkContainer = styled.div`
+  width: 100%;
+  text-align: left;
+  margin-bottom: 20px;
+`;
+
+const StyledLink = styled(Link)`
+  color: red;
+  text-decoration: underline;
+`;
+
 const Host = ({
   current,
   users,
   loading,
   places,
+  user,
   getHost,
   setCurrentHost,
   getPlacesFromHost,
@@ -96,6 +114,12 @@ const Host = ({
               <Header>
                 <HostName>{`${formatName(current.firstName, current.lastName)}`}</HostName>
               </Header>
+
+              {user && user.id !== current.id &&
+                <LinkContainer>
+                  <StyledLink to={`/room/${formatChatRoom(user.id, current.id)}`}>Message user</StyledLink>
+                </LinkContainer>
+              }
 
               <HostBio>{current.bio}</HostBio>
               {tags && (
