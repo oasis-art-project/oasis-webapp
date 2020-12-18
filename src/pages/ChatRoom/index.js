@@ -1,7 +1,7 @@
 import React from "react";
+import useChat from "../../helpers/useChat";
 
 import "./index.css";
-import useChat from "../../helpers/useChat";
 
 const ChatRoom = (props) => {
   const { roomId } = props.match.params;
@@ -13,9 +13,14 @@ const ChatRoom = (props) => {
   };
 
   const handleSendMessage = () => {
-    const userId = '1'
-    sendMessage(newMessage, roomId, userId);
-    setNewMessage("");
+    if (props.user) {
+        const userId = props.user.id;
+        sendMessage(newMessage, roomId, userId);
+        setNewMessage("");
+    } else {
+        alert("Please login first to send messages to other users");
+        setNewMessage("");
+    }
   };
 
   return (

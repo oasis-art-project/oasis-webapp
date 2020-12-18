@@ -13,8 +13,8 @@ import HostContainer from '../containers/Host';
 import PlaceContainer from '../containers/Place';
 import ArtworkContainer from '../containers/Artwork';
 
-import ChatHome from "./ChatHome/index";
-import ChatRoom from "./ChatRoom/index";
+// import ChatRoom from "./ChatRoom/index";
+import ChatRoom from "../containers/ChatRoom";
 
 // Static Pages
 import About from './about';
@@ -79,8 +79,6 @@ class IndexView extends Component {
               <Route path={`${match.url}host/:id`} component={HostContainer} />
               <Route path={`${match.url}place/:id`} component={PlaceContainer} />           
               <Route path={`${match.url}artwork/:id`} component={ArtworkContainer} />
-
-              <Route exact path="/chat" component={ChatHome} />
               <Route exact path="/room/:roomId" component={ChatRoom} />
 
             </Switch>

@@ -100,9 +100,6 @@ const MobileNav = ({ close, open, stateChange, user }) => {
           <MobileLink onClick={close} to="/hosts">
             Hosts
           </MobileLink>
-          <MobileLink onClick={close} to="/chat">
-            Chat
-          </MobileLink>
 
           <Divider />
           {user && (
@@ -136,9 +133,6 @@ const DesktopNav = ({ user }) => (
     </StyledLink>
     <StyledLink to="/hosts" activeClassName="active">
       Hosts
-    </StyledLink>
-    <StyledLink to="/chat" activeClassName="active">
-      Chat
     </StyledLink>
 
     {user && <UserMenu user={user} />}

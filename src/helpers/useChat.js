@@ -27,7 +27,6 @@ const useChat = (roomId) => {
     });
 
     socketRef.current.on("send_notification", (message) => {
-
       console.log("<<<<<<<<<<<<<<<")
       console.log("RECEIVING NOTIFICATION")
       console.log(message)
