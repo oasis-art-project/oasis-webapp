@@ -63,6 +63,7 @@ const Artist = ({
   users,
   loading,
   events,
+  user,  
   getArtist,
   getArtworks,
   setCurrentArtist,
@@ -120,9 +121,11 @@ const Artist = ({
                 <ArtistName>{`${formatName(current.firstName, current.lastName)}`}</ArtistName>
               </Header>
 
-              <LinkContainer>
-              <StyledLink to={`/room/1-${current.id}`}>Message user</StyledLink>
-              </LinkContainer>
+              {user && user.id != current.id &&
+                <LinkContainer>
+                  <StyledLink to={`/room/${user.id}-${current.id}`}>Message user</StyledLink>                   
+                </LinkContainer>
+              }
 
               <ArtistBio>{current.bio}</ArtistBio>
               {tags && (
