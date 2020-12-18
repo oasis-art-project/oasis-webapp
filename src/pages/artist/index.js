@@ -12,6 +12,11 @@ import EventSection from './EventSection';
 
 const formatName = (first, last) => `${capitalize(first)} ${capitalize(last)}`;
 
+const formatChatRoom = (id1, id2) => {
+  if (id1 < id2) return id1 + '-' + id2;
+  else return id2 + '-' + id1;
+};
+
 const Container = styled.div`
   padding: 10px;
 `;
@@ -121,9 +126,9 @@ const Artist = ({
                 <ArtistName>{`${formatName(current.firstName, current.lastName)}`}</ArtistName>
               </Header>
 
-              {user && user.id != current.id &&
+              {user && user.id !== current.id &&
                 <LinkContainer>
-                  <StyledLink to={`/room/${user.id}-${current.id}`}>Message user</StyledLink>                   
+                  <StyledLink to={`/room/${formatChatRoom(user.id, current.id)}`}>Message user</StyledLink>
                 </LinkContainer>
               }
 

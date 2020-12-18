@@ -9,7 +9,7 @@ const mapStateToProps = state => ({
   current: state.artist.current,
   loading: state.artist.loading,
   events: state.artist.events,  
-  user: state.user.active,  
+  user: state.user.active,
 });
 
 const mapDispatchToProps = dispatch => ({
