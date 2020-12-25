@@ -12,8 +12,6 @@ import ArtistContainer from '../containers/Artist';
 import HostContainer from '../containers/Host';
 import PlaceContainer from '../containers/Place';
 import ArtworkContainer from '../containers/Artwork';
-
-// import ChatRoom from "./ChatRoom/index";
 import ChatRoom from "../containers/ChatRoom";
 
 // Static Pages

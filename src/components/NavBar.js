@@ -6,7 +6,8 @@ import Measure from 'react-measure';
 import LogoPNG2 from '../assets/logo_2.png';
 import MobileStyles from '../helpers/navStyles';
 import Button from './Button';
-import UserMenu from './UserMenu';
+// import UserMenu from './UserMenu';
+import UserMenu from "../containers/UserMenu";
 
 const Logo = styled.img`
   width: 60px;

@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { Popover, Icon, Menu, MenuItem, MenuDivider } from '@blueprintjs/core';
+import useChat from "../../helpers/useChat";
 
 const UserBtn = styled.div`
   cursor: pointer;
@@ -27,14 +28,19 @@ const UserOptions = (
   // --- TODO ---
   // consider user img
   // warning of <a> children of <a>
-  const UserMenu = ({ user }) => (
-    <UserBtn>
-      <Popover content={UserOptions}>
-        <div>
-          <Icon iconSize={30} icon="user" />
-        </div>
-      </Popover>
-    </UserBtn>
-  );
+//   const UserMenu = ({ user }) => (
+const UserMenu = (user) => {
+    const { messages, sendMessage } = useChat("default", user.id);
 
-  export default UserMenu;
+    return (
+        <UserBtn>
+          <Popover content={UserOptions}>
+            <div>
+              <Icon iconSize={30} icon="user" />
+            </div>
+          </Popover>
+        </UserBtn>        
+    );
+};
+
+export default UserMenu;
