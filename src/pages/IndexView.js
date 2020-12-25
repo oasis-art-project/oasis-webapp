@@ -68,7 +68,7 @@ class IndexView extends Component {
         <HomeSection>
           <Navbar />
           <ViewContainer>
-            <Switch>            
+            <Switch>
               <Route exact path={match.path} component={HomeContainer} />
               <Route path={`${match.url}artists`} component={ArtistsContainer} />
               <Route path={`${match.url}places`} component={PlacesContainer} />

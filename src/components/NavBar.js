@@ -6,7 +6,7 @@ import Measure from 'react-measure';
 import LogoPNG2 from '../assets/logo_2.png';
 import MobileStyles from '../helpers/navStyles';
 import Button from './Button';
-import { Popover, Icon, Menu, MenuItem, MenuDivider } from '@blueprintjs/core';
+import UserMenu from './UserMenu';
 
 const Logo = styled.img`
   width: 60px;
@@ -56,15 +56,6 @@ const Divider = styled.div`
   height: 1px;
   margin: 60px 0;
   background: #fff;
-`;
-
-const UserBtn = styled.div`
-  cursor: pointer;
-  position: absolute;
-  margin-top: 10px;
-  margin-right: 20px;
-  right: 0;
-  padding: 0 30px !important;
 `;
 
 const MenuMobileContainer = styled.header`
@@ -145,31 +136,6 @@ const DesktopNav = ({ user }) => (
       </Link>
     )}
   </StyledNav>
-);
-
-const UserOptions = (
-  <Menu>
-    <Link to="/profile">
-      <MenuItem icon="user" text="My profile" />
-    </Link>
-    <MenuDivider />
-    <Link to="/login">
-      <MenuItem icon="log-out" text="Log out" />
-    </Link>
-  </Menu>
-);
-
-// --- TODO ---
-// consider user img
-// warning of <a> children of <a>
-const UserMenu = ({ user }) => (
-  <UserBtn>
-    <Popover content={UserOptions}>
-      <div>
-        <Icon iconSize={30} icon="user" />
-      </div>
-    </Popover>
-  </UserBtn>
 );
 
 class NavBar extends Component {
