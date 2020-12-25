@@ -9,7 +9,7 @@ const useChat = (roomId, userId) => {
 
   useEffect(() => {
     socketRef.current = socketIOClient(SOCKET_SERVER_URL, {
-      query: { roomId },
+      query: { 'roomId': roomId, 'userId': userId },
     });
 
     socketRef.current.on("send_message", (message) => {
@@ -31,7 +31,7 @@ const useChat = (roomId, userId) => {
       console.log("RECEIVING NOTIFICATION")
       console.log(message)
       if (message.to === userId) {
-        alert("Waiting messages on chat room " + message.roomId);
+        alert("Waiting messages on chat room " + message.room);
       }
     });
 

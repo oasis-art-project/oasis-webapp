@@ -30,7 +30,7 @@ const UserOptions = (
   // warning of <a> children of <a>
 //   const UserMenu = ({ user }) => (
 const UserMenu = (user) => {
-    const { messages, sendMessage } = useChat("default", user.id);
+    const { messages, sendMessage } = useChat("default", user.user.id);
 
     return (
         <UserBtn>
