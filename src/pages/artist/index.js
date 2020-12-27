@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { Loader, Seo, Tag, TagsContainer, Tabs, Tab } from '../../components';
 import { IMGS_URL } from '../../helpers/index';
+import { Icon } from '@blueprintjs/core';
 
 import ArtworkSection from './ArtworkSection';
 import EventSection from './EventSection';
@@ -117,22 +118,34 @@ const Artist = ({
       <div>
         <Seo title={`${formatName(current.firstName, current.lastName)}`} />
         <Grid halign="center">
-          <Grid.Unit size={{ mobile: 1, desktop: 1 }}>
+          
+          <Grid.Unit size={{ mobile: 1, desktop: 0.3 }}>
             <Container>
               <div>
                 <ArtistImage src={`${IMGS_URL}/${current.images[0]}`} />
               </div>
+            </Container>
+          </Grid.Unit>
+
+          <Grid.Unit size={{ mobile: 1, desktop: 0.4 }}>
               <Header>
                 <ArtistName>{`${formatName(current.firstName, current.lastName)}`}</ArtistName>
               </Header>
 
+              <ArtistBio>{current.bio}</ArtistBio>
+
+              <LinkContainer>
+                  <Icon iconSize={20} icon="link" />
+                  <a target="_blank" href="current.homepage">Homepage</a>
+              </LinkContainer>
+
               {user && user.id !== current.id &&
                 <LinkContainer>
+                  <Icon iconSize={20} icon="chat" />
                   <StyledLink to={`/room/${formatChatRoom(user.id, current.id)}`}>Message user</StyledLink>
                 </LinkContainer>
               }
 
-              <ArtistBio>{current.bio}</ArtistBio>
               {tags && (
                 <TagsContainer>
                   {tags.map(tag => (
@@ -140,9 +153,8 @@ const Artist = ({
                   ))}
                 </TagsContainer>
               )}
-            </Container>
 
-          </Grid.Unit>
+         </Grid.Unit> 
 
           <TabsContainer>
             <Tabs left id="home_events">
