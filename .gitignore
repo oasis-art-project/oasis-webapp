@@ -30,3 +30,5 @@ yarn-error.log*
 
 /.vscode
 public/imgs
+
+local.sh
