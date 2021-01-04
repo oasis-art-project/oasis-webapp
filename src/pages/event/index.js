@@ -81,9 +81,9 @@ class Event extends Component {
 
   render() {
     const { currentEvent } = this.state;
-    console.log(currentEvent.hub_embed);
 
     if (currentEvent) {
+      console.log(currentEvent.hub_embed);
       const tags = currentEvent.tags.split(';');
       return (
         <div>
