@@ -121,7 +121,9 @@ class Event extends Component {
                   </TagsContainer>
                 )}
                
-               <Iframe iframe={`<iframe src="https://hubs.mozilla.com/$(currentEvent.hub_embed)" style="width: 1024px; height: 768px;" allow="microphone; camera; vr; speaker;"></iframe>`} />
+               {/* <Iframe iframe={`<iframe src="https://hubs.mozilla.com/$(currentEvent.hub_embed)" style="width: 1024px; height: 768px;" allow="microphone; camera; vr; speaker;"></iframe>`} /> */}
+
+               <iframe src="https://hubs.mozilla.com/yVPXEAS/oasis-lobby?embed_token=932c8abfac9297723d41f3418ab8527b" width="1024px" height="768px" allow="microphone; camera; vr; speaker;" />
 
               </Container>
             </Grid.Unit>
