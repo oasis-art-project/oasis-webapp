@@ -12,6 +12,7 @@ import ArtistContainer from '../containers/Artist';
 import HostContainer from '../containers/Host';
 import PlaceContainer from '../containers/Place';
 import ArtworkContainer from '../containers/Artwork';
+import ChatRoom from "../containers/ChatRoom";
 
 // Static Pages
 import About from './about';
@@ -65,7 +66,7 @@ class IndexView extends Component {
         <HomeSection>
           <Navbar />
           <ViewContainer>
-            <Switch>            
+            <Switch>
               <Route exact path={match.path} component={HomeContainer} />
               <Route path={`${match.url}artists`} component={ArtistsContainer} />
               <Route path={`${match.url}places`} component={PlacesContainer} />
@@ -76,6 +77,8 @@ class IndexView extends Component {
               <Route path={`${match.url}host/:id`} component={HostContainer} />
               <Route path={`${match.url}place/:id`} component={PlaceContainer} />           
               <Route path={`${match.url}artwork/:id`} component={ArtworkContainer} />
+              <Route exact path="/room/:roomId" component={ChatRoom} />
+
             </Switch>
           </ViewContainer>
         </HomeSection>

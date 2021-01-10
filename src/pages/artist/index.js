@@ -3,13 +3,20 @@ import capitalize from 'lodash/capitalize';
 import { find, propEq } from 'ramda';
 import Grid from 'styled-components-grid';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import { Loader, Seo, Tag, TagsContainer, Tabs, Tab } from '../../components';
 import { IMGS_URL } from '../../helpers/index';
+import { Icon } from '@blueprintjs/core';
 
 import ArtworkSection from './ArtworkSection';
 import EventSection from './EventSection';
 
 const formatName = (first, last) => `${capitalize(first)} ${capitalize(last)}`;
+
+const formatChatRoom = (id1, id2) => {
+  if (id1 < id2) return id1 + '-' + id2;
+  else return id2 + '-' + id1;
+};
 
 const Container = styled.div`
   padding: 10px;
@@ -45,12 +52,24 @@ const TabsContainer = styled.section`
   width: 100%;
 `;
 
+const LinkContainer = styled.div`
+  width: 100%;
+  text-align: left;
+  margin-bottom: 20px;
+`;
+
+const StyledLink = styled(Link)`
+  color: red;
+  text-decoration: underline;
+`;
+
 const Artist = ({
   current,
   artworks,
   users,
   loading,
   events,
+  user,  
   getArtist,
   getArtworks,
   setCurrentArtist,
@@ -71,7 +90,7 @@ const Artist = ({
       getArtworks(id);
       getEventsByArtist(id);
     }
-    if (current == null && users) {
+    if (current === null && users) {
       setArtist();
     }
     if (current && current.id !== id) {
@@ -99,16 +118,34 @@ const Artist = ({
       <div>
         <Seo title={`${formatName(current.firstName, current.lastName)}`} />
         <Grid halign="center">
-          <Grid.Unit size={{ mobile: 1, desktop: 1 }}>
+          
+          <Grid.Unit size={{ mobile: 1, desktop: 0.3 }}>
             <Container>
               <div>
                 <ArtistImage src={`${IMGS_URL}/${current.images[0]}`} />
               </div>
+            </Container>
+          </Grid.Unit>
+
+          <Grid.Unit size={{ mobile: 1, desktop: 0.4 }}>
               <Header>
                 <ArtistName>{`${formatName(current.firstName, current.lastName)}`}</ArtistName>
               </Header>
 
               <ArtistBio>{current.bio}</ArtistBio>
+
+              <LinkContainer>
+                  <Icon iconSize={20} icon="link" />
+                  <a target="_blank" href={current.homepage}>Homepage</a>
+              </LinkContainer>
+
+              {user && user.id !== current.id &&
+                <LinkContainer>
+                  <Icon iconSize={20} icon="chat" />
+                  <StyledLink to={`/room/${formatChatRoom(user.id, current.id)}`}>Message user</StyledLink>
+                </LinkContainer>
+              }
+
               {tags && (
                 <TagsContainer>
                   {tags.map(tag => (
@@ -116,8 +153,8 @@ const Artist = ({
                   ))}
                 </TagsContainer>
               )}
-            </Container>
-          </Grid.Unit>
+
+         </Grid.Unit> 
 
           <TabsContainer>
             <Tabs left id="home_events">

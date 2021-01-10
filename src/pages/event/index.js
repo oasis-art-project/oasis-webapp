@@ -56,6 +56,10 @@ const ArtworkContainer = styled.div`
 
 const EventDesc = styled.p``;
 
+function Iframe(html) {
+  return (<div dangerouslySetInnerHTML={ {__html:  html}} />);
+}
+
 class Event extends Component {
   state = {
     currentEvent: filterArray(this.props.events, this.props.match.params.id),
@@ -77,7 +81,9 @@ class Event extends Component {
 
   render() {
     const { currentEvent } = this.state;
+
     if (currentEvent) {
+      console.log(currentEvent.hub_embed);
       const tags = currentEvent.tags.split(';');
       return (
         <div>
@@ -90,9 +96,11 @@ class Event extends Component {
                     <EventImage src={`${IMGS_URL}/${currentEvent.images[0]}`} />
                   </div>
                 </Carousel>
+
                 <Header>
                   <EventName>{currentEvent.name}</EventName>
                   <Like />
+
                 </Header>
                 <EventInfoCont>
                   <EventInfoItem>{capitalize(currentEvent.place.name)}</EventInfoItem>
@@ -100,8 +108,11 @@ class Event extends Component {
                     {formatDates(currentEvent.startTime, currentEvent.endTime)}
                   </EventInfoItem>
                 </EventInfoCont>
+
                 <EventDesc>{currentEvent.description}</EventDesc>
+
                 <EventDesc>{capitalize(currentEvent.place.description)}</EventDesc>
+
                 {tags && (
                   <TagsContainer>
                     {tags.map(tag => (
@@ -109,6 +120,11 @@ class Event extends Component {
                     ))}
                   </TagsContainer>
                 )}
+               
+               {/* <Iframe iframe={`<iframe src="https://hubs.mozilla.com/$(currentEvent.hub_embed)" style="width: 1024px; height: 768px;" allow="microphone; camera; vr; speaker;"></iframe>`} /> */}
+
+               <iframe src="https://hubs.mozilla.com/yVPXEAS/oasis-lobby?embed_token=932c8abfac9297723d41f3418ab8527b" width="1024px" height="768px" allow="microphone; camera; vr; speaker;" />
+
               </Container>
             </Grid.Unit>
             

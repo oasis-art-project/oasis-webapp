@@ -58,7 +58,7 @@ const Artwork = ({
       getArtwork(id);
       getEventsWithArtwork(id);
     }
-    if (current == null || (current && current.id !== id)) {
+    if (current === null || (current && current.id !== id)) {
       getArtwork(id);
       getEventsWithArtwork(id);
     }

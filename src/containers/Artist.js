@@ -3,12 +3,13 @@ import Artist from '../pages/artist/index';
 import { setCurrentArtist, fetchArtist, fetchEventByArtist } from '../actions/artist';
 import { fetchArtistArtworks } from '../actions/artwork';
 
-const mapStateToProps = state => ({
+const mapStateToProps = state => ({  
   users: state.user.artists,
   artworks: state.artwork.all,
   current: state.artist.current,
   loading: state.artist.loading,
-  events: state.artist.events,
+  events: state.artist.events,  
+  user: state.user.active,
 });
 
 const mapDispatchToProps = dispatch => ({

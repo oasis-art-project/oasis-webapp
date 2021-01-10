@@ -7,6 +7,7 @@ const mapStateToProps = state => ({
   current: state.host.current,
   loading: state.host.loading,
   places: state.host.places,
+  user: state.user.active,  
 });
 
 const mapDispatchToProps = dispatch => ({

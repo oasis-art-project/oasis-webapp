@@ -6,7 +6,8 @@ import Measure from 'react-measure';
 import LogoPNG2 from '../assets/logo_2.png';
 import MobileStyles from '../helpers/navStyles';
 import Button from './Button';
-import { Popover, Icon, Menu, MenuItem, MenuDivider } from '@blueprintjs/core';
+// import UserMenu from './UserMenu';
+import UserMenu from "../containers/UserMenu";
 
 const Logo = styled.img`
   width: 60px;
@@ -58,15 +59,6 @@ const Divider = styled.div`
   background: #fff;
 `;
 
-const UserBtn = styled.div`
-  cursor: pointer;
-  position: absolute;
-  margin-top: 10px;
-  margin-right: 20px;
-  right: 0;
-  padding: 0 30px !important;
-`;
-
 const MenuMobileContainer = styled.header`
   position: fixed;
   height: 50px;
@@ -99,10 +91,7 @@ const MobileNav = ({ close, open, stateChange, user }) => {
           </MobileLink>
           <MobileLink onClick={close} to="/hosts">
             Hosts
-          </MobileLink>          
-          {/* <MobileLink onClick={close} to="/about">
-            About
-          </MobileLink> */}
+          </MobileLink>
 
           <Divider />
           {user && (
@@ -136,10 +125,7 @@ const DesktopNav = ({ user }) => (
     </StyledLink>
     <StyledLink to="/hosts" activeClassName="active">
       Hosts
-    </StyledLink>    
-    {/* <StyledLink to="/about" activeClassName="active">
-      About
-    </StyledLink> */}
+    </StyledLink>
 
     {user && <UserMenu user={user} />}
 
@@ -151,31 +137,6 @@ const DesktopNav = ({ user }) => (
       </Link>
     )}
   </StyledNav>
-);
-
-const UserOptions = (
-  <Menu>
-    <Link to="/profile">
-      <MenuItem icon="user" text="My profile" />
-    </Link>
-    <MenuDivider />
-    <Link to="/login">
-      <MenuItem icon="log-out" text="Log out" />
-    </Link>
-  </Menu>
-);
-
-// --- TODO ---
-// consider user img
-// warning of <a> children of <a>
-const UserMenu = ({ user }) => (
-  <UserBtn>
-    <Popover content={UserOptions}>
-      <div>
-        <Icon iconSize={30} icon="user" />
-      </div>
-    </Popover>
-  </UserBtn>
 );
 
 class NavBar extends Component {
