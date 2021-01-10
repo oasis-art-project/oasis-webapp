@@ -136,7 +136,7 @@ const Artist = ({
 
               <LinkContainer>
                   <Icon iconSize={20} icon="link" />
-                  <a target="_blank" href={current.homepage}>Homepage</a>
+                  <a target="_blank" rel="noreferrer" href={current.homepage}>Homepage</a>
               </LinkContainer>
 
               {user && user.id !== current.id &&

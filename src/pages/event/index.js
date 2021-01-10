@@ -56,10 +56,6 @@ const ArtworkContainer = styled.div`
 
 const EventDesc = styled.p``;
 
-function Iframe(html) {
-  return (<div dangerouslySetInnerHTML={ {__html:  html}} />);
-}
-
 class Event extends Component {
   state = {
     currentEvent: filterArray(this.props.events, this.props.match.params.id),
