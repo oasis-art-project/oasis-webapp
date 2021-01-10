@@ -79,8 +79,10 @@ class Event extends Component {
     const { currentEvent } = this.state;
 
     if (currentEvent) {
-      console.log(currentEvent.hub_embed);
       const tags = currentEvent.tags.split(';');
+      const embed = `https://hubs.mozilla.com/${currentEvent.hub_embed}`
+      console.log(embed);
+
       return (
         <div>
           <Seo title={currentEvent.name} />
@@ -116,11 +118,7 @@ class Event extends Component {
                     ))}
                   </TagsContainer>
                 )}
-               
-               {/* <Iframe iframe={`<iframe src="https://hubs.mozilla.com/$(currentEvent.hub_embed)" style="width: 1024px; height: 768px;" allow="microphone; camera; vr; speaker;"></iframe>`} /> */}
-
-               <iframe title="OASIS Hubs Room" src="https://hubs.mozilla.com/yVPXEAS/oasis-lobby?embed_token=932c8abfac9297723d41f3418ab8527b" width="1024px" height="768px" allow="microphone; camera; vr; speaker;" />
-               console.log("https://hubs.mozilla.com/$(currentEvent.hub_embed)");
+               <iframe title="OASIS Hubs Room" src={embed} width="1024px" height="768px" allow="microphone; camera; vr; speaker;" />               
 
               </Container>
             </Grid.Unit>
