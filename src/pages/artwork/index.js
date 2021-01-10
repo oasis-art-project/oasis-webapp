@@ -36,6 +36,8 @@ const EventContainer = styled.div`
 const formatName = (name, lastName) => `${capitalize(name)} ${capitalize(lastName)}`;
 
 const ArtworkDesc = styled.p``;
+const ArtworkMedium = styled.p``;
+const ArtworkSize = styled.p``;
 
 const Artwork = ({
   current,
@@ -80,10 +82,13 @@ const Artwork = ({
                   </div>
                 </Carousel>
                 <Header>
-                  <ArtworkName>{current.name}</ArtworkName>
+                  <ArtworkName>{current.name} ({current.year})</ArtworkName>
                   <Like />
                 </Header>
-                <ArtworkDesc>{current.description}</ArtworkDesc>                
+                <ArtworkDesc>{current.description}</ArtworkDesc>
+                <ArtworkMedium>{current.medium}</ArtworkMedium>
+                <ArtworkSize>{current.size}</ArtworkSize>
+
                 {tags && (
                   <TagsContainer>
                     {tags.map(tag => (
