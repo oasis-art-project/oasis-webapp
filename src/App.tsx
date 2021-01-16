@@ -1,29 +1,30 @@
-import { Provider as ReduxProvider } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { ThemeProvider } from 'styled-components';
+import { QueryClientProvider, QueryClient } from 'react-query';
 import Login from './components/login/Login';
-import Navbar from './components/navbar/Navbar';
-import createStore from './store';
+import Home from './pages/Home/index';
 
-const store = createStore();
+const queryClient = new QueryClient({});
+
+const theme = {
+  colors: {
+    darkGray: '#425663',
+    lightGray: '#B0CFD1',
+  },
+};
 
 function App() {
   return (
-    <ReduxProvider store={store}>
-      <Router>
-        <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/login" component={Login} />
-        </Switch>
-      </Router>
-    </ReduxProvider>
-  );
-}
-
-function Home() {
-  return (
-    <>
-      <Navbar />
-    </>
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider theme={theme}>
+        <Router>
+          <Switch>
+            <Route path="/" exact component={Home} />
+            <Route path="/login" component={Login} />
+          </Switch>
+        </Router>
+      </ThemeProvider>
+    </QueryClientProvider>
   );
 }
 
