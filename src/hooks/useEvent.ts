@@ -4,19 +4,19 @@ import { API_URL } from './cosntants';
 
 const { get } = axios;
 
-function fetchAllEvents() {
-  return get(`${API_URL}/event`);
+function fetchEvent(id: string) {
+  return get(`${API_URL}/event/${id}`);
 }
 
-function useEvents() {
+function useEvent(id: string) {
   return useQuery(
-    'events',
+    `event-${id}`,
     async () => {
-      const { data } = await fetchAllEvents();
+      const { data } = await fetchEvent(id);
       return data;
     },
     { refetchOnWindowFocus: false }
   );
 }
 
-export default useEvents;
+export default useEvent;
