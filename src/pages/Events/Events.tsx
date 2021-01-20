@@ -88,14 +88,14 @@ function Events() {
           <li
             onClick={() => toggleView()}
             className={`mx-5 hover: cursor-pointer ${
-              view === 'current_events' ? 'text-lightGray' : ''
+              view === 'current_events' ? 'text-darkGray' : 'text-lightGray'
             }`}
           >
             Current events
           </li>
           <li
             className={`mx-5 hover: cursor-pointer ${
-              view === 'upcoming_events' ? 'text-lightGray' : ''
+              view === 'upcoming_events' ? 'text-darkGray' : 'text-lightGray'
             }`}
             onClick={() => toggleView()}
           >
