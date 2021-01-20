@@ -34,6 +34,7 @@ function Artists() {
               imageURL={`${IMGS_URL}/${artist.images[0]}`}
               height="225px"
             />
+            <p>{artist.tags.split(';').map((tag: any) => tag)}</p>
           </article>
         </Link>
       ))}
