@@ -8,6 +8,7 @@ import Navbar from './components/navbar/Navbar';
 import Home from './pages/Events';
 import Event from './pages/Event';
 import Artists from './pages/Artists';
+import Artist from './pages/Artist';
 
 const Container = styled.main`
   max-width: 1280px;
@@ -36,6 +37,7 @@ function App() {
                   <Route path="/" exact component={Home} />
                   <Route path="/events/:id" exact component={Event} />
                   <Route path="/artists/" exact component={Artists} />
+                  <Route path="/artists/:id" exact component={Artist} />
                 </Switch>
               </Container>
             </Route>
