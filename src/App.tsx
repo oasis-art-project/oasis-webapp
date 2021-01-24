@@ -3,12 +3,13 @@ import { ThemeProvider } from 'styled-components';
 import { QueryClientProvider, QueryClient } from 'react-query';
 import styled from 'styled-components';
 import Login from './components/login/Login';
-import Navbar from './components/navbar/Navbar';
+import Navbar from './components/Navbar';
 
 import Home from './pages/Events';
 import Event from './pages/Event';
 import Artists from './pages/Artists';
 import Artist from './pages/Artist';
+import Artwork from './pages/Artwrok';
 
 const Container = styled.main`
   max-width: 1280px;
@@ -31,13 +32,14 @@ function App() {
           <Switch>
             <Route path="/login" exact component={Login} />
             <Route path="/">
-              <Container className="lg:container md:mx-auto md:px-8 sm:px-4">
+              <Container className="lg:container md:mx-auto px-4">
                 <Navbar />
                 <Switch>
                   <Route path="/" exact component={Home} />
-                  <Route path="/events/:id" exact component={Event} />
+                  <Route path="/event/:id" exact component={Event} />
                   <Route path="/artists/" exact component={Artists} />
-                  <Route path="/artists/:id" exact component={Artist} />
+                  <Route path="/artist/:id" exact component={Artist} />
+                  <Route path="/artwork/:id" exact component={Artwork} />
                 </Switch>
               </Container>
             </Route>

@@ -56,7 +56,7 @@ const Card = ({
   const parsedDates = datesParser(startTime, endTime);
 
   return (
-    <Link to={`/events/${id}`}>
+    <Link to={`/event/${id}`}>
       <article>
         <p>{name}</p>
         <ArtisName className="font-header font-bold text-xl my-2">{artist}</ArtisName>
@@ -108,7 +108,7 @@ function Events() {
           {data[view].map((event: any) => (
             <Marker key={event.id} position={[event.place.latitude, event.place.longitude]}>
               <StyledPopup>
-                <Link to={`/events/${event.id}`}>
+                <Link to={`/event/${event.id}`}>
                   <p className="font-header text-darkGray font-bold text-lg my-1 truncate">
                     {event.name}
                   </p>

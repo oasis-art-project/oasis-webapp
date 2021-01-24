@@ -74,7 +74,7 @@ function Event() {
       <SectionHeader title="Participating artists" />
       <div className="grid xl:grid-cols-6 md:grid-cols-6 sm:grid-cols-2 gap-6 mb-5">
         {eventArtist.map((artist: any) => (
-          <Link key={artist.id} to={`/artists/${artist.id}`}>
+          <Link key={artist.id} to={`/artist/${artist.id}`}>
             <article className="flex flex-end flex-col h-full justify-end">
               <ImgContainer className="mb-2" imageURL={artist.profileImage} height="150px" />
               <p className="font-header font-bold text-xl truncate mb-2 text-center uppercase">
@@ -87,7 +87,7 @@ function Event() {
       <SectionHeader title="Artworks" />
       <div className="grid xl:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 gap-12 mb-5">
         {eventArtworks.map((artwork: any) => (
-          <Link key={artwork.id} to={`/artworks/${artwork.id}`}>
+          <Link key={artwork.id} to={`/artwork/${artwork.id}`}>
             <article className="flex flex-end flex-col h-full justify-end">
               <ImgContainer className="mb-2" imageURL={artwork.profileImage} height="150px" />
               <p className="truncate mb-2 text-gray-500">{artwork.name}</p>

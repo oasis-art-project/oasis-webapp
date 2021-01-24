@@ -61,7 +61,6 @@ function Artist() {
   return (
     <div className="">
       <SectionHeader title="Artist Information" />
-      <p className="font-header text-3xl"></p>
       <div className="grid xl:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 gap-6 mb-5">
         <div className="flex flex-end flex-col h-full justify-end">
           <p className="font-header font-bold text-5xl truncate mb-2">
@@ -102,7 +101,7 @@ function Artist() {
       <SectionHeader title="Artworks" />
       <div className="grid xl:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 gap-12 mb-5">
         {userArtworks.map((artwork: any) => (
-          <Link key={artwork.id} to={`/artworks/${artwork.id}`}>
+          <Link key={artwork.id} to={`/artwork/${artwork.id}`}>
             <article className="flex flex-end flex-col h-full justify-end">
               <ImgContainer className="mb-2" imageURL={artwork.profileImage} height="150px" />
               <p className="truncate mb-2 text-gray-500">{artwork.name}</p>
@@ -113,7 +112,7 @@ function Artist() {
       <SectionHeader title="Events" />
       <div className="grid xl:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 gap-12 mb-5">
         {userEvents.map((event: any) => (
-          <Link key={event.id} to={`/events/${event.id}`}>
+          <Link key={event.id} to={`/event/${event.id}`}>
             <article className="flex flex-end flex-col h-full justify-end">
               <ImgContainer className="mb-2" imageURL={event.eventCover} height="150px" />
               <p className="truncate mb-2 text-gray-500">{event.name}</p>

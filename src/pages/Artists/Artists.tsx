@@ -24,7 +24,7 @@ function Artists() {
   return (
     <div className="grid xl:grid-cols-4 md:grid-cols-4 sm:grid-cols-2 gap-6 mb-5">
       {data.users.map((artist: any) => (
-        <Link key={artist.id} to={`/artists/${artist.id}`}>
+        <Link key={artist.id} to={`/artist/${artist.id}`}>
           <article className="flex flex-end flex-col h-full justify-end">
             <p className="font-header font-bold text-xl truncate mb-1 uppercase">
               {`${artist.firstName} ${artist.lastName}`}
