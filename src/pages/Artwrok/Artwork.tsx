@@ -41,9 +41,15 @@ function Artwork() {
   if (error) return <div>Error</div>;
 
   const { artwork } = data;
-  const { artist } = artwork;
+  const { artist, events } = artwork;
 
   const artworkCoverIMG = `${IMGS_URL}/${artwork.images[0]}`;
+
+  const artworkEvents = events.map((event: any) => ({
+    name: event.name,
+    eventCover: `${IMGS_URL}/${event.images[0]}`,
+    id: event.id,
+  }));
 
   return (
     <div>
@@ -70,7 +76,17 @@ function Artwork() {
           </article>
         </Link>
       </div>
-      {/* <SectionHeader title="Events" />*/}
+      <SectionHeader title="Events" />
+      <div className="grid xl:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 gap-12 mb-5">
+        {artworkEvents.map((event: any) => (
+          <Link key={event.id} to={`/event/${event.id}`}>
+            <article className="flex flex-end flex-col h-full justify-end">
+              <ImgContainer className="mb-2" imageURL={event.eventCover} height="150px" />
+              <p className="truncate mb-2 text-gray-500">{event.name}</p>
+            </article>
+          </Link>
+        ))}
+      </div>
     </div>
   );
 }
