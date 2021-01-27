@@ -3,6 +3,8 @@ import { NavLink, Link, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import { useState } from 'react';
 import { FaBars } from 'react-icons/fa';
+import useAuth from '../../hooks/useAuth';
+import Profile from './Profile';
 
 const StyledNavLink = styled(NavLink)`
   &.active {
@@ -12,9 +14,12 @@ const StyledNavLink = styled(NavLink)`
 
 function Navbar() {
   const { pathname } = useLocation();
+  const auth: any = useAuth();
+
   const isEvent = pathname.includes('event');
   const isArtist = pathname.includes('artist');
   const [navbarOpen, setNavbarOpen] = useState(false);
+
   return (
     <>
       <nav className="relative flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg bg-pink-500 mb-10">
@@ -76,12 +81,15 @@ function Navbar() {
             </ul>
           </div>
           <div className="lg:block hidden">
-            <Link
-              to="/login"
-              className="border-solid border-4 border-darkGray px-3 py-1 font-header font-bold text-xl "
-            >
-              Login
-            </Link>
+            {!auth.user && (
+              <Link
+                to="/login"
+                className="border-solid border-4 border-darkGray px-3 py-1 font-header font-bold text-xl"
+              >
+                Login
+              </Link>
+            )}
+            {auth.user && <Profile />}
           </div>
         </div>
       </nav>
