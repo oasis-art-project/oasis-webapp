@@ -16,12 +16,10 @@ const SignupForm = () => {
     })(values);
   };
 
-  console.log(auth);
-
   const formik = useFormik({
     initialValues: {
-      email: '',
-      password: '',
+      email: 'aa@bb.cc',
+      password: '123456',
     },
     onSubmit: values => {
       // alert(JSON.stringify(values, null, 2));
