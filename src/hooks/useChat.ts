@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import socketIOClient from 'socket.io-client';
 
-const SOCKET_SERVER_URL = 'http://localhost:5000/';
+const SOCKET_SERVER_URL = 'http://127.0.0.1:5000';
 
 const useChat = (roomId: any, userId: any) => {
   const [messages, setMessages]: [any, any] = useState([]);
@@ -9,6 +9,7 @@ const useChat = (roomId: any, userId: any) => {
 
   useEffect(() => {
     socketRef.current = socketIOClient(SOCKET_SERVER_URL, {
+      transports: ['websocket', 'polling', 'flashsocket'],
       query: { roomId: roomId, userId: userId },
     });
 

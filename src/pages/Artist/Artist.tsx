@@ -4,6 +4,7 @@ import { FaHome, FaInstagram } from 'react-icons/fa';
 import { IoLogoVenmo, IoChatboxSharp } from 'react-icons/io5';
 import useArtist from '../../hooks/useArtist';
 import { IMGS_URL } from '../../helpers';
+import useAuth from '../../hooks/useAuth';
 
 interface Params {
   id: string;
@@ -35,9 +36,16 @@ const ImgContainer = styled.div<ImageProps>`
   height: ${(props: any) => props.height};
 `;
 
+const formatChatRoom = (id1: any, id2: any) => {
+  if (id1 < id2) return id1 + '-' + id2;
+  else return id2 + '-' + id1;
+};
+
 function Artist() {
   const { id }: Params = useParams();
   const { status, data: userData, error } = useArtist(id);
+
+  const auth: any = useAuth();
 
   if (status === 'loading') return <div>Loading</div>;
   if (error) return <div>Error</div>;
@@ -92,10 +100,15 @@ function Artist() {
             <IoLogoVenmo className="text-2xl" />
             <span className="font-header font-bold text-xl my-3 ml-3 items-center">Venmo</span>
           </a>
-          <button className="border-solid border-4 border-darkGray px-3 py-1 font-header font-bold text-xl flex items-center justify-center mt-5">
-            <IoChatboxSharp className="mr-6" />
-            Chat
-          </button>
+          {auth.user && auth.user.identity !== id && (
+            <Link
+              to={`/room/${formatChatRoom(auth.user.identity, id)}`}
+              className="border-solid border-4 border-darkGray px-3 py-1 font-header font-bold text-xl flex items-center justify-center mt-5"
+            >
+              <IoChatboxSharp className="mr-6" />
+              Chat
+            </Link>
+          )}
         </div>
       </div>
       <SectionHeader title="Artworks" />

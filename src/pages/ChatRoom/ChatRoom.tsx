@@ -3,12 +3,12 @@ import { useParams } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 import useChat from '../../hooks/useChat';
 
-// import './index.css';
+import './style.css';
 
 const ChatRoom = () => {
   const { roomId }: { roomId: string} = useParams();
   const auth: any = useAuth();
-  const { messages, sendMessage } = useChat(roomId, auth.user.id);
+  const { messages, sendMessage } = useChat(roomId, auth.user.identity);
   const [newMessage, setNewMessage] = React.useState('');
 
   const handleNewMessageChange = (event: any) => {
@@ -17,7 +17,7 @@ const ChatRoom = () => {
 
   const handleSendMessage = () => {
     if (auth.user) {
-      const userId = auth.user.id;
+      const userId = auth.user.identity;
       sendMessage(newMessage, roomId, userId);
       setNewMessage('');
     } else {
