@@ -15,6 +15,7 @@ import Artwork from './pages/Artwrok';
 import ChatRoom from './pages/ChatRoom';
 import Places from './pages/Places';
 import Place from './pages/Place';
+import Hosts from './pages/Hosts';
 
 const Container = styled.section`
   max-width: 1280px;
@@ -62,6 +63,7 @@ function App() {
                       <Route path="/artwork/:id" exact component={Artwork} />
                       <Route path="/places/" exact component={Places} />
                       <Route path="/place/:id" exact component={Place} />
+                      <Route path="/hosts/" exact component={Hosts} />
                       <PrivateRoute path="/room/:roomId">
                         <ChatRoom />
                       </PrivateRoute>
