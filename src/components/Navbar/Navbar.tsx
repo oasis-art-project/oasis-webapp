@@ -1,5 +1,5 @@
 import logo from '../../assets/img/logo-v2.png';
-import { NavLink, Link, useLocation } from 'react-router-dom';
+import { NavLink, Link, useLocation, useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import { useState } from 'react';
 import { FaBars } from 'react-icons/fa';
@@ -15,6 +15,12 @@ const StyledNavLink = styled(NavLink)`
 function Navbar() {
   const { pathname } = useLocation();
   const auth: any = useAuth();
+  const history = useHistory();
+  const logout = () => {
+    auth.signout(() => {
+      history.replace('/');
+    });
+  };
 
   const isEvent = pathname.includes('event');
   const isArtist = pathname.includes('artist');
@@ -22,7 +28,7 @@ function Navbar() {
 
   return (
     <>
-      <nav className="relative flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg bg-pink-500 mb-10">
+      <nav className="relative flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg bg-pink-500 mb-12 mt-8">
         <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
           <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
             <Link to="/">
@@ -74,9 +80,12 @@ function Navbar() {
                 </StyledNavLink>
               </li>
               <li className="my-5 lg:hidden">
-                <StyledNavLink activeClassName="active" to="/login">
-                  Login
-                </StyledNavLink>
+                {!auth.user && (
+                  <StyledNavLink activeClassName="active" to="/login">
+                    Login
+                  </StyledNavLink>
+                )}
+                {auth.user && <div className="text-lg cursor-pointer" onClick={() => logout()}>Log out</div>}
               </li>
             </ul>
           </div>

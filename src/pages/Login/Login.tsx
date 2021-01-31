@@ -27,15 +27,15 @@ const SignupForm = () => {
     },
   });
   return (
-    <div className="w-100 min-h-screen flex justify-center items-center flex-col">
+    <div className="min-h-full flex justify-center items-center flex-col">
       <div className="absolute left-14 top-14 hidden lg:block">
         <Link className="flex items-center" to="/">
           <IoArrowBack className="text-xl mr-3" />
           Home
         </Link>
       </div>
-      <img src={logo} alt="Oasis logo" width="100px" className="mb-12" />
-      <form className="flex flex-col px-10 py-7 w-96" onSubmit={formik.handleSubmit}>
+      <img src={logo} alt="Oasis logo" width="100px" className="mb-12 lg:mt-32 mt-12" />
+      <form className="flex flex-col px-10 py-7 lg:w-96 w-full" onSubmit={formik.handleSubmit}>
         <label className="m-2 uppercase font-header text-darkGray" htmlFor="email">
           Email Address
         </label>

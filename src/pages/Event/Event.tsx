@@ -61,7 +61,7 @@ function Event() {
       <SectionHeader title="Event Information" />
       <div className="grid xl:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 gap-6 mb-5">
         <div className="flex flex-end flex-col h-full justify-end overflow-hidden">
-          <p className="font-header font-bold text-5xl truncate mb-2">{data.event.name}</p>
+          <p className="font-header font-bold text-5xl lg:truncate mb-2">{data.event.name}</p>
           <ImgContainer imageURL={eventCoverIMG} height="325px" />
         </div>
         <div className="flex flex-col">

@@ -14,8 +14,21 @@ import Artist from './pages/Artist';
 import Artwork from './pages/Artwrok';
 import ChatRoom from './pages/ChatRoom';
 
-const Container = styled.main`
+const Container = styled.section`
   max-width: 1280px;
+`;
+
+const MainContainer = styled.main`
+  padding-bottom: 120px;
+`;
+
+const Footer = styled.footer`
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: #425663;
+  text-align: center;
+  height: 120px;
 `;
 
 const queryClient = new QueryClient({});
@@ -33,24 +46,29 @@ function App() {
       <QueryClientProvider client={queryClient}>
         <ThemeProvider theme={theme}>
           <Router>
-            <Switch>
-              <Route path="/login" exact component={Login} />
-              <Route path="/">
-                <Container className="lg:container md:mx-auto px-4">
-                  <Navbar />
-                  <Switch>
-                    <Route path="/" exact component={Home} />
-                    <Route path="/event/:id" exact component={Event} />
-                    <Route path="/artists/" exact component={Artists} />
-                    <Route path="/artist/:id" exact component={Artist} />
-                    <Route path="/artwork/:id" exact component={Artwork} />
-                    <PrivateRoute path="/room/:roomId">
-                      <ChatRoom />
-                    </PrivateRoute>
-                  </Switch>
-                </Container>
-              </Route>
-            </Switch>
+            <MainContainer className="min-h-screen relative pb-">
+              <Switch>
+                <Route path="/login" exact component={Login} />
+                <Route path="/">
+                  <Container className="md:mx-auto px-4 pb-60">
+                    <Navbar />
+                    <Switch>
+                      <Route path="/" exact component={Home} />
+                      <Route path="/event/:id" exact component={Event} />
+                      <Route path="/artists/" exact component={Artists} />
+                      <Route path="/artist/:id" exact component={Artist} />
+                      <Route path="/artwork/:id" exact component={Artwork} />
+                      <PrivateRoute path="/room/:roomId">
+                        <ChatRoom />
+                      </PrivateRoute>
+                    </Switch>
+                  </Container>
+                </Route>
+              </Switch>
+              <Footer>
+                <p className="mt-10 text-gray-50">© {new Date().getFullYear()}, oooasis.art</p>
+              </Footer>
+            </MainContainer>
           </Router>
         </ThemeProvider>
       </QueryClientProvider>

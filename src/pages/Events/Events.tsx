@@ -29,7 +29,6 @@ const ImgContainer = styled.div<ImageProps>`
 
 const ArtisName = styled.p`
   width: 100%;
-  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   text-transform: uppercase;
@@ -59,7 +58,7 @@ const Card = ({
     <Link to={`/event/${id}`}>
       <article>
         <p>{name}</p>
-        <ArtisName className="font-header font-bold text-xl my-2">{artist}</ArtisName>
+        <ArtisName className="font-header font-bold text-xl my-2 lg:whitespace-nowrap">{artist}</ArtisName>
         <ImgContainer imageURL={imgURL} height="270px" />
         <p>{place.name}</p>
         <p>{parsedDates}</p>

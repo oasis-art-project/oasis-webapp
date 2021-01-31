@@ -47,7 +47,7 @@ const Dropdown = () => {
               ref={popoverDropdownRef}
               className={
                 (dropdownPopoverShow ? 'block ' : 'hidden ') +
-                'text-base z-50 cursor-pointer float-left py-2 list-none text-left rounded shadow-lg mt-1'
+                'text-base z-50 cursor-pointer float-left py-2 list-none text-left rounded shadow-md mt-1'
               }
               style={{ minWidth: '10rem', transform: 'translate(-53px, 35px)' }}
             >
