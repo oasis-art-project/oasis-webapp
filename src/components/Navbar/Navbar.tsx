@@ -24,6 +24,7 @@ function Navbar() {
 
   const isEvent = pathname.includes('event');
   const isArtist = pathname.includes('artist');
+  const isPlace = pathname.includes('place');
   const [navbarOpen, setNavbarOpen] = useState(false);
 
   return (
@@ -70,7 +71,12 @@ function Navbar() {
                 </StyledNavLink>
               </li>
               <li className="my-5">
-                <StyledNavLink activeClassName="active" to="/places">
+                <StyledNavLink
+                  activeClassName="active"
+                  className={isPlace ? 'active' : ''}
+                  to="/places"
+                  exact
+                >
                   Places
                 </StyledNavLink>
               </li>
@@ -85,7 +91,11 @@ function Navbar() {
                     Login
                   </StyledNavLink>
                 )}
-                {auth.user && <div className="text-lg cursor-pointer" onClick={() => logout()}>Log out</div>}
+                {auth.user && (
+                  <div className="text-lg cursor-pointer" onClick={() => logout()}>
+                    Log out
+                  </div>
+                )}
               </li>
             </ul>
           </div>

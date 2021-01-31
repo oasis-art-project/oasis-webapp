@@ -26,7 +26,7 @@ function Artists() {
       {data.users.map((artist: any) => (
         <Link key={artist.id} to={`/artist/${artist.id}`}>
           <article className="flex flex-end flex-col h-full justify-end">
-            <p className="font-header font-bold text-xl truncate mb-1 uppercase">
+            <p className="font-header font-bold text-xl lg:truncate mb-1 uppercase">
               {`${artist.firstName} ${artist.lastName}`}
             </p>
             <ImgContainer
