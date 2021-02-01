@@ -1,7 +1,7 @@
-const colors = require('tailwindcss/colors')
+const colors = require('tailwindcss/colors');
 
 module.exports = {
-  purge: [],
+  purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
   darkMode: false, // or 'media' or 'class'
   theme: {
     colors: {
@@ -13,7 +13,6 @@ module.exports = {
       red: colors.red,
       green: colors.green,
       yellow: colors.yellow,
-      
     },
     fontFamily: {
       header: ['Source Sans Pro', 'sans-serif'],
@@ -21,12 +20,12 @@ module.exports = {
     },
     extend: {
       backgroundImage: theme => ({
-       'login-background': "url('./img/login-background.png')",
-      })
-    }
+        'login-background': "url('./img/login-background.png')",
+      }),
+    },
   },
   variants: {
     extend: {},
   },
   plugins: [],
-}
+};
