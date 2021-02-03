@@ -33,3 +33,5 @@ public/imgs
 public/dev-images
 
 .vercel
+
+local.sh
