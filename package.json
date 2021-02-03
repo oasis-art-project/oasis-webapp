@@ -1,45 +1,59 @@
 {
-  "name": "ui",
+  "name": "my-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@blueprintjs/core": "^3.19.1",
-    "axios": "^0.19.0",
-    "formik": "^2.2.5",
-    "history": "^4.10.1",
-    "http-proxy-middleware": "^0.19.1",
-    "jwt-decode": "^2.2.0",
-    "leaflet": "^1.5.1",
-    "lodash": "^4.17.20",
-    "moment": "^2.24.0",
-    "normalize.css": "^8.0.1",
-    "now": "^16.2.0",
-    "qs": "^6.9.1",
-    "ramda": "^0.27.1",
-    "react": "^16.11.0",
-    "react-burger-menu": "^2.6.11",
-    "react-dom": "^16.11.0",
-    "react-helmet": "^5.2.1",
-    "react-intl": "^2.9.0",
-    "react-leaflet": "^2.5.0",
-    "react-measure": "^2.3.0",
-    "react-redux": "^7.1.3",
-    "react-responsive-carousel": "^3.1.50",
-    "react-router-dom": "^5.1.2",
-    "react-scripts": "^4.0.1",
-    "react-transition-group": "^4.3.0",
-    "redux": "^4.0.4",
-    "styled-components": "^4.4.1",
-    "styled-components-grid": "^2.2.2",
-    "yup": "^0.27.0"
+    "@craco/craco": "^6.1.0",
+    "@tailwindcss/postcss7-compat": "^2.0.2",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "@types/jest": "^26.0.15",
+    "@types/jwt-decode": "^3.1.0",
+    "@types/node": "^12.0.0",
+    "@types/popper.js": "^1.11.0",
+    "@types/qs": "^6.9.5",
+    "@types/react": "^16.9.53",
+    "@types/react-dom": "^16.9.8",
+    "@types/react-leaflet": "^2.5.2",
+    "@types/socket.io-client": "^1.4.35",
+    "autoprefixer": "^9",
+    "axios": "^0.21.1",
+    "chokidar-cli": "^2.1.0",
+    "dayjs": "^1.10.3",
+    "formik": "^2.2.6",
+    "history": "^5.0.0",
+    "jwt-decode": "^3.1.2",
+    "leaflet": "^1.7.1",
+    "popper.js": "^1.16.1",
+    "postcss": "^7",
+    "qs": "^6.9.6",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-icons": "^4.1.0",
+    "react-leaflet": "^3.0.5",
+    "react-query": "^3.5.15",
+    "react-redux": "^7.2.2",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "4.0.1",
+    "socket.io-client": "2.3.1",
+    "styled-components": "^5.2.1",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat",
+    "typescript": "^4.0.3",
+    "web-vitals": "^0.2.4",
+    "yup": "^0.32.8"
   },
   "scripts": {
-    "start": "nps",
-    "test": "nps test",
-    "now-build": "react-scripts build"
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test",
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
   },
   "browserslist": {
     "production": [
@@ -54,16 +68,9 @@
     ]
   },
   "devDependencies": {
-    "lint-staged": "^10.5.3",
-    "mrm": "^2.5.13",
-    "nps": "^5.9.12",
-    "prettier": "^2.2.1"
-  },
-  "lint-staged": {
-    "*.js": [
-      "eslint",
-      "prettier --write"
-    ]
+    "@types/react-redux": "^7.1.12",
+    "@types/react-router-dom": "^5.1.6",
+    "@types/styled-components": "^5.1.7"
   },
   "proxy": "http://127.0.0.1:5000/"
 }
