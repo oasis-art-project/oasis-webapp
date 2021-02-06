@@ -11,6 +11,13 @@ const Title = styled.div`
   letter-spacing: 2px;
 `;
 
+const HubsButton = styled.button`
+  color: white;
+  background-color: black;
+  padding: 1rem;
+  text-align: center;
+`;
+
 const SectionHeader = ({ title = '' }) => {
   return (
     <div className="w-full mb-10 mt-5">
@@ -73,12 +80,14 @@ function Event() {
       <p className="mb-8 text-gray-500">{description}</p>
 
       {data.event.hub_embed && (
+        <HubsButton className="w-full">          
         <a
-            className="flex items-center"
+            // className="flex items-center"            
             target="_blank"
             rel="noreferrer"
             href={`https://hubs.mozilla.com/${data.event.hub_embed}`}
-          >Hubs page</a>
+          >Launch Virtual Gallery<br/>and attend online</a>
+        </HubsButton>
       )}
 
       <SectionHeader title="Participating artists" />
