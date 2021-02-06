@@ -71,6 +71,16 @@ function Event() {
         </div>
       </div>
       <p className="mb-8 text-gray-500">{description}</p>
+
+      {data.event.hub_embed && (
+        <a
+            className="flex items-center"
+            target="_blank"
+            rel="noreferrer"
+            href={`https://hubs.mozilla.com/${data.event.hub_embed}`}
+          >Hubs page</a>
+      )}
+
       <SectionHeader title="Participating artists" />
       <div className="grid xl:grid-cols-6 md:grid-cols-6 sm:grid-cols-2 gap-6 mb-5">
         {eventArtist.map((artist: any) => (
