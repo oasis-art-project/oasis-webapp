@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { QueryClientProvider, QueryClient } from 'react-query';
 import styled from 'styled-components';
@@ -17,6 +17,7 @@ import Places from './pages/Places';
 import Place from './pages/Place';
 import Hosts from './pages/Hosts';
 import Host from './pages/Host';
+import About from './pages/About';
 
 const Container = styled.section`
   max-width: 1280px;
@@ -65,7 +66,8 @@ function App() {
                       <Route path="/places/" exact component={Places} />
                       <Route path="/place/:id" exact component={Place} />
                       <Route path="/hosts/" exact component={Hosts} />
-                      <Route path="/host/:id" exact component={Host} />                      
+                      <Route path="/host/:id" exact component={Host} />
+                      <Route path="/about" exact component={About} />
                       <PrivateRoute path="/room/:roomId">
                         <ChatRoom />
                       </PrivateRoute>
@@ -74,7 +76,8 @@ function App() {
                 </Route>
               </Switch>
               <Footer>
-                <p className="mt-10 text-gray-50">© {new Date().getFullYear()}, oooasis.art</p>
+                <p className="mt-10 text-gray-50">© {new Date().getFullYear()}</p>
+                <Link to="about" >What is OASIS?</Link>
               </Footer>
             </MainContainer>
           </Router>
