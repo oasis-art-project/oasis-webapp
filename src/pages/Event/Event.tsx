@@ -79,13 +79,13 @@ function Event() {
       </div>
       <p className="mb-8 text-gray-500">{description}</p>
 
-      {data.event.hub_embed && (
+      {data.event.hubs_link && (
         <HubsButton className="w-full">          
         <a
             // className="flex items-center"            
             target="_blank"
             rel="noreferrer"
-            href={`https://hubs.mozilla.com/${data.event.hub_embed}`}
+            href={`https://hubs.link/${data.event.hubs_link}`}
           >Launch Virtual Gallery<br/>and attend online</a>
         </HubsButton>
       )}
