@@ -35,7 +35,7 @@ function Hosts() {
               imageURL={`${IMGS_URL}/${host.images[0]}`}
               height="225px"
             />
-            <p>{host.tags.split(';').map((tag: any) => tag + " ")}</p>
+            <p className="lg:truncate mb-1">{host.tags.split(';').map((tag: any) => tag + " ")}</p>
           </article>
         </Link>
       ))}

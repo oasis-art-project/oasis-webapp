@@ -57,7 +57,7 @@ function Places() {
                 imageURL={`${IMGS_URL}/${place.images[0]}`}
                 height="225px"
               />
-              <p>{place.tags.split(';').map((tag: any) => tag + " ")}</p>
+              <p className="lg:truncate mb-1">{place.tags.split(';').map((tag: any) => tag + " ")}</p>
             </article>
           </Link>
         ))}
