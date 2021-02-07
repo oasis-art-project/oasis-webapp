@@ -65,6 +65,7 @@ function Artwork() {
         <p className="font-header text-xl my-12 ml-3">{artwork.description}</p>
         <p className="font-header text-xl my-3 ml-3">Year: {artwork.year}</p>
         <p className="font-header text-xl my-3 ml-3">Medium: {artwork.medium}</p>
+        <p className="font-header text-xl my-3 ml-3">Size: {artwork.size}</p>
 
         {artwork.link && (
           <a className="flex items-center" target="_blank" rel="noreferrer" href={artwork.link}>
