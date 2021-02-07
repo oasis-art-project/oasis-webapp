@@ -85,15 +85,7 @@ function Host() {
             <FaInstagram className="text-2xl" />
             <span className="font-header font-bold text-xl my-3 ml-3 items-center">Instagram</span>
           </a>
-          <a
-            className="flex items-center"
-            target="_blank"
-            rel="noreferrer"
-            href={`https://venmo.com/${user.venmo}`}
-          >
-            <IoLogoVenmo className="text-2xl" />
-            <span className="font-header font-bold text-xl my-3 ml-3 items-center">Venmo</span>
-          </a>
+
           {auth.user && auth.user.identity !== id && (
             <Link
               to={`/room/${formatChatRoom(auth.user.identity, id)}`}

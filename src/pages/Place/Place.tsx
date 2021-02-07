@@ -1,5 +1,6 @@
 import { useParams, Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { FaHome, FaInstagram, FaFacebookSquare } from 'react-icons/fa';
 import SectionHeader from '../../components/SectionHeader';
 import usePlace from '../../hooks/usePlace';
 import { IMGS_URL } from '../../helpers';
@@ -46,8 +47,35 @@ function Place() {
           <p className="font-header font-bold text-5xl truncate mb-2">{place.name}</p>
           <ImgContainer imageURL={placeCoverIMG} height="325px" />
         </div>
-        <div className="flex flex-col"></div>
+        <div className="flex flex-col">
+
+        <p className="font-header text-xl mt-12 mb-3">{place.description}</p>
+          <a className="flex items-center" target="_blank" rel="noreferrer" href={place.homepage}>
+            <FaHome className="text-2xl" />
+            <span className="font-header font-bold text-xl my-3 ml-3 items-center">Home page</span>
+          </a>
+          <a
+            className="flex items-center"
+            target="_blank"
+            rel="noreferrer"
+            href={`https://instagram.com/${place.instagram}`}
+          >
+            <FaInstagram className="text-2xl" />
+            <span className="font-header font-bold text-xl my-3 ml-3 items-center">Instagram</span>
+          </a>
+          <a
+            className="flex items-center"
+            target="_blank"
+            rel="noreferrer"
+            href={`https://facebook.com/${place.facebook}`}
+          >
+            <FaFacebookSquare className="text-2xl" />
+            <span className="font-header font-bold text-xl my-3 ml-3 items-center">Facebook</span>
+          </a>
+        </div>
       </div>
+
+
       <SectionHeader title="Host" />
       <div className="grid xl:grid-cols-6 md:grid-cols-6 sm:grid-cols-2 gap-6 mb-5">
         <Link key={place.host.id} to={`/host/${place.host.id}`}>
