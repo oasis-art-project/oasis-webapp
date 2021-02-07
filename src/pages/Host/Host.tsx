@@ -1,7 +1,7 @@
 import { useParams, Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { FaHome, FaInstagram } from 'react-icons/fa';
-import { IoLogoVenmo, IoChatboxSharp } from 'react-icons/io5';
+import { IoChatboxSharp } from 'react-icons/io5';
 import useHost from '../../hooks/useHost';
 import { IMGS_URL } from '../../helpers';
 import useAuth from '../../hooks/useAuth';

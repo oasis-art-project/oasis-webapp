@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { stringify } from 'qs';
-import { API_URL } from './cosntants';
+import { API_URL } from './constants';
 import jwt_decode from 'jwt-decode';
 
 export const wrapParams = (params: any) => {

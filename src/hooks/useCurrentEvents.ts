@@ -1,7 +1,7 @@
 import axios from 'axios';
 import days from 'dayjs';
 import { useQuery } from 'react-query';
-import { API_URL } from './cosntants';
+import { API_URL } from './constants';
 
 const { get } = axios;
 
