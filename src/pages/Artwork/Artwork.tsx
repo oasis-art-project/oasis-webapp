@@ -1,5 +1,6 @@
 import { useParams, Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { FaExternalLinkSquareAlt } from 'react-icons/fa';
 import useArtwork from '../../hooks/useArtwork';
 import { IMGS_URL } from '../../helpers';
 
@@ -59,7 +60,20 @@ function Artwork() {
           <p className="font-header font-bold text-5xl truncate mb-2">{artwork.name}</p>
           <ImgContainer imageURL={artworkCoverIMG} height="325px" />
         </div>
-        <div className="flex flex-col"></div>
+        <div className="flex flex-col">
+
+        <p className="font-header text-xl my-12 ml-3">{artwork.description}</p>
+        <p className="font-header text-xl my-3 ml-3">Year: {artwork.year}</p>
+        <p className="font-header text-xl my-3 ml-3">Medium: {artwork.medium}</p>
+
+        {artwork.link && (
+          <a className="flex items-center" target="_blank" rel="noreferrer" href={artwork.link}>
+            <FaExternalLinkSquareAlt className="text-2xl" />
+            <span className="font-header font-bold text-xl my-3 ml-3 items-center">External website</span>
+          </a>
+        )}
+
+        </div>
       </div>
       <SectionHeader title="Artists" />
       <div className="grid xl:grid-cols-6 md:grid-cols-6 sm:grid-cols-2 gap-6 mb-5">
