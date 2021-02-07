@@ -11,7 +11,7 @@ import Home from './pages/Events';
 import Event from './pages/Event';
 import Artists from './pages/Artists';
 import Artist from './pages/Artist';
-import Artwork from './pages/Artwrok';
+import Artwork from './pages/Artwork';
 import ChatRoom from './pages/ChatRoom';
 import Places from './pages/Places';
 import Place from './pages/Place';
