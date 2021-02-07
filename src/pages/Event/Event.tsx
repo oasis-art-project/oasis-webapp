@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import useEvent from '../../hooks/useEvent';
 import { datesParser, IMGS_URL } from '../../helpers';
 
+import hubs from '../../assets/img/3dcube.png';
+
 interface Params {
   id: string;
 }
@@ -79,14 +81,15 @@ function Event() {
       </div>
       <p className="mb-8 text-gray-500">{description}</p>
 
-      {data.event.hubs_link && (
-        <HubsButton className="w-full">          
-        <a
-            // className="flex items-center"            
-            target="_blank"
-            rel="noreferrer"
-            href={`https://hubs.link/${data.event.hubs_link}`}
-          >Launch Virtual Gallery<br/>and attend online</a>
+      {data.event.hubs_link && (        
+        <HubsButton className="flex justify-center gap-5 w-full">
+          <img src={hubs} alt="3D Cube" width="50" />
+          <a
+              // className="flex items-center"
+              target="_blank"
+              rel="noreferrer"
+              href={`https://hubs.link/${data.event.hubs_link}`}
+            >Launch Virtual Gallery<br/>and attend online</a>
         </HubsButton>
       )}
 
