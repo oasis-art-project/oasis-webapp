@@ -2,6 +2,8 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 import useChat from '../../hooks/useChat';
+import Interweave from 'interweave';
+import { UrlMatcher, HashtagMatcher } from 'interweave-autolink';
 
 import './style.css';
 
@@ -47,7 +49,14 @@ const ChatRoom = () => {
                 message.ownedByCurrentUser ? 'my-message' : 'received-message'
               }`}
             >
-              {message.body}
+
+            <Interweave content={message.body}
+                        newWindow={true}
+                        matchers={[
+                           new UrlMatcher('url'), 
+                           new HashtagMatcher('hashtag')]}
+            />
+              
             </li>
           ))}
         </ol>

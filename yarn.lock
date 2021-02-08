@@ -4565,6 +4565,16 @@ emoji-regex@^9.0.0:
   resolved "https://registry.yarnpkg.com/emoji-regex/-/emoji-regex-9.2.1.tgz#c9b25604256bb3428964bead3ab63069d736f7ee"
   integrity sha512-117l1H6U4X3Krn+MrzYrL57d5H7siRHWraBs7s+LjRuFK7Fe7hJqnJ0skWlinqsycVLU5YAo6L8CsEYQ0V5prg==
 
+emojibase-regex@^5.1.1:
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/emojibase-regex/-/emojibase-regex-5.1.1.tgz#f2108121abd7b1413eab1130254d6babe0795a60"
+  integrity sha512-pMa8YszeFBQgRvZ95DRK7lVgjaRakJ1UkIdONjSY3O79kzIzDuSkZoypUvV62oYgm9AQ/7uYIKf42UGMed6oTA==
+
+emojibase@^5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/emojibase/-/emojibase-5.1.0.tgz#91ef5531ffa1aa2f330f1fad6306738a936d75c5"
+  integrity sha512-Jj6jYwic/msP0I3Nwp9Kj7EDH1/aQ35rGrBdYC/cFtas70CK2Br95AWIjZytXYpSCKLjW6YC4IduZg74sd/tlA==
+
 emojis-list@^2.0.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/emojis-list/-/emojis-list-2.1.0.tgz#4daa4d9db00f9819880c79fa457ae5b09a1fd389"
@@ -4739,7 +4749,7 @@ escalade@^3.0.2, escalade@^3.1.1:
   resolved "https://registry.yarnpkg.com/escalade/-/escalade-3.1.1.tgz#d8cfdc7000965c5a0174b4a82eaa5c0552742e40"
   integrity sha512-k0er2gUkLf8O0zKJiAhmkTnJlTvINGv7ygDNPbeIsX/TJjGJZHuh9B2UxbsaEkmlEo9MfhrSzmhIlhRlI2GXnw==
 
-escape-html@~1.0.3:
+escape-html@^1.0.3, escape-html@~1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/escape-html/-/escape-html-1.0.3.tgz#0258eae4d3d0c0974de1c169188ef0051d1d1988"
   integrity sha1-Aljq5NPQwJdN4cFpGI7wBR0dGYg=
@@ -6169,6 +6179,26 @@ internal-slot@^1.0.2:
     get-intrinsic "^1.1.0"
     has "^1.0.3"
     side-channel "^1.0.4"
+
+interweave-autolink@^4.4.0:
+  version "4.4.0"
+  resolved "https://registry.yarnpkg.com/interweave-autolink/-/interweave-autolink-4.4.0.tgz#4e45f4d467b846db051327ad4c228b10850a7f2d"
+  integrity sha512-R3Y9tjq5tlksni2XBea5m8uXyMG6IqEc6vjctR4331bFidxsOuY0PxEYL2xauOvHMlyHTPSIu3w7EtAfZsss5w==
+
+interweave-emoji@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/interweave-emoji/-/interweave-emoji-6.0.0.tgz#ca6079c970720dfe3f62f6bf7bd3a95ac2a7fa0f"
+  integrity sha512-lwJSNMg+xgBagYMg4sQDR6dOEovPiGU+g1EKG3k2f8UgUJf4CZ2j13C5gT1cnhf9C5WZlIzOZfITTD4NsJqVxg==
+  dependencies:
+    emojibase "^5.1.0"
+    emojibase-regex "^5.1.1"
+
+interweave@^12.7.0:
+  version "12.7.0"
+  resolved "https://registry.yarnpkg.com/interweave/-/interweave-12.7.0.tgz#a4b7d7c116bdd54fc882eb2271844a1180b506cb"
+  integrity sha512-B26CWAIFST2ld+f0w1nhjsnEHXQWGRsiJdh8on34RYn5SPAjYnCi2rl2Rzxuz5Mqm2FWWxzIeQK6Fb1MPYzKqg==
+  dependencies:
+    escape-html "^1.0.3"
 
 ip-regex@^2.1.0:
   version "2.1.0"
