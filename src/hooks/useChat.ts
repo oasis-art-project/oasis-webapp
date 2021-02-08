@@ -1,14 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
 import socketIOClient from 'socket.io-client';
-
-const SOCKET_SERVER_URL = 'http://127.0.0.1:5000';
+import { SERVER_URL } from './constants';
 
 const useChat = (roomId: any, userId: any) => {
   const [messages, setMessages]: [any, any] = useState([]);
   const socketRef: any = useRef();
 
   useEffect(() => {
-    socketRef.current = socketIOClient(SOCKET_SERVER_URL, {
+    socketRef.current = socketIOClient(SERVER_URL, {
       transports: ['websocket', 'polling', 'flashsocket'],
       query: { roomId: roomId, userId: userId },
     });
@@ -23,6 +22,8 @@ const useChat = (roomId: any, userId: any) => {
         ...message,
         ownedByCurrentUser: message.senderId === socketRef.current.id,
       };
+      console.log(incomingMessage)
+      console.log("message.userName --->", incomingMessage.userName);
       setMessages((messages: any) => [...messages, incomingMessage]);
     });
 
@@ -40,7 +41,7 @@ const useChat = (roomId: any, userId: any) => {
     };
   }, [roomId, userId]);
 
-  const sendMessage = (messageBody: any, roomId: any, userId: any) => {
+  const sendMessage = (messageBody: any, roomId: any, userId: any, userName: any) => {
     console.log('>>>>>>>>>>>>>>>>>>>');
     console.log('SENDING MESSAGE');
     console.log(messageBody);
@@ -49,6 +50,7 @@ const useChat = (roomId: any, userId: any) => {
     socketRef.current.emit('send_message', {
       roomId: roomId,
       userId: userId,
+      userName: userName,
       body: messageBody,
       senderId: socketRef.current.id,
     });

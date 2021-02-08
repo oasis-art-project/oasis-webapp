@@ -18,7 +18,8 @@ const ChatRoom = () => {
   const handleSendMessage = () => {
     if (auth.user) {
       const userId = auth.user.identity;
-      sendMessage(newMessage, roomId, userId);
+      const userName = auth.user.user_claims.fullName;
+      sendMessage(newMessage, roomId, userId, userName);
       setNewMessage('');
     } else {
       alert('Please login first to send messages to other users');
@@ -26,9 +27,11 @@ const ChatRoom = () => {
     }
   };
 
+  const result = messages.find(function (message: any) {return !message.ownedByCurrentUser; });
+
   return (
     <div className="chat-room-container">
-      <h1 className="room-name">Room: {roomId}</h1>
+      <h1 className="room-name">Chatting with {result ? result.userName : 'nobody'}</h1>
       <div className="messages-container">
         <ol className="messages-list">
           {messages.map((message: any, i: number) => (

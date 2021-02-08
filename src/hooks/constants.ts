@@ -1,6 +1,10 @@
 import { isProd } from '../helpers/index';
 
-const devAPI = '/api';
-const prodAPI = 'https://staging-server-oasis.herokuapp.com/api';
+const devServer = 'http://127.0.0.1:5000';
+const prodServer = 'https://staging-server-oasis.herokuapp.com';
 
+const devAPI = '/api';
+const prodAPI = prodServer + '/api';
+
+export const SERVER_URL = isProd ? prodServer : devServer;
 export const API_URL = isProd ? prodAPI : devAPI;
