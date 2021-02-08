@@ -19,8 +19,10 @@ const ChatRoom = () => {
     if (auth.user) {
       const userId = auth.user.identity;
       const userName = auth.user.user_claims.fullName;
-      sendMessage(newMessage, roomId, userId, userName);
-      setNewMessage('');
+      if (newMessage) {
+        sendMessage(newMessage, roomId, userId, userName);
+        setNewMessage('');
+      }            
     } else {
       alert('Please login first to send messages to other users');
       setNewMessage('');
