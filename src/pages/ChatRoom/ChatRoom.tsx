@@ -18,17 +18,21 @@ const ChatRoom = () => {
   const handleSendMessage = () => {
     if (auth.user) {
       const userId = auth.user.identity;
+      // The full name of the user sending the message is included
+      // in the user claims of the auth token
       const userName = auth.user.user_claims.fullName;
-      if (newMessage) {
-        sendMessage(newMessage, roomId, userId, userName);
-        setNewMessage('');
+      const text = newMessage.trim();
+      if (text) {
+        sendMessage(text, roomId, userId, userName);        
       }            
+      setNewMessage('');
     } else {
       alert('Please login first to send messages to other users');
       setNewMessage('');
     }
   };
 
+  // Get first message not owned by the current user, this should be the other person in the chat...
   const result = messages.find(function (message: any) {return !message.ownedByCurrentUser; });
 
   return (
