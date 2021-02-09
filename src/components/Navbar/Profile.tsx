@@ -4,10 +4,12 @@ import Popper from 'popper.js';
 import { FaRegUserCircle } from 'react-icons/fa';
 import useAuth from '../../hooks/useAuth';
 import { useHistory } from 'react-router-dom';
+import useChat from '../../hooks/useChat';
 
-const Dropdown = () => {
+const Dropdown = () => {  
   const auth: any = useAuth();
-  const history = useHistory();
+  const history = useHistory();  
+  useChat("default", auth.user.identity);
   const logout = () => {
     auth.signout(() => {
       history.replace('/');
