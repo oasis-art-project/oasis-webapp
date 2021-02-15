@@ -51,7 +51,7 @@ function Event() {
   if (error) return <div>Error</div>;
 
   const { startTime, endTime, images, place, description, artists, artworks } = data.event;
-  const { images: placeImages } = place;
+  const { images: placeImages, id: placeId } = place;
   const eventArtist = artists.map((artist: any) => ({
     name: `${artist.firstName} ${artist.lastName}`,
     profileImage: `${IMGS_URL}/${artist.images[0]}`,
@@ -77,7 +77,9 @@ function Event() {
         <div className="flex flex-col">
           <p className="font-header font-bold text-2xl uppercase">AT {data.event.place.name}</p>
           <p className="font-header font-bold text-2xl mb-2">{parsedDates}</p>
-          <ImgContainer imageURL={placeCoverIMG} height="325px" />
+          <Link to={`/place/${placeId}`}>
+            <ImgContainer imageURL={placeCoverIMG} height="325px" />
+          </Link>
         </div>
       </div>
       <p className="mb-8 text-gray-500">{description}</p>
