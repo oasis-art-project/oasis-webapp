@@ -59,7 +59,7 @@ const Card = ({
     <Link to={`/event/${id}`}>
       <article>
         <p>{name}</p>
-        <ArtisName className="font-header font-bold text-xl my-2 lg:whitespace-nowrap">
+        <ArtisName className="font-header font-bold text-xl my-2 md:whitespace-nowrap">
           {artist}
         </ArtisName>
         <ImgContainer imageURL={imgURL} height="270px" />
