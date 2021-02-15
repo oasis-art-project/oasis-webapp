@@ -57,23 +57,34 @@ function Artwork() {
       <SectionHeader title="Artwork Information" />
       <div className="grid xl:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 gap-6 mb-5">
         <div className="flex flex-end flex-col h-full justify-end">
-          <p className="font-header font-bold text-5xl truncate mb-2">{artwork.name}</p>
+          <p className="font-header font-bold text-4xl truncate mb-2 pb-1">{artwork.name}</p>
           <ImgContainer imageURL={artworkCoverIMG} height="325px" />
         </div>
-        <div className="flex flex-col">
-
-        <p className="font-header text-xl my-12 ml-3">{artwork.description}</p>
-        <p className="font-header text-xl my-3 ml-3">Year: {artwork.year}</p>
-        <p className="font-header text-xl my-3 ml-3">Medium: {artwork.medium}</p>
-        <p className="font-header text-xl my-3 ml-3">Size: {artwork.size}</p>
-
-        {artwork.link && (
-          <a className="flex items-center" target="_blank" rel="noreferrer" href={artwork.link}>
-            <FaExternalLinkSquareAlt className="text-2xl" />
-            <span className="font-header font-bold text-xl my-3 ml-3 items-center">External website</span>
-          </a>
-        )}
-
+        <div className="flex flex-col pt-9">
+          {artwork.year && (
+            <p className="font-header text-xl my-3">
+              <label className="font-bold mr-3">Year:</label>{artwork.year}
+            </p>
+          )}
+          {artwork.medium && (
+            <p className="font-header text-xl my-3">
+              <label className="font-bold mr-3">Medium:</label>{artwork.medium}
+            </p>
+          )}
+          {artwork.size && (
+            <p className="font-header text-xl my-3">
+              <label className="font-bold mr-3">Size:</label>{artwork.size}
+            </p>
+          )}
+          {artwork.description && <p className="font-header text-xl my-3">{artwork.description}</p>}
+          {artwork.link && (
+            <a className="flex items-center" target="_blank" rel="noreferrer" href={artwork.link}>
+              <FaExternalLinkSquareAlt className="text-2xl mr-3" />
+              <span className="font-header font-bold text-xl my-3 m items-center">
+                External website
+              </span>
+            </a>
+          )}
         </div>
       </div>
       <SectionHeader title="Artists" />
