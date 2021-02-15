@@ -20,10 +20,10 @@ const AboutContainer = styled.div`
 function About() {
 
   return (
-    <div className="">
+    <div className="leading-relaxed">
       <SectionHeader title="About" />
       <AboutContainer>
-      <h3>What is it?</h3>
+      <h3 className="font-header text-2xl my-4">What is it?</h3>
       <p>
         OASIS is a decentralized art platform designed to connect artists with space providers and
         audiences in the local community. The main goals of this platform are (i) to make more
@@ -32,7 +32,7 @@ function About() {
         for, and (iii) to provide audiences and patrons the means to find and experience the
         artworks currently on display near them and to connect with local creators.
       </p>
-      <h3>The goals of OASIS</h3>
+      <h3 className="font-header text-2xl mt-6 mb-4">The goals of OASIS</h3>
       <p>
         OASIS’ most immediate goal is to facilitate the interactions between creators, hosts, and
         audiences at the juncture of online and local communities. It does so by opening up existing
@@ -43,12 +43,12 @@ function About() {
         on the potential of mobile technologies to enable new possibilities of dialog, interaction,
         and creation within our communities.
       </p>
-      <h3>Interested in participating?</h3>
+      <h3 className="font-header text-2xl mt-6 mb-4">Interested in participating?</h3>
       <p>
         OASIS is currently in beta testing stage. If you are a local artist or space provider and
         are interested in participating in the beta testing, please create an OASIS account:
       </p>
-      <ol>
+      <ol className="list-disc list-inside my-4">
         <li>
           Artist accounts contain basic biographic information, representative images of work, and
           links to social media accounts (instagram, twitter, facebook).
@@ -64,7 +64,7 @@ function About() {
         These events will populate OASIS' public homepage so visitors can find the current and
         upcoming exhibitions.
       </p>      
-      <h3>Support</h3>
+      <h3 className="font-header text-2xl mt-6 mb-4">Support</h3>
       <p>
         OASIS has received support from Cambridge Arts Council through its Artists Grant program 
         <a href="https://www.cambridgema.gov/arts/programs/grants" target="_blank" rel="noreferrer">Artists Grant program</a>, 

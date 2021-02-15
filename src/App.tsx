@@ -34,6 +34,10 @@ const Footer = styled.footer`
   background: #425663;
   text-align: center;
   height: 120px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 `;
 
 const queryClient = new QueryClient({});
@@ -76,8 +80,10 @@ function App() {
                 </Route>
               </Switch>
               <Footer>
-                <p className="mt-10 text-gray-50">© {new Date().getFullYear()}</p>
-                <Link to="about" >What is OASIS?</Link>
+                <Link className="text-gray-50 mb-4" to="/about">
+                  What is OASIS?
+                </Link>
+                <p className="text-gray-50">© {new Date().getFullYear()}</p>
               </Footer>
             </MainContainer>
           </Router>
