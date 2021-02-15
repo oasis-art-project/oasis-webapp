@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import useArtists from '../../hooks/useArtists';
 import styled from 'styled-components';
 import { IMGS_URL } from '../../helpers';
-
+import Loader from '../../components/Loader';
 interface ImageProps {
   readonly imageURL: string;
   readonly height: string;
@@ -19,7 +19,7 @@ const ImgContainer = styled.div<ImageProps>`
 function Artists() {
   const { status, data, error } = useArtists();
 
-  if (status === 'loading') return <div>Loading</div>;
+  if (status === 'loading') return <Loader />;
   if (error) return <div>Error</div>;
   return (
     <div className="grid xl:grid-cols-4 md:grid-cols-4 sm:grid-cols-2 gap-6 mb-5">

@@ -6,10 +6,10 @@ import useAuth from '../../hooks/useAuth';
 import { useHistory } from 'react-router-dom';
 import useChat from '../../hooks/useChat';
 
-const Dropdown = () => {  
+const Dropdown = () => {
   const auth: any = useAuth();
-  const history = useHistory();  
-  useChat("default", auth.user.identity);
+  const history = useHistory();
+  const { messages, sendMessage } = useChat('default', auth.user.identity);
   const logout = () => {
     auth.signout(() => {
       history.replace('/');

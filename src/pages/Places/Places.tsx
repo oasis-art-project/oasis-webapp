@@ -3,6 +3,8 @@ import usePlaces from '../../hooks/usePlaces';
 import styled from 'styled-components';
 import { IMGS_URL } from '../../helpers';
 import Map, { Marker, Popup } from '../../components/Map';
+import Loader from '../../components/Loader';
+
 
 const StyledPopup = styled(Popup)`
   width: 200px;
@@ -27,7 +29,7 @@ const ImgContainer = styled.div<ImageProps>`
 function Places() {
   const { status, data, error } = usePlaces();
 
-  if (status === 'loading') return <div>Loading</div>;
+  if (status === 'loading') return <Loader />;
   if (error) return <div>Error</div>;
   return (
     <>

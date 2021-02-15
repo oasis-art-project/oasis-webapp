@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import useCurrentEvents from '../../hooks/useCurrentEvents';
 import { datesParser, IMGS_URL } from '../../helpers';
 import Map, { Marker, Popup } from '../../components/Map';
+import Loader from '../../components/Loader';
 
 const artistSelection = (artists: []) => {
   let resultArtist = '';
@@ -58,7 +59,9 @@ const Card = ({
     <Link to={`/event/${id}`}>
       <article>
         <p>{name}</p>
-        <ArtisName className="font-header font-bold text-xl my-2 lg:whitespace-nowrap">{artist}</ArtisName>
+        <ArtisName className="font-header font-bold text-xl my-2 lg:whitespace-nowrap">
+          {artist}
+        </ArtisName>
         <ImgContainer imageURL={imgURL} height="270px" />
         <p>{place.name}</p>
         <p>{parsedDates}</p>
@@ -77,7 +80,7 @@ function Events() {
     if (view === 'upcoming_events') setView('current_events');
   };
 
-  if (status === 'loading') return <div>Loading</div>;
+  if (status === 'loading') return <Loader />;
   if (error) return <div>Error</div>;
 
   return (

@@ -5,6 +5,7 @@ import { IoChatboxSharp } from 'react-icons/io5';
 import useHost from '../../hooks/useHost';
 import { IMGS_URL } from '../../helpers';
 import useAuth from '../../hooks/useAuth';
+import Loader from '../../components/Loader';
 
 interface Params {
   id: string;
@@ -47,7 +48,7 @@ function Host() {
 
   const auth: any = useAuth();
 
-  if (status === 'loading') return <div>Loading</div>;
+  if (status === 'loading') return <Loader />;
   if (error) return <div>Error</div>;
 
   const { user } = userData;

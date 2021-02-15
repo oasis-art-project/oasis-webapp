@@ -2,6 +2,7 @@ import { useParams, Link } from 'react-router-dom';
 import styled from 'styled-components';
 import useEvent from '../../hooks/useEvent';
 import { datesParser, IMGS_URL } from '../../helpers';
+import Loader from '../../components/Loader';
 
 import hubs from '../../assets/img/3dcube.png';
 
@@ -46,7 +47,7 @@ function Event() {
   const { id }: Params = useParams();
   const { status, data, error } = useEvent(id);
 
-  if (status === 'loading') return <div>Loading</div>;
+  if (status === 'loading') return <Loader />;
   if (error) return <div>Error</div>;
 
   const { startTime, endTime, images, place, description, artists, artworks } = data.event;
@@ -81,15 +82,19 @@ function Event() {
       </div>
       <p className="mb-8 text-gray-500">{description}</p>
 
-      {data.event.hubs_link && (        
+      {data.event.hubs_link && (
         <HubsButton className="flex justify-center gap-5 w-full">
           <img src={hubs} alt="3D Cube" width="50" />
           <a
-              // className="flex items-center"
-              target="_blank"
-              rel="noreferrer"
-              href={`https://hubs.link/${data.event.hubs_link}`}
-            >Launch Virtual Gallery<br/>and attend online</a>
+            // className="flex items-center"
+            target="_blank"
+            rel="noreferrer"
+            href={`https://hubs.link/${data.event.hubs_link}`}
+          >
+            Launch Virtual Gallery
+            <br />
+            and attend online
+          </a>
         </HubsButton>
       )}
 

@@ -4,6 +4,7 @@ import { FaHome, FaInstagram, FaFacebookSquare } from 'react-icons/fa';
 import SectionHeader from '../../components/SectionHeader';
 import usePlace from '../../hooks/usePlace';
 import { IMGS_URL } from '../../helpers';
+import Loader from '../../components/Loader';
 
 interface ImageProps {
   readonly imageURL: string;
@@ -26,7 +27,7 @@ function Place() {
   const { id }: Params = useParams();
   const { status, data, error } = usePlace(id);
 
-  if (status === 'loading') return <div>Loading</div>;
+  if (status === 'loading') return <Loader />;
   if (error) return <div>Error</div>;
 
   const { place } = data;
@@ -48,8 +49,7 @@ function Place() {
           <ImgContainer imageURL={placeCoverIMG} height="325px" />
         </div>
         <div className="flex flex-col">
-
-        <p className="font-header text-xl mt-12 mb-3">{place.description}</p>
+          <p className="font-header text-xl mt-12 mb-3">{place.description}</p>
           <a className="flex items-center" target="_blank" rel="noreferrer" href={place.homepage}>
             <FaHome className="text-2xl" />
             <span className="font-header font-bold text-xl my-3 ml-3 items-center">Home page</span>
@@ -74,7 +74,6 @@ function Place() {
           </a>
         </div>
       </div>
-
 
       <SectionHeader title="Host" />
       <div className="grid xl:grid-cols-6 md:grid-cols-6 sm:grid-cols-2 gap-6 mb-5">
@@ -103,7 +102,6 @@ function Place() {
           </Link>
         ))}
       </div>
-
     </div>
   );
 }

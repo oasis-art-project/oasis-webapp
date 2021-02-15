@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
-
 import styled from 'styled-components';
 import { IMGS_URL } from '../../helpers';
 import useHosts from '../../hooks/useHosts';
+import Loader from '../../components/Loader';
 
 interface ImageProps {
   readonly imageURL: string;
@@ -20,7 +20,7 @@ const ImgContainer = styled.div<ImageProps>`
 function Hosts() {
   const { status, data, error } = useHosts();
 
-  if (status === 'loading') return <div>Loading</div>;
+  if (status === 'loading') return <Loader />;
   if (error) return <div>Error</div>;
   return (
     <div className="grid xl:grid-cols-4 md:grid-cols-4 sm:grid-cols-2 gap-6 mb-5">
@@ -35,7 +35,7 @@ function Hosts() {
               imageURL={`${IMGS_URL}/${host.images[0]}`}
               height="225px"
             />
-            <p className="lg:truncate mb-1">{host.tags.split(';').map((tag: any) => tag + " ")}</p>
+            <p className="lg:truncate mb-1">{host.tags.split(';').map((tag: any) => tag + ' ')}</p>
           </article>
         </Link>
       ))}
