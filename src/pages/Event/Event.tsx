@@ -14,7 +14,7 @@ const Title = styled.div`
   letter-spacing: 2px;
 `;
 
-const HubsButton = styled.button`
+const HubsButton = styled.a`
   color: white;
   background-color: black;
   padding: 1rem;
@@ -83,18 +83,18 @@ function Event() {
       <p className="mb-8 text-gray-500">{description}</p>
 
       {data.event.hubs_link && (
-        <HubsButton className="flex justify-center gap-5 w-full">
+        <HubsButton
+          className="flex justify-center gap-5 w-full"
+          target="_blank"
+          rel="noreferrer"
+          href={`https://hubs.link/${data.event.hubs_link}`}
+        >
           <img src={hubs} alt="3D Cube" width="50" />
-          <a
-            // className="flex items-center"
-            target="_blank"
-            rel="noreferrer"
-            href={`https://hubs.link/${data.event.hubs_link}`}
-          >
+          <div>
             Launch Virtual Gallery
             <br />
             and attend online
-          </a>
+          </div>
         </HubsButton>
       )}
 
