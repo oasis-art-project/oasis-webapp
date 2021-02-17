@@ -28,7 +28,7 @@ function Hosts() {
         <Link key={host.id} to={`/host/${host.id}`}>
           <article className="flex flex-end flex-col h-full justify-end">
             <p className="font-header font-bold text-xl lg:truncate mb-1 uppercase">
-              {`${host.firstName} ${host.lastName}`}
+              {(host.firstName + ' ' + host.lastName).trim()}
             </p>
             <ImgContainer
               className="mb-2"

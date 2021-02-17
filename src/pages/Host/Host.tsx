@@ -67,7 +67,7 @@ function Host() {
       <div className="grid xl:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 gap-6 mb-5">
         <div className="flex flex-end flex-col h-full justify-end">
           <p className="font-header font-bold text-5xl lg:truncate mb-2">
-            {user.firstName} {user.lastName}
+            {(user.firstName + ' ' + user.lastName).trim()}            
           </p>
           <ImgContainer imageURL={userCoverIMG} height="325px" />
         </div>

@@ -101,7 +101,7 @@ function Artwork() {
               height="150px"
             />
             <p className="font-header font-bold text-xl truncate mb-2 text-center uppercase">
-              {artist.firstName} {artist.lastName}
+              {(artist.firstName + ' ' + artist.lastName).trim()}
             </p>
           </article>
         </Link>

@@ -85,7 +85,7 @@ function Place() {
               height="150px"
             />
             <p className="font-header font-bold text-xl truncate mb-2 text-center uppercase">
-              {place.host.firstName} {place.host.lastName}
+              {(place.host.firstName + ' ' + place.host.lastName).trim()}
             </p>
           </article>
         </Link>

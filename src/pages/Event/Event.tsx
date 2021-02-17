@@ -53,7 +53,7 @@ function Event() {
   const { startTime, endTime, images, place, description, artists, artworks } = data.event;
   const { images: placeImages, id: placeId } = place;
   const eventArtist = artists.map((artist: any) => ({
-    name: `${artist.firstName} ${artist.lastName}`,
+    name: `${artist.firstName} ${artist.lastName}`.trim(),
     profileImage: `${IMGS_URL}/${artist.images[0]}`,
     id: artist.id,
   }));

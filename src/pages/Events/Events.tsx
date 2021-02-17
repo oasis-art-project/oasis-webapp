@@ -10,7 +10,7 @@ const artistSelection = (artists: []) => {
   let resultArtist = '';
   artists.forEach((user: any, i: number) => {
     if (i > 0) resultArtist += ' & ';
-    resultArtist += `${user.firstName} ${user.lastName}`;
+    resultArtist += `${user.firstName} ${user.lastName}`.trim();
   });
   return resultArtist;
 };
