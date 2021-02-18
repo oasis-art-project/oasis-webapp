@@ -50,20 +50,20 @@ function Event() {
   if (status === 'loading') return <Loader />;
   if (error) return <div>Error</div>;
 
-  const { startTime, endTime, images, place, description, artists, artworks } = data.event;
-  const { images: placeImages, id: placeId } = place;
+  const { startTime, endTime, fullImages, place, description, artists, artworks } = data.event;
+  const { fullImages: placeImages, id: placeId } = place;
   const eventArtist = artists.map((artist: any) => ({
     name: `${artist.firstName} ${artist.lastName}`.trim(),
-    profileImage: `${IMGS_URL}/${artist.images[0]}`,
+    profileImage: `${IMGS_URL}/${artist.prevImages[0]}`,
     id: artist.id,
   }));
   const eventArtworks = artworks.map((artwork: any) => ({
     name: artwork.name,
-    profileImage: `${IMGS_URL}/${artwork.images[0]}`,
+    profileImage: `${IMGS_URL}/${artwork.prevImages[0]}`,
     id: artwork.id,
   }));
   const parsedDates = datesParser(startTime, endTime);
-  const eventCoverIMG = `${IMGS_URL}/${images[0]}`;
+  const eventCoverIMG = `${IMGS_URL}/${fullImages[0]}`;
   const placeCoverIMG = `${IMGS_URL}/${placeImages[0]}`;
 
   return (

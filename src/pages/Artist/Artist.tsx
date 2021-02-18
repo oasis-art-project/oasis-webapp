@@ -55,17 +55,17 @@ function Artist() {
   const { artworks, events } = user;
   const userArtworks = artworks.map((artwork: any) => ({
     name: artwork.name,
-    profileImage: `${IMGS_URL}/${artwork.images[0]}`,
+    profileImage: `${IMGS_URL}/${artwork.prevImages[0]}`,
     id: artwork.id,
   }));
 
   const userEvents = events.map((event: any) => ({
     name: event.name,
-    eventCover: `${IMGS_URL}/${event.images[0]}`,
+    eventCover: `${IMGS_URL}/${event.prevImages[0]}`,
     id: event.id,
   }));
 
-  const userCoverIMG = `${IMGS_URL}/${user.images[0]}`;
+  const userCoverIMG = `${IMGS_URL}/${user.fullImages[0]}`;
 
   return (
     <div className="">

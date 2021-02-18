@@ -32,7 +32,7 @@ function Hosts() {
             </p>
             <ImgContainer
               className="mb-2"
-              imageURL={`${IMGS_URL}/${host.images[0]}`}
+              imageURL={`${IMGS_URL}/${host.prevImages[0]}`}
               height="225px"
             />
             <p className="lg:truncate mb-1">{host.tags.split(';').map((tag: any) => tag + ' ')}</p>

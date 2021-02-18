@@ -41,7 +41,7 @@ function Places() {
                 <p className="font-header text-darkGray font-bold text-lg my-1 truncate">
                   {place.name}
                 </p>
-                <ImgContainer imageURL={`${IMGS_URL}/${place.images[0]}`} height="150px" />
+                <ImgContainer imageURL={`${IMGS_URL}/${place.prevImages[0]}`} height="150px" />
               </Link>
             </StyledPopup>
           </Marker>
@@ -56,7 +56,7 @@ function Places() {
               </p>
               <ImgContainer
                 className="mb-2"
-                imageURL={`${IMGS_URL}/${place.images[0]}`}
+                imageURL={`${IMGS_URL}/${place.prevImages[0]}`}
                 height="225px"
               />
               <p className="lg:truncate mb-1">{place.tags.split(';').map((tag: any) => tag + " ")}</p>

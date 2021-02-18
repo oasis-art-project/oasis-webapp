@@ -55,11 +55,11 @@ function Host() {
   const { places } = user;
   const userPlaces = places.map((place: any) => ({
     name: place.name,
-    profileImage: `${IMGS_URL}/${place.images[0]}`,
+    profileImage: `${IMGS_URL}/${place.prevImages[0]}`,
     id: place.id,
   }));
 
-  const userCoverIMG = `${IMGS_URL}/${user.images[0]}`;
+  const userCoverIMG = `${IMGS_URL}/${user.fullImages[0]}`;
 
   return (
     <div className="">

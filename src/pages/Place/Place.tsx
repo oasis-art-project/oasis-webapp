@@ -34,11 +34,11 @@ function Place() {
   const { events } = place;
   const placeEvents = events.map((event: any) => ({
     name: event.name,
-    eventCover: `${IMGS_URL}/${event.images[0]}`,
+    eventCover: `${IMGS_URL}/${event.prevImages[0]}`,
     id: event.id,
   }));
 
-  const placeCoverIMG = `${IMGS_URL}/${place.images[0]}`;
+  const placeCoverIMG = `${IMGS_URL}/${place.fullImages[0]}`;
 
   return (
     <div>
@@ -81,7 +81,7 @@ function Place() {
           <article className="flex flex-end flex-col h-full justify-end">
             <ImgContainer
               className="mb-2"
-              imageURL={`${IMGS_URL}/${place.host.images[0]}`}
+              imageURL={`${IMGS_URL}/${place.host.prevImages[0]}`}
               height="150px"
             />
             <p className="font-header font-bold text-xl truncate mb-2 text-center uppercase">

@@ -48,11 +48,11 @@ const Card = ({
   startTime = '',
   endTime = '',
   artists = [] as any,
-  images = [] as any,
+  prevImages = [] as any,
   place = {} as any,
 }) => {
   const artist = artistSelection(artists);
-  const imgURL = `${IMGS_URL}/${images[0]}`;
+  const imgURL = `${IMGS_URL}/${prevImages[0]}`;
   const parsedDates = datesParser(startTime, endTime);
 
   return (
@@ -114,7 +114,7 @@ function Events() {
                   <p className="font-header text-darkGray font-bold text-lg my-1 truncate">
                     {event.name}
                   </p>
-                  <ImgContainer imageURL={`${IMGS_URL}/${event.images[0]}`} height="150px" />
+                  <ImgContainer imageURL={`${IMGS_URL}/${event.prevImages[0]}`} height="150px" />
                   <p className="font-header text-darkGray font-bold text-base truncate my-2">
                     {event.place.name}
                   </p>

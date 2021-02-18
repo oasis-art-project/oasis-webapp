@@ -31,7 +31,7 @@ function Artists() {
             </p>
             <ImgContainer
               className="mb-2"
-              imageURL={`${IMGS_URL}/${artist.images[0]}`}
+              imageURL={`${IMGS_URL}/${artist.prevImages[0]}`}
               height="225px"
             />
             <p className="lg:truncate mb-1">{artist.tags.split(';').map((tag: any) => tag + " ")}</p>
