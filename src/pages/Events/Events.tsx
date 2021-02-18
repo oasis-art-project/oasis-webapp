@@ -8,10 +8,14 @@ import Loader from '../../components/Loader';
 
 const artistSelection = (artists: []) => {
   let resultArtist = '';
-  artists.forEach((user: any, i: number) => {
-    if (i > 0) resultArtist += ' & ';
-    resultArtist += `${user.firstName} ${user.lastName}`.trim();
-  });
+  if (artists.length < 3) {
+    artists.forEach((user: any, i: number) => {
+      if (i > 0) resultArtist += ' & ';
+      resultArtist += `${user.firstName} ${user.lastName}`.trim();
+    });  
+  } else {
+    resultArtist = "Group Event"
+  }
   return resultArtist;
 };
 
@@ -28,7 +32,7 @@ const ImgContainer = styled.div<ImageProps>`
   height: ${(props: any) => props.height};
 `;
 
-const ArtisName = styled.p`
+const EventName = styled.p`
   width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -58,10 +62,10 @@ const Card = ({
   return (
     <Link to={`/event/${id}`}>
       <article>
-        <p>{name}</p>
-        <ArtisName className="font-header font-bold text-xl my-2 md:whitespace-nowrap">
-          {artist}
-        </ArtisName>
+        <p className="md:whitespace-nowrap">{artist}</p>
+        <EventName className="font-header font-bold text-xl my-2 md:whitespace-nowrap">
+        {name}
+        </EventName>
         <ImgContainer imageURL={imgURL} height="270px" />
         <p>{place.name}</p>
         <p>{parsedDates}</p>

@@ -59,6 +59,7 @@ function Event() {
   }));
   const eventArtworks = artworks.map((artwork: any) => ({
     name: artwork.name,
+    artist: artwork.artist,
     profileImage: `${IMGS_URL}/${artwork.prevImages[0]}`,
     id: artwork.id,
   }));
@@ -118,6 +119,9 @@ function Event() {
         {eventArtworks.map((artwork: any) => (
           <Link key={artwork.id} to={`/artwork/${artwork.id}`}>
             <article className="flex flex-end flex-col h-full justify-end">
+              <p className="font-header font-bold text-xl lg:truncate mb-1 uppercase">
+              {(artwork.artist.firstName + ' ' + artwork.artist.lastName).trim()}
+              </p>              
               <ImgContainer className="mb-2" imageURL={artwork.profileImage} height="150px" />
               <p className="truncate mb-2 text-gray-500">{artwork.name}</p>
             </article>
