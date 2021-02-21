@@ -1,7 +1,7 @@
 import { useParams, Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { FaHome, FaInstagram } from 'react-icons/fa';
-import { IoLogoVenmo, IoChatboxSharp } from 'react-icons/io5';
+import { IoLogoYoutube, IoChatboxSharp } from 'react-icons/io5';
 import useArtist from '../../hooks/useArtist';
 import { IMGS_URL } from '../../helpers';
 import useAuth from '../../hooks/useAuth';
@@ -96,10 +96,10 @@ function Artist() {
             className="flex items-center"
             target="_blank"
             rel="noreferrer"
-            href={`https://venmo.com/${user.venmo}`}
+            href={`https://www.youtube.com/channel/${user.youtube}`}
           >
-            <IoLogoVenmo className="text-2xl" />
-            <span className="font-header font-bold text-xl my-3 ml-3 items-center">Venmo</span>
+            <IoLogoYoutube className="text-2xl" />
+            <span className="font-header font-bold text-xl my-3 ml-3 items-center">YouTube</span>
           </a>
           {auth.user && auth.user.identity !== id && (
             <Link
