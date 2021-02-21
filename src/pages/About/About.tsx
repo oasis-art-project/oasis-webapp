@@ -26,10 +26,10 @@ function About() {
       <h3 className="font-header text-2xl my-4">What is it?</h3>
       <p>
         OASIS is a decentralized art platform designed to connect artists with space providers and
-        audiences in the local community. The main goals of this platform are (i) to make more
-        spaces available to artists to show their work, (ii) to give space providers a unique
+        audiences in the local community. The main goals of this platform are (1) to make more
+        spaces available to artists to show their work, (2) to give space providers a unique
         channel to announce the availability of their spaces and the type of work they are looking
-        for, and (iii) to provide audiences and patrons the means to find and experience the
+        for, and (3) to provide audiences and patrons the means to find and experience the
         artworks currently on display near them and to connect with local creators.
       </p>
       <h3 className="font-header text-2xl mt-6 mb-4">The goals of OASIS</h3>
@@ -45,31 +45,19 @@ function About() {
       </p>
       <h3 className="font-header text-2xl mt-6 mb-4">Interested in participating?</h3>
       <p>
-        OASIS is currently in beta testing stage. If you are a local artist or space provider and
-        are interested in participating in the beta testing, please create an OASIS account:
+        OASIS is currently in alpha testing stage. If you are a local artist, space provider, or 
+        simply a member of the community and are interested in participating in the beta testing, 
+        please signup to create an OASIS account
       </p>
-      <ol className="list-disc list-inside my-4">
-        <li>
-          Artist accounts contain basic biographic information, representative images of work, and
-          links to social media accounts (instagram, twitter, facebook).
-        </li>
-        <li>
-          Space host accounts allow to enter the list of spaces that a host is currently managing.
-          For each space, brief description of the space, location, and descriptive images are
-          required.
-        </li>
-      </ol>
       <p>
-        OASIS enables communication between artists and hosts to organize new exhibition events.
-        These events will populate OASIS' public homepage so visitors can find the current and
-        upcoming exhibitions.
+        OASIS enables communication between artists and hosts to organize and promote new exhibition events (in both physical and virtual spaces).
+        These events will populate OASIS' public homepage so visitors can find the current and upcoming exhibitions.
       </p>      
       <h3 className="font-header text-2xl mt-6 mb-4">Support</h3>
       <p>
-        OASIS has received support from Cambridge Arts Council through its Artists Grant program 
-        <a href="https://www.cambridgema.gov/arts/programs/grants" target="_blank" rel="noreferrer">Artists Grant program</a>, 
-        Boston University's <a href="http://www.bu.edu/spark/" target="_blank" rel="noreferrer"> Spark! program</a>, 
-        and Signal Culture's <a href="http://signalculture.org/residency.html" target="_blank" rel="noreferrer">residence program</a>.
+        OASIS has received support from Cambridge Arts Council through its <a href="https://www.cambridgema.gov/arts/programs/grants" target="_blank" rel="noreferrer">Artists Grant program</a>, 
+        Boston University's <a href="http://www.bu.edu/spark/" target="_blank" rel="noreferrer"> Spark! technology incubator</a>, 
+        and Signal Culture's <a href="http://signalculture.org/residency.html" target="_blank" rel="noreferrer">residence for researchers and toolmakers</a>.
       </p>
     </AboutContainer>      
     </div>

@@ -68,6 +68,14 @@ const SignupForm = () => {
         >
           Login
         </button>
+
+        <button
+          className="mt-3 border-solid border-4 border-darkGray px-3 py-1 font-header font-bold text-xl"
+          type="submit"
+        >
+          Signup
+        </button>
+
       </form>
     </div>
   );

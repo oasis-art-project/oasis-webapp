@@ -18,6 +18,7 @@ import Place from './pages/Place';
 import Hosts from './pages/Hosts';
 import Host from './pages/Host';
 import About from './pages/About';
+import Signup from './pages/Signup';
 
 const Container = styled.section`
   max-width: 1280px;
@@ -72,6 +73,7 @@ function App() {
                       <Route path="/hosts/" exact component={Hosts} />
                       <Route path="/host/:id" exact component={Host} />
                       <Route path="/about" exact component={About} />
+                      <Route path="/signup" exact component={Signup} />
                       <PrivateRoute path="/room/:roomId">
                         <ChatRoom />
                       </PrivateRoute>
