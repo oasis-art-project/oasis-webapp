@@ -114,7 +114,7 @@ function Event() {
           </Link>
         ))}
       </div>
-      <SectionHeader title="Artworks" />
+      <SectionHeader title="Featured artworks" />
       <div className="grid xl:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 gap-12 mb-5">
         {eventArtworks.map((artwork: any) => (
           <Link key={artwork.id} to={`/artwork/${artwork.id}`}>
