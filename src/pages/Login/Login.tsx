@@ -1,8 +1,14 @@
 import { useFormik } from 'formik';
 import { IoArrowBack } from 'react-icons/io5';
 import { Link, useHistory, useLocation } from 'react-router-dom';
+import styled from 'styled-components';
 import logo from '../../assets/img/logo-v2.png';
 import useAuth from '../../hooks/useAuth';
+
+const SignupButton = styled.a`
+  background-color: white;
+  text-align: center;
+`;
 
 const SignupForm = () => {
   const auth: any = useAuth();
@@ -68,15 +74,15 @@ const SignupForm = () => {
         >
           Login
         </button>
+      </form>
 
-        <button
-          className="mt-3 border-solid border-4 border-darkGray px-3 py-1 font-header font-bold text-xl"
-          type="submit"
+      <SignupButton
+          className="mt-3 border-solid border-4 border-darkGray px-3 py-1 font-header font-bold text-xl lg:w-96 w-full"
+          href={`/signup`}
         >
           Signup
-        </button>
+      </SignupButton>
 
-      </form>
     </div>
   );
 };

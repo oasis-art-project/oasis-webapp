@@ -21,28 +21,46 @@ function Signup() {
 
   return (
     <div className="leading-relaxed">
-      <SectionHeader title="About" />
+      <SectionHeader title="Signup" />
       <SignupContainer>
-      <h3 className="font-header text-2xl my-4">How to signup?</h3>
+      <h3 className="font-header text-2xl my-4">How to create an OASIS account?</h3>
 
       <p>
-        OASIS is a decentralized art platform designed to connect artists with space providers and
-        audiences in the local community. The main goals of this platform are (1) to make more
-        spaces available to artists to show their work, (2) to give space providers a unique
-        channel to announce the availability of their spaces and the type of work they are looking
-        for, and (3) to provide audiences and patrons the means to find and experience the
-        artworks currently on display near them and to connect with local creators.
+        Thank you for your interest in joining the OASIS community! Right now the platform is still 
+        being developed and tested and some functions are not yet ready, inclulding account creation. 
+        However, we can create an account for you manually if you send us an email providing some very basic
+        information about you and why you are interested in OASIS.
       </p>
+
+      <br/>
+      <p>
+        Please note that there are three kinds of account in OASIS, and you have to pick one (at least initially):
+      </p>
+
       <ol className="list-disc list-inside my-4">
         <li>
-          Artist accounts contain basic biographic information, representative images of work, and
-          links to social media accounts (instagram, twitter, facebook).
+          Artist accounts. They contain basic biographic information, representative images of work, and
+          links to social media accounts (instagram, porfolio page, vimeo).
         </li>
         <li>
-          Space host accounts allow to enter the list of spaces that a host is currently managing.
-          For each space, brief description of the space, location, and descriptive images are
-          required.
+          Host accounts. Hosts are people who manage or own art spaces where events can be take place (in physical or 
+          virtual space). Under one of these accounts, you can enter the hosted spaces, and the events at each space.
         </li>
+        <li>
+          Visitor accounts. This accounts are meant for people interested in attending the events. At this point, they 
+          simply allow users to connect with artists and hosts by using the chat in the OASIS website.
+        </li>
+
+        <br/>
+        <p>
+        If you would like to have an account during the testing stage of OASIS, either as artists, host, or visitor, please 
+        send an email to: <b>info@oooasis.art</b>
+        </p>
+        <br/>
+        <p>
+        Finally, all the information about artworks and events in the OASIS website is publicly available for vieweing without requiring an account :-)
+        </p>
+
       </ol>
 
     </SignupContainer>

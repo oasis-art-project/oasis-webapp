@@ -47,16 +47,28 @@ function About() {
       <p>
         OASIS is currently in alpha testing stage. If you are a local artist, space provider, or 
         simply a member of the community and are interested in participating in the beta testing, 
-        please signup to create an OASIS account
+        please <a href={`/signup`}>signup</a> to create an OASIS account
       </p>
+      <br/>
       <p>
         OASIS enables communication between artists and hosts to organize and promote new exhibition events (in both physical and virtual spaces).
         These events will populate OASIS' public homepage so visitors can find the current and upcoming exhibitions.
-      </p>      
+      </p>
+      
+      <h3 className="font-header text-2xl mt-6 mb-4">Creating virtual events</h3>
+      <p>
+        We are very well aware that the reality of art exhibitions has been dramatically affected by the ongoing COVID-19 pandemic. 
+        In view of this situation, we have implemented new functionality in the OASIS website that enables the creation of virtual events 
+        using the <a href="https://hubs.mozilla.com/" target="_blank" rel="noreferrer">Mozilla Hubs</a> platform. Each event in OASIS can 
+        be optionally linked to a custom Hubs room where the artwork would displayed in an interactive 3D environment where artists, hosts, 
+        and visitors can meet each other safely and experience the art and the community. If you are interested in creating virtual events
+        please send us an email to: <b>info@oooasis.art</b>
+      </p>
+
       <h3 className="font-header text-2xl mt-6 mb-4">Support</h3>
       <p>
         OASIS has received support from Cambridge Arts Council through its <a href="https://www.cambridgema.gov/arts/programs/grants" target="_blank" rel="noreferrer">Artists Grant program</a>, 
-        Boston University's <a href="http://www.bu.edu/spark/" target="_blank" rel="noreferrer"> Spark! technology incubator</a>, 
+        Boston University's <a href="http://www.bu.edu/spark/" target="_blank" rel="noreferrer">Spark! technology incubator</a>, 
         and Signal Culture's <a href="http://signalculture.org/residency.html" target="_blank" rel="noreferrer">residence for researchers and toolmakers</a>.
       </p>
     </AboutContainer>      
