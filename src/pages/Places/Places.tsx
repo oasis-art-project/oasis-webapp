@@ -4,7 +4,12 @@ import styled from 'styled-components';
 import { IMGS_URL } from '../../helpers';
 import Map, { Marker, Popup } from '../../components/Map';
 import Loader from '../../components/Loader';
+import Geohash from 'latlon-geohash';
 
+const decodeLatLon = (loc: string) => {
+  let dec = Geohash.decode(loc)
+  return [dec.lat, dec.lon];
+}
 
 const StyledPopup = styled(Popup)`
   width: 200px;
@@ -35,7 +40,7 @@ function Places() {
     <>
       <Map>
         {data.places.map((place: any) => (
-          <Marker key={place.id} position={[place.latitude, place.longitude]}>
+          <Marker key={place.id} position={decodeLatLon(place.location)}>
             <StyledPopup>
               <Link to={`/place/${place.id}`}>
                 <p className="font-header text-darkGray font-bold text-lg my-1 truncate">

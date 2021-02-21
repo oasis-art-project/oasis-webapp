@@ -5,6 +5,7 @@ import useCurrentEvents from '../../hooks/useCurrentEvents';
 import { datesParser, IMGS_URL } from '../../helpers';
 import Map, { Marker, Popup } from '../../components/Map';
 import Loader from '../../components/Loader';
+import Geohash from 'latlon-geohash';
 
 const artistSelection = (artists: []) => {
   let resultArtist = '';
@@ -18,6 +19,11 @@ const artistSelection = (artists: []) => {
   }
   return resultArtist;
 };
+
+const decodeLatLon = (loc: string) => {
+  let dec = Geohash.decode(loc)
+  return [dec.lat, dec.lon];
+}
 
 interface ImageProps {
   readonly imageURL: string;
@@ -112,7 +118,7 @@ function Events() {
       <div>
         <Map>
           {data[view].map((event: any) => (
-            <Marker key={event.id} position={[event.place.latitude, event.place.longitude]}>
+            <Marker key={event.id} position={decodeLatLon(event.place.location)}>
               <StyledPopup>
                 <Link to={`/event/${event.id}`}>
                   <p className="font-header text-darkGray font-bold text-lg my-1 truncate">
