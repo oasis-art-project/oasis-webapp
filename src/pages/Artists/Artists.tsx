@@ -1,20 +1,7 @@
 import { Link } from 'react-router-dom';
 import useArtists from '../../hooks/useArtists';
-import styled from 'styled-components';
 import { IMGS_URL } from '../../helpers';
 import Loader from '../../components/Loader';
-interface ImageProps {
-  readonly imageURL: string;
-  readonly height: string;
-}
-
-const ImgContainer = styled.div<ImageProps>`
-  background-image: url(${(props: any) => props.imageURL});
-  background-size: cover;
-  background-position: center;
-  width: 100%;
-  height: ${(props: any) => props.height};
-`;
 
 function Artists() {
   const { status, data, error } = useArtists();
@@ -26,13 +13,13 @@ function Artists() {
       {data.users.map((artist: any) => (
         <Link key={artist.id} to={`/artist/${artist.id}`}>
           <article className="flex flex-end flex-col h-full justify-end">
-            <p className="font-header font-bold text-xl lg:truncate mb-1 uppercase">
+            <p className="font-header font-bold text-xl md:truncate mb-1 uppercase">
               {(artist.firstName + ' ' + artist.lastName).trim()}
             </p>
-            <ImgContainer
+            <img
               className="mb-2"
-              imageURL={`${IMGS_URL}/${artist.prevImages[0]}`}
-              height="225px"
+              src={`${IMGS_URL}/${artist.prevImages[0]}`}
+              alt={(artist.firstName + ' ' + artist.lastName).trim()}
             />
             <p className="lg:truncate mb-1">{artist.tags.split(';').map((tag: any) => tag + " ")}</p>
           </article>

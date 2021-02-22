@@ -75,7 +75,7 @@ function Artist() {
           <p className="font-header font-bold text-4xl lg:truncate mb-2 pb-1">
             {(user.firstName + ' ' + user.lastName).trim()}
           </p>
-          <ImgContainer imageURL={userCoverIMG} height="325px" />
+          <img src={userCoverIMG} alt={user.firstName + ' ' + user.lastName} />
         </div>
         <div className="flex flex-col">
           <p className="font-header text-xl mt-12 mb-3">{user.bio}</p>
