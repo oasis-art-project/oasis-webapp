@@ -59,7 +59,7 @@ function Artwork() {
       <div className="grid xl:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 gap-6 mb-5">
         <div className="flex flex-end flex-col h-full justify-end">
           <p className="font-header font-bold text-4xl truncate mb-2 pb-1">{artwork.name}</p>
-          <ImgContainer imageURL={artworkCoverIMG} height="" />
+          <img alt={artwork.name} src={artworkCoverIMG} />
         </div>
         <div className="flex flex-col pt-9">
           {artwork.year && (
@@ -82,7 +82,12 @@ function Artwork() {
           )}
           {artwork.description && <p className="font-header text-xl my-3">{artwork.description}</p>}
           {artwork.link && (
-            <a className="flex items-center content-center" target="_blank" rel="noreferrer" href={artwork.link}>
+            <a
+              className="flex items-center content-center"
+              target="_blank"
+              rel="noreferrer"
+              href={artwork.link}
+            >
               <FaExternalLinkSquareAlt className="text-xl mr-3" />
               <span className="font-header font-bold text-xl my-3 m items-center">
                 External website
