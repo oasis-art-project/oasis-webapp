@@ -6,6 +6,9 @@ import useArtist from '../../hooks/useArtist';
 import { IMGS_URL } from '../../helpers';
 import useAuth from '../../hooks/useAuth';
 import Loader from '../../components/Loader';
+import { Dialog, DialogOverlay, DialogContent } from '@reach/dialog';
+import '@reach/dialog/styles.css';
+import { useState } from 'react';
 
 interface Params {
   id: string;
@@ -45,6 +48,9 @@ const formatChatRoom = (id1: any, id2: any) => {
 function Artist() {
   const { id }: Params = useParams();
   const { status, data: userData, error } = useArtist(id);
+  const [showDialog, setShowDialog] = useState(false);
+  const open = () => setShowDialog(true);
+  const close = () => setShowDialog(false);
 
   const auth: any = useAuth();
 
@@ -78,38 +84,63 @@ function Artist() {
           <img src={userCoverIMG} alt={user.firstName + ' ' + user.lastName} />
         </div>
         <div className="flex flex-col">
-          <p className="font-header text-xl mt-12 mb-3">{user.bio}</p>
-          <a className="flex items-center" target="_blank" rel="noreferrer" href={user.homepage}>
-            <FaHome className="text-2xl" />
-            <span className="font-header font-bold text-xl my-3 ml-3 items-center">Home page</span>
-          </a>
-          <a
-            className="flex items-center"
-            target="_blank"
-            rel="noreferrer"
-            href={`https://instagram.com/${user.instagram}`}
-          >
-            <FaInstagram className="text-2xl" />
-            <span className="font-header font-bold text-xl my-3 ml-3 items-center">Instagram</span>
-          </a>
-          <a
-            className="flex items-center"
-            target="_blank"
-            rel="noreferrer"
-            href={`https://www.youtube.com/channel/${user.youtube}`}
-          >
-            <IoLogoYoutube className="text-2xl" />
-            <span className="font-header font-bold text-xl my-3 ml-3 items-center">YouTube</span>
-          </a>
-          {auth.user && auth.user.identity !== id && (
-            <Link
-              to={`/room/${formatChatRoom(auth.user.identity, id)}`}
-              className="border-solid border-4 border-darkGray px-3 py-1 font-header font-bold text-xl flex items-center justify-center mt-5"
-            >
-              <IoChatboxSharp className="mr-6" />
-              Chat
-            </Link>
-          )}
+          <div className="grid grid-cols-2 gap-0 md:mt-12 mb-3">
+            {user.homepage && (
+              <a
+                className="flex items-center"
+                target="_blank"
+                rel="noreferrer"
+                href={user.homepage}
+              >
+                <FaHome className="text-xl" />
+                <span className="font-header font-bold text-lg my-1 ml-3 items-center">
+                  Home page
+                </span>
+              </a>
+            )}
+            {!auth.user && (
+              <span onClick={open} className="flex items-center">
+                <IoChatboxSharp className="text-xl" />
+                <span className="font-header font-bold text-lg my-3 ml-3 items-center">Chat</span>
+              </span>
+            )}
+            {auth.user && auth.user.identity !== id && (
+              <Link
+                to={`/room/${formatChatRoom(auth.user.identity, id)}`}
+                className="border-solid border-4 border-darkGray px-3 py-1 font-header font-bold text-xl flex items-center justify-center mt-5"
+              >
+                <IoChatboxSharp className="mr-6" />
+                Chat
+              </Link>
+            )}
+            {user.instagram && (
+              <a
+                className="flex items-center"
+                target="_blank"
+                rel="noreferrer"
+                href={`https://instagram.com/${user.instagram}`}
+              >
+                <FaInstagram className="text-xl" />
+                <span className="font-header font-bold text-lg my-3 ml-3 items-center">
+                  Instagram
+                </span>
+              </a>
+            )}
+            {user.youtube && (
+              <a
+                className="flex items-center"
+                target="_blank"
+                rel="noreferrer"
+                href={`https://www.youtube.com/channel/${user.youtube}`}
+              >
+                <IoLogoYoutube className="text-xl" />
+                <span className="font-header font-bold text-lg my-3 ml-3 items-center">
+                  YouTube
+                </span>
+              </a>
+            )}
+          </div>
+          <p className="font-header text-lg mb-3">{user.bio}</p>
         </div>
       </div>
       <SectionHeader title="Artworks" />
@@ -134,6 +165,18 @@ function Artist() {
           </Link>
         ))}
       </div>
+      <Dialog isOpen={showDialog} onDismiss={close}>
+        <button className="close-button" onClick={close}>
+          <span aria-hidden>×</span>
+        </button>
+        <p className="mt-6 mb-12 text-xl font-header">Only logged-in users can chat with other users</p>
+        <Link
+          className="border-solid border-4 border-darkGray px-3 py-1 font-header font-bold text-xl"
+          to="/login"
+        >
+          Login
+        </Link>
+      </Dialog>
     </div>
   );
 }
