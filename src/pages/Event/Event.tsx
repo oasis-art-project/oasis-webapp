@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import useEvent from '../../hooks/useEvent';
 import { datesParser, IMGS_URL } from '../../helpers';
 import Loader from '../../components/Loader';
+import { ReactSmartScroller } from 'react-smart-scroller'
 
 import hubs from '../../assets/img/3dcube.png';
 
@@ -102,7 +103,8 @@ function Event() {
       )}
 
       <SectionHeader title="Participating artists" />
-      <div className="grid xl:grid-cols-6 md:grid-cols-6 sm:grid-cols-2 gap-6 mb-5">
+
+        <ReactSmartScroller draggable spacing={12}>
         {eventArtist.map((artist: any) => (
           <Link key={artist.id} to={`/artist/${artist.id}`}>
             <article className="flex flex-end flex-col h-full justify-end">
@@ -113,7 +115,13 @@ function Event() {
             </article>
           </Link>
         ))}
-      </div>
+       </ReactSmartScroller>
+
+
+       {/* <div className="grid xl:grid-cols-6 md:grid-cols-6 sm:grid-cols-2 gap-6 mb-5">
+      </div> */}
+
+
       <SectionHeader title="Featured artworks" />
       <div className="grid xl:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 gap-12 mb-5">
         {eventArtworks.map((artwork: any) => (
