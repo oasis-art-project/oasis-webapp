@@ -6,7 +6,7 @@ import useArtist from '../../hooks/useArtist';
 import { IMGS_URL } from '../../helpers';
 import useAuth from '../../hooks/useAuth';
 import Loader from '../../components/Loader';
-import { Dialog, DialogOverlay, DialogContent } from '@reach/dialog';
+import { Dialog } from '@reach/dialog';
 import '@reach/dialog/styles.css';
 import { useState } from 'react';
 
