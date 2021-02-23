@@ -5,6 +5,8 @@ import useArtwork from '../../hooks/useArtwork';
 import { IMGS_URL } from '../../helpers';
 import Loader from '../../components/Loader';
 
+import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
+
 const Title = styled.div`
   letter-spacing: 2px;
 `;
@@ -59,7 +61,11 @@ function Artwork() {
       <div className="grid xl:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 gap-6 mb-5">
         <div className="flex flex-end flex-col h-full justify-end">
           <p className="font-header font-bold text-4xl truncate mb-2 pb-1">{artwork.name}</p>
-          <img alt={artwork.name} src={artworkCoverIMG} />
+          <TransformWrapper>
+            <TransformComponent>
+              <img alt={artwork.name} src={artworkCoverIMG} />
+            </TransformComponent>
+          </TransformWrapper>
         </div>
         <div className="flex flex-col pt-9">
           {artwork.year && (
