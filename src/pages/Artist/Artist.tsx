@@ -166,16 +166,20 @@ function Artist() {
         ))}
       </div>
       <Dialog isOpen={showDialog} onDismiss={close}>
-        <button className="close-button" onClick={close}>
+        <button className="close-button float-rigt" onClick={close}>
           <span aria-hidden>×</span>
         </button>
-        <p className="mt-6 mb-12 text-xl font-header">Only logged-in users can chat with other users</p>
-        <Link
-          className="border-solid border-4 border-darkGray px-3 py-1 font-header font-bold text-xl"
-          to="/login"
-        >
-          Login
-        </Link>
+        <div className="relative text-center">
+          <p className="mt-6 mb-12 text-xl font-header">
+            Only logged-in users can chat with other users
+          </p>
+          <Link
+            className="mx-auto border-solid border-4 border-darkGray px-3 py-1 font-header font-bold text-xl"
+            to="/login"
+          >
+            Login
+          </Link>
+        </div>
       </Dialog>
     </div>
   );
