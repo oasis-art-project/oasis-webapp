@@ -32,20 +32,20 @@ function About() {
         for, and (3) to provide audiences the means to find and experience the
         artworks currently on display and to connect with local creators.
       </p>
-      <h3 className="font-header text-2xl mt-6 mb-4">The goals of OASIS</h3>
+      <h3 className="font-header text-2xl mt-6 mb-4">A physical-digital nexus</h3>
       <p>
-        OASIS’ most immediate goal is to facilitate the interactions between artists, hosts, and
-        audiences at the juncture of online and local communities. It does so by opening up existing
+        With OASIS, we are seeking to support interactions between artists, hosts, and
+        audiences at the juncture between online and local communities. We hope that OASIS will open up existing
         interstitial spaces suitable for art exhibition throughout the urban fabric and facilitating
         the movements of “micro-publics” towards these spaces. This aspect of OASIS is fundamental;
         even though the web app is an important component of OASIS, the platform should not be seen
-        simply as a “Social Network for the Arts”, but rather as a physical-digital nexus that taps
-        on the potential of mobile technologies to enable new possibilities of dialog, interaction,
+        as (yet another) “Social Network for the Arts”, but rather as a physical-digital nexus that taps
+        on the potential of mobile and web technologies to enable new possibilities for dialog, interaction,
         and creation within our communities.
       </p>
       <h3 className="font-header text-2xl mt-6 mb-4">Interested in participating?</h3>
       <p>
-        OASIS is currently in testing stage. If you are a local artist, space provider, or 
+        OASIS is currently in the testing stage. If you are a local artist, space provider, or 
         simply a member of the community and are interested in participating in the testing of the platform, 
         please <a href={`/signup`}>signup</a> to create an OASIS account.
       </p>
