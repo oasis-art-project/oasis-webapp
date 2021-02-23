@@ -27,34 +27,34 @@ function Signup() {
 
       <p>
         Thank you for your interest in joining the OASIS community! Right now the platform is still 
-        being developed and tested and some functions are not yet ready, inclulding account creation. 
+        being developed and tested, with some functions are not yet ready, including account creation. 
         However, we can create an account for you manually if you send us an email providing some very basic
         information about you and why you are interested in OASIS.
       </p>
 
       <br/>
       <p>
-        Please note that there are three kinds of account in OASIS, and you have to pick one (at least initially):
+        Please note that there are three kinds of accounts in OASIS, and you have to pick one (at least initially):
       </p>
 
       <ol className="list-disc list-inside my-4">
         <li>
-          Artist accounts. They contain basic biographic information, representative images of work, and
-          links to social media accounts (instagram, porfolio page, vimeo).
+          Artist accounts. These accounts contain basic biographic information, representative images of seleted artworks, and
+          links to porfolio page and social media accounts (Instagram, YouTube).
         </li>
         <li>
-          Host accounts. Hosts are people who manage or own art spaces where events can be take place (in physical or 
-          virtual space). Under one of these accounts, you can enter the hosted spaces, and the events at each space.
+          Host accounts. Hosts are people who manage or own art spaces where events can be take place (physical or 
+          virtual). Under one of these accounts, hosts can enter their hosted spaces and the events at each space.
         </li>
         <li>
-          Visitor accounts. This accounts are meant for people interested in attending the events. At this point, they 
-          simply allow users to connect with artists and hosts by using the chat in the OASIS website.
+          Visitor accounts. These accounts are meant for people primarily interested in attending the events. Currently, these accounts 
+          simply allow users to connect with artists and hosts by using the chat function in the OASIS website.
         </li>
 
         <br/>
         <p>
         If you would like to have an account during the testing stage of OASIS, either as artists, host, or visitor, please 
-        send an email to: <b>info@oooasis.art</b>
+        send us an email to: <b>info@oooasis.art</b>
         </p>
         <br/>
         <p>

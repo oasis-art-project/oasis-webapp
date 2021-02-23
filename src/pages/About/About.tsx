@@ -29,12 +29,12 @@ function About() {
         audiences in the local community. The main goals of this platform are (1) to make more
         spaces available to artists to show their work, (2) to give space providers a unique
         channel to announce the availability of their spaces and the type of work they are looking
-        for, and (3) to provide audiences and patrons the means to find and experience the
-        artworks currently on display near them and to connect with local creators.
+        for, and (3) to provide audiences the means to find and experience the
+        artworks currently on display and to connect with local creators.
       </p>
       <h3 className="font-header text-2xl mt-6 mb-4">The goals of OASIS</h3>
       <p>
-        OASIS’ most immediate goal is to facilitate the interactions between creators, hosts, and
+        OASIS’ most immediate goal is to facilitate the interactions between artists, hosts, and
         audiences at the juncture of online and local communities. It does so by opening up existing
         interstitial spaces suitable for art exhibition throughout the urban fabric and facilitating
         the movements of “micro-publics” towards these spaces. This aspect of OASIS is fundamental;
@@ -45,13 +45,13 @@ function About() {
       </p>
       <h3 className="font-header text-2xl mt-6 mb-4">Interested in participating?</h3>
       <p>
-        OASIS is currently in alpha testing stage. If you are a local artist, space provider, or 
-        simply a member of the community and are interested in participating in the beta testing, 
-        please <a href={`/signup`}>signup</a> to create an OASIS account
+        OASIS is currently in testing stage. If you are a local artist, space provider, or 
+        simply a member of the community and are interested in participating in the testing of the platform, 
+        please <a href={`/signup`}>signup</a> to create an OASIS account.
       </p>
       <br/>
       <p>
-        OASIS enables communication between artists and hosts to organize and promote new exhibition events (in both physical and virtual spaces).
+        OASIS aims to facilitate communication between artists and hosts to organize and promote exhibition events (both physical and virtual).
         These events will populate OASIS' public homepage so visitors can find the current and upcoming exhibitions.
       </p>
       
@@ -60,7 +60,7 @@ function About() {
         We are very well aware that the reality of art exhibitions has been dramatically affected by the ongoing COVID-19 pandemic. 
         In view of this situation, we have implemented new functionality in the OASIS website that enables the creation of virtual events 
         using the <a href="https://hubs.mozilla.com/" target="_blank" rel="noreferrer">Mozilla Hubs</a> platform. Each event in OASIS can 
-        be optionally linked to a custom Hubs room where the artwork would displayed in an interactive 3D environment where artists, hosts, 
+        be optionally linked to a custom Hubs room where the artwork will displayed in an interactive 3D environment where artists, hosts, 
         and visitors can meet each other safely and experience the art and the community. If you are interested in creating virtual events
         please send us an email to: <b>info@oooasis.art</b>
       </p>
