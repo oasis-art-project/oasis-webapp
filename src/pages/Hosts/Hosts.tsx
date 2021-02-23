@@ -1,21 +1,7 @@
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
-import { IMGS_URL } from '../../helpers';
 import useHosts from '../../hooks/useHosts';
+import { IMGS_URL } from '../../helpers';
 import Loader from '../../components/Loader';
-
-interface ImageProps {
-  readonly imageURL: string;
-  readonly height: string;
-}
-
-const ImgContainer = styled.div<ImageProps>`
-  background-image: url(${(props: any) => props.imageURL});
-  background-size: cover;
-  background-position: center;
-  width: 100%;
-  height: ${(props: any) => props.height};
-`;
 
 function Hosts() {
   const { status, data, error } = useHosts();
@@ -30,10 +16,10 @@ function Hosts() {
             <p className="font-header font-bold text-xl lg:truncate mb-1 uppercase">
               {(host.firstName + ' ' + host.lastName).trim()}
             </p>
-            <ImgContainer
+            <img
               className="mb-2"
-              imageURL={`${IMGS_URL}/${host.prevImages[0]}`}
-              height="225px"
+              src={`${IMGS_URL}/${host.prevImages[0]}`}
+              alt={(host.firstName + ' ' + host.lastName).trim()}
             />
             <p className="lg:truncate mb-1">{host.tags.split(';').map((tag: any) => tag + ' ')}</p>
           </article>
