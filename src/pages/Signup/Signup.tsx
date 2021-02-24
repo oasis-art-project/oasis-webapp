@@ -28,7 +28,7 @@ function Signup() {
       <p>
         Thank you for your interest in joining the OASIS community! Right now the platform is still 
         being developed and tested, with some functions are not yet ready, including account creation. 
-        However, we can create an account for you manually if you send us an email providing some very basic
+        However, we can create an account for you if you send us an email providing some very basic
         information about you and why you are interested in OASIS.
       </p>
 
@@ -53,12 +53,12 @@ function Signup() {
 
         <br/>
         <p>
-        If you would like to have an account during the testing stage of OASIS, either as artists, host, or visitor, please 
+        If you would like to have an account during the testing stage of OASIS, either as an artist, host, or visitor, please 
         send us an email to: <b>info@oooasis.art</b>
         </p>
         <br/>
         <p>
-        Finally, all the information about artworks and events in the OASIS website is publicly available for vieweing without requiring an account :-)
+        Finally, all the information about artworks and events in the OASIS website is publicly available for vieweing without requiring an account ❤️
         </p>
 
       </ol>
