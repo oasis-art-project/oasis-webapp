@@ -54,7 +54,7 @@ function Event() {
 
   const { startTime, endTime, fullImages, place, description, artists, artworks } = data.event;
   const { fullImages: placeImages, id: placeId } = place;
-  const eventArtist = artists.map((artist: any) => ({
+  const eventArtists = artists.map((artist: any) => ({
     name: `${artist.firstName} ${artist.lastName}`.trim(),
     profileImage: `${IMGS_URL}/${artist.prevImages[0]}`,
     id: artist.id,
@@ -117,7 +117,7 @@ function Event() {
             />
           }        
         >
-        {eventArtist.map((artist: any) => (
+        {eventArtists.map((artist: any) => (
           <Link key={artist.id} to={`/artist/${artist.id}`}>
             <article className="flex flex-end flex-col h-full justify-end">
               <ImgContainer className="mb-2" imageURL={artist.profileImage} width="150px" height="150px" />
