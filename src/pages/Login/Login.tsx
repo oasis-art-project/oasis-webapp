@@ -24,8 +24,8 @@ const SignupForm = () => {
 
   const formik = useFormik({
     initialValues: {
-      email: 'aa@bb.cc',
-      password: '123456',
+      email: '',
+      password: '',
     },
     onSubmit: values => {
       // alert(JSON.stringify(values, null, 2));
@@ -41,7 +41,7 @@ const SignupForm = () => {
         </Link>
       </div>
       <img src={logo} alt="Oasis logo" width="100px" className="mb-12 lg:mt-32 mt-12" />
-      <form className="flex flex-col px-10 py-7 lg:w-96 w-full" onSubmit={formik.handleSubmit}>
+      <form className="flex flex-col px-8 py-7 lg:w-96 w-full" onSubmit={formik.handleSubmit}>
         <label className="m-2 uppercase font-header text-darkGray" htmlFor="email">
           Email Address
         </label>
@@ -75,14 +75,12 @@ const SignupForm = () => {
           Login
         </button>
       </form>
-
       <SignupButton
-          className="mt-3 border-solid border-4 border-darkGray px-3 py-1 font-header font-bold text-xl lg:w-96 w-full"
+          className="mt-3 border-solid border-4 border-darkGray px-3 py-1 font-header font-bold text-xl lg:w-80 w-full"
           href={`/signup`}
         >
           Signup
       </SignupButton>
-
     </div>
   );
 };
