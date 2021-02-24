@@ -1,7 +1,7 @@
 <p align="center">
   <a href="https://oooasis.art">
     <img src="./src/assets/img/logo-v2.png" height="96">
-    <h3 align="center">Oasis</h3>
+    <h3 align="center">OASIS</h3>
   </a>
   <p align=""></p>
 </p>

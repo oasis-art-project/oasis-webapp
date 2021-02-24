@@ -3,8 +3,18 @@ import useArtists from '../../hooks/useArtists';
 import { IMGS_URL } from '../../helpers';
 import Loader from '../../components/Loader';
 
+const formatName = (first: string, last: string) => {
+  return (last + ' ' + first).trim()
+};
+
 function Artists() {
   const { status, data, error } = useArtists();
+
+  if (data) {
+    data.users.sort((a: any, b: any) => {
+      return formatName(a.firstName, a.lastName) > formatName(b.firstName, b.lastName);
+    });
+  }
 
   if (status === 'loading') return <Loader />;
   if (error) return <div>Error</div>;

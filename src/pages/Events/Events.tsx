@@ -7,6 +7,8 @@ import Map, { Marker, Popup } from '../../components/Map';
 import Loader from '../../components/Loader';
 import Geohash from 'latlon-geohash';
 
+import hubs from '../../assets/img/3dcube.png';
+
 const artistSelection = (artists: []) => {
   let resultArtist = '';
   if (artists.length < 3) {
@@ -29,6 +31,12 @@ interface ImageProps {
   readonly imageURL: string;
   readonly height: string;
 }
+
+const HubsButton = styled.a`
+  background-color: black;
+  padding: 0.5rem;
+  text-align: center;
+`;
 
 const ImgContainer = styled.div<ImageProps>`
   background-image: url(${(props: any) => props.imageURL});
@@ -129,6 +137,19 @@ function Events() {
                     {event.place.name}
                   </p>
                 </Link>
+                {event.hubs_link && (
+                  <HubsButton
+                    className="flex justify-center gap-2 w-full"
+                    target="_blank"
+                    rel="noreferrer"
+                    href={`https://hubs.link/${event.hubs_link}`}
+                  >
+                    <img src={hubs} alt="3D Cube" width="20" />
+                    <div className="text-white">
+                      Virtual Gallery
+                    </div>
+                  </HubsButton>
+              )}
               </StyledPopup>
             </Marker>
           ))}
