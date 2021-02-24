@@ -23,7 +23,7 @@ function About() {
     <div className="leading-relaxed">
       <SectionHeader title="About" />
       <AboutContainer>
-      <h3 className="font-header text-2xl my-4">What is it?</h3>
+      <h3 className="font-header text-2xl my-4">What is OASIS?</h3>
       <p>
         OASIS is a decentralized art platform designed to connect artists with space providers and
         audiences in the local community. The main goals of this platform are (1) to make more
@@ -55,7 +55,7 @@ function About() {
         These events will populate OASIS' public homepage so visitors can find the current and upcoming exhibitions.
       </p>
       
-      <h3 className="font-header text-2xl mt-6 mb-4">Creating virtual events</h3>
+      <h3 className="font-header text-2xl mt-6 mb-4">Virtual events</h3>
       <p>
         We are very well aware that the reality of art exhibitions has been dramatically affected by the ongoing COVID-19 pandemic. 
         In view of this situation, we have implemented new functionality in the OASIS website that enables the creation of virtual events 
