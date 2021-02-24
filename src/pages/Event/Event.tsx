@@ -7,6 +7,10 @@ import { ReactSmartScroller } from 'react-smart-scroller'
 
 import hubs from '../../assets/img/3dcube.png';
 
+const formatName = (first: string, last: string) => {
+  return (last + ' ' + first).trim()
+};
+
 interface Params {
   id: string;
 }
@@ -54,6 +58,13 @@ function Event() {
 
   const { startTime, endTime, fullImages, place, description, artists, artworks } = data.event;
   const { fullImages: placeImages, id: placeId } = place;
+
+  if (artists) {
+    artists.sort((a: any, b: any) => {
+      return formatName(a.firstName, a.lastName) > formatName(b.firstName, b.lastName);
+    });
+  }
+
   const eventArtists = artists.map((artist: any) => ({
     name: `${artist.firstName} ${artist.lastName}`.trim(),
     profileImage: `${IMGS_URL}/${artist.prevImages[0]}`,
