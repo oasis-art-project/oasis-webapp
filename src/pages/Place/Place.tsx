@@ -14,7 +14,7 @@ import { useState } from 'react';
 interface ImageProps {
   readonly imageURL: string;
   readonly width: string;
-  readonly height: string;  
+  readonly height: string;
 }
 
 const ImgContainer = styled.div<ImageProps>`
@@ -137,7 +137,7 @@ function Place() {
               width="150px"
               height="150px"
             />
-            <p className="font-header font-bold text-xl truncate mb-2 text-center uppercase">
+            <p className="font-header font-bold text-md truncate mb-2 text-center uppercase">
               {(place.host.firstName + ' ' + place.host.lastName).trim()}
             </p>
           </article>

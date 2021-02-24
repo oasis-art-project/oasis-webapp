@@ -26,6 +26,7 @@ interface Params {
 
 interface ImageProps {
   readonly imageURL: string;
+  readonly width: string;
   readonly height: string;
 }
 
@@ -33,7 +34,7 @@ const ImgContainer = styled.div<ImageProps>`
   background-image: url(${(props: any) => props.imageURL});
   background-size: cover;
   background-position: center;
-  width: 100%;
+  width: ${(props: any) => props.width};
   height: ${(props: any) => (props.height ? props.height : '325px')};
 `;
 
@@ -109,9 +110,10 @@ function Artwork() {
             <ImgContainer
               className="mb-2"
               imageURL={`${IMGS_URL}/${artist.prevImages[0]}`}
+              width="150px"
               height="150px"
             />
-            <p className="font-header font-bold text-xl truncate mb-2 text-center uppercase">
+            <p className="font-header font-bold text-md truncate mb-2 text-center uppercase">
               {(artist.firstName + ' ' + artist.lastName).trim()}
             </p>
           </article>
@@ -122,7 +124,7 @@ function Artwork() {
         {artworkEvents.map((event: any) => (
           <Link key={event.id} to={`/event/${event.id}`}>
             <article className="flex flex-end flex-col h-full justify-end">
-              <ImgContainer className="mb-2" imageURL={event.eventCover} height="150px" />
+              <ImgContainer className="mb-2" imageURL={event.eventCover} height="150px" width="100%" />
               <p className="truncate mb-2 text-gray-500">{event.name}</p>
             </article>
           </Link>
