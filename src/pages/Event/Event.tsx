@@ -64,18 +64,24 @@ function Event() {
       return formatName(a.firstName, a.lastName) > formatName(b.firstName, b.lastName);
     });
   }
-
   const eventArtists = artists.map((artist: any) => ({
     name: `${artist.firstName} ${artist.lastName}`.trim(),
     profileImage: `${IMGS_URL}/${artist.prevImages[0]}`,
     id: artist.id,
   }));
+
+  if (artworks) {
+    artworks.sort((a: any, b: any) => {
+      return formatName(a.artist.firstName, a.artist.lastName) > formatName(b.artist.firstName, b.artist.lastName);
+    });
+  }  
   const eventArtworks = artworks.map((artwork: any) => ({
     name: artwork.name,
     artist: artwork.artist,
     profileImage: `${IMGS_URL}/${artwork.prevImages[0]}`,
     id: artwork.id,
   }));
+
   const parsedDates = datesParser(startTime, endTime);
   const eventCoverIMG = `${IMGS_URL}/${fullImages[0]}`;
   const placeCoverIMG = `${IMGS_URL}/${placeImages[0]}`;
