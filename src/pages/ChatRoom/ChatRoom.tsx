@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { Redirect, useParams } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 import useChat from '../../hooks/useChat';
 import Interweave from 'interweave';
@@ -8,10 +8,21 @@ import { UrlMatcher, HashtagMatcher } from 'interweave-autolink';
 import './style.css';
 
 const ChatRoom = () => {
-  const { roomId }: { roomId: string} = useParams();
+  const { roomId }: { roomId: string } = useParams();
+  const allowedUsers = roomId.split('-');
   const auth: any = useAuth();
   const { messages, sendMessage } = useChat(roomId, auth.user.identity);
   const [newMessage, setNewMessage] = React.useState('');
+
+  if (allowedUsers.indexOf(auth.user.identity.toString()) === -1) {
+    return (
+      <Redirect
+        to={{
+          pathname: '/',
+        }}
+      />
+    );
+  }
 
   const handleNewMessageChange = (event: any) => {
     setNewMessage(event.target.value);
@@ -25,8 +36,8 @@ const ChatRoom = () => {
       const userName = auth.user.user_claims.fullName;
       const text = newMessage.trim();
       if (text) {
-        sendMessage(text, roomId, userId, userName);        
-      }            
+        sendMessage(text, roomId, userId, userName);
+      }
       setNewMessage('');
     } else {
       alert('Please login first to send messages to other users');
@@ -35,7 +46,9 @@ const ChatRoom = () => {
   };
 
   // Get first message not owned by the current user, this should be the other person in the chat...
-  const result = messages.find(function (message: any) {return !message.ownedByCurrentUser; });
+  const result = messages.find(function (message: any) {
+    return !message.ownedByCurrentUser;
+  });
 
   return (
     <div className="chat-room-container">
@@ -49,14 +62,11 @@ const ChatRoom = () => {
                 message.ownedByCurrentUser ? 'my-message' : 'received-message'
               }`}
             >
-
-            <Interweave content={message.body}
-                        newWindow={true}
-                        matchers={[
-                           new UrlMatcher('url'), 
-                           new HashtagMatcher('hashtag')]}
-            />
-              
+              <Interweave
+                content={message.body}
+                newWindow={true}
+                matchers={[new UrlMatcher('url'), new HashtagMatcher('hashtag')]}
+              />
             </li>
           ))}
         </ol>
