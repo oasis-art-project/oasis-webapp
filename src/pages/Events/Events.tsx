@@ -33,6 +33,7 @@ interface ImageProps {
 }
 
 const HubsButton = styled.a`
+  color: white;
   background-color: black;
   padding: 0.5rem;
   text-align: center;
@@ -145,7 +146,7 @@ function Events() {
                     href={`https://hubs.link/${event.hubs_link}`}
                   >
                     <img src={hubs} alt="3D Cube" width="20" />
-                    <div className="text-white">
+                    <div className="text-gray-50">
                       Virtual Gallery
                     </div>
                   </HubsButton>

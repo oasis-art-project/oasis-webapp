@@ -137,7 +137,7 @@ function Place() {
               width="150px"
               height="150px"
             />
-            <p className="font-header font-bold text-md truncate mb-2 text-center uppercase">
+            <p className="font-header font-bold text-md truncate mb-2 uppercase">
               {(place.host.firstName + ' ' + place.host.lastName).trim()}
             </p>
           </article>

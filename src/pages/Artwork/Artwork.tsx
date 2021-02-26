@@ -59,16 +59,16 @@ function Artwork() {
   return (
     <div>
       <SectionHeader title="Artwork Information" />
+      <p className="font-header font-bold text-4xl mb-2 pb-1">{artwork.name}</p>
       <div className="grid xl:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 gap-6 mb-5">
-        <div className="flex flex-end flex-col h-full justify-end">
-          <p className="font-header font-bold text-4xl truncate mb-2 pb-1">{artwork.name}</p>
+        <div className="flex flex-end flex-col h-full justify-end">          
           <TransformWrapper>
             <TransformComponent>
               <img alt={artwork.name} src={artworkCoverIMG} />
             </TransformComponent>
           </TransformWrapper>
         </div>
-        <div className="flex flex-col pt-9">
+        <div className="flex flex-col">
           {artwork.year && (
             <p className="font-header text-xl my-3">
               <label className="font-bold mr-3">Year:</label>
@@ -103,7 +103,7 @@ function Artwork() {
           )}
         </div>
       </div>
-      <SectionHeader title="Artists" />
+      <SectionHeader title="Artist" />
       <div className="grid xl:grid-cols-6 md:grid-cols-6 sm:grid-cols-2 gap-6 mb-5">
         <Link key={artist.id} to={`/artist/${artist.id}`}>
           <article className="flex flex-end flex-col h-full justify-end">
@@ -113,7 +113,7 @@ function Artwork() {
               width="150px"
               height="150px"
             />
-            <p className="font-header font-bold text-md truncate mb-2 text-center uppercase">
+            <p className="font-header font-bold text-md truncate mb-2 uppercase">
               {(artist.firstName + ' ' + artist.lastName).trim()}
             </p>
           </article>
