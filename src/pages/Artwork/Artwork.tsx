@@ -103,7 +103,7 @@ function Artwork() {
           )}
         </div>
       </div>
-      <SectionHeader title="Artists" />
+      <SectionHeader title="Artist" />
       <div className="grid xl:grid-cols-6 md:grid-cols-6 sm:grid-cols-2 gap-6 mb-5">
         <Link key={artist.id} to={`/artist/${artist.id}`}>
           <article className="flex flex-end flex-col h-full justify-end">
@@ -113,7 +113,7 @@ function Artwork() {
               width="150px"
               height="150px"
             />
-            <p className="font-header font-bold text-md truncate mb-2 text-center uppercase">
+            <p className="font-header font-bold text-md truncate mb-2 uppercase">
               {(artist.firstName + ' ' + artist.lastName).trim()}
             </p>
           </article>
