@@ -35,6 +35,7 @@ const SectionHeader = ({ title = '' }) => {
   );
 };
 
+
 interface ImageProps {
   readonly imageURL: string;
   readonly width: string;
@@ -154,13 +155,17 @@ function Event() {
             <article className="flex flex-end flex-col h-full justify-end">
               <p className="font-header font-bold text-xl lg:truncate mb-1 uppercase">
               {(artwork.artist.firstName + ' ' + artwork.artist.lastName).trim()}
-              </p>              
+              </p>
               <ImgContainer className="mb-2" imageURL={artwork.profileImage} height="150px" width="100%" />
-              <p className="truncate mb-2 text-gray-500">{artwork.name}</p>
+              <p className="lg:truncate mb-1 text-gray-500">
+                {artwork.name}
+              </p>
             </article>
           </Link>
         ))}
       </div>
+
+
     </div>
   );
 }
