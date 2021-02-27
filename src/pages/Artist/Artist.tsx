@@ -99,7 +99,7 @@ function Artist() {
               </a>
             )}
             {!auth.user && (
-              <span onClick={open} className="flex items-center">
+              <span onClick={open} className="flex items-center cursor-pointer">
                 <IoChatboxSharp className="text-xl" />
                 <span className="font-header font-bold text-lg my-3 ml-3 items-center">Chat</span>
               </span>
@@ -107,10 +107,10 @@ function Artist() {
             {auth.user && auth.user.identity !== id && (
               <Link
                 to={`/room/${formatChatRoom(auth.user.identity, id)}`}
-                className="border-solid border-4 border-darkGray px-3 py-1 font-header font-bold text-xl flex items-center justify-center mt-5"
+                className="flex items-center cursor-pointer"
               >
-                <IoChatboxSharp className="mr-6" />
-                Chat
+                <IoChatboxSharp className="text-xl" />
+                <span className="font-header font-bold text-lg my-3 ml-3 items-center">Chat</span>
               </Link>
             )}
             {user.instagram && (
@@ -165,7 +165,7 @@ function Artist() {
           </Link>
         ))}
       </div>
-      <Dialog isOpen={showDialog} onDismiss={close}>
+      <Dialog isOpen={showDialog} onDismiss={close} aria-label="warning alert">
         <button className="close-button float-rigt" onClick={close}>
           <span aria-hidden>×</span>
         </button>
