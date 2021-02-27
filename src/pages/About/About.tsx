@@ -60,7 +60,7 @@ function About() {
         We are very well aware that the reality of art exhibitions has been dramatically affected by the ongoing COVID-19 pandemic. 
         In view of this situation, we have implemented new functionality in the OASIS website that enables the creation of virtual events 
         using the <a className="text-gray-400 underline" target="_blank" rel="noreferrer" href="https://hubs.mozilla.com/">Mozilla Hubs</a> platform. Each event in OASIS can 
-        be optionally linked to a custom Hubs room where the artwork will displayed in an interactive 3D environment where artists, hosts, 
+        be optionally linked to a custom Hubs room where the artwork will be displayed in an interactive 3D environment where artists, hosts, 
         and visitors can meet each other safely and experience the art and the community. If you are interested in creating virtual events
         please send us an email to: <b>info@oooasis.art</b> 
       </p>
