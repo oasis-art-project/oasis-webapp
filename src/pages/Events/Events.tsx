@@ -11,7 +11,9 @@ import hubs from '../../assets/img/3dcube.png';
 
 const artistSelection = (artists: []) => {
   let resultArtist = '';
-  if (artists.length < 3) {
+  if (artists.length < 1) {
+    resultArtist = "Surprise Event!"
+  } else if (artists.length < 3) {
     artists.forEach((user: any, i: number) => {
       if (i > 0) resultArtist += ' & ';
       resultArtist += `${user.firstName} ${user.lastName}`.trim();
