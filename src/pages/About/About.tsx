@@ -25,7 +25,7 @@ function About() {
       <AboutContainer>
       <h3 className="font-header text-2xl my-4">What is OASIS?</h3>
       <p>
-        OASIS is a decentralized art platform designed to connect artists with space providers and
+        OASIS is an art platform designed to connect artists with space providers and
         audiences in the local community. The main goals of this platform are (1) to make more
         spaces available to artists to show their work, (2) to give space providers a unique
         channel to announce the availability of their spaces and the type of work they are looking
