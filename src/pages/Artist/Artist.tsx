@@ -7,6 +7,8 @@ import { IMGS_URL } from '../../helpers';
 import useAuth from '../../hooks/useAuth';
 import Loader from '../../components/Loader';
 import { Dialog } from '@reach/dialog';
+// import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
+
 import '@reach/dialog/styles.css';
 import { useState } from 'react';
 
@@ -38,6 +40,17 @@ const ImgContainer = styled.div<ImageProps>`
   background-position: center;
   width: 100%;
   height: ${(props: any) => props.height};
+`;
+
+const Wrapper = styled.div`
+  position: relative;
+  height: 270px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  img {
+    max-height: 90%;
+  }
 `;
 
 const formatChatRoom = (id1: any, id2: any) => {
@@ -147,9 +160,11 @@ function Artist() {
       <div className="grid xl:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 gap-12 mb-5">
         {userArtworks.map((artwork: any) => (
           <Link key={artwork.id} to={`/artwork/${artwork.id}`}>
-            <article className="flex flex-end flex-col h-full justify-end">
-              <ImgContainer className="mb-2" imageURL={artwork.profileImage} height="225px" />
-              <p className="truncate mb-2 text-gray-500">{artwork.name}</p>
+            <article className="flex flex-end flex-col justify-end">
+              <Wrapper>
+                <img alt={artwork.name} src={artwork.profileImage} />
+              </Wrapper>
+              <p className="text-center truncate mb-2 text-gray-500">{artwork.name}</p>
             </article>
           </Link>
         ))}

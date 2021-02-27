@@ -3,12 +3,12 @@ import styled from 'styled-components';
 import useEvent from '../../hooks/useEvent';
 import { datesParser, IMGS_URL } from '../../helpers';
 import Loader from '../../components/Loader';
-import { ReactSmartScroller } from 'react-smart-scroller'
+import { ReactSmartScroller } from 'react-smart-scroller';
 
 import hubs from '../../assets/img/3dcube.png';
 
 const formatName = (first: string, last: string) => {
-  return (last + ' ' + first).trim()
+  return (last + ' ' + first).trim();
 };
 
 interface Params {
@@ -35,12 +35,22 @@ const SectionHeader = ({ title = '' }) => {
   );
 };
 
-
 interface ImageProps {
   readonly imageURL: string;
   readonly width: string;
-  readonly height: string;  
+  readonly height: string;
 }
+
+const Wrapper = styled.div`
+  position: relative;
+  height: 270px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  img {
+    max-height: 90%;
+  }
+`;
 
 const ImgContainer = styled.div<ImageProps>`
   background-image: url(${(props: any) => props.imageURL});
@@ -73,9 +83,12 @@ function Event() {
 
   if (artworks) {
     artworks.sort((a: any, b: any) => {
-      return formatName(a.artist.firstName, a.artist.lastName) > formatName(b.artist.firstName, b.artist.lastName);
+      return (
+        formatName(a.artist.firstName, a.artist.lastName) >
+        formatName(b.artist.firstName, b.artist.lastName)
+      );
     });
-  }  
+  }
   const eventArtworks = artworks.map((artwork: any) => ({
     name: artwork.name,
     artist: artwork.artist,
@@ -124,48 +137,53 @@ function Event() {
       <SectionHeader title="Participating artists" />
 
       <div className="w-full mb-10 mt-10">
-      <ReactSmartScroller draggable spacing={12}
+        <ReactSmartScroller
+          draggable
+          spacing={12}
           thumb={
             <div
               style={{
                 width: 100,
                 height: 10,
-                backgroundColor: 'black'
+                backgroundColor: 'black',
               }}
             />
-          }        
+          }
         >
-        {eventArtists.map((artist: any) => (
-          <Link key={artist.id} to={`/artist/${artist.id}`}>
-            <article className="flex flex-end flex-col h-full justify-end">
-              <ImgContainer className="mb-2" imageURL={artist.profileImage} width="150px" height="150px" />
-              <p className="font-header font-bold text-md truncate mb-2 text-center uppercase">
-                {artist.name}
-              </p>
-            </article>
-          </Link>
-        ))}
-       </ReactSmartScroller>
+          {eventArtists.map((artist: any) => (
+            <Link key={artist.id} to={`/artist/${artist.id}`}>
+              <article className="flex flex-end flex-col h-full justify-end">
+                <ImgContainer
+                  className="mb-2"
+                  imageURL={artist.profileImage}
+                  width="150px"
+                  height="150px"
+                />
+                <p className="font-header font-bold text-md truncate mb-2 text-center uppercase">
+                  {artist.name}
+                </p>
+              </article>
+            </Link>
+          ))}
+        </ReactSmartScroller>
       </div>
 
       <SectionHeader title="Featured artworks" />
       <div className="grid xl:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 gap-12 mb-5">
         {eventArtworks.map((artwork: any) => (
           <Link key={artwork.id} to={`/artwork/${artwork.id}`}>
-            <article className="flex flex-end flex-col h-full justify-end">
-              <p className="font-header font-bold text-xl lg:truncate mb-1 uppercase">
-              {(artwork.artist.firstName + ' ' + artwork.artist.lastName).trim()}
+            <article className="flex flex-end flex-col justify-end">
+              <p className="text-center font-header font-bold text-xl lg:truncate mb-1 uppercase">
+                {(artwork.artist.firstName + ' ' + artwork.artist.lastName).trim()}
               </p>
-              <ImgContainer className="mb-2" imageURL={artwork.profileImage} height="150px" width="100%" />
-              <p className="lg:truncate mb-1 text-gray-500">
-                {artwork.name}
-              </p>
+              <Wrapper>
+                <img alt={artwork.name} src={artwork.profileImage} />
+              </Wrapper>
+              <p className="text-center truncate mb-1 text-gray-500">{artwork.name}</p>
             </article>
           </Link>
         ))}
       </div>
-
-
     </div>
   );
 }
