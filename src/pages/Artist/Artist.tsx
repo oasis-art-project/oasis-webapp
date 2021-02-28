@@ -7,7 +7,6 @@ import { IMGS_URL } from '../../helpers';
 import useAuth from '../../hooks/useAuth';
 import Loader from '../../components/Loader';
 import { Dialog } from '@reach/dialog';
-// import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
 
 import '@reach/dialog/styles.css';
 import { useState } from 'react';
