@@ -169,7 +169,7 @@ function Event() {
       </div>
 
       <SectionHeader title="Featured artworks" />
-      <div className="grid xl:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 gap-12 mb-5">
+      <div className="grid xl:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 gap-12 mb-5 w-full overflow-hidden">
         {eventArtworks.map((artwork: any) => (
           <Link key={artwork.id} to={`/artwork/${artwork.id}`}>
             <article className="flex flex-end flex-col justify-end">
