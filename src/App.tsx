@@ -11,6 +11,7 @@ import Home from './pages/Events';
 import Event from './pages/Event';
 import Artists from './pages/Artists';
 import Artist from './pages/Artist';
+import ArtistCover from './pages/ArtistCover'
 import Artwork from './pages/Artwork';
 import ChatRoom from './pages/ChatRoom';
 import Places from './pages/Places';
@@ -67,6 +68,7 @@ function App() {
                       <Route path="/event/:id" exact component={Event} />
                       <Route path="/artists/" exact component={Artists} />
                       <Route path="/artist/:id" exact component={Artist} />
+                      <Route path="/artist-cover/:id" exact component={ArtistCover} />
                       <Route path="/artwork/:id" exact component={Artwork} />
                       <Route path="/places/" exact component={Places} />
                       <Route path="/place/:id" exact component={Place} />
