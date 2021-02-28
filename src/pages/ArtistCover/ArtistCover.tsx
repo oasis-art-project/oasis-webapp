@@ -1,5 +1,4 @@
 import { useParams } from 'react-router-dom';
-import styled from 'styled-components';
 import useArtist from '../../hooks/useArtist';
 import Loader from '../../components/Loader';
 
