@@ -179,7 +179,7 @@ function Event() {
               <Wrapper>
                 <img alt={artwork.name} src={artwork.profileImage} />
               </Wrapper>
-              <p className="text-center truncate mb-1 text-gray-500">{artwork.name}</p>
+              <p className="text-center md:truncate mb-1 text-gray-500">{artwork.name}</p>
             </article>
           </Link>
         ))}

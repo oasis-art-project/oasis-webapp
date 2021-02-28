@@ -163,7 +163,7 @@ function Artist() {
               <Wrapper>
                 <img alt={artwork.name} src={artwork.profileImage} />
               </Wrapper>
-              <p className="text-center truncate mb-2 text-gray-500">{artwork.name}</p>
+              <p className="text-center md:truncate mb-2 text-gray-500">{artwork.name}</p>
             </article>
           </Link>
         ))}
