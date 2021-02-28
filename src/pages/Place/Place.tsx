@@ -11,6 +11,15 @@ import { Dialog } from '@reach/dialog';
 import '@reach/dialog/styles.css';
 import { useState } from 'react';
 
+import cubeImage from '../../assets/img/3dcube.png';
+
+const MatterportButton = styled.a`
+  color: white;
+  background-color: black;
+  padding: 1rem;
+  text-align: center;
+`;
+
 interface ImageProps {
   readonly imageURL: string;
   readonly width: string;
@@ -126,6 +135,22 @@ function Place() {
           <p className="font-header text-lg mb-3">{place.description}</p>
         </div>
       </div>
+
+      {place.matterport_link && (
+        <MatterportButton
+          className="flex justify-center gap-5 w-full"
+          target="_blank"
+          rel="noreferrer"
+          href={`https://my.matterport.com/show/?m=${place.matterport_link}`}
+        >
+          <img src={cubeImage} alt="3D Cube" width="50" />
+          <div>
+            Launch Virtual Gallery
+            <br />
+            and view online
+          </div>
+        </MatterportButton>
+      )}      
 
       <SectionHeader title="Host" />
       <div className="grid xl:grid-cols-6 md:grid-cols-6 sm:grid-cols-2 gap-6 mb-5">

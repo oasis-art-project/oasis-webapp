@@ -5,7 +5,7 @@ import { datesParser, IMGS_URL } from '../../helpers';
 import Loader from '../../components/Loader';
 import { ReactSmartScroller } from 'react-smart-scroller';
 
-import hubs from '../../assets/img/3dcube.png';
+import cubeImage from '../../assets/img/3dcube.png';
 
 const formatName = (first: string, last: string) => {
   return (last + ' ' + first).trim();
@@ -125,9 +125,9 @@ function Event() {
           rel="noreferrer"
           href={`https://hubs.link/${data.event.hubs_link}`}
         >
-          <img src={hubs} alt="3D Cube" width="50" />
+          <img src={cubeImage} alt="3D Cube" width="50" />
           <div>
-            Launch Virtual Gallery
+            Launch Virtual Event
             <br />
             and attend online
           </div>
