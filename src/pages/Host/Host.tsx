@@ -92,7 +92,7 @@ function Host() {
                 </span>
               </a>
             )}
-            {!auth.user && (
+            {user.showChat && !auth.user && (
               <span onClick={open} className="flex items-center">
                 <IoChatboxSharp className="text-xl" />
                 <span className="font-header font-bold text-lg my-3 ml-3 items-center">Chat</span>
