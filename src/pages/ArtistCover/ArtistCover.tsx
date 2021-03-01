@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom';
 import useArtist from '../../hooks/useArtist';
 import Loader from '../../components/Loader';
+import DelayRedirect from '../../components/DelayRedirect';
 
 import '@reach/dialog/styles.css';
 import { useState } from 'react';
@@ -21,9 +22,10 @@ function ArtistCover() {
 
   return (
     <div className="">
-          <p className="font-header font-bold text-9xl mb-2 pb-1">
-            {(user.firstName + ' ' + user.lastName).trim()}
-          </p>
+      <p className="font-header font-bold text-9xl mb-2 pb-1">
+        {(user.firstName + ' ' + user.lastName).trim()}
+      </p>
+      <DelayRedirect to={`/artist/${user.id}`} delay={3000} />
     </div>
   );
 }

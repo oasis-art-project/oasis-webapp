@@ -7,7 +7,7 @@ import Map, { Marker, Popup } from '../../components/Map';
 import Loader from '../../components/Loader';
 import Geohash from 'latlon-geohash';
 
-import hubs from '../../assets/img/3dcube.png';
+import cubeImage from '../../assets/img/3dcube.png';
 
 const artistSelection = (artists: []) => {
   let resultArtist = '';
@@ -29,17 +29,17 @@ const decodeLatLon = (loc: string) => {
   return [dec.lat, dec.lon];
 }
 
-interface ImageProps {
-  readonly imageURL: string;
-  readonly height: string;
-}
-
 const HubsButton = styled.a`
   color: white;
   background-color: black;
   padding: 0.5rem;
   text-align: center;
 `;
+
+interface ImageProps {
+  readonly imageURL: string;
+  readonly height: string;
+}
 
 const ImgContainer = styled.div<ImageProps>`
   background-image: url(${(props: any) => props.imageURL});
@@ -147,9 +147,9 @@ function Events() {
                     rel="noreferrer"
                     href={`https://hubs.link/${event.hubs_link}`}
                   >
-                    <img src={hubs} alt="3D Cube" width="20" />
+                    <img src={cubeImage} alt="3D Cube" width="20" />
                     <div className="text-gray-50">
-                      Virtual Gallery
+                      Virtual Event
                     </div>
                   </HubsButton>
               )}
