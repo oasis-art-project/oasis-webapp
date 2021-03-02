@@ -1,7 +1,13 @@
 import { Link } from 'react-router-dom';
 import useHosts from '../../hooks/useHosts';
 import { IMGS_URL } from '../../helpers';
+import styled from 'styled-components';
 import Loader from '../../components/Loader';
+
+const Tags = styled.p`
+  min-width: 100%;
+  min-height: 1.2em;
+`;
 
 function Hosts() {
   const { status, data, error } = useHosts();
@@ -21,7 +27,9 @@ function Hosts() {
               src={`${IMGS_URL}/${host.prevImages[0]}`}
               alt={(host.firstName + ' ' + host.lastName).trim()}
             />
-            <p className="lg:truncate mb-1">{host.tags.split(';').map((tag: any) => tag + ' ')}</p>
+            <Tags className="md:truncate mb-1 leading-4">
+              {host.tags.split(';').map((tag: any) => tag + ' ')}
+            </Tags>
           </article>
         </Link>
       ))}

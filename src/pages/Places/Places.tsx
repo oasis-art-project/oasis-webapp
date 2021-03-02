@@ -13,6 +13,11 @@ const decodeLatLon = (loc: string) => {
   return [dec.lat, dec.lon];
 }
 
+const Tags = styled.p`
+  min-width: 100%;
+  min-height: 1.2em;
+`;
+
 const StyledPopup = styled(Popup)`
   width: 200px;
   p {
@@ -86,7 +91,9 @@ function Places() {
                 imageURL={`${IMGS_URL}/${place.prevImages[0]}`}
                 height="225px"
               />
-              <p className="lg:truncate mb-1">{place.tags.split(';').map((tag: any) => tag + " ")}</p>
+              <Tags className="md:truncate mb-1 leading-4">
+                {place.tags.split(';').map((tag: any) => tag + ' ')}
+              </Tags>
             </article>
           </Link>
         ))}
