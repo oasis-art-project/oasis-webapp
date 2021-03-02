@@ -1,10 +1,11 @@
+import { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { ReactSmartScroller } from 'react-smart-scroller';
+import { Dialog } from '@reach/dialog';
 import useEvent from '../../hooks/useEvent';
 import { datesParser, IMGS_URL } from '../../helpers';
 import Loader from '../../components/Loader';
-import { ReactSmartScroller } from 'react-smart-scroller';
-
 import cubeImage from '../../assets/img/3dcube.png';
 
 const formatName = (first: string, last: string) => {
@@ -19,11 +20,17 @@ const Title = styled.div`
   letter-spacing: 2px;
 `;
 
-const HubsButton = styled.a`
+const HubsButton = styled.span`
   color: white;
   background-color: black;
   padding: 1rem;
   text-align: center;
+`;
+
+const StyledDialog = styled(Dialog)`
+  @media only screen and (max-width: 600px) {
+    width: 90vw;
+  }
 `;
 
 const SectionHeader = ({ title = '' }) => {
@@ -63,6 +70,9 @@ const ImgContainer = styled.div<ImageProps>`
 function Event() {
   const { id }: Params = useParams();
   const { status, data, error } = useEvent(id);
+  const [showDialogHubs, setShowDialogHubs] = useState(false);
+  const openHubsDialog = () => setShowDialogHubs(true);
+  const closeHubsDialog = () => setShowDialogHubs(false);
 
   if (status === 'loading') return <Loader />;
   if (error) return <div>Error</div>;
@@ -121,9 +131,8 @@ function Event() {
       {data.event.hubs_link && (
         <HubsButton
           className="flex justify-center gap-5 w-full"
-          target="_blank"
-          rel="noreferrer"
-          href={`https://hubs.link/${data.event.hubs_link}`}
+          // href={`https://hubs.link/${data.event.hubs_link}`}
+          onClick={openHubsDialog}
         >
           <img src={cubeImage} alt="3D Cube" width="50" />
           <div>
@@ -184,6 +193,22 @@ function Event() {
           </Link>
         ))}
       </div>
+      <StyledDialog isOpen={showDialogHubs} onDismiss={closeHubsDialog} aria-label="Hubs intro">
+        <button className="close-button float-rigt" onClick={closeHubsDialog}>
+          <span aria-hidden>×</span>
+        </button>
+        <div className="relative text-center">
+          <p className="mt-6 mb-12 text-xl font-header">
+            Only logged-in users can chat with other users
+          </p>
+          <Link
+            className="mx-auto border-solid border-4 border-darkGray px-3 py-1 font-header font-bold text-xl"
+            to="/login"
+          >
+            Login
+          </Link>
+        </div>
+      </StyledDialog>
     </div>
   );
 }
