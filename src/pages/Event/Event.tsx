@@ -152,7 +152,7 @@ function Event() {
         >
           {eventArtists.map((artist: any) => (
             <Link key={artist.id} to={`/artist/${artist.id}`}>
-              <article className="flex flex-end flex-col h-full justify-end">
+              <article className="flex flex-end flex-col h-full justify-end items-center">
                 <ImgContainer
                   className="mb-2"
                   imageURL={artist.profileImage}
