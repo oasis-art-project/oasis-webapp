@@ -80,26 +80,29 @@ function Event() {
   const { startTime, endTime, fullImages, place, description, artists, artworks } = data.event;
   const { fullImages: placeImages, id: placeId } = place;
 
-  if (artists) {
-    artists.sort((a: any, b: any) => {
-      return formatName(a.firstName, a.lastName) > formatName(b.firstName, b.lastName);
-    });
-  }
-  const eventArtists = artists.map((artist: any) => ({
+  const sortedArtists = artists.sort((a: any, b: any) => {
+    const nameA = formatName(a.firstName, a.lastName);
+    const nameB = formatName(b.firstName, b.lastName);
+    if (nameA > nameB) return 1;
+    if (nameA < nameB) return -1;
+    return 0;
+  });
+
+  const eventArtists = sortedArtists.map((artist: any) => ({
     name: `${artist.firstName} ${artist.lastName}`.trim(),
     profileImage: `${IMGS_URL}/${artist.prevImages[0]}`,
     id: artist.id,
   }));
 
-  if (artworks) {
-    artworks.sort((a: any, b: any) => {
-      return (
-        formatName(a.artist.firstName, a.artist.lastName) >
-        formatName(b.artist.firstName, b.artist.lastName)
-      );
-    });
-  }
-  const eventArtworks = artworks.map((artwork: any) => ({
+  const sortedArtworks = artworks.sort((a: any, b: any) => {
+    const nameA = formatName(a.artist.firstName, a.artist.lastName);
+    const nameB = formatName(b.artist.firstName, b.artist.lastName);
+    if (nameA > nameB) return 1;
+    if (nameA < nameB) return -1;
+    return 0;
+  });
+
+  const eventArtworks = sortedArtworks.map((artwork: any) => ({
     name: artwork.name,
     artist: artwork.artist,
     profileImage: `${IMGS_URL}/${artwork.prevImages[0]}`,
