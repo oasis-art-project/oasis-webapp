@@ -31,7 +31,7 @@ function Artists() {
               src={`${IMGS_URL}/${artist.prevImages[0]}`}
               alt={(artist.firstName + ' ' + artist.lastName).trim()}
             />
-            <p className="lg:truncate mb-1">{artist.tags.split(';').map((tag: any) => tag + " ")}</p>
+            <p className="md:truncate mb-1">{artist.tags.split(';').map((tag: any) => tag + " ")}</p>
           </article>
         </Link>
       ))}
