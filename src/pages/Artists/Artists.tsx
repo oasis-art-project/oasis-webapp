@@ -10,7 +10,7 @@ const formatName = (first: string, last: string) => {
 
 const Tags = styled.p`
   min-width: 100%;
-  min-height: 1em;
+  min-height: 1.2em;
 `;
 
 function Artists() {
