@@ -68,14 +68,14 @@ function App() {
                       <Route path="/event/:id" exact component={Event} />
                       <Route path="/artists/" exact component={Artists} />
                       <Route path="/artist/:id" exact component={Artist} />
-                      <Route path="/artist-cover/:id" exact component={ArtistCover} />
+                      <Route path="/artist-cover/:id/:name" exact component={ArtistCover} />
                       <Route path="/artwork/:id" exact component={Artwork} />
                       <Route path="/places/" exact component={Places} />
                       <Route path="/place/:id" exact component={Place} />
                       <Route path="/hosts/" exact component={Hosts} />
                       <Route path="/host/:id" exact component={Host} />
                       <Route path="/about" exact component={About} />
-                      <Route path="/signup" exact component={Signup} />
+                      <Route path="/signup" exact component={Signup} />                      
                       <PrivateRoute path="/room/:roomId">
                         <ChatRoom />
                       </PrivateRoute>
