@@ -55,14 +55,15 @@ function About() {
         These events will populate OASIS' public homepage so visitors can find the current and upcoming exhibitions.
       </p>
       
-      <h3 className="font-header text-2xl mt-6 mb-4">Virtual events</h3>
+      <h3 className="font-header text-2xl mt-6 mb-4">Virtual events and spaces</h3>
       <p>
-        We are very well aware that the reality of art exhibitions has been dramatically affected by the ongoing COVID-19 pandemic. 
-        In view of this situation, we have implemented new functionality in the OASIS website that enables the creation of virtual events 
-        using the <a className="text-gray-400 underline" target="_blank" rel="noreferrer" href="https://hubs.mozilla.com/">Mozilla Hubs</a> platform. Each event in OASIS can 
-        be optionally linked to a custom Hubs room where the artwork will be displayed in an interactive 3D environment where artists, hosts, 
-        and visitors can meet each other safely and experience the art and the community. If you are interested in creating virtual events
-        please send us an email to: <b>info@oooasis.art</b> 
+        We are very aware that the reality of art exhibitions has been dramatically affected by the ongoing COVID-19 pandemic. 
+        In view of this situation, we have implemented new functionality in the OASIS website that enables the creation of virtual events and spaces
+        using the <a className="text-gray-400 underline" target="_blank" rel="noreferrer" href="https://hubs.mozilla.com/">Mozilla Hubs</a> and <a className="text-gray-400 underline" target="_blank" rel="noreferrer" href="https://matterport.com/">Matterport</a> platforms. 
+        Each event in OASIS can be optionally linked to a custom Hubs room where the artwork will be displayed in an interactive 3D environment where artists, hosts, 
+        and visitors can meet each other safely and experience the art and the community. And places have the option to link a Matterport space from their pages,
+        which gives visitors the opportunity to easily navigate the physical venue and see the artworks in high-res from their computers or phones. If you are 
+        interested in creating virtual events or spaces please send us an email to: <b>info@oooasis.art</b> 
       </p>
 
       <h3 className="font-header text-2xl mt-6 mb-4">Support</h3>
