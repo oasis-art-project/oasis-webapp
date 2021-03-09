@@ -19,6 +19,10 @@ const Title = styled.div`
   letter-spacing: 2px;
 `;
 
+const ArtistImage = styled.img`
+  width: 100%;
+`;
+
 const SectionHeader = ({ title = '' }) => {
   return (
     <div className="w-full mb-10 mt-5">
@@ -93,7 +97,7 @@ function Artist() {
           <p className="font-header font-bold text-4xl lg:truncate mb-2 pb-1">
             {(user.firstName + ' ' + user.lastName).trim()}
           </p>
-          <img src={userCoverIMG} alt={user.firstName + ' ' + user.lastName} />
+          <ArtistImage src={userCoverIMG} alt={user.firstName + ' ' + user.lastName} />
         </div>
         <div className="flex flex-col">
           <div className="grid grid-cols-2 gap-0 md:mt-12 mb-3">

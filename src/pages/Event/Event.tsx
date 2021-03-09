@@ -20,6 +20,11 @@ const Title = styled.div`
   letter-spacing: 2px;
 `;
 
+const HubsImage = styled.img`
+  width: 50px;
+  height: 50px;
+`;
+
 const HubsButton = styled.span`
   color: white;
   background-color: black;
@@ -136,7 +141,7 @@ function Event() {
           className="flex justify-center gap-5 w-full"
           onClick={openHubsDialog}
         >
-          <img src={cubeImage} alt="3D Cube" width="50" />
+          <HubsImage src={cubeImage} alt="3D Cube" />
           <div>
             Launch Virtual Event
             <br />
