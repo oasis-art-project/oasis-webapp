@@ -4,7 +4,7 @@ import { FaExternalLinkSquareAlt } from 'react-icons/fa';
 import useArtwork from '../../hooks/useArtwork';
 import { IMGS_URL } from '../../helpers';
 import Loader from '../../components/Loader';
-
+import { browserName, CustomView } from 'react-device-detect';
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 
 const Title = styled.div`
@@ -38,6 +38,10 @@ const ImgContainer = styled.div<ImageProps>`
   height: ${(props: any) => (props.height ? props.height : '325px')};
 `;
 
+const ArtworkImage = styled.img`
+  width: 100%;
+`;
+
 function Artwork() {
   const { id }: Params = useParams();
   const { data, status, error } = useArtwork(id);
@@ -61,12 +65,20 @@ function Artwork() {
       <SectionHeader title="Artwork Information" />
       <p className="font-header font-bold text-4xl mb-2 pb-1">{artwork.name}</p>
       <div className="grid xl:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 gap-6 mb-5">
-        <div className="flex flex-end flex-col h-full justify-end">          
-          <TransformWrapper>
-            <TransformComponent>
-              <img alt={artwork.name} src={artworkCoverIMG} />
-            </TransformComponent>
-          </TransformWrapper>
+        <div className="flex flex-end flex-col h-full justify-end">
+
+          <CustomView condition={browserName !== "Safari"}>
+            <TransformWrapper>
+              <TransformComponent>
+                <ArtworkImage alt={artwork.name} src={artworkCoverIMG} />
+              </TransformComponent>
+            </TransformWrapper>
+          </CustomView>
+
+          <CustomView condition={browserName === "Safari"}>
+            <ArtworkImage alt={artwork.name} src={artworkCoverIMG} />
+          </CustomView>
+
         </div>
         <div className="flex flex-col">
           {artwork.year && (
