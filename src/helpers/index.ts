@@ -9,3 +9,9 @@ export const datesParser = (start: string, end: string): string => {
   const endDate = days(end).format('MMMM D YYYY');
   return `${startDate} - ${endDate}`;
 };
+
+export const eventStarted = (start: string): Boolean => {
+  const startDate = days(start);
+  var now = days()
+  return startDate.isBefore(now);
+};

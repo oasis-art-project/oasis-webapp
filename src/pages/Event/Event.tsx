@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { ReactSmartScroller } from 'react-smart-scroller';
 import { Dialog } from '@reach/dialog';
 import useEvent from '../../hooks/useEvent';
-import { datesParser, IMGS_URL } from '../../helpers';
+import { datesParser, eventStarted, IMGS_URL } from '../../helpers';
 import Loader from '../../components/Loader';
 import cubeImage from '../../assets/img/3dcube.png';
 
@@ -136,7 +136,7 @@ function Event() {
       </div>
       <p className="mb-8 text-gray-500">{description}</p>
 
-      {data.event.hubs_link && (
+      {data.event.hubs_link && eventStarted(startTime) && (
         <HubsButton
           className="flex justify-center gap-5 w-full"
           onClick={openHubsDialog}
