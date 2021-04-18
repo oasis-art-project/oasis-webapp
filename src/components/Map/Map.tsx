@@ -14,7 +14,7 @@ const Container = styled.div`
 
 const Map = (props: any) => (
   <Container>
-    <MapContainer center={[42.3822833, -71.1330431]} zoom={13} scrollWheelZoom={false}>
+    <MapContainer center={props.center} zoom={13} scrollWheelZoom={false}>
       <TileLayer url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png" />
       {props.children}
     </MapContainer>

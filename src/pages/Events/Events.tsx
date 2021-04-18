@@ -29,6 +29,23 @@ const decodeLatLon = (loc: string) => {
   return [dec.lat, dec.lon];
 }
 
+const getLocCentroid = (events: []) => {
+  // Cambridge center
+  let center = [42.3822833, -71.1330431]
+  let n = events.length
+  if (n < 1) {
+    return center;
+  } else {
+    var locSums = [0.0, 0.0];
+    events.forEach((event: any, i: number) => {
+      let dec = Geohash.decode(event.place.location)
+      locSums[0] += dec.lat;
+      locSums[1] += dec.lon;
+    });
+    return [locSums[0] / n, locSums[1] / n];
+  }
+}
+
 const HubsButton = styled.a`
   color: white;
   background-color: black;
@@ -127,7 +144,7 @@ function Events() {
         </ul>
       </div>
       <div>
-        <Map>
+        <Map center={getLocCentroid(data[view])}>
           {data[view].map((event: any) => (
             <Marker key={event.id} position={decodeLatLon(event.place.location)}>
               <StyledPopup>

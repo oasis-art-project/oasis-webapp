@@ -13,6 +13,23 @@ const decodeLatLon = (loc: string) => {
   return [dec.lat, dec.lon];
 }
 
+const getLocCentroid = (places: []) => {
+  // Cambridge center
+  let center = [42.3822833, -71.1330431]
+  let n = places.length
+  if (n < 1) {
+    return center;
+  } else {
+    var locSums = [0.0, 0.0];
+    places.forEach((place: any, i: number) => {
+      let dec = Geohash.decode(place.location)
+      locSums[0] += dec.lat;
+      locSums[1] += dec.lon;
+    });
+    return [locSums[0] / n, locSums[1] / n];
+  }
+}
+
 const Tags = styled.p`
   min-width: 100%;
   min-height: 1.2em;
@@ -52,7 +69,7 @@ function Places() {
   if (error) return <div>Error</div>;
   return (
     <>
-      <Map>
+      <Map center={getLocCentroid(data.places)}>
         {data.places.map((place: any) => (
           <Marker key={place.id} position={decodeLatLon(place.location)}>
             <StyledPopup>
