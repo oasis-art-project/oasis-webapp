@@ -2,7 +2,7 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import useCurrentEvents from '../../hooks/useCurrentEvents';
-import { datesParser, IMGS_URL } from '../../helpers';
+import { datesParser, eventStarted, IMGS_URL } from '../../helpers';
 import Map, { Marker, Popup } from '../../components/Map';
 import Loader from '../../components/Loader';
 import Geohash from 'latlon-geohash';
@@ -157,7 +157,7 @@ function Events() {
                     {event.place.name}
                   </p>
                 </Link>
-                {event.hubs_link && (
+                {event.hubs_link && eventStarted(event.startTime) && (
                   <HubsButton
                     className="flex justify-center gap-2 w-full"
                     target="_blank"
