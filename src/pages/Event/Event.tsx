@@ -189,9 +189,11 @@ function Event() {
         {eventArtworks.map((artwork: any) => (
           <Link key={artwork.id} to={`/artwork/${artwork.id}`}>
             <article className="flex flex-end flex-col justify-end">
-              <p className="text-center font-header font-bold text-xl lg:truncate mb-1 uppercase">
-                {(artwork.artist.firstName + ' ' + artwork.artist.lastName).trim()}
-              </p>
+              {1 < eventArtists.length && (
+                <p className="text-center font-header font-bold text-xl lg:truncate mb-1 uppercase">
+                  {(artwork.artist.firstName + ' ' + artwork.artist.lastName).trim()}
+                </p>            
+              )}
               <Wrapper>
                 <img alt={artwork.name} src={artwork.profileImage} />
               </Wrapper>
@@ -216,7 +218,7 @@ function Event() {
           <b>2)</b> After joining, use the <b>W and S</b> keys to move forward/backwards, and <b>mouse pointer</b> to set direction.
           </p>
           <p className="mt-6 mb-12 text-xl font-header">
-          <b>3)</b> With a phone, <b>PINCH IN/OUT</b> to move foward/backwards, and <b>move the phone</b> to set direction.
+          <b>3)</b> With a phone, <b>PINCH IN/OUT</b> to move backwards/foward, and <b>move the phone</b> to set direction.
           </p>          
           <a className="mx-auto border-solid border-4 border-darkGray px-3 py-1 font-header font-bold text-xl"
              target="_blank"
