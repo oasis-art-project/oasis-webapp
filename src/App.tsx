@@ -59,7 +59,10 @@ function App() {
           <Router>
             <MainContainer className="min-h-screen relative pb-">
               <Switch>
+                
                 <Route path="/login" exact component={Login} />
+                <Route path="/artist-cover/:id/:name/:tcolor/:bcolor" exact component={ArtistCover} />
+
                 <Route path="/">
                   <Container className="md:mx-auto px-4 pb-60">
                     <Navbar />
@@ -67,8 +70,7 @@ function App() {
                       <Route path="/" exact component={Home} />
                       <Route path="/event/:id" exact component={Event} />
                       <Route path="/artists/" exact component={Artists} />
-                      <Route path="/artist/:id" exact component={Artist} />
-                      <Route path="/artist-cover/:id/:name" exact component={ArtistCover} />
+                      <Route path="/artist/:id" exact component={Artist} />                      
                       <Route path="/artwork/:id" exact component={Artwork} />
                       <Route path="/places/" exact component={Places} />
                       <Route path="/place/:id" exact component={Place} />
@@ -81,14 +83,15 @@ function App() {
                       </PrivateRoute>
                     </Switch>
                   </Container>
+                  <Footer>
+                  <Link className="text-gray-50 mb-4" to="/about">
+                    What is OASIS?
+                  </Link>
+                  <p className="text-gray-50">© {new Date().getFullYear()}</p>
+                  </Footer>                  
                 </Route>
               </Switch>
-              <Footer>
-                <Link className="text-gray-50 mb-4" to="/about">
-                  What is OASIS?
-                </Link>
-                <p className="text-gray-50">© {new Date().getFullYear()}</p>
-              </Footer>
+
             </MainContainer>
           </Router>
         </ThemeProvider>
