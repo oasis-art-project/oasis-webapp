@@ -12,6 +12,7 @@ import Event from './pages/Event';
 import Artists from './pages/Artists';
 import Artist from './pages/Artist';
 import ArtistCover from './pages/ArtistCover'
+import ArtworkCover from './pages/ArtworkCover'
 import Artwork from './pages/Artwork';
 import ChatRoom from './pages/ChatRoom';
 import Places from './pages/Places';
@@ -59,9 +60,10 @@ function App() {
           <Router>
             <MainContainer className="min-h-screen relative pb-">
               <Switch>
-                
+
                 <Route path="/login" exact component={Login} />
-                <Route path="/artist-cover/:id/:name/:tcolor/:bcolor" exact component={ArtistCover} />
+                <Route path="/artist-cover/:id/:name/:tcolor?/:bcolor?" exact component={ArtistCover} />
+                <Route path="/artwork-cover/:id/:artist/:title/:info1?/:info2?/:tcolor?/:bcolor?" exact component={ArtworkCover} />
 
                 <Route path="/">
                   <Container className="md:mx-auto px-4 pb-60">

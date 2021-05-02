@@ -12,8 +12,13 @@ interface Params {
 
 function ArtistCover() {
   const { id, name, tcolor, bcolor }: Params = useParams();
-  var dStyleClass = `flex h-screen justify-center items-center ${bcolor}`;
-  var pStyleClass = `font-header font-bold text-9xl mb-2 pb-1 text-center ${tcolor}`;
+
+  // Default values
+  const tcolorVal = tcolor ? tcolor : "text-gray-700"; 
+  const bcolorVal = bcolor ? bcolor : "bg-gray-300"; 
+
+  var dStyleClass = `flex h-screen justify-center items-center ${bcolorVal}`;
+  var pStyleClass = `font-header font-bold text-9xl mb-2 pb-1 text-center ${tcolorVal}`;
   return (
     <div className={dStyleClass}>
       <p className={pStyleClass}>
