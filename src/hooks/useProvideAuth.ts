@@ -1,12 +1,8 @@
 import { useState } from 'react';
 import axios from 'axios';
-import { stringify } from 'qs';
 import { API_URL } from './constants';
+import { wrapParams } from '../helpers';
 import jwt_decode from 'jwt-decode';
-
-export const wrapParams = (params: any) => {
-  return stringify({ request: JSON.stringify(params) });
-};
 
 const Auth = {
   signin(cb: any, data: any) {
@@ -46,7 +42,7 @@ function useProvideAuth() {
     return Auth.signout(() => {
       setUser(null);
       setLoginFetch(false);
-      localStorage.removeItem('activeUser')
+      localStorage.removeItem('activeUser');
       cb();
     });
   };

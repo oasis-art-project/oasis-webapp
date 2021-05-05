@@ -24,8 +24,8 @@ const SignupForm = () => {
 
   const formik = useFormik({
     initialValues: {
-      email: 'aa@bb.cc',
-      password: '123456',
+      email: '',
+      password: '',
     },
     onSubmit: values => {
       login(values);

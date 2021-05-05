@@ -1,21 +1,47 @@
+import { useState } from 'react';
 import { useFormik } from 'formik';
 import { IoArrowBack } from 'react-icons/io5';
 import { Link } from 'react-router-dom';
 import * as Yup from 'yup';
+import { useMutation, useQueryClient } from 'react-query';
+import Loader from '../../components/Loader';
+import { registerInfoQuery } from '../../hooks/useRegister';
 import logo from '../../assets/img/logo-v2.png';
 
 const registerSchema = Yup.object().shape({
   firstName: Yup.string().min(2, 'Too Short!').max(50, 'Too Long!').required('Required'),
   lastName: Yup.string().min(2, 'Too Short!').max(50, 'Too Long!').required('Required'),
   email: Yup.string().email('Invalid email').required('Required'),
-  phone: Yup.string().email('Invalid email').required('Required'),
+  phone: Yup.string(),
   role: Yup.string().required('Required'),
   website: Yup.string(),
   instagram: Yup.string(),
   youtube: Yup.string(),
+  bio: Yup.string(),
 });
 
+const getRole = (role: String) => {
+  if (role === 'Host') return 2;
+  if (role === 'Artist') return 3;
+  if (role === 'Visitor') return 4;
+};
+
 const SignupForm = () => {
+  const queryClient = useQueryClient();
+  const [successMsg, setSuccessMsg]: [any, any] = useState('');
+  const [errorMsg, setErrorMsg]: [any, any] = useState(null);
+  const { mutate, isLoading } = useMutation(registerInfoQuery, {
+    onSuccess: () => {
+      setSuccessMsg('Form submited succesfully! 🎉');
+    },
+    onError: () => {
+      setErrorMsg('There was an error uploading the form 🙁');
+    },
+    onSettled: () => {
+      queryClient.invalidateQueries('create');
+    },
+  });
+
   const formik = useFormik({
     initialValues: {
       firstName: '',
@@ -30,7 +56,9 @@ const SignupForm = () => {
     },
     validationSchema: registerSchema,
     onSubmit: values => {
-      console.log(values);
+      const role = getRole(values.role);
+      const userInfo = { ...values, role };
+      mutate(userInfo);
     },
   });
   return (
@@ -88,192 +116,204 @@ const SignupForm = () => {
               </p>
             </ol>
           </div>
-          <form onSubmit={formik.handleSubmit}>
-            <div className=" overflow-hidden sm:rounded-md">
-              <div className="px-4 py-5 bg-white sm:p-6">
-                <div className="grid grid-cols-10 gap-6">
-                  <div className="col-span-10 sm:col-span-5">
-                    <label htmlFor="firstName" className="block text-sm font-medium text-gray-700">
-                      First name
-                    </label>
-                    <input
-                      type="text"
-                      name="firstName"
-                      id="firstName"
-                      autoComplete="given-name"
-                      className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300"
-                      onChange={formik.handleChange}
-                      value={formik.values.firstName}
-                    />
-                    {formik.errors.firstName && (
-                      <p className="mt-2 text-sm text-red-500">{formik.errors.firstName}</p>
-                    )}
-                  </div>
-
-                  <div className="col-span-10 sm:col-span-5">
-                    <label htmlFor="lastName" className="block text-sm font-medium text-gray-700">
-                      Last name
-                    </label>
-                    <input
-                      type="text"
-                      name="lastName"
-                      id="lastName"
-                      autoComplete="family-name"
-                      className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300"
-                      onChange={formik.handleChange}
-                      value={formik.values.lastName}
-                    />
-                    {formik.errors.lastName && (
-                      <p className="mt-2 text-sm text-red-500">{formik.errors.lastName}</p>
-                    )}
-                  </div>
-
-                  <div className="col-span-10 sm:col-span-7">
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-                      Email address
-                    </label>
-                    <input
-                      type="text"
-                      name="email"
-                      id="email"
-                      autoComplete="email"
-                      className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300"
-                      onChange={formik.handleChange}
-                      value={formik.values.email}
-                    />
-                    {formik.errors.email && (
-                      <p className="mt-2 text-sm text-red-500">{formik.errors.email}</p>
-                    )}
-                  </div>
-
-                  <div className="col-span-10 sm:col-span-7">
-                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
-                      Phone
-                    </label>
-                    <input
-                      type="text"
-                      name="phone"
-                      id="phone"
-                      autoComplete="phone"
-                      className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300"
-                      onChange={formik.handleChange}
-                      value={formik.values.phone}
-                    />
-                    {formik.errors.phone && (
-                      <p className="mt-2 text-sm text-red-500">{formik.errors.phone}</p>
-                    )}
-                  </div>
-
-                  <div className="col-span-10  sm:col-span-7">
-                    <label htmlFor="Role" className="block text-sm font-medium text-gray-700">
-                      Role
-                    </label>
-                    <select
-                      id="role"
-                      name="role"
-                      autoComplete="role"
-                      className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                    >
-                      <option>Artist</option>
-                      <option>Host</option>
-                      <option>Visitor</option>
-                    </select>
-                    {formik.errors.role && (
-                      <p className="mt-2 text-sm text-red-500">{formik.errors.role}</p>
-                    )}
-                  </div>
-
-                  <div className="col-span-10">
-                    <label htmlFor="about" className="block text-sm font-medium text-gray-700">
-                      About
-                    </label>
-                    <div className="mt-1">
-                      <textarea
-                        id="about"
-                        name="about"
-                        rows={3}
-                        className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border-gray-300"
-                        placeholder="you@example.com"
-                        onChange={formik.handleChange}
-                        value={formik.values.bio}
-                      />
-                      {formik.errors.bio && (
-                        <p className="mt-2 text-sm text-red-500">{formik.errors.bio}</p>
-                      )}
-                    </div>
-                  </div>
-
-                  <div className="col-span-10  sm:col-span-7">
-                    <label
-                      htmlFor="company_website"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      Website
-                    </label>
-                    <div className="mt-1 flex shadow-sm">
-                      <span className="inline-flex items-center px-3 border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
-                        http://
-                      </span>
+          {isLoading && (
+            <div className="px-4 py-5 bg-white sm:p-6">
+              <Loader />
+            </div>
+          )}
+          {errorMsg && <div className="px-4 py-5 bg-white sm:p-6">{errorMsg}</div>}
+          {successMsg && <div className="px-4 py-5 bg-white sm:p-6">{successMsg}</div>}
+          {!errorMsg && !successMsg && !isLoading && (
+            <form onSubmit={formik.handleSubmit}>
+              <div className="overflow-hidden sm:rounded-md">
+                <div className="px-4 py-5 bg-white sm:p-6">
+                  <div className="grid grid-cols-10 gap-6">
+                    <div className="col-span-10 sm:col-span-5">
+                      <label
+                        htmlFor="firstName"
+                        className="block text-sm font-medium text-gray-700"
+                      >
+                        First name
+                      </label>
                       <input
                         type="text"
-                        name="company_website"
-                        id="company_website"
-                        className="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full sm:text-sm border-gray-300"
-                        placeholder="www.example.com"
+                        name="firstName"
+                        id="firstName"
+                        autoComplete="given-name"
+                        className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300"
                         onChange={formik.handleChange}
-                        value={formik.values.website}
+                        value={formik.values.firstName}
                       />
-                      {formik.errors.website && (
-                        <p className="mt-2 text-sm text-red-500">{formik.errors.website}</p>
+                      {formik.errors.firstName && (
+                        <p className="mt-2 text-sm text-red-500">{formik.errors.firstName}</p>
+                      )}
+                    </div>
+
+                    <div className="col-span-10 sm:col-span-5">
+                      <label htmlFor="lastName" className="block text-sm font-medium text-gray-700">
+                        Last name
+                      </label>
+                      <input
+                        type="text"
+                        name="lastName"
+                        id="lastName"
+                        autoComplete="family-name"
+                        className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300"
+                        onChange={formik.handleChange}
+                        value={formik.values.lastName}
+                      />
+                      {formik.errors.lastName && (
+                        <p className="mt-2 text-sm text-red-500">{formik.errors.lastName}</p>
+                      )}
+                    </div>
+
+                    <div className="col-span-10 sm:col-span-7">
+                      <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+                        Email address
+                      </label>
+                      <input
+                        type="text"
+                        name="email"
+                        id="email"
+                        autoComplete="email"
+                        className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300"
+                        onChange={formik.handleChange}
+                        value={formik.values.email}
+                      />
+                      {formik.errors.email && (
+                        <p className="mt-2 text-sm text-red-500">{formik.errors.email}</p>
+                      )}
+                    </div>
+
+                    <div className="col-span-10 sm:col-span-7">
+                      <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
+                        Phone
+                      </label>
+                      <input
+                        type="text"
+                        name="phone"
+                        id="phone"
+                        autoComplete="phone"
+                        className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300"
+                        onChange={formik.handleChange}
+                        value={formik.values.phone}
+                      />
+                      {formik.errors.phone && (
+                        <p className="mt-2 text-sm text-red-500">{formik.errors.phone}</p>
+                      )}
+                    </div>
+
+                    <div className="col-span-10  sm:col-span-7">
+                      <label htmlFor="Role" className="block text-sm font-medium text-gray-700">
+                        Role
+                      </label>
+                      <select
+                        id="role"
+                        name="role"
+                        autoComplete="role"
+                        className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                      >
+                        <option>Artist</option>
+                        <option>Host</option>
+                        <option>Visitor</option>
+                      </select>
+                      {formik.errors.role && (
+                        <p className="mt-2 text-sm text-red-500">{formik.errors.role}</p>
+                      )}
+                    </div>
+
+                    <div className="col-span-10">
+                      <label htmlFor="bio" className="block text-sm font-medium text-gray-700">
+                        About
+                      </label>
+                      <div className="mt-1">
+                        <textarea
+                          id="bio"
+                          name="bio"
+                          rows={3}
+                          className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border-gray-300"
+                          placeholder="you@example.com"
+                          onChange={formik.handleChange}
+                          value={formik.values.bio}
+                        />
+                        {formik.errors.bio && (
+                          <p className="mt-2 text-sm text-red-500">{formik.errors.bio}</p>
+                        )}
+                      </div>
+                    </div>
+
+                    <div className="col-span-10  sm:col-span-7">
+                      <label htmlFor="website" className="block text-sm font-medium text-gray-700">
+                        Website
+                      </label>
+                      <div className="mt-1 flex shadow-sm">
+                        <span className="inline-flex items-center px-3 border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
+                          http://
+                        </span>
+                        <input
+                          type="text"
+                          name="website"
+                          id="website"
+                          className="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full sm:text-sm border-gray-300"
+                          placeholder="www.example.com"
+                          onChange={formik.handleChange}
+                          value={formik.values.website}
+                        />
+                        {formik.errors.website && (
+                          <p className="mt-2 text-sm text-red-500">{formik.errors.website}</p>
+                        )}
+                      </div>
+                    </div>
+
+                    <div className="col-span-10  sm:col-span-5">
+                      <label
+                        htmlFor="instagram"
+                        className="block text-sm font-medium text-gray-700"
+                      >
+                        Instagram
+                      </label>
+                      <input
+                        type="text"
+                        name="instagram"
+                        id="instagram"
+                        className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300"
+                        onChange={formik.handleChange}
+                        value={formik.values.instagram}
+                      />
+                      {formik.errors.instagram && (
+                        <p className="mt-2 text-sm text-red-500">{formik.errors.instagram}</p>
+                      )}
+                    </div>
+
+                    <div className="col-span-10  sm:col-span-5">
+                      <label htmlFor="youtube" className="block text-sm font-medium text-gray-700">
+                        YouTube
+                      </label>
+                      <input
+                        type="text"
+                        name="youtube"
+                        id="youtube"
+                        className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300"
+                        onChange={formik.handleChange}
+                        value={formik.values.youtube}
+                      />
+                      {formik.errors.youtube && (
+                        <p className="mt-2 text-sm text-red-500">{formik.errors.youtube}</p>
                       )}
                     </div>
                   </div>
-
-                  <div className="col-span-10  sm:col-span-5">
-                    <label htmlFor="instagram" className="block text-sm font-medium text-gray-700">
-                      Instagram
-                    </label>
-                    <input
-                      type="text"
-                      name="instagram"
-                      id="instagram"
-                      className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300"
-                      onChange={formik.handleChange}
-                      value={formik.values.instagram}
-                    />
-                    {formik.errors.instagram && (
-                      <p className="mt-2 text-sm text-red-500">{formik.errors.instagram}</p>
-                    )}
-                  </div>
-
-                  <div className="col-span-10  sm:col-span-5">
-                    <label htmlFor="youtube" className="block text-sm font-medium text-gray-700">
-                      YouTube
-                    </label>
-                    <input
-                      type="text"
-                      name="youtube"
-                      id="youtube"
-                      className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300"
-                      onChange={formik.handleChange}
-                      value={formik.values.youtube}
-                    />
-                    {formik.errors.youtube && (
-                      <p className="mt-2 text-sm text-red-500">{formik.errors.youtube}</p>
-                    )}
-                  </div>
+                </div>
+                <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
+                  <button
+                    type="submit"
+                    className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                  >
+                    Submit
+                  </button>
                 </div>
               </div>
-              <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
-                <button
-                  type="submit"
-                  className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                >
-                  Save
-                </button>
-              </div>
-            </div>
-          </form>
+            </form>
+          )}
         </div>
       </div>
       {/* <SignupButton

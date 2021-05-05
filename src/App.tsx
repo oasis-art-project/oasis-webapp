@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { QueryClientProvider, QueryClient } from 'react-query';
 import styled from 'styled-components';
+import ReactGA from 'react-ga';
 import Navbar from './components/Navbar';
 import PrivateRoute from './components/PrivateRoute';
 import { ProvideAuth } from './hooks/useAuth';
@@ -23,6 +24,7 @@ import Host from './pages/Host';
 import About from './pages/About';
 import Signup from './pages/Signup';
 import Register from './pages/Register';
+import { isProd } from './helpers';
 
 const Container = styled.section`
   max-width: 1280px;
@@ -53,6 +55,10 @@ const theme = {
     lightGray: '#B0CFD1',
   },
 };
+
+if (isProd) {
+  ReactGA.initialize('UA-15399295-15');
+}
 
 function App() {
   return (
