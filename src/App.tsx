@@ -5,13 +5,14 @@ import styled from 'styled-components';
 import Navbar from './components/Navbar';
 import PrivateRoute from './components/PrivateRoute';
 import { ProvideAuth } from './hooks/useAuth';
+import { FaInstagram } from 'react-icons/fa';
 
 import Login from './pages/Login';
 import Home from './pages/Events';
 import Event from './pages/Event';
 import Artists from './pages/Artists';
 import Artist from './pages/Artist';
-import ArtistCover from './pages/ArtistCover'
+import ArtistCover from './pages/ArtistCover';
 import Artwork from './pages/Artwork';
 import ChatRoom from './pages/ChatRoom';
 import Places from './pages/Places';
@@ -26,7 +27,7 @@ const Container = styled.section`
 `;
 
 const MainContainer = styled.main`
-  padding-bottom: 120px;
+  padding-bottom: 160px;
 `;
 
 const Footer = styled.footer`
@@ -35,8 +36,8 @@ const Footer = styled.footer`
   width: 100%;
   background: #425663;
   text-align: center;
-  height: 120px;
-  display:flex;
+  height: 160px;
+  display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -75,7 +76,7 @@ function App() {
                       <Route path="/hosts/" exact component={Hosts} />
                       <Route path="/host/:id" exact component={Host} />
                       <Route path="/about" exact component={About} />
-                      <Route path="/signup" exact component={Signup} />                      
+                      <Route path="/signup" exact component={Signup} />
                       <PrivateRoute path="/room/:roomId">
                         <ChatRoom />
                       </PrivateRoute>
@@ -87,6 +88,17 @@ function App() {
                 <Link className="text-gray-50 mb-4" to="/about">
                   What is OASIS?
                 </Link>
+                <a
+                  className="flex items-center justify-items-center mb-4"
+                  target="_blank"
+                  rel="noreferrer"
+                  href="https://www.instagram.com/oooasis.art/"
+                >
+                  <FaInstagram className="text-lg text-gray-50" />
+                  <span className=" ml-2 text-gray-50 items-center">
+                    Instagram
+                  </span>
+                </a>
                 <p className="text-gray-50">© {new Date().getFullYear()}</p>
               </Footer>
             </MainContainer>
