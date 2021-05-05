@@ -54,7 +54,7 @@ function Signup() {
         <br/>
         <p>
         If you would like to have an account during the testing stage of OASIS, either as an artist, host, or visitor, please 
-        send us an email to: <b>info@oooasis.art</b>
+        send us an email to: <b>info@oasis.art</b>
         </p>
         <br/>
         <p>

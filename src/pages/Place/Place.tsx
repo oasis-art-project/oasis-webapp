@@ -13,6 +13,11 @@ import { useState } from 'react';
 
 import cubeImage from '../../assets/img/3dcube.png';
 
+const MatterportImage = styled.img`
+  width: 50px;
+  height: 50px;
+`;
+
 const MatterportButton = styled.a`
   color: white;
   background-color: black;
@@ -143,7 +148,7 @@ function Place() {
           rel="noreferrer"
           href={`https://my.matterport.com/show/?m=${place.matterport_link}`}
         >
-          <img src={cubeImage} alt="3D Cube" width="50" />
+          <MatterportImage src={cubeImage} alt="3D Cube" />
           <div>
             Launch Virtual Gallery
             <br />
