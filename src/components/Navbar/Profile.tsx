@@ -4,7 +4,7 @@ import Popper from 'popper.js';
 import { FaRegUserCircle } from 'react-icons/fa';
 import useAuth from '../../hooks/useAuth';
 import { useHistory } from 'react-router-dom';
-import useChat from '../../hooks/useChat';
+// import useChat from '../../hooks/useChat';
 
 const Dropdown = () => {
   const auth: any = useAuth();
