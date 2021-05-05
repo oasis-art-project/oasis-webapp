@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import Navbar from './components/Navbar';
 import PrivateRoute from './components/PrivateRoute';
 import { ProvideAuth } from './hooks/useAuth';
+import { FaInstagram } from 'react-icons/fa';
 
 import Login from './pages/Login';
 import Home from './pages/Events';
@@ -28,7 +29,7 @@ const Container = styled.section`
 `;
 
 const MainContainer = styled.main`
-  padding-bottom: 120px;
+  padding-bottom: 160px;
 `;
 
 const Footer = styled.footer`
@@ -62,6 +63,7 @@ function App() {
             <MainContainer className="min-h-screen relative pb-">
               <Switch>
                 <Route path="/login" exact component={Login} />
+
                 <Route path="/register" exact component={Register} />
                 <Route
                   path="/artist-cover/:id/:name/:tcolor?/:bcolor?"
@@ -93,14 +95,23 @@ function App() {
                       </PrivateRoute>
                     </Switch>
                   </Container>
-                  <Footer>
-                    <Link className="text-gray-50 mb-4" to="/about">
-                      What is OASIS?
-                    </Link>
-                    <p className="text-gray-50">© {new Date().getFullYear()}</p>
-                  </Footer>
                 </Route>
               </Switch>
+              <Footer>
+                <Link className="text-gray-50 mb-4" to="/about">
+                  What is OASIS?
+                </Link>
+                <a
+                  className="flex items-center justify-items-center mb-4"
+                  target="_blank"
+                  rel="noreferrer"
+                  href="https://www.instagram.com/oooasis.art/"
+                >
+                  <FaInstagram className="text-lg text-gray-50" />
+                  <span className=" ml-2 text-gray-50 items-center">Instagram</span>
+                </a>
+                <p className="text-gray-50">© {new Date().getFullYear()}</p>
+              </Footer>
             </MainContainer>
           </Router>
         </ThemeProvider>
