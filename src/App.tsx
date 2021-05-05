@@ -22,6 +22,7 @@ import Hosts from './pages/Hosts';
 import Host from './pages/Host';
 import About from './pages/About';
 import Signup from './pages/Signup';
+import Register from './pages/Register';
 
 const Container = styled.section`
   max-width: 1280px;
@@ -37,7 +38,7 @@ const Footer = styled.footer`
   width: 100%;
   background: #425663;
   text-align: center;
-  height: 160px;
+  height: 120px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -62,6 +63,8 @@ function App() {
             <MainContainer className="min-h-screen relative pb-">
               <Switch>
                 <Route path="/login" exact component={Login} />
+
+                <Route path="/register" exact component={Register} />
                 <Route
                   path="/artist-cover/:id/:name/:tcolor?/:bcolor?"
                   exact
@@ -72,7 +75,6 @@ function App() {
                   exact
                   component={ArtworkCover}
                 />
-
                 <Route path="/">
                   <Container className="md:mx-auto px-4 pb-60">
                     <Navbar />
@@ -93,12 +95,6 @@ function App() {
                       </PrivateRoute>
                     </Switch>
                   </Container>
-                  <Footer>
-                    <Link className="text-gray-50 mb-4" to="/about">
-                      What is OASIS?
-                    </Link>
-                    <p className="text-gray-50">© {new Date().getFullYear()}</p>
-                  </Footer>
                 </Route>
               </Switch>
               <Footer>
