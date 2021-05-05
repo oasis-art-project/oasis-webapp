@@ -11,7 +11,7 @@ import Home from './pages/Events';
 import Event from './pages/Event';
 import Artists from './pages/Artists';
 import Artist from './pages/Artist';
-import ArtistCover from './pages/ArtistCover'
+import ArtistCover from './pages/ArtistCover';
 import Artwork from './pages/Artwork';
 import ChatRoom from './pages/ChatRoom';
 import Places from './pages/Places';
@@ -20,6 +20,7 @@ import Hosts from './pages/Hosts';
 import Host from './pages/Host';
 import About from './pages/About';
 import Signup from './pages/Signup';
+import Register from './pages/Register';
 
 const Container = styled.section`
   max-width: 1280px;
@@ -36,7 +37,7 @@ const Footer = styled.footer`
   background: #425663;
   text-align: center;
   height: 120px;
-  display:flex;
+  display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -60,6 +61,7 @@ function App() {
             <MainContainer className="min-h-screen relative pb-">
               <Switch>
                 <Route path="/login" exact component={Login} />
+                <Route path="/register" exact component={Register} />
                 <Route path="/">
                   <Container className="md:mx-auto px-4 pb-60">
                     <Navbar />
@@ -75,7 +77,7 @@ function App() {
                       <Route path="/hosts/" exact component={Hosts} />
                       <Route path="/host/:id" exact component={Host} />
                       <Route path="/about" exact component={About} />
-                      <Route path="/signup" exact component={Signup} />                      
+                      <Route path="/signup" exact component={Signup} />
                       <PrivateRoute path="/room/:roomId">
                         <ChatRoom />
                       </PrivateRoute>

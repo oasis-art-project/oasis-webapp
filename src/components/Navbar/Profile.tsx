@@ -9,7 +9,7 @@ import useChat from '../../hooks/useChat';
 const Dropdown = () => {
   const auth: any = useAuth();
   const history = useHistory();
-  useChat('default', auth.user.identity);
+  // useChat('default', auth.user.identity);
   const logout = () => {
     auth.signout(() => {
       history.replace('/');

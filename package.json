@@ -4,7 +4,10 @@
   "private": true,
   "dependencies": {
     "@craco/craco": "^6.1.0",
+    "@headlessui/react": "^1.1.1",
+    "@heroicons/react": "^1.0.1",
     "@reach/dialog": "^0.13.2",
+    "@tailwindcss/forms": "^0.3.2",
     "@tailwindcss/postcss7-compat": "^2.0.2",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
@@ -67,19 +70,19 @@
     ]
   },
   "devDependencies": {
-    "@types/latlon-geohash": "^2.0.0",
-    "@types/react-redux": "^7.1.12",
-    "@types/react-router-dom": "^5.1.6",
-    "@types/styled-components": "^5.1.7",
     "@types/jest": "^26.0.15",
     "@types/jwt-decode": "^3.1.0",
+    "@types/latlon-geohash": "^2.0.0",
     "@types/node": "^12.0.0",
     "@types/popper.js": "^1.11.0",
     "@types/qs": "^6.9.5",
     "@types/react": "^16.9.53",
     "@types/react-dom": "^16.9.8",
     "@types/react-leaflet": "^2.5.2",
-    "@types/socket.io-client": "^1.4.35"
+    "@types/react-redux": "^7.1.12",
+    "@types/react-router-dom": "^5.1.6",
+    "@types/socket.io-client": "^1.4.35",
+    "@types/styled-components": "^5.1.7"
   },
   "proxy": "http://127.0.0.1:5000/"
 }
