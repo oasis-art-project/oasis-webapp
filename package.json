@@ -29,6 +29,7 @@
     "postcss": "^7",
     "qs": "^6.9.6",
     "react": "^17.0.1",
+    "react-device-detect": "^1.15.0",
     "react-dom": "^17.0.1",
     "react-icons": "^4.1.0",
     "react-leaflet": "^3.0.5",

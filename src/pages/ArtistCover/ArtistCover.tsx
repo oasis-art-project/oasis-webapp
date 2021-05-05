@@ -6,13 +6,22 @@ import '@reach/dialog/styles.css';
 interface Params {
   id: string;
   name: string;
+  tcolor: string
+  bcolor: string
 }
 
 function ArtistCover() {
-  const { id, name }: Params = useParams();
+  const { id, name, tcolor, bcolor }: Params = useParams();
+
+  // Default values
+  const tcolorVal = tcolor ? tcolor : "text-gray-700"; 
+  const bcolorVal = bcolor ? bcolor : "bg-gray-300"; 
+
+  var dStyleClass = `flex h-screen justify-center items-center ${bcolorVal}`;
+  var pStyleClass = `font-header font-bold text-9xl mb-2 pb-1 text-center ${tcolorVal}`;
   return (
-    <div className="">
-      <p className="font-header font-bold text-9xl mb-2 pb-1">
+    <div className={dStyleClass}>
+      <p className={pStyleClass}>
         {name}
       </p>
       <DelayRedirect to={`/artist/${id}`} delay={3000} />

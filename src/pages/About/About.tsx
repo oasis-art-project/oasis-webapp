@@ -63,7 +63,7 @@ function About() {
         Each event in OASIS can be optionally linked to a custom Hubs room where the artwork will be displayed in an interactive 3D environment where artists, hosts, 
         and visitors can meet each other safely and experience the art and the community. And places have the option to link a Matterport space from their pages,
         which gives visitors the opportunity to easily navigate the physical venue and see the artworks in high-res from their computers or phones. If you are 
-        interested in creating virtual events or spaces please send us an email to: <b>info@oooasis.art</b> 
+        interested in creating virtual events or spaces please send us an email to: <b>info@oasis.art</b> 
       </p>
 
       <h3 className="font-header text-2xl mt-6 mb-4">Support</h3>

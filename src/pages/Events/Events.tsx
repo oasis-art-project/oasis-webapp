@@ -2,7 +2,7 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import useCurrentEvents from '../../hooks/useCurrentEvents';
-import { datesParser, IMGS_URL } from '../../helpers';
+import { datesParser, eventStarted, IMGS_URL } from '../../helpers';
 import Map, { Marker, Popup } from '../../components/Map';
 import Loader from '../../components/Loader';
 import Geohash from 'latlon-geohash';
@@ -27,6 +27,23 @@ const artistSelection = (artists: []) => {
 const decodeLatLon = (loc: string) => {
   let dec = Geohash.decode(loc)
   return [dec.lat, dec.lon];
+}
+
+const getLocCentroid = (events: []) => {
+  // Cambridge center
+  let center = [42.3822833, -71.1330431]
+  let n = events.length
+  if (n < 1) {
+    return center;
+  } else {
+    var locSums = [0.0, 0.0];
+    events.forEach((event: any, i: number) => {
+      let dec = Geohash.decode(event.place.location)
+      locSums[0] += dec.lat;
+      locSums[1] += dec.lon;
+    });
+    return [locSums[0] / n, locSums[1] / n];
+  }
 }
 
 const HubsButton = styled.a`
@@ -127,7 +144,7 @@ function Events() {
         </ul>
       </div>
       <div>
-        <Map>
+        <Map center={getLocCentroid(data[view])}>
           {data[view].map((event: any) => (
             <Marker key={event.id} position={decodeLatLon(event.place.location)}>
               <StyledPopup>
@@ -140,7 +157,7 @@ function Events() {
                     {event.place.name}
                   </p>
                 </Link>
-                {event.hubs_link && (
+                {event.hubs_link && eventStarted(event.startTime) && (
                   <HubsButton
                     className="flex justify-center gap-2 w-full"
                     target="_blank"

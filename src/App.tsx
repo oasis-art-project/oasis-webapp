@@ -12,6 +12,7 @@ import Event from './pages/Event';
 import Artists from './pages/Artists';
 import Artist from './pages/Artist';
 import ArtistCover from './pages/ArtistCover';
+import ArtworkCover from './pages/ArtworkCover';
 import Artwork from './pages/Artwork';
 import ChatRoom from './pages/ChatRoom';
 import Places from './pages/Places';
@@ -62,6 +63,16 @@ function App() {
               <Switch>
                 <Route path="/login" exact component={Login} />
                 <Route path="/register" exact component={Register} />
+                <Route
+                  path="/artist-cover/:id/:name/:tcolor?/:bcolor?"
+                  exact
+                  component={ArtistCover}
+                />
+                <Route
+                  path="/artwork-cover/:id/:artist/:title/:info1?/:info2?/:tcolor?/:bcolor?"
+                  exact
+                  component={ArtworkCover}
+                />
                 <Route path="/">
                   <Container className="md:mx-auto px-4 pb-60">
                     <Navbar />
@@ -70,7 +81,6 @@ function App() {
                       <Route path="/event/:id" exact component={Event} />
                       <Route path="/artists/" exact component={Artists} />
                       <Route path="/artist/:id" exact component={Artist} />
-                      <Route path="/artist-cover/:id/:name" exact component={ArtistCover} />
                       <Route path="/artwork/:id" exact component={Artwork} />
                       <Route path="/places/" exact component={Places} />
                       <Route path="/place/:id" exact component={Place} />
@@ -83,14 +93,14 @@ function App() {
                       </PrivateRoute>
                     </Switch>
                   </Container>
+                  <Footer>
+                    <Link className="text-gray-50 mb-4" to="/about">
+                      What is OASIS?
+                    </Link>
+                    <p className="text-gray-50">© {new Date().getFullYear()}</p>
+                  </Footer>
                 </Route>
               </Switch>
-              <Footer>
-                <Link className="text-gray-50 mb-4" to="/about">
-                  What is OASIS?
-                </Link>
-                <p className="text-gray-50">© {new Date().getFullYear()}</p>
-              </Footer>
             </MainContainer>
           </Router>
         </ThemeProvider>
