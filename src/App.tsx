@@ -68,8 +68,8 @@ function App() {
           <Router>
             <MainContainer className="min-h-screen relative pb-">
               <Switch>
-                <Route path="/login" exact component={Login} />
 
+                <Route path="/login" exact component={Login} />
                 <Route path="/register" exact component={Register} />
                 <Route
                   path="/artist-cover/:id/:name/:tcolor?/:bcolor?"
@@ -81,6 +81,7 @@ function App() {
                   exact
                   component={ArtworkCover}
                 />
+
                 <Route path="/">
                   <Container className="md:mx-auto px-4 pb-60">
                     <Navbar />
@@ -101,23 +102,25 @@ function App() {
                       </PrivateRoute>
                     </Switch>
                   </Container>
+
+                    <Footer>
+                      <Link className="text-gray-50 mb-4" to="/about">
+                        What is OASIS?
+                      </Link>
+                      <a
+                        className="flex items-center justify-items-center mb-4"
+                        target="_blank"
+                        rel="noreferrer"
+                        href="https://www.instagram.com/oooasis.art/"
+                      >
+                      <FaInstagram className="text-lg text-gray-50" />                  
+                      </a>
+                      <p className="text-gray-50">© {new Date().getFullYear()}</p>
+                    </Footer>
+
                 </Route>
               </Switch>
-              <Footer>
-                <Link className="text-gray-50 mb-4" to="/about">
-                  What is OASIS?
-                </Link>
-                <a
-                  className="flex items-center justify-items-center mb-4"
-                  target="_blank"
-                  rel="noreferrer"
-                  href="https://www.instagram.com/oooasis.art/"
-                >
-                  <FaInstagram className="text-lg text-gray-50" />
-                  <span className=" ml-2 text-gray-50 items-center">Instagram</span>
-                </a>
-                <p className="text-gray-50">© {new Date().getFullYear()}</p>
-              </Footer>
+
             </MainContainer>
           </Router>
         </ThemeProvider>

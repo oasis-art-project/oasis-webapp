@@ -76,43 +76,22 @@ const SignupForm = () => {
             <h3 className="font-header text-2xl my-4">How to create an OASIS account?</h3>
 
             <p>
-              Thank you for your interest in joining the OASIS community! Right now the platform is
-              still being developed and tested, with some functions are not yet ready, including
-              account creation. However, we can create an account for you if you send us an email
-              providing some very basic information about you and why you are interested in OASIS.
-            </p>
-
-            <br />
-            <p>
-              Please note that there are three kinds of accounts in OASIS, and you have to pick one
-              (at least initially):
+              Thank you for your interest in joining the OASIS community! As an OASIS user, you can have one of the following roles:
             </p>
 
             <ol className="list-disc list-inside my-4">
               <li>
-                Artist accounts. These accounts contain basic biographic information, representative
-                images of seleted artworks, and links to porfolio page and social media accounts
-                (Instagram, YouTube).
+                Artist. As an OASIS artist, your get your own profile wehre you can upload artworks and participate in events.
               </li>
               <li>
-                Host accounts. Hosts are people who manage or own art spaces where events can be
-                take place (physical or virtual). Under one of these accounts, hosts can enter their
-                hosted spaces and the events at each space.
+                Host. Join as a host if you manage or own an art space where events can be take place, and want to have them listed in OASIS.
               </li>
               <li>
-                Visitor accounts. These accounts are meant for people primarily interested in
-                attending the events. Currently, these accounts simply allow users to connect with
-                artists and hosts by using the chat function in the OASIS website.
+                Visitor. You should select this role if you are primarily interested in attending events and checking out artists' work.
               </li>
               <br />
               <p>
-                All the information about artworks and events in the OASIS website is publicly
-                available for vieweing without requiring an account ❤️
-              </p>
-              <br />
-              <p>
-                If you would like to have an account during the testing stage of OASIS, either as an
-                artist, host, or visitor, please fiel this form:
+                Please fill the registration form below to get an OASIS account:
               </p>
             </ol>
           </div>
@@ -187,7 +166,7 @@ const SignupForm = () => {
 
                     <div className="col-span-10 sm:col-span-7">
                       <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
-                        Phone
+                        Phone number (only used to send notifications)
                       </label>
                       <input
                         type="text"
@@ -224,7 +203,7 @@ const SignupForm = () => {
 
                     <div className="col-span-10">
                       <label htmlFor="bio" className="block text-sm font-medium text-gray-700">
-                        About
+                        Short bio
                       </label>
                       <div className="mt-1">
                         <textarea
@@ -232,7 +211,7 @@ const SignupForm = () => {
                           name="bio"
                           rows={3}
                           className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border-gray-300"
-                          placeholder="you@example.com"
+                          placeholder=""
                           onChange={formik.handleChange}
                           value={formik.values.bio}
                         />
@@ -255,7 +234,7 @@ const SignupForm = () => {
                           name="website"
                           id="website"
                           className="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full sm:text-sm border-gray-300"
-                          placeholder="www.example.com"
+                          placeholder=""
                           onChange={formik.handleChange}
                           value={formik.values.website}
                         />
