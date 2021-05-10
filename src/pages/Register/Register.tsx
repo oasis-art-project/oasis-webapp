@@ -32,10 +32,10 @@ const SignupForm = () => {
   const [errorMsg, setErrorMsg]: [any, any] = useState(null);
   const { mutate, isLoading } = useMutation(registerInfoQuery, {
     onSuccess: () => {
-      setSuccessMsg('Form submited succesfully! 🎉');
+      setSuccessMsg('Form submited succesfully 🎉 You will receive an email to confirm your registration.');
     },
     onError: () => {
-      setErrorMsg('There was an error uploading the form 🙁');
+      setErrorMsg('There was an error uploading the form 🙁 Refresh this page to try again. Make sure to use an email address that is not registered already in OASIS.');
     },
     onSettled: () => {
       queryClient.invalidateQueries('create');
@@ -61,6 +61,7 @@ const SignupForm = () => {
       mutate(userInfo);
     },
   });
+
   return (
     <div className="min-h-full flex justify-center items-center flex-col">
       <div className="absolute left-14 top-14 hidden lg:block">
@@ -70,6 +71,24 @@ const SignupForm = () => {
         </Link>
       </div>
       <img src={logo} alt="Oasis logo" width="100px" className="mb-6 lg:mt-12 mt-4" />
+      
+      {isLoading && (
+            <div className="px-4 py-5 bg-white sm:p-6">
+              <Loader />
+            </div>
+      )}
+
+      {errorMsg && <div className="px-4 py-5 bg-white sm:p-6">{errorMsg}</div>}
+
+      {successMsg && (
+      <div className="px-4 py-5 bg-white sm:p-6">
+        <p>{successMsg}</p>
+        <br></br>
+        <p>You can return to the <a className="text-gray-400 underline" href={`/`}>OASIS homepage</a>.</p>
+      </div>
+      )}
+
+      {!errorMsg && !successMsg && !isLoading && (
       <div className="w-full md:w-6/12">
         <div className="mt-3 mb-32 lg:mx-auto md:mt-3 md:col-span-6">
           <div className="px-4 py-5 bg-white sm:p-6">
@@ -95,15 +114,8 @@ const SignupForm = () => {
               </p>
             </ol>
           </div>
-          {isLoading && (
-            <div className="px-4 py-5 bg-white sm:p-6">
-              <Loader />
-            </div>
-          )}
-          {errorMsg && <div className="px-4 py-5 bg-white sm:p-6">{errorMsg}</div>}
-          {successMsg && <div className="px-4 py-5 bg-white sm:p-6">{successMsg}</div>}
-          {!errorMsg && !successMsg && !isLoading && (
-            <form onSubmit={formik.handleSubmit}>
+
+          <form onSubmit={formik.handleSubmit}>
               <div className="overflow-hidden sm:rounded-md">
                 <div className="px-4 py-5 bg-white sm:p-6">
                   <div className="grid grid-cols-10 gap-6">
@@ -292,15 +304,11 @@ const SignupForm = () => {
                 </div>
               </div>
             </form>
-          )}
+
         </div>
       </div>
-      {/* <SignupButton
-          className="mt-3 border-solid border-4 border-darkGray px-3 py-1 font-header font-bold text-xl lg:w-80 w-full"
-          href={`/signup`}
-        >
-          Signup
-      </SignupButton> */}
+      )}
+      
     </div>
   );
 };
