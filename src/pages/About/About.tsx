@@ -47,7 +47,7 @@ function About() {
       <p>
         OASIS is currently in the testing stage. If you are a local artist, space provider, or 
         simply a member of the community and are interested in participating in the testing of the platform, 
-        please <a className="text-gray-400 underline" href={`/signup`}>signup</a> to create an OASIS account.
+        please <a className="text-gray-400 underline" href={`/register`}>register</a> to create an OASIS account.
       </p>
       <br/>
       <p>
@@ -63,7 +63,7 @@ function About() {
         Each event in OASIS can be optionally linked to a custom Hubs room where the artwork will be displayed in an interactive 3D environment where artists, hosts, 
         and visitors can meet each other safely and experience the art and the community. And places have the option to link a Matterport space from their pages,
         which gives visitors the opportunity to easily navigate the physical venue and see the artworks in high-res from their computers or phones. If you are 
-        interested in creating virtual events or spaces please send us an email to: <b>info@oasis.art</b> 
+        interested in creating virtual events or spaces please send us an email to <a href="mailto:info@oasis.art"><b>info@oasis.art</b></a>.
       </p>
 
       <h3 className="font-header text-2xl mt-6 mb-4">Support</h3>

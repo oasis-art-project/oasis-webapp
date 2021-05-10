@@ -166,7 +166,7 @@ const SignupForm = () => {
 
                     <div className="col-span-10 sm:col-span-7">
                       <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
-                        Phone number (only used to send notifications)
+                        Phone number (only used to send direct message notifications)
                       </label>
                       <input
                         type="text"
