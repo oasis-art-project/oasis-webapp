@@ -6,7 +6,7 @@ import ReactGA from 'react-ga';
 import Navbar from './components/Navbar';
 import PrivateRoute from './components/PrivateRoute';
 import { ProvideAuth } from './hooks/useAuth';
-import { FaInstagram } from 'react-icons/fa';
+import { FaInstagram, FaDiscord } from 'react-icons/fa';
 
 import Login from './pages/Login';
 import Home from './pages/Events';
@@ -107,14 +107,27 @@ function App() {
                       <Link className="text-gray-50 mb-4" to="/about">
                         What is OASIS?
                       </Link>
+
+                      <div className="flex">
                       <a
-                        className="flex items-center justify-items-center mb-4"
+                        className="items-center justify-items-center mb-4 pr-2"
                         target="_blank"
                         rel="noreferrer"
                         href="https://www.instagram.com/oooasis.art/"
                       >
                       <FaInstagram className="text-lg text-gray-50" />                  
                       </a>
+
+                      <a
+                        className="items-center justify-items-center mb-4 pl-2"
+                        target="_blank"
+                        rel="noreferrer"
+                        href="https://discord.com/channels/840191085854720090/840191085854720093"
+                      >
+                      <FaDiscord className="text-lg text-gray-50" />
+                      </a>
+                      </div>
+                      
                       <p className="text-gray-50">© {new Date().getFullYear()}</p>
                     </Footer>
 
