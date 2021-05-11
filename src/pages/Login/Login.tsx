@@ -74,12 +74,14 @@ const SignupForm = () => {
           Login
         </button>
       </form>
-      <SignupButton
-          className="mt-3 border-solid border-4 border-darkGray px-3 py-1 font-header font-bold text-xl lg:w-80 w-full"
+      <div className="flex flex-col px-8 py-7 lg:w-96 w-full">
+        <SignupButton
+          className="mt-3 mb-6 border-solid border-4 border-darkGray px-3 py-1 font-header font-bold text-xl lg:w-80 w-full"
           to="/register"
         >
           Signup
-      </SignupButton>
+        </SignupButton>
+      </div>
     </div>
   );
 };
