@@ -100,7 +100,7 @@ const SignupForm = () => {
 
             <ol className="list-disc list-inside my-4">
               <li>
-                Artist. As an OASIS artist, your get your own profile wehre you can upload artworks and participate in events.
+                Artist. As an OASIS artist, your get your own profile where you can upload artworks and participate in events.
               </li>
               <li>
                 Host. Join as a host if you manage or own an art space where events can be take place, and want to have them listed in OASIS.
