@@ -25,6 +25,7 @@ import About from './pages/About';
 import Signup from './pages/Signup';
 import Register from './pages/Register';
 import { isProd } from './helpers';
+import Settings from './pages/Settings';
 
 const Container = styled.section`
   max-width: 1280px;
@@ -68,7 +69,6 @@ function App() {
           <Router>
             <MainContainer className="min-h-screen relative pb-">
               <Switch>
-
                 <Route path="/login" exact component={Login} />
                 <Route path="/register" exact component={Register} />
                 <Route
@@ -100,22 +100,25 @@ function App() {
                       <PrivateRoute path="/room/:roomId">
                         <ChatRoom />
                       </PrivateRoute>
+                      <PrivateRoute path="/settings">
+                        <Settings />
+                      </PrivateRoute>
                     </Switch>
                   </Container>
 
-                    <Footer>
-                      <Link className="text-gray-50 mb-4" to="/about">
-                        What is OASIS?
-                      </Link>
+                  <Footer>
+                    <Link className="text-gray-50 mb-4" to="/about">
+                      What is OASIS?
+                    </Link>
 
-                      <div className="flex">
+                    <div className="flex">
                       <a
                         className="items-center justify-items-center mb-4 pr-2"
                         target="_blank"
                         rel="noreferrer"
                         href="https://www.instagram.com/oooasis.art/"
                       >
-                      <FaInstagram className="text-lg text-gray-50" />                  
+                        <FaInstagram className="text-lg text-gray-50" />
                       </a>
 
                       <a
@@ -124,16 +127,14 @@ function App() {
                         rel="noreferrer"
                         href="https://discord.com/channels/840191085854720090/840191085854720093"
                       >
-                      <FaDiscord className="text-lg text-gray-50" />
+                        <FaDiscord className="text-lg text-gray-50" />
                       </a>
-                      </div>
-                      
-                      <p className="text-gray-50">© {new Date().getFullYear()}</p>
-                    </Footer>
+                    </div>
 
+                    <p className="text-gray-50">© {new Date().getFullYear()}</p>
+                  </Footer>
                 </Route>
               </Switch>
-
             </MainContainer>
           </Router>
         </ThemeProvider>

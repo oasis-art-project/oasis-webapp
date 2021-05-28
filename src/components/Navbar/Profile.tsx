@@ -1,6 +1,6 @@
 import React from 'react';
 import Popper from 'popper.js';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { FaRegUserCircle } from 'react-icons/fa';
 import useAuth from '../../hooks/useAuth';
 import { useHistory } from 'react-router-dom';
@@ -53,20 +53,20 @@ const Dropdown = () => {
               }
               style={{ minWidth: '10rem', transform: 'translate(-53px, 35px)' }}
             >
+              <Link
+                to="/settings"
+                className={
+                  'text-sm py-2 px-4 font-normal block w-full whitespace-no-wrap bg-transparent '
+                }
+              >
+                Settings
+              </Link>
               <li
                 onClick={() => logout()}
                 className="text-sm py-2 px-4 font-normal block w-full whitespace-no-wrap bg-transparent "
               >
                 Sign out
               </li>
-              {/* <Link
-                to="/profile"
-                className={
-                  'text-sm py-2 px-4 font-normal block w-full whitespace-no-wrap bg-transparent '
-                }
-              >
-                Profile
-              </Link> */}
             </div>
           </div>
         </div>

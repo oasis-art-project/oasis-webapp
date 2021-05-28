@@ -30,8 +30,14 @@ function useProvideAuth() {
       setLoginFetch(true);
       Auth.signin((result: any) => {
         const decodedToken: any = jwt_decode(result.data.token);
-        localStorage.setItem('activeUser', JSON.stringify(decodedToken));
-        setUser(decodedToken);
+        const activeUser: any = {
+          email: decodedToken.user_claims.email,
+          fullName: decodedToken.user_claims.fullName,
+          id: decodedToken.identity,
+        };
+        const user = { activeUser, token: result.data.token };
+        localStorage.setItem('activeUser', JSON.stringify(user));
+        setUser(user);
         setLoginFetch(false);
         cb();
       }, data);

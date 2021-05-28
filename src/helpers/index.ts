@@ -13,11 +13,25 @@ export const datesParser = (start: string, end: string): string => {
 
 export const eventStarted = (start: string): Boolean => {
   const startDate = days(start);
-  var now = days()
+  var now = days();
   return startDate.isBefore(now);
 };
 
-
 export const wrapParams = (params: any) => {
   return stringify({ request: JSON.stringify(params) });
+};
+
+export const _wrapParams = (params: any) => {
+  const form_data = new FormData();
+  form_data.append('request', JSON.stringify(params));
+  return form_data;
+};
+
+export const wrapAuth = (token: String) => {
+  return {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+      Authorization: `Bearer ${token}`,
+    },
+  };
 };
