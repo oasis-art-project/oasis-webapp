@@ -29,22 +29,24 @@ function Artists() {
 
   return (
     <div className="grid xl:grid-cols-4 md:grid-cols-4 sm:grid-cols-2 gap-6 mb-5">
-      {sortedData.map((artist: any) => (
-        <Link key={artist.id} to={`/artist/${artist.id}`}>
-          <article className="flex flex-end flex-col h-full justify-end">
-            <p className="font-header font-bold text-xl md:truncate mb-1 uppercase">
-              {(artist.firstName + ' ' + artist.lastName).trim()}
-            </p>
-            <img
-              className="mb-2"
-              src={`${IMGS_URL}/${artist.prevImages[0]}`}
-              alt={(artist.firstName + ' ' + artist.lastName).trim()}
-            />
-            <Tags className="md:truncate mb-1 leading-4">
-              {artist.tags.split(';').map((tag: any) => tag + ' ')}
-            </Tags>
-          </article>
-        </Link>
+      {sortedData.map((artist: any) => (        
+        artist.confirmed && (
+          <Link key={artist.id} to={`/artist/${artist.id}`}>
+            <article className="flex flex-end flex-col h-full justify-end">
+              <p className="font-header font-bold text-xl md:truncate mb-1 uppercase">
+                {(artist.firstName + ' ' + artist.lastName).trim()}
+              </p>
+              <img
+                className="mb-2"
+                src={`${IMGS_URL}/${artist.prevImages[0]}`}
+                alt={(artist.firstName + ' ' + artist.lastName).trim()}
+              />
+              <Tags className="md:truncate mb-1 leading-4">
+                {artist.tags.split(';').map((tag: any) => tag + ' ')}
+              </Tags>
+            </article>
+          </Link>
+        )
       ))}
     </div>
   );
