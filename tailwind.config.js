@@ -7,6 +7,9 @@ module.exports = {
       current: 'currentColor',
       darkGray: '#425663',
       lightGray: '#B0CFD1',
+      brandGray: {
+        400: '#B0CFD1',
+      },
       gray: {
         50: '#fafafa',
         100: '#f4f4f5',

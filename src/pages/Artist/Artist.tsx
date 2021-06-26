@@ -6,6 +6,7 @@ import useArtist from '../../hooks/useArtist';
 import { IMGS_URL } from '../../helpers';
 import useAuth from '../../hooks/useAuth';
 import Loader from '../../components/Loader';
+import SectionHeader from '../../components/SectionHeader';
 import { Dialog } from '@reach/dialog';
 
 import '@reach/dialog/styles.css';
@@ -15,22 +16,9 @@ interface Params {
   id: string;
 }
 
-const Title = styled.div`
-  letter-spacing: 2px;
-`;
-
 const ArtistImage = styled.img`
   width: 100%;
 `;
-
-const SectionHeader = ({ title = '' }) => {
-  return (
-    <div className="w-full mb-10 mt-5">
-      <div className="w-full border border-gray-300"></div>
-      <Title className="m-2 uppercase font-header text-darkGray">{title}</Title>
-    </div>
-  );
-};
 
 interface ImageProps {
   readonly imageURL: string;
@@ -74,6 +62,8 @@ function Artist() {
   if (error) return <div>Error</div>;
 
   const { user } = userData;
+  const isSameUser = auth.activeUser === userData.id;
+
   const { artworks, events } = user;
   const userArtworks = artworks.map((artwork: any) => ({
     name: artwork.name,

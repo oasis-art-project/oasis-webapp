@@ -50,7 +50,7 @@ const Footer = styled.footer`
 
 const queryClient = new QueryClient({});
 
-const theme = {
+const styledCompTheme = {
   colors: {
     darkGray: '#425663',
     lightGray: '#B0CFD1',
@@ -65,7 +65,7 @@ function App() {
   return (
     <ProvideAuth>
       <QueryClientProvider client={queryClient}>
-        <ThemeProvider theme={theme}>
+        <ThemeProvider theme={styledCompTheme}>
           <Router>
             <MainContainer className="min-h-screen relative pb-">
               <Switch>

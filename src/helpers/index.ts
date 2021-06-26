@@ -27,6 +27,25 @@ export const _wrapParams = (params: any) => {
   return form_data;
 };
 
+export const wrapParamsProfilePic = (params: any) => {
+  const form_data = new FormData();
+  // const list =
+
+  form_data.append(params.name, params);
+  // form_data.append('filename', params.name);
+  // console.log(form_data)
+  return form_data;
+};
+
+export const _wrapAuth = (token: String) => {
+  return {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+      Authorization: `Bearer ${token}`,
+    },
+  };
+};
+
 export const wrapAuth = (token: String) => {
   return {
     headers: {
