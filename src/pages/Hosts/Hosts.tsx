@@ -17,21 +17,23 @@ function Hosts() {
   return (
     <div className="grid xl:grid-cols-4 md:grid-cols-4 sm:grid-cols-2 gap-6 mb-5">
       {data.users.map((host: any) => (
-        <Link key={host.id} to={`/host/${host.id}`}>
-          <article className="flex flex-end flex-col h-full justify-end">
-            <p className="font-header font-bold text-xl lg:truncate mb-1 uppercase">
-              {(host.firstName + ' ' + host.lastName).trim()}
-            </p>
-            <img
-              className="mb-2"
-              src={`${IMGS_URL}/${host.prevImages[0]}`}
-              alt={(host.firstName + ' ' + host.lastName).trim()}
-            />
-            <Tags className="md:truncate mb-1 leading-4">
-              {host.tags.split(';').map((tag: any) => tag + ' ')}
-            </Tags>
-          </article>
-        </Link>
+        host.confirmed && (
+          <Link key={host.id} to={`/host/${host.id}`}>
+            <article className="flex flex-end flex-col h-full justify-end">
+              <p className="font-header font-bold text-xl lg:truncate mb-1 uppercase">
+                {(host.firstName + ' ' + host.lastName).trim()}
+              </p>
+              <img
+                className="mb-2"
+                src={`${IMGS_URL}/${host.prevImages[0]}`}
+                alt={(host.firstName + ' ' + host.lastName).trim()}
+              />
+              <Tags className="md:truncate mb-1 leading-4">
+                {host.tags.split(';').map((tag: any) => tag + ' ')}
+              </Tags>
+            </article>
+          </Link>
+        )
       ))}
     </div>
   );
