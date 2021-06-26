@@ -2,7 +2,7 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import useCurrentEvents from '../../hooks/useCurrentEvents';
-import { datesParser, eventStarted, IMGS_URL } from '../../helpers';
+import { datesParser, eventStarted, timeComparison, IMGS_URL } from '../../helpers';
 import Map, { Marker, Popup } from '../../components/Map';
 import Loader from '../../components/Loader';
 import Geohash from 'latlon-geohash';
@@ -121,6 +121,20 @@ function Events() {
   if (status === 'loading') return <Loader />;
   if (error) return <div>Error</div>;
 
+  const sortedData: any = {};
+  sortedData['upcoming_events'] = data.upcoming_events.sort((a: any, b: any) => {
+    const timeA = a.startTime;
+    const timeB = b.startTime;
+    if (timeComparison(timeA, timeB)) return 1;
+    else return -1;
+  });
+  sortedData['current_events'] = data.current_events.sort((a: any, b: any) => {
+    const timeA = a.startTime;
+    const timeB = b.startTime;
+    if (timeComparison(timeA, timeB)) return 1;
+    else return -1;
+  });
+
   return (
     <>
       <div className="mb-6">
@@ -176,7 +190,7 @@ function Events() {
         </Map>
       </div>
       <div className="grid xl:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-12 my-12">
-        {data[view].map((event: any) => (
+        {sortedData[view].map((event: any) => (
           <Card key={event.id} {...event} />
         ))}
       </div>
