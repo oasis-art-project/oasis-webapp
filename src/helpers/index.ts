@@ -11,6 +11,12 @@ export const datesParser = (start: string, end: string): string => {
   return `${startDate} - ${endDate}`;
 };
 
+export const timeComparison = (time1: string, time2: string): Boolean => {
+  const t1 = days(time1);
+  const t2 = days(time2);
+  return t1.isBefore(t2);  
+}
+
 export const eventStarted = (start: string): Boolean => {
   const startDate = days(start);
   var now = days()
