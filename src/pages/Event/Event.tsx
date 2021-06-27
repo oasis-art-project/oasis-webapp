@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { FaExternalLinkSquareAlt } from 'react-icons/fa';
 import { ReactSmartScroller } from 'react-smart-scroller';
 import { Dialog } from '@reach/dialog';
 import useEvent from '../../hooks/useEvent';
@@ -135,6 +136,19 @@ function Event() {
         </div>
       </div>
       <p className="mb-8 text-gray-500">{description}</p>
+      {data.event.link && (
+        <a
+          className="flex items-center content-center"
+          target="_blank"
+          rel="noreferrer"
+          href={data.event.link}
+        >
+          <FaExternalLinkSquareAlt className="text-xl mr-3" />
+          <span className="font-header font-bold text-xl my-3 m items-center">
+            More information
+          </span>
+        </a>
+      )}      
 
       {data.event.hubs_link && eventStarted(startTime) && (
         <HubsButton
