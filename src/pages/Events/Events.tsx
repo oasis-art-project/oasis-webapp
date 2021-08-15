@@ -30,8 +30,8 @@ const decodeLatLon = (loc: string) => {
 }
 
 const getLocCentroid = (events: []) => {
-  // Cambridge center
-  let center = [42.3822833, -71.1330431]
+  // Seoul center
+  let center = [37.5527854, 126.9891719]
   let n = events.length
   if (n < 1) {
     return center;
