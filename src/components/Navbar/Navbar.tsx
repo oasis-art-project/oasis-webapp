@@ -57,7 +57,7 @@ function Navbar() {
                   exact
                   to="/"
                 >
-                  Events
+                  이벤트
                 </StyledNavLink>
               </li>
               <li className="my-5">
@@ -67,7 +67,7 @@ function Navbar() {
                   exact
                   to="/artists"
                 >
-                  Artists
+                  예술가
                 </StyledNavLink>
               </li>
               <li className="my-5">
@@ -77,12 +77,12 @@ function Navbar() {
                   to="/places"
                   exact
                 >
-                  Places
+                  장소
                 </StyledNavLink>
               </li>
               <li className="my-5">
                 <StyledNavLink activeClassName="active" to="/hosts">
-                  Hosts
+                  숙주
                 </StyledNavLink>
               </li>
               <li className="my-5 lg:hidden">
@@ -105,7 +105,7 @@ function Navbar() {
                 to="/login"
                 className="border-solid border-4 border-darkGray px-3 py-1 font-header font-bold text-xl"
               >
-                Login
+                로그인
               </Link>
             )}
             {auth.user && <Profile />}
