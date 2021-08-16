@@ -97,12 +97,12 @@ function App() {
                       <Route path="/place/:id" exact component={Place} />
                       <Route path="/hosts/" exact component={Hosts} />
                       <Route path="/host/:id" exact component={Host} />
-                      <Route path="/:alias" exact component={EventRedirect} />
                       <Route path="/about" exact component={About} />
                       <Route path="/signup" exact component={Signup} />
                       <PrivateRoute path="/room/:roomId">
                         <ChatRoom />
-                      </PrivateRoute>
+                      </PrivateRoute>                      
+                      <Route path="/:alias" exact component={EventRedirect} />
                     </Switch>
                   </Container>
 
