@@ -88,12 +88,12 @@ function Navbar() {
               <li className="my-5 lg:hidden">
                 {!auth.user && (
                   <StyledNavLink activeClassName="active" to="/login">
-                    Login
+                    로그인
                   </StyledNavLink>
                 )}
                 {auth.user && (
                   <div className="text-lg cursor-pointer" onClick={() => logout()}>
-                    Log out
+                    로그아웃
                   </div>
                 )}
               </li>

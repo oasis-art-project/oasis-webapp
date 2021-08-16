@@ -36,13 +36,13 @@ const SignupForm = () => {
       <div className="absolute left-14 top-14 hidden lg:block">
         <Link className="flex items-center" to="/">
           <IoArrowBack className="text-xl mr-3" />
-          Home
+          홈페이지
         </Link>
       </div>
       <img src={logo} alt="Oasis logo" width="100px" className="mb-12 lg:mt-32 mt-12" />
       <form className="flex flex-col px-8 py-7 lg:w-96 w-full" onSubmit={formik.handleSubmit}>
         <label className="m-2 uppercase font-header text-darkGray" htmlFor="email">
-          Email Address
+          이메일 주소
         </label>
         <input
           disabled={auth.loginFetch ? true : false}
@@ -55,7 +55,7 @@ const SignupForm = () => {
           value={formik.values.email}
         />
         <label className="m-2 uppercase font-header text-darkGray" htmlFor="password">
-          Password
+          비밀번호
         </label>
         <input
           className="border-b-2 border-gray-300 mb-16 mt-3 focus:outline-none"
@@ -71,7 +71,7 @@ const SignupForm = () => {
           className="border-solid border-4 border-darkGray px-3 py-1 font-header font-bold text-xl"
           type="submit"
         >
-          Login
+          로그인
         </button>
       </form>
       <div className="flex flex-col px-8 py-7 lg:w-96 w-full">
@@ -79,7 +79,7 @@ const SignupForm = () => {
           className="mt-3 mb-6 border-solid border-4 border-darkGray px-3 py-1 font-header font-bold text-xl lg:w-80 w-full"
           to="/register"
         >
-          Signup
+          회원가입
         </SignupButton>
       </div>
     </div>

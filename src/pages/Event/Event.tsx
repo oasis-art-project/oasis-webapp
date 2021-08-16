@@ -280,16 +280,16 @@ function Event() {
         </button>
         <div className="relative text-center">
           <p className="mt-6 mb-6 text-xl font-header">
-            OASIS will now take you to the online event on Gather.Town. Some important instructions:
+            이제 OASIS가 Gather.Town의 온라인 이벤트로 안내합니다. 몇 가지 중요한 지침:
           </p>
           <p className="mt-6 mb-6 text-xl font-header">
-            <b>1)</b> Select your character in the next page. Make sure to configure.
+            <b>1)</b> 다음 페이지에서 캐릭터를 선택하세요. 마이크 및 카메라 액세스를 구성해야 합니다.
           </p>
           <p className="mt-6 mb-6 text-xl font-header">
-          <b>2)</b> After joining, use the arrow keys to move around, and get closer to other users to listen and/or speak.
+          <b>2)</b> 가입한 후 화살표 키를 사용하여 이동하고 다른 사용자에게 가까이 가서 듣고/말하십시오.
           </p>
           <p className="mt-6 mb-12 text-xl font-header">
-          <b>3)</b> You can disable/enable the microphone and camera at anytime.
+          <b>3)</b> 마이크와 카메라는 언제든지 비활성화/활성화할 수 있습니다.
           </p>          
           <a className="mx-auto border-solid border-4 border-darkGray px-3 py-1 font-header font-bold text-xl"
              target="_blank"

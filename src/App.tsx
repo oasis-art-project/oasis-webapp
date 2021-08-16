@@ -108,7 +108,7 @@ function App() {
 
                     <Footer>
                       <Link className="text-gray-50 mb-4" to="/about">
-                        OASIS는 무엇인가?
+                        OASIS란?
                       </Link>
 
                       <div className="flex">

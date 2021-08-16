@@ -91,7 +91,7 @@ function Place() {
               >
                 <FaHome className="text-xl" />
                 <span className="font-header font-bold text-lg my-1 ml-3 items-center">
-                  Home page
+                  홈페이지
                 </span>
               </a>
             )}

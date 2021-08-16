@@ -67,7 +67,7 @@ const SignupForm = () => {
       <div className="absolute left-14 top-14 hidden lg:block">
         <Link className="flex items-center" to="/">
           <IoArrowBack className="text-xl mr-3" />
-          Home
+            홈페이지
         </Link>
       </div>
       <img src={logo} alt="Oasis logo" width="100px" className="mb-6 lg:mt-12 mt-4" />
@@ -84,33 +84,35 @@ const SignupForm = () => {
       <div className="px-4 py-5 bg-white sm:p-6">
         <p>{successMsg}</p>
         <br></br>
-        <p>You can return to the <a className="text-gray-400 underline" href={`/`}>OASIS homepage</a>.</p>
+        <p><a className="text-gray-400 underline" href={`/`}>OASIS 홈페이지로</a> 돌아갈 수 있습니다.</p>
       </div>
       )}
+
+  
 
       {!errorMsg && !successMsg && !isLoading && (
       <div className="w-full md:w-6/12">
         <div className="mt-3 mb-32 lg:mx-auto md:mt-3 md:col-span-6">
           <div className="px-4 py-5 bg-white sm:p-6">
-            <h3 className="font-header text-2xl my-4">How to create an OASIS account?</h3>
+            <h3 className="font-header text-2xl my-4">OASIS 계정 생성하기</h3>
 
             <p>
-              Thank you for your interest in joining the OASIS community! As an OASIS user, you can have one of the following roles:
+              OASIS 커뮤니티 가입에 관심을 가져주셔서 감사합니다! OASIS 가입자는 다음 역할 중 하나를 정할 수 있습니다.
             </p>
 
             <ol className="list-disc list-inside my-4">
               <li>
-                Artist. As an OASIS artist, your get your own profile where you can upload artworks and participate in events.
+                아티스트. OASIS 아티스트로서 작품을 업로드하고 이벤트에 참여할 수 있는 나만의 프로필이 생깁니다.
               </li>
               <li>
-                Host. Join as a host if you manage or own an art space where events can be take place, and want to have them listed in OASIS.
+                호스트. 이벤트를 주최가 가능한 예술 공간을 관리, 소유하고 있고, 이를 OASIS에 등록하려면 호스트로 참여하세요.
               </li>
               <li>
-                Visitor. You should select this role if you are primarily interested in attending events and checking out artists' work.
+                관객. 이벤트에 참석하고 아티스트의 작품을 확인하는 데에 관심이 있는 경우, 이 역할을 선택하면 됩니다.
               </li>
               <br />
               <p>
-                Please fill the registration form below to get an OASIS account:
+                OASIS 계정 등록을 위해 아래의 내용을 작성해주세요:
               </p>
             </ol>
           </div>
@@ -124,7 +126,7 @@ const SignupForm = () => {
                         htmlFor="firstName"
                         className="block text-sm font-medium text-gray-700"
                       >
-                        First name
+                        이름
                       </label>
                       <input
                         type="text"
@@ -142,7 +144,7 @@ const SignupForm = () => {
 
                     <div className="col-span-10 sm:col-span-5">
                       <label htmlFor="lastName" className="block text-sm font-medium text-gray-700">
-                        Last name
+                        성
                       </label>
                       <input
                         type="text"
@@ -160,7 +162,7 @@ const SignupForm = () => {
 
                     <div className="col-span-10 sm:col-span-7">
                       <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-                        Email address
+                        이메일 주소
                       </label>
                       <input
                         type="text"
@@ -178,7 +180,7 @@ const SignupForm = () => {
 
                     <div className="col-span-10 sm:col-span-7">
                       <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
-                        Phone number (only used to send direct message notifications)
+                        전화번호 (DM 알림을 위해서만 사용됩니다)
                       </label>
                       <input
                         type="text"
@@ -196,7 +198,7 @@ const SignupForm = () => {
 
                     <div className="col-span-10  sm:col-span-7">
                       <label htmlFor="Role" className="block text-sm font-medium text-gray-700">
-                        Role
+                        역할
                       </label>
                       <select
                         id="role"
@@ -204,9 +206,9 @@ const SignupForm = () => {
                         autoComplete="role"
                         className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                       >
-                        <option>Artist</option>
-                        <option>Host</option>
-                        <option>Visitor</option>
+                        <option>아티스트</option>
+                        <option>호스트</option>
+                        <option>관객</option>
                       </select>
                       {formik.errors.role && (
                         <p className="mt-2 text-sm text-red-500">{formik.errors.role}</p>
@@ -215,7 +217,7 @@ const SignupForm = () => {
 
                     <div className="col-span-10">
                       <label htmlFor="bio" className="block text-sm font-medium text-gray-700">
-                        Short bio
+                        간단한 자기 소개
                       </label>
                       <div className="mt-1">
                         <textarea
@@ -235,7 +237,7 @@ const SignupForm = () => {
 
                     <div className="col-span-10  sm:col-span-7">
                       <label htmlFor="website" className="block text-sm font-medium text-gray-700">
-                        Website
+                        웹사이트
                       </label>
                       <div className="mt-1 flex shadow-sm">
                         <span className="inline-flex items-center px-3 border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
@@ -261,7 +263,7 @@ const SignupForm = () => {
                         htmlFor="instagram"
                         className="block text-sm font-medium text-gray-700"
                       >
-                        Instagram
+                        인스타그램
                       </label>
                       <input
                         type="text"
@@ -278,7 +280,7 @@ const SignupForm = () => {
 
                     <div className="col-span-10  sm:col-span-5">
                       <label htmlFor="youtube" className="block text-sm font-medium text-gray-700">
-                        YouTube
+                        유투브
                       </label>
                       <input
                         type="text"
@@ -299,7 +301,7 @@ const SignupForm = () => {
                     type="submit"
                     className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                   >
-                    Submit
+                    제출
                   </button>
                 </div>
               </div>
