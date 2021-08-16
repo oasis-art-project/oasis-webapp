@@ -12,7 +12,7 @@ import cubeImage from '../../assets/img/3dcube.png';
 const artistSelection = (artists: []) => {
   let resultArtist = '';
   if (artists.length < 1) {
-    resultArtist = "Surprise Event!"
+    resultArtist = " "
   } else if (artists.length < 3) {
     artists.forEach((user: any, i: number) => {
       if (i > 0) resultArtist += ' & ';
@@ -145,7 +145,7 @@ function Events() {
               view === 'current_events' ? 'text-darkGray' : 'text-lightGray'
             }`}
           >
-            Current events
+            현재의 이벤트
           </li>
           <li
             className={`mx-5 hover: cursor-pointer ${
@@ -153,8 +153,8 @@ function Events() {
             }`}
             onClick={() => toggleView()}
           >
-            Upcoming events
-          </li>
+            다가오는 이벤트
+          </li>          
         </ul>
       </div>
       <div>

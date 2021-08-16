@@ -8,6 +8,7 @@ import useEvent from '../../hooks/useEvent';
 import { datesParser, eventStarted, IMGS_URL } from '../../helpers';
 import Loader from '../../components/Loader';
 import cubeImage from '../../assets/img/3dcube.png';
+import vineImage from '../../assets/img/vine.png';
 
 const formatName = (first: string, last: string) => {
   return (last + ' ' + first).trim();
@@ -26,7 +27,20 @@ const HubsImage = styled.img`
   height: 50px;
 `;
 
+const GatherImage = styled.img`
+  width: 50px;
+  height: 50px;
+`;
+
+
 const HubsButton = styled.span`
+  color: white;
+  background-color: black;
+  padding: 1rem;
+  text-align: center;
+`;
+
+const GatherButton = styled.span`
   color: white;
   background-color: black;
   padding: 1rem;
@@ -121,7 +135,7 @@ function Event() {
 
   return (
     <div className="">
-      <SectionHeader title="Event Information" />
+      <SectionHeader title="이벤트 정보" />
       <div className="grid xl:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 gap-6 mb-5">
         <div className="flex flex-end flex-col h-full justify-end overflow-hidden">
           <p className="font-header font-bold text-5xl lg:truncate mb-2">{data.event.name}</p>
@@ -145,7 +159,7 @@ function Event() {
         >
           <FaExternalLinkSquareAlt className="text-xl mr-3" />
           <span className="font-header font-bold text-xl my-3 m items-center">
-            More information
+            추가 정보
           </span>
         </a>
       )}      
@@ -157,15 +171,29 @@ function Event() {
         >
           <HubsImage src={cubeImage} alt="3D Cube" />
           <div>
-            Launch Virtual Event
+            모질라 허브 Mozilla Hubs 열어주세요
             <br />
-            and attend online
+            그리고 온라인으로 참석 
           </div>
         </HubsButton>
       )}
 
-      <SectionHeader title="Participating artists" />
+      {/* {data.event.tagher_link && (
+        <GatherButton
+          className="flex justify-center gap-5 w-full"
+          onClick={openGatherDialog}
+        >
+          <GatherImage src={vineImage} alt="Gather Vine" />
+          <div>
+            게더타운 Gather.Town 열어주세요
+            <br />
+            그리고 온라인으로 참석 
+          </div>
+        </GatherButton>
+      )}       */}
 
+
+      {0 < eventArtists.length && (<SectionHeader title="Participating artists" />)}
       <div className="w-full mb-10 mt-10">
         <ReactSmartScroller
           draggable
@@ -198,7 +226,7 @@ function Event() {
         </ReactSmartScroller>
       </div>
 
-      <SectionHeader title="Featured artworks" />
+      {0 < eventArtworks.length && (<SectionHeader title="Featured artworks" />)}      
       <div className="grid xl:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 gap-12 mb-5 w-full overflow-hidden">
         {eventArtworks.map((artwork: any) => (
           <Link key={artwork.id} to={`/artwork/${artwork.id}`}>
@@ -206,7 +234,7 @@ function Event() {
               {1 < eventArtists.length && (
                 <p className="text-center font-header font-bold text-xl lg:truncate mb-1 uppercase">
                   {(artwork.artist.firstName + ' ' + artwork.artist.lastName).trim()}
-                </p>            
+                </p>
               )}
               <Wrapper>
                 <img alt={artwork.name} src={artwork.profileImage} />
@@ -243,6 +271,34 @@ function Event() {
           </a>
         </div>
       </StyledDialog>
+
+
+      {/* <StyledDialog isOpen={showDialogGather} onDismiss={closeGatherDialog} aria-label="Gather intro">
+        <button className="close-button float-rigt" onClick={closeGatherDialog}>
+          <span aria-hidden>×</span>
+        </button>
+        <div className="relative text-center">
+          <p className="mt-6 mb-6 text-xl font-header">
+            OASIS will now take you to the virtual event. Some important instructions:
+          </p>
+          <p className="mt-6 mb-6 text-xl font-header">
+            <b>1)</b> Select <b>JOIN ROOM</b> in the next page. Enter on Device only if you have a VR headset.
+          </p>
+          <p className="mt-6 mb-6 text-xl font-header">
+          <b>2)</b> After joining, use the <b>W and S</b> keys to move forward/backwards, and <b>mouse pointer</b> to set direction.
+          </p>
+          <p className="mt-6 mb-12 text-xl font-header">
+          <b>3)</b> With a phone, <b>PINCH IN/OUT</b> to move backwards/foward, and <b>move the phone</b> to set direction.
+          </p>          
+          <a className="mx-auto border-solid border-4 border-darkGray px-3 py-1 font-header font-bold text-xl"
+             target="_blank"
+             rel="noreferrer"                        
+             href={`https://gather.town/invite?token=${data.event.gather_link}`}
+          >
+            Continue
+          </a>
+        </div>
+      </StyledDialog>       */}
 
     </div>
   );
