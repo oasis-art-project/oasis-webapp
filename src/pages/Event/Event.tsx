@@ -5,9 +5,9 @@ import { FaExternalLinkSquareAlt } from 'react-icons/fa';
 import { ReactSmartScroller } from 'react-smart-scroller';
 import { Dialog } from '@reach/dialog';
 import useEvent from '../../hooks/useEvent';
-import { datesParser, eventStarted, IMGS_URL } from '../../helpers';
+import { datesParser, /*eventStarted,*/ IMGS_URL } from '../../helpers';
 import Loader from '../../components/Loader';
-import cubeImage from '../../assets/img/3dcube.png';
+// import cubeImage from '../../assets/img/3dcube.png';
 import vineImage from '../../assets/img/vine.png';
 
 const formatName = (first: string, last: string) => {
@@ -22,10 +22,10 @@ const Title = styled.div`
   letter-spacing: 2px;
 `;
 
-const HubsImage = styled.img`
-  width: 50px;
-  height: 50px;
-`;
+// const HubsImage = styled.img`
+//   width: 50px;
+//   height: 50px;
+// `;
 
 const GatherImage = styled.img`
   width: 50px;
@@ -33,12 +33,12 @@ const GatherImage = styled.img`
 `;
 
 
-const HubsButton = styled.span`
-  color: white;
-  background-color: black;
-  padding: 1rem;
-  text-align: center;
-`;
+// const HubsButton = styled.span`
+//   color: white;
+//   background-color: black;
+//   padding: 1rem;
+//   text-align: center;
+// `;
 
 const GatherButton = styled.span`
   color: white;
