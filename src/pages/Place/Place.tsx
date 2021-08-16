@@ -72,7 +72,7 @@ function Place() {
 
   return (
     <div className="">
-      <SectionHeader title="장소 정보" />
+      <SectionHeader title="플레이스 정보" />
       <div className="grid xl:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 gap-6 mb-5">
         <div className="flex flex-end flex-col h-full justify-end">
           <p className="font-header font-bold text-4xl lg:truncate mb-2 pb-1">
@@ -157,7 +157,7 @@ function Place() {
         </MatterportButton>
       )}      
 
-      <SectionHeader title="Host" />
+      <SectionHeader title="호스트" />
       <div className="grid xl:grid-cols-6 md:grid-cols-6 sm:grid-cols-2 gap-6 mb-5">
         <Link key={place.host.id} to={`/host/${place.host.id}`}>
           <article className="flex flex-end flex-col h-full justify-end">
@@ -173,7 +173,7 @@ function Place() {
           </article>
         </Link>
       </div>
-      <SectionHeader title="Events" />
+      <SectionHeader title="이벤트" />
       <div className="grid xl:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 gap-12 mb-5">
         {placeEvents.map((event: any) => (
           <Link key={event.id} to={`/event/${event.id}`}>

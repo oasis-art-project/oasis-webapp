@@ -90,11 +90,11 @@ const ImgContainer = styled.div<ImageProps>`
 function Event() {
   const { id }: Params = useParams();
   const { status, data, error } = useEvent(id);
-  const [showDialogHubs, setShowDialogOnlineEvent] = useState(false);
-  const openHubsDialog = () => setShowDialogOnlineEvent(true);
-  const closeHubsDialog = () => setShowDialogOnlineEvent(false);
-  const openGatherDialog = () => setShowDialogOnlineEvent(true);
-  const closeGatherDialog = () => setShowDialogOnlineEvent(false);
+  const [showDialogOnline, setShowDialogOnline] = useState(false);
+  // const openHubsDialog = () => setShowDialogOnline(true);
+  // const closeHubsDialog = () => setShowDialogOnline(false);
+  const openGatherDialog = () => setShowDialogOnline(true);
+  const closeGatherDialog = () => setShowDialogOnline(false);
 
   if (status === 'loading') return <Loader />;
   if (error) return <div>Error</div>;
@@ -144,7 +144,7 @@ function Event() {
           <ImgContainer imageURL={eventCoverIMG} height="325px" width="100%" />
         </div>
         <div className="flex flex-col">
-          <p className="font-header font-bold text-2xl uppercase">{data.event.place.name}에서</p>
+          <p className="font-header font-bold text-2xl uppercase">{data.event.place.name}</p>
           <p className="font-header font-bold text-2xl mb-2">{parsedDates}</p>
           <Link to={`/place/${placeId}`}>
             <ImgContainer imageURL={placeCoverIMG} height="325px" width="100%" />
@@ -166,7 +166,7 @@ function Event() {
         </a>
       )}      
 
-      {data.event.hubs_link && eventStarted(startTime) && (
+      {/* {data.event.hubs_link && eventStarted(startTime) && (
         <HubsButton
           className="flex justify-center gap-5 w-full"
           onClick={openHubsDialog}
@@ -178,7 +178,7 @@ function Event() {
             그리고 온라인으로 참석 
           </div>
         </HubsButton>
-      )}
+      )} */}
 
       {data.event.gather_link && (
         <GatherButton
@@ -193,7 +193,6 @@ function Event() {
           </div>
         </GatherButton>
       )}
-
 
       {0 < eventArtists.length && (<SectionHeader title="Participating artists" />)}
       <div className="w-full mb-10 mt-10">
@@ -247,7 +246,7 @@ function Event() {
         ))}
       </div>
 
-      <StyledDialog isOpen={showDialogHubs} onDismiss={closeHubsDialog} aria-label="Hubs intro">
+      {/* <StyledDialog isOpen={showDialogHubs} onDismiss={closeHubsDialog} aria-label="Hubs intro">
         <button className="close-button float-rigt" onClick={closeHubsDialog}>
           <span aria-hidden>×</span>
         </button>
@@ -272,16 +271,16 @@ function Event() {
             Continue
           </a>
         </div>
-      </StyledDialog>
+      </StyledDialog> */}
 
 
-      <StyledDialog isOpen={showDialogHubs} onDismiss={closeGatherDialog} aria-label="Gather intro">
+      <StyledDialog isOpen={showDialogOnline} onDismiss={closeGatherDialog} aria-label="Gather intro">
         <button className="close-button float-rigt" onClick={closeGatherDialog}>
           <span aria-hidden>×</span>
         </button>
         <div className="relative text-center">
           <p className="mt-6 mb-6 text-xl font-header">
-            OASIS will now take you to the virtual event on Gather.Town. Some important instructions:
+            OASIS will now take you to the online event on Gather.Town. Some important instructions:
           </p>
           <p className="mt-6 mb-6 text-xl font-header">
             <b>1)</b> Select your character in the next page. Make sure to configure.

@@ -77,12 +77,12 @@ function Navbar() {
                   to="/places"
                   exact
                 >
-                  장소
+                  플레이스
                 </StyledNavLink>
               </li>
               <li className="my-5">
                 <StyledNavLink activeClassName="active" to="/hosts">
-                  주인
+                  호스트
                 </StyledNavLink>
               </li>
               <li className="my-5 lg:hidden">

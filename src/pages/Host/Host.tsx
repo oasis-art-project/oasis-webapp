@@ -73,7 +73,7 @@ function Host() {
 
   return (
     <div className="">
-      <SectionHeader title="Host Information" />
+      <SectionHeader title="호스트 정보" />
       <div className="grid xl:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 gap-6 mb-5">
         <div className="flex flex-end flex-col h-full justify-end">
           <p className="font-header font-bold text-4xl lg:truncate mb-2 pb-1">
