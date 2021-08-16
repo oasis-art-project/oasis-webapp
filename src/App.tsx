@@ -15,6 +15,7 @@ import Artists from './pages/Artists';
 import Artist from './pages/Artist';
 import ArtistCover from './pages/ArtistCover';
 import ArtworkCover from './pages/ArtworkCover';
+import EventRedirect from './pages/EventRedirect';
 import Artwork from './pages/Artwork';
 import ChatRoom from './pages/ChatRoom';
 import Places from './pages/Places';
@@ -87,6 +88,7 @@ function App() {
                     <Navbar />
                     <Switch>
                       <Route path="/" exact component={Home} />
+                      <Route path="/events/" exact component={Home} />
                       <Route path="/event/:id" exact component={Event} />
                       <Route path="/artists/" exact component={Artists} />
                       <Route path="/artist/:id" exact component={Artist} />
@@ -95,6 +97,7 @@ function App() {
                       <Route path="/place/:id" exact component={Place} />
                       <Route path="/hosts/" exact component={Hosts} />
                       <Route path="/host/:id" exact component={Host} />
+                      <Route path="/:alias" exact component={EventRedirect} />
                       <Route path="/about" exact component={About} />
                       <Route path="/signup" exact component={Signup} />
                       <PrivateRoute path="/room/:roomId">
@@ -105,7 +108,7 @@ function App() {
 
                     <Footer>
                       <Link className="text-gray-50 mb-4" to="/about">
-                        What is OASIS?
+                        OASIS는 무엇인가?
                       </Link>
 
                       <div className="flex">
