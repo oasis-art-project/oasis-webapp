@@ -8,6 +8,7 @@ import Loader from '../../components/Loader';
 import Geohash from 'latlon-geohash';
 
 import cubeImage from '../../assets/img/3dcube.png';
+import vineImage from '../../assets/img/vine.png';
 
 const artistSelection = (artists: []) => {
   let resultArtist = '';
@@ -47,6 +48,13 @@ const getLocCentroid = (events: []) => {
 }
 
 const HubsButton = styled.a`
+  color: white;
+  background-color: black;
+  padding: 0.5rem;
+  text-align: center;
+`;
+
+const GatherButton = styled.a`
   color: white;
   background-color: black;
   padding: 0.5rem;
@@ -170,7 +178,7 @@ function Events() {
                   <p className="font-header text-darkGray font-bold text-base truncate my-2">
                     {event.place.name}
                   </p>
-                </Link>
+                </Link>                
                 {event.hubs_link && eventStarted(event.startTime) && (
                   <HubsButton
                     className="flex justify-center gap-2 w-full"
@@ -180,10 +188,23 @@ function Events() {
                   >
                     <img src={cubeImage} alt="3D Cube" width="20" />
                     <div className="text-gray-50">
-                      Virtual Event
+                    Online 이벤트
                     </div>
                   </HubsButton>
-              )}
+                )}
+                {event.gather_link && (
+                  <GatherButton
+                    className="flex justify-center gap-2 w-full"
+                    target="_blank"
+                    rel="noreferrer"
+                    href={`https://gather.town/invite?token=${event.gather_link}`}
+                  >
+                    <img src={vineImage} alt="Gather Vine" width="20" />
+                    <div className="text-gray-50">
+                    Online 이벤트
+                    </div>
+                  </GatherButton>
+                )}
               </StyledPopup>
             </Marker>
           ))}
