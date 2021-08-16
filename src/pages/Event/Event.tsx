@@ -142,7 +142,7 @@ function Event() {
           <ImgContainer imageURL={eventCoverIMG} height="325px" width="100%" />
         </div>
         <div className="flex flex-col">
-          <p className="font-header font-bold text-2xl uppercase">AT {data.event.place.name}</p>
+          <p className="font-header font-bold text-2xl uppercase">{data.event.place.name}에서</p>
           <p className="font-header font-bold text-2xl mb-2">{parsedDates}</p>
           <Link to={`/place/${placeId}`}>
             <ImgContainer imageURL={placeCoverIMG} height="325px" width="100%" />

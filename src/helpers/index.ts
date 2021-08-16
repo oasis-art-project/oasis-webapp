@@ -6,8 +6,8 @@ export const IMGS_URL = isProd ? 'https://oasis-storage.s3.amazonaws.com' : '/de
 
 // Dates helpers
 export const datesParser = (start: string, end: string): string => {
-  const startDate = days(start).format('MMMM D');
-  const endDate = days(end).format('MMMM D YYYY');
+  const startDate = days(start).format('D/M');
+  const endDate = days(end).format('D/M YYYY');
   return `${startDate} - ${endDate}`;
 };
 
