@@ -111,24 +111,24 @@ const Card = ({
 function Events() {
   const { status, data, error } = useCurrentEvents();
 
-  const [view, setView] = useState('current_events');
+  const [view, setView] = useState('upcoming_events');
 
   const toggleView = () => {
-    if (view === 'current_events') setView('upcoming_events');
     if (view === 'upcoming_events') setView('current_events');
+    if (view === 'current_events') setView('upcoming_events');    
   };
 
   if (status === 'loading') return <Loader />;
   if (error) return <div>Error</div>;
 
   const sortedData: any = {};
-  sortedData['upcoming_events'] = data.upcoming_events.sort((a: any, b: any) => {
+  sortedData['current_events'] = data.current_events.sort((a: any, b: any) => {
     const timeA = a.startTime;
     const timeB = b.startTime;
     if (timeComparison(timeA, timeB)) return 1;
     else return -1;
-  });
-  sortedData['current_events'] = data.current_events.sort((a: any, b: any) => {
+  });  
+  sortedData['upcoming_events'] = data.upcoming_events.sort((a: any, b: any) => {
     const timeA = a.startTime;
     const timeB = b.startTime;
     if (timeComparison(timeA, timeB)) return 1;
@@ -140,20 +140,20 @@ function Events() {
       <div className="mb-6">
         <ul className="flex items-center justify-center">
           <li
-            onClick={() => toggleView()}
-            className={`mx-5 hover: cursor-pointer ${
-              view === 'current_events' ? 'text-darkGray' : 'text-lightGray'
-            }`}
-          >
-            현재의 이벤트
-          </li>
-          <li
             className={`mx-5 hover: cursor-pointer ${
               view === 'upcoming_events' ? 'text-darkGray' : 'text-lightGray'
             }`}
             onClick={() => toggleView()}
           >
             다가오는 이벤트
+          </li>
+          <li
+            onClick={() => toggleView()}
+            className={`mx-5 hover: cursor-pointer ${
+              view === 'current_events' ? 'text-darkGray' : 'text-lightGray'
+            }`}
+          >
+            현재의 이벤트
           </li>          
         </ul>
       </div>
