@@ -90,9 +90,11 @@ const ImgContainer = styled.div<ImageProps>`
 function Event() {
   const { id }: Params = useParams();
   const { status, data, error } = useEvent(id);
-  const [showDialogHubs, setShowDialogHubs] = useState(false);
-  const openHubsDialog = () => setShowDialogHubs(true);
-  const closeHubsDialog = () => setShowDialogHubs(false);
+  const [showDialogHubs, setShowDialogOnlineEvent] = useState(false);
+  const openHubsDialog = () => setShowDialogOnlineEvent(true);
+  const closeHubsDialog = () => setShowDialogOnlineEvent(false);
+  const openGatherDialog = () => setShowDialogOnlineEvent(true);
+  const closeGatherDialog = () => setShowDialogOnlineEvent(false);
 
   if (status === 'loading') return <Loader />;
   if (error) return <div>Error</div>;
@@ -178,7 +180,7 @@ function Event() {
         </HubsButton>
       )}
 
-      {/* {data.event.tagher_link && (
+      {data.event.gather_link && (
         <GatherButton
           className="flex justify-center gap-5 w-full"
           onClick={openGatherDialog}
@@ -190,7 +192,7 @@ function Event() {
             그리고 온라인으로 참석 
           </div>
         </GatherButton>
-      )}       */}
+      )}
 
 
       {0 < eventArtists.length && (<SectionHeader title="Participating artists" />)}
@@ -251,7 +253,7 @@ function Event() {
         </button>
         <div className="relative text-center">
           <p className="mt-6 mb-6 text-xl font-header">
-            OASIS will now take you to the virtual event. Some important instructions:
+            OASIS will now take you to the virtual event on Mozilla Hubs. Some important instructions:
           </p>
           <p className="mt-6 mb-6 text-xl font-header">
             <b>1)</b> Select <b>JOIN ROOM</b> in the next page. Enter on Device only if you have a VR headset.
@@ -273,22 +275,22 @@ function Event() {
       </StyledDialog>
 
 
-      {/* <StyledDialog isOpen={showDialogGather} onDismiss={closeGatherDialog} aria-label="Gather intro">
+      <StyledDialog isOpen={showDialogHubs} onDismiss={closeGatherDialog} aria-label="Gather intro">
         <button className="close-button float-rigt" onClick={closeGatherDialog}>
           <span aria-hidden>×</span>
         </button>
         <div className="relative text-center">
           <p className="mt-6 mb-6 text-xl font-header">
-            OASIS will now take you to the virtual event. Some important instructions:
+            OASIS will now take you to the virtual event on Gather.Town. Some important instructions:
           </p>
           <p className="mt-6 mb-6 text-xl font-header">
-            <b>1)</b> Select <b>JOIN ROOM</b> in the next page. Enter on Device only if you have a VR headset.
+            <b>1)</b> Select your character in the next page. Make sure to configure.
           </p>
           <p className="mt-6 mb-6 text-xl font-header">
-          <b>2)</b> After joining, use the <b>W and S</b> keys to move forward/backwards, and <b>mouse pointer</b> to set direction.
+          <b>2)</b> After joining, use the arrow keys to move around, and get closer to other users to listen and/or speak.
           </p>
           <p className="mt-6 mb-12 text-xl font-header">
-          <b>3)</b> With a phone, <b>PINCH IN/OUT</b> to move backwards/foward, and <b>move the phone</b> to set direction.
+          <b>3)</b> You can disable/enable the microphone and camera at anytime.
           </p>          
           <a className="mx-auto border-solid border-4 border-darkGray px-3 py-1 font-header font-bold text-xl"
              target="_blank"
@@ -298,7 +300,7 @@ function Event() {
             Continue
           </a>
         </div>
-      </StyledDialog>       */}
+      </StyledDialog>
 
     </div>
   );
