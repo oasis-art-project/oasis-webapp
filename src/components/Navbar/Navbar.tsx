@@ -67,7 +67,7 @@ function Navbar() {
                   exact
                   to="/artists"
                 >
-                  예술가
+                  아티스트
                 </StyledNavLink>
               </li>
               <li className="my-5">
@@ -82,7 +82,7 @@ function Navbar() {
               </li>
               <li className="my-5">
                 <StyledNavLink activeClassName="active" to="/hosts">
-                  숙주
+                  주인
                 </StyledNavLink>
               </li>
               <li className="my-5 lg:hidden">
