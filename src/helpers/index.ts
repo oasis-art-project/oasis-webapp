@@ -2,7 +2,7 @@ import days from 'dayjs';
 import { stringify } from 'qs';
 
 export const isProd = process.env.NODE_ENV !== 'development';
-export const IMGS_URL = isProd ? 'https://oasis-storage.s3.amazonaws.com' : '/dev-images';
+export const IMGS_URL = isProd ? 'https://oasis-storage-seoul.s3.amazonaws.com' : '/dev-images';
 
 // Dates helpers
 export const datesParser = (start: string, end: string): string => {
