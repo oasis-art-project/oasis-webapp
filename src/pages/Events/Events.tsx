@@ -153,7 +153,7 @@ function Events() {
             }`}
             onClick={() => toggleView()}
           >
-            다가오는 이벤트
+            예정 이벤트
           </li>
           <li
             onClick={() => toggleView()}
@@ -161,8 +161,8 @@ function Events() {
               view === 'current_events' ? 'text-darkGray' : 'text-lightGray'
             }`}
           >
-            현재의 이벤트
-          </li>          
+            현재 이벤트
+          </li>
         </ul>
       </div>
       <div>
