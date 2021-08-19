@@ -62,7 +62,7 @@ function Artist() {
   if (error) return <div>Error</div>;
 
   const { user } = userData;
-  const isSameUser = auth.activeUser === userData.id;
+  // const isSameUser = auth.activeUser === userData.id;
 
   const { artworks, events } = user;
   const userArtworks = artworks.map((artwork: any) => ({
