@@ -54,7 +54,7 @@ function ProfileImage(props: ProfileImageInterface) {
                   type="submit"
                   className="border-solid border-4 w-max border-darkGray px-3 py-1 font-header font-bold text-base"
                 >
-                  Submit
+                  Upload picture
                 </button>
               </form>
             </div>
