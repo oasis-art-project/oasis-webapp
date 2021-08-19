@@ -61,6 +61,18 @@ const Dropdown = () => {
               >
                 Edit profile
               </Link>
+
+             {auth.user /* && auth.user.role === 3 */ && (              
+                <Link
+                to="/settings"
+                className={
+                  'text-sm py-2 px-4 font-normal block w-full whitespace-no-wrap bg-transparent '
+                }
+              >
+                Add artwork
+              </Link>
+              )}
+
               <li
                 onClick={() => logout()}
                 className="text-sm py-2 px-4 font-normal block w-full whitespace-no-wrap bg-transparent "
