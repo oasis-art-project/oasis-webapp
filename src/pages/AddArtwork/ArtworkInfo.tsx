@@ -12,7 +12,7 @@ const artworkSchema = Yup.object().shape({
 });
 
 function ArtworkInfo(props: any) {
-  const { user, mutation, email } = props;
+  const { user, mutation } = props;
 
   const formik = useFormik({
     initialValues: {
