@@ -26,6 +26,7 @@ import Signup from './pages/Signup';
 import Register from './pages/Register';
 import { isProd } from './helpers';
 import Settings from './pages/Settings';
+import AddArtwork from './pages/AddArtwork';
 
 const Container = styled.section`
   max-width: 1280px;
@@ -103,6 +104,9 @@ function App() {
                       <PrivateRoute path="/settings">
                         <Settings />
                       </PrivateRoute>
+                      <PrivateRoute path="/addartwork">
+                        <AddArtwork />
+                      </PrivateRoute>                      
                     </Switch>
                   </Container>
 

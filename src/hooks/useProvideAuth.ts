@@ -33,6 +33,7 @@ function useProvideAuth() {
         const activeUser: any = {
           email: decodedToken.user_claims.email,
           fullName: decodedToken.user_claims.fullName,
+          role: decodedToken.user_claims.role,
           id: decodedToken.identity,
         };
         const user = { activeUser, token: result.data.token };

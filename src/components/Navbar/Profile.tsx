@@ -61,10 +61,10 @@ const Dropdown = () => {
               >
                 Edit profile
               </Link>
-
-             {auth.user /* && auth.user.role === 3 */ && (              
+                                                    
+             {auth.user /*&& auth.user.user_claims && auth.user.user_claims.role === 3*/ && (
                 <Link
-                to="/settings"
+                to="/addartwork"
                 className={
                   'text-sm py-2 px-4 font-normal block w-full whitespace-no-wrap bg-transparent '
                 }
