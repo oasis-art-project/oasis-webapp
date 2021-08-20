@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { ReactSmartScroller } from 'react-smart-scroller';
 import { Dialog } from '@reach/dialog';
+import useAuth from '../../hooks/useAuth';
 import useEvent from '../../hooks/useEvent';
 import { datesParser, eventStarted, IMGS_URL } from '../../helpers';
 import Loader from '../../components/Loader';
@@ -74,6 +75,7 @@ const ImgContainer = styled.div<ImageProps>`
 
 function Event() {
   const { id }: Params = useParams();
+  const auth: any = useAuth();
   const { status, data, error } = useEvent(id);
   const [showDialogHubs, setShowDialogHubs] = useState(false);
   const openHubsDialog = () => setShowDialogHubs(true);
@@ -152,6 +154,15 @@ function Event() {
 
       <SectionHeader title="Participating artists" />
 
+      {auth.user && (
+        <Link
+          className="border-solid border-4 border-darkGray px-3 py-1 font-header font-bold text-xl"
+          to="/editartists"
+        >
+          Edit
+        </Link>
+      )}
+
       <div className="w-full mb-10 mt-10">
         <ReactSmartScroller
           draggable
@@ -185,6 +196,16 @@ function Event() {
       </div>
 
       <SectionHeader title="Featured artworks" />
+
+      {auth.user && (
+        <Link
+          className="border-solid border-4 border-darkGray px-3 py-1 font-header font-bold text-xl"
+          to="/editartworks"
+        >
+          Edit
+        </Link>
+      )}
+
       <div className="grid xl:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 gap-12 mb-5 w-full overflow-hidden">
         {eventArtworks.map((artwork: any) => (
           <Link key={artwork.id} to={`/artwork/${artwork.id}`}>
