@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from 'react-query';
 import { useToasts } from 'react-toast-notifications';
 import useAuth from '../../hooks/useAuth';
-import { updateArtwork, updateArtworkPic } from '../../hooks/addNewArtwork';
+import { createArtwork, updateArtworkPic } from '../../hooks/addNewArtwork';
 import ArtworkImage from './ArtworkImage';
 import ArtworkInfo from './ArtworkInfo';
 
@@ -31,7 +31,7 @@ function AddArtwork() {
     },
   };
 
-  const { mutate: artworkMutation } = useMutation(updateArtwork, mutationsOptions);
+  const { mutate: artworkMutation } = useMutation(createArtwork, mutationsOptions);
 
   const { mutate: picMutation } = useMutation(updateArtworkPic, mutationsOptions);
 
@@ -46,7 +46,7 @@ function AddArtwork() {
 
   return (
     <>
-      <ArtworkImage user={user} picMutation={handlePicSummit} />
+      {/* <ArtworkImage user={user} picMutation={handlePicSummit} /> */}
       <ArtworkInfo mutation={handleInfoSummit} />      
     </>
   );
