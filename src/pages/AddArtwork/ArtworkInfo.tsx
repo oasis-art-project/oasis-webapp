@@ -12,16 +12,16 @@ const artworkSchema = Yup.object().shape({
 });
 
 function ArtworkInfo(props: any) {
-  const { user, mutation } = props;
+  const { mutation } = props;
 
   const formik = useFormik({
     initialValues: {
-      name: user.name || '',
-      description: user.description || '',
-      medium: user.medium || '',
-      size: user.size || '',
-      year: user.year || '',
-      link: user.link || '',
+      name: '',
+      description: '',
+      medium: '',
+      size: '',
+      year: 2021,
+      link: '',
     },
     validationSchema: artworkSchema,
     onSubmit: (values: any) => {
@@ -35,11 +35,12 @@ function ArtworkInfo(props: any) {
       <form onSubmit={formik.handleSubmit}>
         <div className="overflow-hidden sm:rounded-md">
           <div className="px-4 bg-white sm:px-6 mb-6">
-            <SectionHeader title="User information" />
+            <SectionHeader title="Artwork information" />
             <div className="grid grid-cols-10 gap-6">
+
               <div className="col-span-10 sm:col-span-5">
                 <label htmlFor="name" className="block text-sm font-medium text-gray-700">
-                  Work name
+                  Artwork name
                 </label>
                 <input
                   type="text"
@@ -82,8 +83,8 @@ function ArtworkInfo(props: any) {
                 </label>
                 <input
                   type="text"
-                  name="Medium"
-                  id="Medium"
+                  name="medium"
+                  id="medium"
                   className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300"
                   onChange={formik.handleChange}
                   value={formik.values.medium}
@@ -100,8 +101,8 @@ function ArtworkInfo(props: any) {
                 </label>
                 <input
                   type="text"
-                  name="Size"
-                  id="Size"
+                  name="size"
+                  id="size"
                   className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300"
                   onChange={formik.handleChange}
                   value={formik.values.size}
@@ -117,14 +118,14 @@ function ArtworkInfo(props: any) {
                 </label>
                 <input
                   type="integer"
-                  name="Year"
-                  id="Year"
+                  name="year"
+                  id="year"
                   className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300"
                   onChange={formik.handleChange}
                   value={formik.values.year}
                 />
-                {formik.errors.size && (
-                  <p className="mt-2 text-sm text-red-500">{formik.errors.size}</p>
+                {formik.errors.year && (
+                  <p className="mt-2 text-sm text-red-500">{formik.errors.year}</p>
                 )}
               </div>
 

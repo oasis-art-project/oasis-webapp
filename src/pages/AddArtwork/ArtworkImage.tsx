@@ -21,12 +21,12 @@ function ArtworkImage(props: ArtworkImageInterface) {
       render={({ values, handleSubmit, setFieldValue }) => {
         return (
           <div className="px-4 bg-white sm:p-6 mb-12">
-            <SectionHeader title="Profile picture" />
+            <SectionHeader title="Artwork image" />
             <div className="flex items-center ">
               <div>
                 {pictureInitialValue.file && (
                   <img
-                    alt="profile"
+                    alt="artwork image"
                     src={`${IMGS_URL}/${pictureInitialValue.file}`}
                     width="350px"
                   />
@@ -54,7 +54,7 @@ function ArtworkImage(props: ArtworkImageInterface) {
                   type="submit"
                   className="border-solid border-4 w-max border-darkGray px-3 py-1 font-header font-bold text-base"
                 >
-                  Upload picture
+                  Upload image
                 </button>
               </form>
             </div>

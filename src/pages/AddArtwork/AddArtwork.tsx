@@ -47,7 +47,7 @@ function AddArtwork() {
   return (
     <>
       <ArtworkImage user={user} picMutation={handlePicSummit} />
-      <ArtworkInfo user={user} email={user.email} mutation={handleInfoSummit} />
+      <ArtworkInfo mutation={handleInfoSummit} />      
     </>
   );
 }
