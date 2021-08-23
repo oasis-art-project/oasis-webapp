@@ -33,6 +33,13 @@ const HubsButton = styled.span`
   text-align: center;
 `;
 
+const EditButton = styled.span`
+  color: black;
+  background-color: white;
+  padding: 1rem;
+  text-align: center;
+`;
+
 const StyledDialog = styled(Dialog)`
   @media only screen and (max-width: 600px) {
     width: 90vw;
@@ -77,9 +84,14 @@ function Event() {
   const { id }: Params = useParams();
   const auth: any = useAuth();
   const { status, data, error } = useEvent(id);
+  
   const [showDialogHubs, setShowDialogHubs] = useState(false);
   const openHubsDialog = () => setShowDialogHubs(true);
   const closeHubsDialog = () => setShowDialogHubs(false);
+
+  const [showDialogEditArtists, setShowDialogEditArtists] = useState(false);
+  const openEditArtistsDialog = () => setShowDialogEditArtists(true);
+  const closeEditArtistsDialog = () => setShowDialogEditArtists(false);
 
   if (status === 'loading') return <Loader />;
   if (error) return <div>Error</div>;
@@ -159,19 +171,29 @@ function Event() {
       <SectionHeader title="Participating artists" />
 
       {auth.user && ( // <- here we need to check that auth user is host
-        <Link
-          className="border-solid border-4 border-darkGray px-3 py-1 font-header font-bold text-xl"
-          to="/editartists"
+        // <Link
+        //   className="border-solid border-4 border-darkGray px-3 py-1 font-header font-bold text-xl"
+        //   to="/editartists"
           // to={{
           //   pathname: "/editartists",
           //   state: {
           //     onSubmit: {setArtists},
           //   },
           // }}          
+        // >
+        //   Edit
+        // </Link>
+        <EditButton
+          className="border-solid border-4 border-darkGray px-3 py-1 font-header font-bold text-xl"
+          onClick={openEditArtistsDialog}
         >
           Edit
-        </Link>
+        </EditButton>
       )}
+
+
+
+
 
       <div className="w-full mb-10 mt-10">
         <ReactSmartScroller
