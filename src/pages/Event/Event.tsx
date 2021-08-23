@@ -116,6 +116,10 @@ function Event() {
     id: artwork.id,
   }));
 
+  function setArtists(selArtists: string[]) {
+    alert(selArtists);
+  }
+
   const parsedDates = datesParser(startTime, endTime);
   const eventCoverIMG = `${IMGS_URL}/${fullImages[0]}`;
   const placeCoverIMG = `${IMGS_URL}/${placeImages[0]}`;
@@ -154,10 +158,16 @@ function Event() {
 
       <SectionHeader title="Participating artists" />
 
-      {auth.user && (
+      {auth.user && ( // <- here we need to check that auth user is host
         <Link
           className="border-solid border-4 border-darkGray px-3 py-1 font-header font-bold text-xl"
           to="/editartists"
+          // to={{
+          //   pathname: "/editartists",
+          //   state: {
+          //     onSubmit: {setArtists},
+          //   },
+          // }}          
         >
           Edit
         </Link>
