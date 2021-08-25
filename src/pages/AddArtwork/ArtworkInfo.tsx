@@ -38,51 +38,6 @@ function ArtworkInfo(props: any) {
         <div className="overflow-hidden sm:rounded-md">
           <div className="px-4 bg-white sm:px-6 mb-6">
 
-
-          
-            <SectionHeader title="Artwork image" />
-            <div className="flex items-center ">
-              <div>
-                {pictureInitialValue.file && (
-                  <img
-                    alt="artwork image"
-                    src={`${IMGS_URL}/${pictureInitialValue.file}`}
-                    width="350px"
-                  />
-                )}
-              </div>
-              <form
-                onSubmit={e => {
-                  e.preventDefault();
-                  // handleSubmit(e);
-                }}
-                className="flex ml-6 items-center"
-              >
-
-                <div className="form-group">
-                  <input
-                    id="file"
-                    name="file"
-                    type="file"
-                    onChange={(event: any) => {
-                      // setFieldValue('file', event.currentTarget.files[0]);
-                    }}
-                    className="form-control"
-                  />
-                </div>
-                <button
-                  type="submit"
-                  className="border-solid border-4 w-max border-darkGray px-3 py-1 font-header font-bold text-base"
-                >
-                  Upload image
-                </button>
-
-
-              </form>
-            </div>
-          
-
-
             <SectionHeader title="Artwork information" />
             <div className="grid grid-cols-10 gap-6">
               <div className="col-span-10 sm:col-span-5">

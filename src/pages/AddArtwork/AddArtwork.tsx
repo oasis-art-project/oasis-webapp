@@ -4,11 +4,13 @@ import useAuth from '../../hooks/useAuth';
 import { createArtwork, updateArtworkPic } from '../../hooks/addNewArtwork';
 import ArtworkImage from './ArtworkImage';
 import ArtworkInfo from './ArtworkInfo';
+import { useState } from 'react';
 
 
 function AddArtwork() {
   const queryClient = useQueryClient();
   const auth: any = useAuth();
+  const [artworkID, setArtworkID] = useState(null);
     
   const { addToast } = useToasts();
   const {
@@ -17,7 +19,9 @@ function AddArtwork() {
   
 
   const mutationsOptions = {
-    onSuccess: () => {
+    onSuccess: (data: any) => {
+      console.log("success!!!!!", data)
+      setArtworkID(data.id);
       addToast('Saved Successfully', { appearance: 'success' });
     },
     onError: (error: any) => {
@@ -31,23 +35,24 @@ function AddArtwork() {
     },
   };
 
-  const { mutate: artworkMutation } = useMutation(createArtwork, mutationsOptions);
+  const artworkMutation = useMutation(createArtwork, mutationsOptions);
+  // console.log(artworkMutation);
 
   const { mutate: picMutation } = useMutation(updateArtworkPic, mutationsOptions);
 
   const handlePicSummit = (values: any) => {
     const request = values.file;  
-    picMutation({ request, token: auth.user.token, id: auth.user.activeUser.id });
+    picMutation({ request, token: auth.user.token, id: artworkID });
   };
 
   const handleInfoSummit = (values: any) => {
-    artworkMutation({ update: values, token: auth.user.token });
+    artworkMutation.mutate({ update: values, token: auth.user.token });
   };
 
   return (
     <>
-      {/* <ArtworkImage user={user} picMutation={handlePicSummit} /> */}
-      <ArtworkInfo mutation={handleInfoSummit} />      
+    <ArtworkInfo mutation={handleInfoSummit} />
+    {artworkID && <ArtworkImage picMutation={handlePicSummit} />}      
     </>
   );
 }
