@@ -27,7 +27,6 @@ import Register from './pages/Register';
 import { isProd } from './helpers';
 import Settings from './pages/Settings';
 import AddArtwork from './pages/AddArtwork';
-import SelectArtists from './pages/SelectArtists';
 import SelectArtworks from './pages/SelectArtworks';
 
 const Container = styled.section`
@@ -109,11 +108,7 @@ function App() {
                       <PrivateRoute path="/addartwork">
                         <AddArtwork />
                       </PrivateRoute>
-
-                      <PrivateRoute path="/editartists">
-                        <SelectArtists />
-                      </PrivateRoute>
-
+                      
                       <PrivateRoute path="/editartworks">
                         <SelectArtworks />
                       </PrivateRoute>

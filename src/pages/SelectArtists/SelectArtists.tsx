@@ -1,4 +1,4 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import useArtists from '../../hooks/useArtists';
 import { IMGS_URL } from '../../helpers';
 import styled from 'styled-components';
@@ -58,6 +58,8 @@ function SelectArtists() {
       >
         Select and save
       </Link>
+
+
 
       <div className="grid xl:grid-cols-4 md:grid-cols-4 sm:grid-cols-2 gap-1 mb-1">
         {sortedData.map((artist: any) => (        

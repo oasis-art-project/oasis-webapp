@@ -7,6 +7,7 @@ import useAuth from '../../hooks/useAuth';
 import useEvent from '../../hooks/useEvent';
 import { datesParser, eventStarted, IMGS_URL } from '../../helpers';
 import Loader from '../../components/Loader';
+import EditArtistDialog from '../EditEvent'
 import cubeImage from '../../assets/img/3dcube.png';
 
 const formatName = (first: string, last: string) => {
@@ -129,7 +130,7 @@ function Event() {
   }));
 
   function setArtists(selArtists: string[]) {
-    alert(selArtists);
+    console.log(selArtists);
   }
 
   const parsedDates = datesParser(startTime, endTime);
@@ -170,19 +171,7 @@ function Event() {
 
       <SectionHeader title="Participating artists" />
 
-      {auth.user && ( // <- here we need to check that auth user is host
-        // <Link
-        //   className="border-solid border-4 border-darkGray px-3 py-1 font-header font-bold text-xl"
-        //   to="/editartists"
-          // to={{
-          //   pathname: "/editartists",
-          //   state: {
-          //     onSubmit: {setArtists},
-          //   },
-          // }}          
-        // >
-        //   Edit
-        // </Link>
+      {auth.user && /*&& auth.user.user_claims && auth.user.user_claims.role === 2*/ (
         <EditButton
           className="border-solid border-4 border-darkGray px-3 py-1 font-header font-bold text-xl"
           onClick={openEditArtistsDialog}
@@ -191,9 +180,9 @@ function Event() {
         </EditButton>
       )}
 
-
-
-
+     {showDialogEditArtists && /*&& auth.user.user_claims && auth.user.user_claims.role === 2*/ (
+      <EditArtistDialog showDialog={showDialogEditArtists} closeDialog={closeEditArtistsDialog} setArtists={setArtists} /> 
+     )}
 
       <div className="w-full mb-10 mt-10">
         <ReactSmartScroller
