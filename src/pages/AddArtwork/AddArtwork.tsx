@@ -13,14 +13,9 @@ function AddArtwork() {
   const [artworkID, setArtworkID] = useState(null);
     
   const { addToast } = useToasts();
-  const {
-    user: { activeUser: user },
-  } = auth;
-  
 
   const mutationsOptions = {
     onSuccess: (data: any) => {
-      console.log("success!!!!!", data)
       setArtworkID(data.id);
       addToast('Saved Successfully', { appearance: 'success' });
     },
@@ -36,7 +31,6 @@ function AddArtwork() {
   };
 
   const artworkMutation = useMutation(createArtwork, mutationsOptions);
-  // console.log(artworkMutation);
 
   const { mutate: picMutation } = useMutation(updateArtworkPic, mutationsOptions);
 

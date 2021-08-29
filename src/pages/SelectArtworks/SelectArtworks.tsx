@@ -19,11 +19,6 @@ const formatName = (first: string, last: string) => {
   return (last + ' ' + first).trim();
 };
 
-const Tags = styled.p`
-  min-width: 100%;
-  min-height: 1.2em;
-`;
-
 function SelectArtworks() {
   const { status, data, error } = useArtworks();
 

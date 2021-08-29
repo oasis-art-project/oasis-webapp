@@ -1,6 +1,5 @@
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
-import { IMGS_URL } from '../../helpers';
 import SectionHeader from '../../components/SectionHeader';
 
 const artworkSchema = Yup.object().shape({
@@ -14,7 +13,6 @@ const artworkSchema = Yup.object().shape({
 
 function ArtworkInfo(props: any) {
   const { mutation } = props;
-  const pictureInitialValue = { file : null };
 
   const formik = useFormik({
     initialValues: {

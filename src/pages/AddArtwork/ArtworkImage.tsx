@@ -24,7 +24,7 @@ function ArtworkImage(props: ArtworkImageInterface) {
               <div>
                 {pictureInitialValue.file && (
                   <img
-                    alt="artwork image"
+                    alt=""
                     src={`${IMGS_URL}/${pictureInitialValue.file}`}
                     width="350px"
                   />
