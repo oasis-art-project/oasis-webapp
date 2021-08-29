@@ -4,13 +4,11 @@ import SectionHeader from '../../components/SectionHeader';
 
 interface ArtworkImageInterface {
   picMutation: any;
-  user: any;
 }
 
 function ArtworkImage(props: ArtworkImageInterface) {
-  const { user, picMutation } = props;
-  const { fullImages } = user;
-  const pictureInitialValue = { file: fullImages ? fullImages[0] : null };
+  const { picMutation } = props;
+  const pictureInitialValue = { file: null };
 
   return (
     <Formik
@@ -26,7 +24,7 @@ function ArtworkImage(props: ArtworkImageInterface) {
               <div>
                 {pictureInitialValue.file && (
                   <img
-                    alt="artwork image"
+                    alt=""
                     src={`${IMGS_URL}/${pictureInitialValue.file}`}
                     width="350px"
                   />

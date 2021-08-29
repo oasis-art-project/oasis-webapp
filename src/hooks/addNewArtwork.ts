@@ -6,7 +6,9 @@ const { post } = axios;
 
 export const createArtwork = async (data: any) => {
   const { token, update } = data;
-  const { data: response } = await post(`${API_URL}/artwork/`, _wrapParams(update), wrapAuth(token));
+  // const { data: response }
+  const response = await post(`${API_URL}/artwork/`, _wrapParams(update), wrapAuth(token));
+  console.log("-->", response)
   return response.data;
 };
 
