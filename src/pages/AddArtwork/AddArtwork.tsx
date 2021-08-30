@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from 'react-query';
 import { useToasts } from 'react-toast-notifications';
 import useAuth from '../../hooks/useAuth';
-import { createArtwork, updateArtworkPic } from '../../hooks/addNewArtwork';
+import { createArtwork, updateArtworkPic } from '../../hooks/useAddArtwork';
 import ArtworkImage from './ArtworkImage';
 import ArtworkInfo from './ArtworkInfo';
 import { useState } from 'react';
@@ -34,19 +34,19 @@ function AddArtwork() {
 
   const { mutate: picMutation } = useMutation(updateArtworkPic, mutationsOptions);
 
-  const handlePicSummit = (values: any) => {
+  const handlePicSubmit = (values: any) => {
     const request = values.file;  
     picMutation({ request, token: auth.user.token, id: artworkID });
   };
 
-  const handleInfoSummit = (values: any) => {
+  const handleInfoSubmit = (values: any) => {
     artworkMutation.mutate({ update: values, token: auth.user.token });
   };
 
   return (
     <>
-    <ArtworkInfo mutation={handleInfoSummit} />
-    {artworkID && <ArtworkImage picMutation={handlePicSummit} />}      
+    <ArtworkInfo mutation={handleInfoSubmit} />
+    {artworkID && <ArtworkImage picMutation={handlePicSubmit} />}      
     </>
   );
 }

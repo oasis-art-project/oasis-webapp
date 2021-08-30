@@ -121,6 +121,8 @@ function Event() {
 
   function setArtists(selArtists: string[]) {
     console.log(selArtists);
+    
+
   }
 
   const parsedDates = datesParser(startTime, endTime);

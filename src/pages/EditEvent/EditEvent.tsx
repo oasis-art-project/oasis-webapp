@@ -37,10 +37,6 @@ function EditArtistDialog(props: any) {
     }
   }
 
-  // setSelected(props.initArtists);
-
-  console.log("the initial artists", selected);
-
   return (
       <StyledDialog isOpen={props.showDialog} onDismiss={props.closeDialog} aria-label="Select artists">
       
