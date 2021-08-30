@@ -1,5 +1,11 @@
+import { useState } from 'react';
 import styled from 'styled-components';
+import useArtists from '../../hooks/useArtists';
+import { IMGS_URL } from '../../helpers';
+import Loader from '../../components/Loader';
 import { Dialog } from '@reach/dialog';
+import { contains } from '../../helpers/arrayUtils';
+import { formatName } from '../../helpers/stringUtils';
 
 const StyledDialog = styled(Dialog)`
 @media only screen and (max-width: 600px) {
@@ -7,7 +13,41 @@ const StyledDialog = styled(Dialog)`
 }
 `;
   
+const Wrapper = styled.div`
+  position: relative;
+  height: 270px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  img {
+    max-height: 75%;
+  }
+`;
+
 function EditArtistDialog(props: any) {
+
+  const { status, data, error } = useArtists();
+  const [selected, setSelected] = useState(['']);
+
+  if (status === 'loading') return <Loader />;
+  if (error) return <div>Error</div>;
+
+  const sortedData = data.users.sort((a: any, b: any) => {
+    const nameA = formatName(a.firstName, a.lastName);
+    const nameB = formatName(b.firstName, b.lastName);
+    if (nameA > nameB) return 1;
+    if (nameA < nameB) return -1;
+    return 0;
+  });
+
+  function toggleSelected(id: string) {
+    if (contains(selected, id)) {
+      const remainingIds = selected.filter(sid => id !== sid);
+      setSelected(remainingIds);
+    } else {
+      setSelected([...selected, id]);
+    }
+  }  
 
   return (
       <StyledDialog isOpen={props.showDialog} onDismiss={props.closeDialog} aria-label="Select artists">
@@ -17,17 +57,33 @@ function EditArtistDialog(props: any) {
       </button>
 
       <div className="relative text-center">
-        <p className="mt-6 mb-6 text-xl font-header">
-        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, 
-        totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta 
-        sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia 
-        consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui 
-        dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora 
-        incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum 
-        exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem 
-        vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui 
-        dolorem eum fugiat quo voluptas nulla pariatur?
-        </p>
+
+        <div className="grid xl:grid-cols-4 md:grid-cols-4 sm:grid-cols-2 gap-1 mb-1">
+          {sortedData.map((artist: any) => (        
+            artist.confirmed && (
+            
+              <div id={artist.id} onClick={() => toggleSelected(artist.id)}>
+              
+                <article className="flex flex-end flex-col h-full justify-end" >
+                  <p className="font-header font-bold text-base md:truncate mb-1 uppercase">
+                    {(artist.firstName + ' ' + artist.lastName).trim()}
+                  </p>
+                  <Wrapper>
+                  <img
+                    className="mb-2"
+                    src={`${IMGS_URL}/${artist.prevImages[0]}`}
+                    alt={(artist.firstName + ' ' + artist.lastName).trim()}
+                  />
+                  </Wrapper>
+                  {contains(selected, artist.id) && (
+                  <p className="font-header font-bold text-base md:truncate mb-1 uppercase"> 
+                    SELECTED
+                  </p>)}
+                </article>
+              </ div>
+            )
+          ))}
+        </div>
 
         <button
           type="button"

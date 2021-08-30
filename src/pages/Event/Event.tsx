@@ -9,10 +9,7 @@ import { datesParser, eventStarted, IMGS_URL } from '../../helpers';
 import Loader from '../../components/Loader';
 import EditArtistDialog from '../EditEvent'
 import cubeImage from '../../assets/img/3dcube.png';
-
-const formatName = (first: string, last: string) => {
-  return (last + ' ' + first).trim();
-};
+import { formatName } from '../../helpers/stringUtils';
 
 interface Params {
   id: string;

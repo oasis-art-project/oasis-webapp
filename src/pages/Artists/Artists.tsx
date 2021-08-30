@@ -3,10 +3,7 @@ import useArtists from '../../hooks/useArtists';
 import { IMGS_URL } from '../../helpers';
 import styled from 'styled-components';
 import Loader from '../../components/Loader';
-
-const formatName = (first: string, last: string) => {
-  return (last + ' ' + first).trim();
-};
+import { formatName } from '../../helpers/stringUtils';
 
 const Tags = styled.p`
   min-width: 100%;
