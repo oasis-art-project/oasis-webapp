@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { useMutation, useQueryClient } from 'react-query';
+import { useToasts } from 'react-toast-notifications';
 import styled from 'styled-components';
 import { ReactSmartScroller } from 'react-smart-scroller';
 import { Dialog } from '@reach/dialog';
@@ -10,6 +12,7 @@ import Loader from '../../components/Loader';
 import EditArtistDialog from '../EditEvent'
 import cubeImage from '../../assets/img/3dcube.png';
 import { formatName } from '../../helpers/stringUtils';
+import updateEvent from '../../hooks/useUpdateEvent'
 
 interface Params {
   id: string;
@@ -73,9 +76,26 @@ const ImgContainer = styled.div<ImageProps>`
 
 function Event() {
   const { id }: Params = useParams();
+  const queryClient = useQueryClient();
   const auth: any = useAuth();
   const { status, data, error } = useEvent(id);
+  const { addToast } = useToasts();
   
+  const mutationsOptions = {
+    onSuccess: () => {
+      addToast('Saved Successfully', { appearance: 'success' });
+    },
+    onError: (error: any) => {
+      const code = error.response.status;
+      let message = error.response.data?.msg || null;
+      if (!message) message = 'Error on save';
+      addToast(`${code} - ${message}`, { appearance: 'error' });
+    },
+    onSettled: () => {
+      queryClient.invalidateQueries('create');
+    },
+  };
+
   const [showDialogHubs, setShowDialogHubs] = useState(false);
   const openHubsDialog = () => setShowDialogHubs(true);
   const closeHubsDialog = () => setShowDialogHubs(false);
@@ -83,6 +103,8 @@ function Event() {
   const [showDialogEditArtists, setShowDialogEditArtists] = useState(false);
   const openEditArtistsDialog = () => setShowDialogEditArtists(true);
   const closeEditArtistsDialog = () => setShowDialogEditArtists(false);
+
+  const { mutate: eventMutation } = useMutation(updateEvent, mutationsOptions);
 
   if (status === 'loading') return <Loader />;
   if (error) return <div>Error</div>;
@@ -119,10 +141,30 @@ function Event() {
     id: artwork.id,
   }));
 
-  function setArtists(selArtists: string[]) {
-    console.log(selArtists);
-    
+  const handleInfoSubmit = (values: any) => {
+    eventMutation({ update: values, token: auth.user.token });
+  };
 
+  function setArtists(selArtists: number[]) {
+    let artids = selArtists.map((sid: number) => ({ id: sid }));
+    console.log(artids);
+
+    console.log("THE EVENT", data.event)
+    const update = {
+        "place": data.event.place,
+        "artists": artids,
+        "artworks": data.event.artworks,
+        "name": data.event.name,
+        "description": data.event.description,
+        "link": data.event.link,
+        "hubs_link": data.event.hubs_link,
+        "startTime": data.event.startTime,
+        "endTime": data.event.endTime,
+        "tags": data.event.tags,
+        "id": data.event.id
+    }
+
+    handleInfoSubmit(update);    
   }
 
   const parsedDates = datesParser(startTime, endTime);
