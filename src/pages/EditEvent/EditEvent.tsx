@@ -12,17 +12,6 @@ const StyledDialog = styled(Dialog)`
   width: 90vw;
 }
 `;
-  
-const Wrapper = styled.div`
-  position: relative;
-  height: 270px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  img {
-    max-height: 75%;
-  }
-`;
 
 function EditArtistDialog(props: any) {
 
@@ -68,17 +57,16 @@ function EditArtistDialog(props: any) {
                   <p className="font-header font-bold text-base md:truncate mb-1 uppercase">
                     {(artist.firstName + ' ' + artist.lastName).trim()}
                   </p>
-                  <Wrapper>
                   <img
                     className="mb-2"
                     src={`${IMGS_URL}/${artist.prevImages[0]}`}
                     alt={(artist.firstName + ' ' + artist.lastName).trim()}
                   />
-                  </Wrapper>
-                  {contains(selected, artist.id) && (
-                  <p className="font-header font-bold text-base md:truncate mb-1 uppercase"> 
-                    SELECTED
-                  </p>)}
+
+                  <p className="font-header font-bold text-base md:truncate mb-1 uppercase">
+                  {contains(selected, artist.id) ? 'YES' : 'NO' }
+                  </p>
+
                 </article>
               </ div>
             )
@@ -89,7 +77,7 @@ function EditArtistDialog(props: any) {
           type="button"
           className="border-solid border-4 border-darkGray px-3 py-1 font-header font-bold text-xl"
           aria-pressed={props.isPressed}
-          onClick={() => { props.setArtists(["test"]); props.closeDialog(); }}
+          onClick={() => { props.setArtists(selected); props.closeDialog(); }}
         >
           Save selection
         </button>        
