@@ -34,13 +34,6 @@ const HubsButton = styled.span`
   text-align: center;
 `;
 
-const EditButton = styled.span`
-  color: black;
-  background-color: white;
-  padding: 1rem;
-  text-align: center;
-`;
-
 const StyledDialog = styled(Dialog)`
   @media only screen and (max-width: 600px) {
     width: 90vw;
@@ -172,12 +165,13 @@ function Event() {
       <SectionHeader title="Participating artists" />
 
       {auth.user && /*&& auth.user.user_claims && auth.user.user_claims.role === 2*/ (
-        <EditButton
+      <button
+          type="button"
           className="border-solid border-4 border-darkGray px-3 py-1 font-header font-bold text-xl"
           onClick={openEditArtistsDialog}
         >
-          Edit
-        </EditButton>
+          Select
+        </button>
       )}
 
      {showDialogEditArtists && /*&& auth.user.user_claims && auth.user.user_claims.role === 2*/ (
@@ -219,12 +213,13 @@ function Event() {
       <SectionHeader title="Featured artworks" />
 
       {auth.user && (
-        <Link
+        <button
+          type="button"
           className="border-solid border-4 border-darkGray px-3 py-1 font-header font-bold text-xl"
-          to="/editartworks"
+          // onClick={openEditArtistsDialog}
         >
-          Edit
-        </Link>
+          Select
+        </button>
       )}
 
       <div className="grid xl:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 gap-12 mb-5 w-full overflow-hidden">

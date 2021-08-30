@@ -16,9 +16,6 @@ function EditArtistDialog(props: any) {
         <span aria-hidden>×</span>
       </button>
 
-
-
-
       <div className="relative text-center">
         <p className="mt-6 mb-6 text-xl font-header">
         Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, 
@@ -31,28 +28,17 @@ function EditArtistDialog(props: any) {
         vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui 
         dolorem eum fugiat quo voluptas nulla pariatur?
         </p>
-        {/* <a className="mx-auto border-solid border-4 border-darkGray px-3 py-1 font-header font-bold text-xl"
-           target="_blank"
-           rel="noreferrer"                        
-           href={`https://hubs.link`}
-        >
-          Continue
-        </a> */}
 
-<button
-      type="button"
-      className="btn toggle-btn"
-      aria-pressed={props.isPressed}
-      onClick={() => { props.setArtists(["test"]); props.closeDialog(); }}
-    >
-      <span className="visually-hidden">Show </span>
-      <span>{props.name}</span>
-      <span className="visually-hidden"> tasks</span>
-    </button>        
+        <button
+          type="button"
+          className="border-solid border-4 border-darkGray px-3 py-1 font-header font-bold text-xl"
+          aria-pressed={props.isPressed}
+          onClick={() => { props.setArtists(["test"]); props.closeDialog(); }}
+        >
+          Save selection
+        </button>        
 
       </div>
-
-
 
     </StyledDialog>
     );
