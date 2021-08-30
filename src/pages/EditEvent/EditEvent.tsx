@@ -14,9 +14,8 @@ const StyledDialog = styled(Dialog)`
 `;
 
 function EditArtistDialog(props: any) {
-
   const { status, data, error } = useArtists();
-  const [selected, setSelected] = useState(['']);
+  const [selected, setSelected] = useState(props.initArtists as number[]);
 
   if (status === 'loading') return <Loader />;
   if (error) return <div>Error</div>;
@@ -29,14 +28,18 @@ function EditArtistDialog(props: any) {
     return 0;
   });
 
-  function toggleSelected(id: string) {
+  function toggleSelected(id: number) {
     if (contains(selected, id)) {
       const remainingIds = selected.filter(sid => id !== sid);
       setSelected(remainingIds);
     } else {
       setSelected([...selected, id]);
     }
-  }  
+  }
+
+  // setSelected(props.initArtists);
+
+  console.log("the initial artists", selected);
 
   return (
       <StyledDialog isOpen={props.showDialog} onDismiss={props.closeDialog} aria-label="Select artists">

@@ -172,7 +172,10 @@ function Event() {
       )}
 
      {showDialogEditArtists && /*&& auth.user.user_claims && auth.user.user_claims.role === 2*/ (
-      <EditArtistDialog showDialog={showDialogEditArtists} closeDialog={closeEditArtistsDialog} setArtists={setArtists} /> 
+      <EditArtistDialog showDialog={showDialogEditArtists} 
+                        closeDialog={closeEditArtistsDialog} 
+                        initArtists={eventArtists.map((artist: { id: number; }) => artist.id)} 
+                        setArtists={setArtists} /> 
      )}
 
       <div className="w-full mb-10 mt-10">
