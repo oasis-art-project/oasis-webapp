@@ -71,30 +71,33 @@ function Places() {
     <>
       <Map center={getLocCentroid(data.places)}>
         {data.places.map((place: any) => (
-          <Marker key={place.id} position={decodeLatLon(place.location)}>
-            <StyledPopup>
-              <Link to={`/place/${place.id}`}>
-                <p className="font-header text-darkGray font-bold text-lg my-1 truncate">
-                  {place.name}
-                </p>
-                <ImgContainer imageURL={`${IMGS_URL}/${place.prevImages[0]}`} height="150px" />
-              </Link>
-              {place.matterport_link && (
-                  <MatterportButton
-                    className="flex justify-center gap-2 w-full mt-2"
-                    target="_blank"
-                    rel="noreferrer"
-                    href={`https://my.matterport.com/show/?m=${place.matterport_link}`}
-                  >
-                    <img src={cubeImage} alt="3D Cube" width="20" />
-                    <div className="text-gray-50">
-                      Virtual Gallery
-                    </div>
-                  </MatterportButton>
-              )}
-            </StyledPopup>
-          </Marker>
-        ))}
+           (place.active == null || place.active) && (
+             <Marker key={place.id} position={decodeLatLon(place.location)}>
+               <StyledPopup>
+                 <Link to={`/place/${place.id}`}>
+                    <p className="font-header text-darkGray font-bold text-lg my-1 truncate">
+                      {place.name}
+                    </p>
+                    <ImgContainer imageURL={`${IMGS_URL}/${place.prevImages[0]}`} height="150px" />
+                 </Link>
+                 {place.matterport_link && (
+                     <MatterportButton
+                       className="flex justify-center gap-2 w-full mt-2"
+                       target="_blank"
+                       rel="noreferrer"
+                       href={`https://my.matterport.com/show/?m=${place.matterport_link}`}
+                     >
+                       <img src={cubeImage} alt="3D Cube" width="20" />
+                       <div className="text-gray-50">
+                         Virtual Gallery
+                       </div>
+                     </MatterportButton>
+                 )}
+               </StyledPopup>
+             </Marker>
+            ) 
+          )
+        )}
       </Map>
       <div className="grid xl:grid-cols-4 md:grid-cols-4 sm:grid-cols-2 gap-6 mb-5">
         {data.places.map((place: any) => (
