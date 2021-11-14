@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import useCurrentEvents from '../../hooks/useCurrentEvents';
@@ -110,18 +110,29 @@ const Card = ({
 
 function Events() {
   const { status, data, error } = useCurrentEvents();
-
   const [view, setView] = useState('current_events');
 
-  const toggleView = () => {
-    if (view === 'current_events') setView('upcoming_events');
-    if (view === 'upcoming_events') setView('current_events');
-  };
+  useEffect(() => {
+    if (!data) return
+    if (0 < data.current_events.length) {
+      setView('current_events')
+    } else if (0 < data.upcoming_events.length) {
+      setView('upcoming_events')
+    } else {
+      setView('past_events')
+    }
+  }, [data]);
 
   if (status === 'loading') return <Loader />;
   if (error) return <div>Error</div>;
 
   const sortedData: any = {};
+  sortedData['past_events'] = data.past_events.sort((a: any, b: any) => {
+    const timeA = a.startTime;
+    const timeB = b.startTime;
+    if (timeComparison(timeA, timeB)) return 1;
+    else return -1;
+  });
   sortedData['upcoming_events'] = data.upcoming_events.sort((a: any, b: any) => {
     const timeA = a.startTime;
     const timeB = b.startTime;
@@ -139,11 +150,19 @@ function Events() {
     <>
       <div className="mb-6">
         <ul className="flex items-center justify-center">
-          <li
-            onClick={() => toggleView()}
+        <li
+            className={`mx-5 hover: cursor-pointer ${
+              view === 'past_events' ? 'text-darkGray' : 'text-lightGray'
+            }`}
+            onClick={() => setView('past_events')}
+          >
+            Past events
+          </li>
+          <li            
             className={`mx-5 hover: cursor-pointer ${
               view === 'current_events' ? 'text-darkGray' : 'text-lightGray'
             }`}
+            onClick={() => setView('current_events')}
           >
             Current events
           </li>
@@ -151,7 +170,7 @@ function Events() {
             className={`mx-5 hover: cursor-pointer ${
               view === 'upcoming_events' ? 'text-darkGray' : 'text-lightGray'
             }`}
-            onClick={() => toggleView()}
+            onClick={() => setView('upcoming_events')}
           >
             Upcoming events
           </li>
