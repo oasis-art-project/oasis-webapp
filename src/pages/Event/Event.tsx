@@ -3,11 +3,18 @@ import { useParams, Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { FaExternalLinkSquareAlt } from 'react-icons/fa';
 import { ReactSmartScroller } from 'react-smart-scroller';
+
 import { Dialog } from '@reach/dialog';
+
+import HubsDialog from './HubsDialog';
+import YoutubeDialog from './YoutubeDialog';
+
+
 import useEvent from '../../hooks/useEvent';
 import { datesParser, eventStarted, IMGS_URL } from '../../helpers';
 import Loader from '../../components/Loader';
 import cubeImage from '../../assets/img/3dcube.png';
+import videoImage from '../../assets/img/video.png';
 
 const formatName = (first: string, last: string) => {
   return (last + ' ' + first).trim();
@@ -21,16 +28,16 @@ const Title = styled.div`
   letter-spacing: 2px;
 `;
 
-const HubsImage = styled.img`
-  width: 50px;
-  height: 50px;
-`;
-
-const HubsButton = styled.span`
+const EventButton = styled.span`
   color: white;
   background-color: black;
   padding: 1rem;
   text-align: center;
+`;
+
+const EventImage = styled.img`
+  width: 50px;
+  height: 50px;
 `;
 
 const StyledDialog = styled(Dialog)`
@@ -76,9 +83,12 @@ const ImgContainer = styled.div<ImageProps>`
 function Event() {
   const { id }: Params = useParams();
   const { status, data, error } = useEvent(id);
-  const [showDialogHubs, setShowDialogHubs] = useState(false);
-  const openHubsDialog = () => setShowDialogHubs(true);
-  const closeHubsDialog = () => setShowDialogHubs(false);
+  const [showHubsDialog, setShowHubsDialog] = useState(false);
+  const [showYoutubeDialog, setShowYoutubeDialog] = useState(false);  
+  const openHubsDialog = () => setShowHubsDialog(true);
+  const closeHubsDialog = () => setShowHubsDialog(false);
+  const openYoutubeDialog = () => setShowYoutubeDialog(true);
+  const closeYoutubeDialog = () => setShowYoutubeDialog(false);
 
   if (status === 'loading') return <Loader />;
   if (error) return <div>Error</div>;
@@ -151,21 +161,32 @@ function Event() {
       )}      
 
       {data.event.hubs_link && eventStarted(startTime) && (
-        <HubsButton
+        <EventButton
           className="flex justify-center gap-5 w-full"
           onClick={openHubsDialog}
         >
-          <HubsImage src={cubeImage} alt="3D Cube" />
+          <EventImage src={cubeImage} alt="3D Cube" />
           <div>
-            Launch Virtual Event
+            Launch Hubs Event
             <br />
             and attend online
           </div>
-        </HubsButton>
+        </EventButton>
       )}
 
-      <SectionHeader title="Participating artists" />
+      {data.event.youtube_link && eventStarted(startTime) && (
+        <EventButton className="flex justify-center gap-5 w-full" 
+           onClick={openYoutubeDialog}>          
+          <EventImage src={videoImage} alt="YouTube" />
+          <div>
+            Launch YouTube Event
+            <br />
+            and attend online
+          </div>
+        </EventButton>
+      )}
 
+      {0 < eventArtists.length && <SectionHeader title="Participating artists" />}
       <div className="w-full mb-10 mt-10">
         <ReactSmartScroller
           draggable
@@ -198,7 +219,7 @@ function Event() {
         </ReactSmartScroller>
       </div>
 
-      <SectionHeader title="Featured artworks" />
+      {0 < eventArtworks.length && <SectionHeader title="Featured artworks" />}
       <div className="grid xl:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 gap-12 mb-5 w-full overflow-hidden">
         {eventArtworks.map((artwork: any) => (
           <Link key={artwork.id} to={`/artwork/${artwork.id}`}>
@@ -217,32 +238,21 @@ function Event() {
         ))}
       </div>
 
-      <StyledDialog isOpen={showDialogHubs} onDismiss={closeHubsDialog} aria-label="Hubs intro">
-        <button className="close-button float-rigt" onClick={closeHubsDialog}>
-          <span aria-hidden>×</span>
-        </button>
-        <div className="relative text-center">
-          <p className="mt-6 mb-6 text-xl font-header">
-            OASIS will now take you to the virtual event. Some important instructions:
-          </p>
-          <p className="mt-6 mb-6 text-xl font-header">
-            <b>1)</b> Select <b>JOIN ROOM</b> in the next page. Enter on Device only if you have a VR headset.
-          </p>
-          <p className="mt-6 mb-6 text-xl font-header">
-          <b>2)</b> After joining, use the <b>W and S</b> keys to move forward/backwards, and <b>mouse pointer</b> to set direction.
-          </p>
-          <p className="mt-6 mb-12 text-xl font-header">
-          <b>3)</b> With a phone, <b>PINCH IN/OUT</b> to move backwards/foward, and <b>move the phone</b> to set direction.
-          </p>          
-          <a className="mx-auto border-solid border-4 border-darkGray px-3 py-1 font-header font-bold text-xl"
-             target="_blank"
-             rel="noreferrer"                        
-             href={`https://hubs.link/${data.event.hubs_link}`}
-          >
-            Continue
-          </a>
-        </div>
-      </StyledDialog>
+      {/* DIALOGS */}
+      {data.event.hubs_link && (
+        <HubsDialog
+          showDialog={showHubsDialog}
+          closeDialog={closeHubsDialog}
+          link={data.event.hubs_link}
+        />
+      )}
+      {data.event.youtube_link && (
+        <YoutubeDialog
+          showDialog={showYoutubeDialog}
+          closeDialog={closeYoutubeDialog}
+          link={data.event.youtube_link}
+        />
+      )}
 
     </div>
   );
