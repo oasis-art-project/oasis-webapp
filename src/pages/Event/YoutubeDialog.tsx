@@ -25,10 +25,10 @@ interface YoutubeDialogProps {
             OASIS will now take you to the virtual event on YouTube. Some important instructions:
           </p>
           <p className="mt-6 mb-6 text-xl font-header">
-            <b>1)</b> If its a pre-recorded video, just play to watch.
+            <b>1)</b> If it's a pre-recorded video, just play to watch.
           </p>
           <p className="mt-6 mb-6 text-xl font-header">
-            <b>2)</b> If it's a live streaming, wait for the stream to start.
+            <b>2)</b> If it's a live stream, please wait for the stream to start.
           </p>
           <p className="mt-6 mb-12 text-xl font-header">
             <b>3)</b> You can come back to OASIS at anytime.
