@@ -156,7 +156,7 @@ function Event() {
         >
           <EventImage src={cubeImage} alt="3D Cube" />
           <div>
-            Launch Hubs Event
+            Open virtual event
             <br />
             and attend online
           </div>
@@ -168,7 +168,7 @@ function Event() {
            onClick={openYoutubeDialog}>          
           <EventImage src={videoImage} alt="YouTube" />
           <div>
-            Launch YouTube Event
+            Open virtual event
             <br />
             and attend online
           </div>
