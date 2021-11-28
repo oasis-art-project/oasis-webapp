@@ -3,13 +3,8 @@ import { useParams, Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { FaExternalLinkSquareAlt } from 'react-icons/fa';
 import { ReactSmartScroller } from 'react-smart-scroller';
-
-import { Dialog } from '@reach/dialog';
-
 import HubsDialog from './HubsDialog';
 import YoutubeDialog from './YoutubeDialog';
-
-
 import useEvent from '../../hooks/useEvent';
 import { datesParser, eventStarted, IMGS_URL } from '../../helpers';
 import Loader from '../../components/Loader';
@@ -38,12 +33,6 @@ const EventButton = styled.span`
 const EventImage = styled.img`
   width: 50px;
   height: 50px;
-`;
-
-const StyledDialog = styled(Dialog)`
-  @media only screen and (max-width: 600px) {
-    width: 90vw;
-  }
 `;
 
 const SectionHeader = ({ title = '' }) => {
