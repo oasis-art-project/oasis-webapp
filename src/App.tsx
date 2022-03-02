@@ -121,7 +121,7 @@ function App() {
                         className="items-center justify-items-center mb-4 pr-2"
                         target="_blank"
                         rel="noreferrer"
-                        href="https://www.instagram.com/oooasis.art/"
+                        href="https://www.instagram.com/oasis_art_project/"
                       >
                       <FaInstagram className="text-lg text-gray-50" />                  
                       </a>
