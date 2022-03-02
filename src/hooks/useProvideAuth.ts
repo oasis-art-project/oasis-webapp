@@ -1,3 +1,9 @@
+/*
+Part of the OASIS ART PROJECT - https://github.com/orgs/oasis-art-project
+Copyright (c) 2019-22 TEAM OASIS
+License Artistic-2.0
+*/
+
 import { useState } from 'react';
 import axios from 'axios';
 import { API_URL } from './constants';

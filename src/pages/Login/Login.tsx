@@ -1,3 +1,9 @@
+/*
+Part of the OASIS ART PROJECT - https://github.com/orgs/oasis-art-project
+Copyright (c) 2019-22 TEAM OASIS
+License Artistic-2.0
+*/
+
 import { useFormik } from 'formik';
 import { IoArrowBack } from 'react-icons/io5';
 import { Link, useHistory, useLocation } from 'react-router-dom';
