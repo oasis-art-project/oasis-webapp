@@ -18,7 +18,7 @@ import cubeImage from '../../assets/img/3dcube.png';
 const artistSelection = (artists: []) => {
   let resultArtist = '';
   if (artists.length < 1) {
-    resultArtist = "Surprise Event!"
+    resultArtist = "Event"
   } else if (artists.length < 3) {
     artists.forEach((user: any, i: number) => {
       if (i > 0) resultArtist += ' & ';
@@ -36,8 +36,7 @@ const decodeLatLon = (loc: string) => {
 }
 
 const getLocCentroid = (events: []) => {
-  // Cambridge center
-  let center = [42.3822833, -71.1330431]
+  let center = [0.0, 0.0]
   let n = events.length
   if (n < 1) {
     return center;

@@ -20,8 +20,7 @@ const decodeLatLon = (loc: string) => {
 }
 
 const getLocCentroid = (places: []) => {
-  // Cambridge center
-  let center = [42.3822833, -71.1330431]
+  let center = [0.0, 0.0]
   let n = places.length
   if (n < 1) {
     return center;
