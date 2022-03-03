@@ -30,6 +30,15 @@ const artistSelection = (artists: []) => {
   return resultArtist;
 };
 
+const generateHubsLink = (hubs_link: string) => {
+  if (hubs_link.includes("https")) {
+    return hubs_link;
+  } else {
+    return "https://hubs.link/" + hubs_link;
+  }
+  
+}
+
 const decodeLatLon = (loc: string) => {
   let dec = Geohash.decode(loc)
   return [dec.lat, dec.lon];
@@ -200,7 +209,7 @@ function Events() {
                     className="flex justify-center gap-2 w-full"
                     target="_blank"
                     rel="noreferrer"
-                    href={`https://hubs.link/${event.hubs_link}`}
+                    href={generateHubsLink(`${event.hubs_link}`)}
                   >
                     <img src={cubeImage} alt="3D Cube" width="20" />
                     <div className="text-gray-50">
