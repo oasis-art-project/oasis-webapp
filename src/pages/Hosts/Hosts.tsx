@@ -23,7 +23,7 @@ function Hosts() {
   return (
     <div className="grid xl:grid-cols-4 md:grid-cols-4 sm:grid-cols-2 gap-6 mb-5">
       {data.users.map((host: any) => (
-        host.confirmed && (
+        (host.confirmed && (host.active == null || host.active)) && (
           <Link key={host.id} to={`/host/${host.id}`}>
             <article className="flex flex-end flex-col h-full justify-end">
               <p className="font-header font-bold text-xl lg:truncate mb-1 uppercase">
