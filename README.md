@@ -14,7 +14,7 @@ The OASIS webapp was bootstrapped with [Create React App](https://github.com/fac
 
 ## Running webapp locally
 
-Once the [OASIS server]() is up and running locally, you can following the next steps to setup and launch the webapp:
+Once the [OASIS server](https://github.com/oasis-art-project/oasis-server) is up and running locally, you can following the next steps to setup and launch the webapp:
 
 1. First, install all dependencies of the project: <br>
 `yarn` <br>
