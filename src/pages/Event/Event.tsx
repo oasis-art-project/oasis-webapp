@@ -11,11 +11,13 @@ import { FaExternalLinkSquareAlt } from 'react-icons/fa';
 import { ReactSmartScroller } from 'react-smart-scroller';
 import HubsDialog from './HubsDialog';
 import YoutubeDialog from './YoutubeDialog';
+import GatherDialog from './GatherDialog';
 import useEvent from '../../hooks/useEvent';
 import { datesParser, eventStarted, IMGS_URL } from '../../helpers';
 import Loader from '../../components/Loader';
 import cubeImage from '../../assets/img/3dcube.png';
 import videoImage from '../../assets/img/video.png';
+import vineImage from '../../assets/img/vine.png';
 
 const formatName = (first: string, last: string) => {
   return (last + ' ' + first).trim();
@@ -87,12 +89,16 @@ const ImgContainer = styled.div<ImageProps>`
 function Event() {
   const { id }: Params = useParams();
   const { status, data, error } = useEvent(id);
+  
   const [showHubsDialog, setShowHubsDialog] = useState(false);
-  const [showYoutubeDialog, setShowYoutubeDialog] = useState(false);  
+  const [showYoutubeDialog, setShowYoutubeDialog] = useState(false);
+  const [showGatherDialog, setShowGatherDialog] = useState(false);
   const openHubsDialog = () => setShowHubsDialog(true);
   const closeHubsDialog = () => setShowHubsDialog(false);
   const openYoutubeDialog = () => setShowYoutubeDialog(true);
   const closeYoutubeDialog = () => setShowYoutubeDialog(false);
+  const openGatherDialog = () => setShowGatherDialog(true);
+  const closeGatherDialog = () => setShowGatherDialog(false);
 
   if (status === 'loading') return <Loader />;
   if (error) return <div>Error</div>;
@@ -180,8 +186,20 @@ function Event() {
 
       {data.event.youtube_link && eventStarted(startTime) && (
         <EventButton className="flex justify-center gap-5 w-full" 
-           onClick={openYoutubeDialog}>          
+           onClick={openYoutubeDialog}>
           <EventImage src={videoImage} alt="YouTube" />
+          <div>
+            Open virtual event
+            <br />
+            and attend online
+          </div>
+        </EventButton>
+      )}
+
+      {data.event.gather_link && eventStarted(startTime) && (
+        <EventButton className="flex justify-center gap-5 w-full" 
+           onClick={openGatherDialog}>
+          <EventImage src={vineImage} alt="Gather.Town" />
           <div>
             Open virtual event
             <br />
@@ -257,6 +275,13 @@ function Event() {
           link={data.event.youtube_link}
         />
       )}
+      {data.event.gather_link && (
+        <GatherDialog
+          showDialog={showGatherDialog}
+          closeDialog={closeGatherDialog}
+          link={data.event.gather_link}
+        />
+      )}      
 
     </div>
   );
