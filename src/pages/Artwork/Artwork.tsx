@@ -105,6 +105,12 @@ function Artwork() {
               {artwork.size}
             </p>
           )}
+          {artwork.duration && (
+            <p className="font-header text-xl my-3">
+              <label className="font-bold mr-3">Duration:</label>
+              {artwork.duration}
+            </p>
+          )}
           {artwork.description && <p className="font-header text-xl my-3">{artwork.description}</p>}
           {artwork.link && (
             <a
