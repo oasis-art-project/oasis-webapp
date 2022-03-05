@@ -8,13 +8,17 @@
 <br/>
 <br/>
 
-# Getting Started
+# Getting Started with OASIS webapp
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The OASIS webapp was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Running webapp locally
 
-In the project directory, you can run:
+In the project directory, you should first run:
+
+### `unset HOST`
+
+to avoid conficts with host settings in the computer.
 
 ### `yarn`
 
@@ -42,6 +46,7 @@ The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
 ## Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
