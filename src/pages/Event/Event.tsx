@@ -50,6 +50,15 @@ const SectionHeader = ({ title = '' }) => {
   );
 };
 
+
+const generateHubsLink = (hubs_link: string) => {
+  if (hubs_link.includes("https")) {
+    return hubs_link;
+  } else {
+    return "https://hubs.link/" + hubs_link;
+  }  
+};
+
 interface ImageProps {
   readonly imageURL: string;
   readonly width: string;
@@ -238,7 +247,7 @@ function Event() {
         <HubsDialog
           showDialog={showHubsDialog}
           closeDialog={closeHubsDialog}
-          link={data.event.hubs_link}
+          link={generateHubsLink(`${data.event.hubs_link}`)}
         />
       )}
       {data.event.youtube_link && (

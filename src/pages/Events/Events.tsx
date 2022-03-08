@@ -36,7 +36,7 @@ const generateHubsLink = (hubs_link: string) => {
   } else {
     return "https://hubs.link/" + hubs_link;
   }  
-}
+};
 
 const decodeLatLon = (loc: string) => {
   let dec = Geohash.decode(loc)
