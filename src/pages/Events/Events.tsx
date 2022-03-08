@@ -35,8 +35,7 @@ const generateHubsLink = (hubs_link: string) => {
     return hubs_link;
   } else {
     return "https://hubs.link/" + hubs_link;
-  }
-  
+  }  
 }
 
 const decodeLatLon = (loc: string) => {

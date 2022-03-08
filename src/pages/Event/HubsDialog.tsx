@@ -43,7 +43,7 @@ interface HubsDialogProps {
             className="mx-auto border-solid border-4 border-darkGray px-3 py-1 font-header font-bold text-xl"
             target="_blank"
             rel="noreferrer"
-            href={`https://hubs.link/${link}`}
+            href={`${link}`}
           >
             Continue
           </a>
