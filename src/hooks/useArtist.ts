@@ -14,11 +14,26 @@ function fetchArtist(id: string) {
   return get(`${API_URL}/artist/${id}`);
 }
 
+function fetchArtistByName(name: string) {
+  return get(`${API_URL}/artist/${name}`);
+}
+
 function useArtist(id: string) {
   return useQuery(
     `user-${id}`,
     async () => {
       const { data } = await fetchArtist(id);
+      return data;
+    },
+    { refetchOnWindowFocus: false }
+  );
+}
+
+export function useGetArtistByName(name: string) {
+  return useQuery(
+    `artist-name-${name}`,
+    async () => {
+      const { data } = await fetchArtistByName(name);
       return data;
     },
     { refetchOnWindowFocus: false }

@@ -22,6 +22,7 @@ import Artist from './pages/Artist';
 import ArtistCover from './pages/ArtistCover';
 import ArtworkCover from './pages/ArtworkCover';
 import EventRedirect from './pages/EventRedirect';
+import ArtistRedirect from './pages/ArtistRedirect';
 import Artwork from './pages/Artwork';
 import ChatRoom from './pages/ChatRoom';
 import Places from './pages/Places';
@@ -107,6 +108,7 @@ function App() {
                       <PrivateRoute path="/room/:roomId">
                         <ChatRoom />
                       </PrivateRoute>
+                      <Route path="/artist/name/:name" exact component={ArtistRedirect} />
                       <Route path="/:alias" exact component={EventRedirect} />
                     </Switch>
                   </Container>
