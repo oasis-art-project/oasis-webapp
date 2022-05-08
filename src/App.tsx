@@ -108,7 +108,7 @@ function App() {
                       <PrivateRoute path="/room/:roomId">
                         <ChatRoom />
                       </PrivateRoute>
-                      <Route path="/artist/name/:name" exact component={ArtistRedirect} />
+                      <Route path="/bio/:name" exact component={ArtistRedirect} />
                       <Route path="/:alias" exact component={EventRedirect} />
                     </Switch>
                   </Container>
