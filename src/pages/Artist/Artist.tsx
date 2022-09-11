@@ -165,30 +165,40 @@ function Artist() {
           <p className="font-header text-lg mb-3">{user.bio}</p>
         </div>
       </div>
-      <SectionHeader title="Artworks" />
-      <div className="grid xl:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 gap-12 mb-5">
-        {userArtworks.map((artwork: any) => (
-          <Link key={artwork.id} to={`/artwork/${artwork.id}`}>
-            <article className="flex flex-end flex-col justify-end">
-              <Wrapper>
-                <img alt={artwork.name} src={artwork.profileImage} />
-              </Wrapper>
-              <p className="text-center md:truncate mb-2 text-gray-500">{artwork.name}</p>
-            </article>
-          </Link>
-        ))}
-      </div>
-      <SectionHeader title="Events" />
-      <div className="grid xl:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 gap-12 mb-5">
-        {userEvents.map((event: any) => (
-          <Link key={event.id} to={`/event/${event.id}`}>
-            <article className="flex flex-end flex-col h-full justify-end">
-              <ImgContainer className="mb-2" imageURL={event.eventCover} height="150px" />
-              <p className="truncate mb-2 text-gray-500">{event.name}</p>
-            </article>
-          </Link>
-        ))}
-      </div>
+
+      {userArtworks && 0 < userArtworks.length && (
+        <>
+        <SectionHeader title="Artworks" /><div className="grid xl:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 gap-12 mb-5">
+          {userArtworks.map((artwork: any) => (
+            <Link key={artwork.id} to={`/artwork/${artwork.id}`}>
+              <article className="flex flex-end flex-col justify-end">
+                <Wrapper>
+                  <img alt={artwork.name} src={artwork.profileImage} />
+                </Wrapper>
+                <p className="text-center md:truncate mb-2 text-gray-500">{artwork.name}</p>
+              </article>
+            </Link>
+          ))}
+        </div>
+        </>
+      )}
+
+      {userEvents && 0 < userEvents.length && (
+        <>
+        <SectionHeader title="Events" />
+        <div className="grid xl:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 gap-12 mb-5">
+          {userEvents.map((event: any) => (
+            <Link key={event.id} to={`/event/${event.id}`}>
+              <article className="flex flex-end flex-col h-full justify-end">
+                <ImgContainer className="mb-2" imageURL={event.eventCover} height="150px" />
+                <p className="truncate mb-2 text-gray-500">{event.name}</p>
+              </article>
+            </Link>
+          ))}
+        </div>        
+        </>
+      )}
+
       <Dialog isOpen={showDialog} onDismiss={close} aria-label="warning alert">
         <button className="close-button float-rigt" onClick={close}>
           <span aria-hidden>×</span>
